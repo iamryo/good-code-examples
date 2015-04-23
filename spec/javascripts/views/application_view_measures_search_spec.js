@@ -16,11 +16,12 @@ describe('ApplicationViewMeasuresSearch', function() {
     );
     innerContent = $('.inner_content');
     new Phoenix.Views['layouts/application']({el: '#body', window: $('#body')});
+
+    search = $('.search');
   });
 
   describe('for desktop', function() {
     beforeEach(function() {
-      search = $('.search');
       searchResults = search.find('ul.results');
       searchInput = search.find('input');
     });
@@ -32,6 +33,25 @@ describe('ApplicationViewMeasuresSearch', function() {
         $('li.line_height_base.link')
       );
       expect(innerContent).toHaveCss({opacity: '0'});
+    });
+  });
+
+  describe('for mobile and tablet portrait', function() {
+    var topNav;
+    var searchIcon;
+    var menuIcon;
+    var leftArrowIcon;
+
+    beforeEach(function() {
+      topNav = $('#top_nav');
+      searchIcon = search.find('.icon_search');
+      menuIcon = topNav.find('.icon_list');
+      leftArrowIcon = topNav.find('.icon_arrow_large_left');
+    });
+
+    it('changes the menu icon to an arrow pointing left on focus', function() {
+      searchIcon.click();
+      expect(menuIcon).toHaveClass('hidden');
     });
   });
 });
