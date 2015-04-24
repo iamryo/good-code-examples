@@ -1,5 +1,10 @@
-.row_offcanvas_left
-  left: 0
+=sidebar_offcanvas_width($width, $box_shadow)
+  .sidebar_offcanvas
+    left: -($width)
+
+    &.expanded
+      box-shadow: rem(200) rem(0) rem(0) rem($box_shadow) rgba(0, 0, 0, 0.6)
+      width: $width
 
 .sidebar_offcanvas
   background: lighten($grey_lighter, 0.5%)
@@ -21,26 +26,28 @@
     +span-columns(3 of 12, block-collapse)
     position: fixed
 
++media($mobile)
+  +sidebar_offcanvas_width(90%, 200)
+
++media($tablet_portrait)
+  +sidebar_offcanvas_width(45%, 600)
+
 +media($mobile_and_tablet_portrait)
   .sidebar_offcanvas
-    left: -90%
-    height: 0
+    height: auto
+    min-height: 100vh
     width: 0
-    +transition(left .25s ease-out)
+    +transition(all .25s ease-out)
 
     &.expanded
-      box-shadow: rem(200) rem(0) rem(0) rem(6) rgba(0, 0, 0, 0.6)
       position: absolute
       top: 0
       left: 0
-      height: auto
-      min-height: 100vh
-      width: 90%
       overflow: visible
       z-index: 1000
 
   .inner_content_offcanvas
-    height: 100vh
+    min-height: 100vh
 
     &.concealed
       cursor: pointer
