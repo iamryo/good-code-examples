@@ -1,0 +1,82 @@
+h1, h2, h3, h4,
+.h1, .h2, .h3, .h4
+  font-weight: $headings_font_weight
+  line-height: $headings_line_height
+
+h1, .h1,
+h2, .h2,
+h3, .h3,
+h4, .h4
+  margin-top: $line_height_computed
+  margin-bottom: $line_height_computed / 2
+
+h1, .h1
+  font-size: $font_size_h1
+
+h2, .h2
+  font-size: $font_size_h2
+
+h3, .h3
+  font-size: $font_size_h3
+
+h4, .h4
+  font-size: $font_size_h4
+
+p
+  margin: 0 0 $line_height_computed / 2
+  line-height: $line_height_base
+
+ul,
+ol
+  padding-left: $buffer_base
+
+ul.unstyled,
+ol.unstyled
+  padding-left: 0
+  list-style: none
+
+p,
+ul,
+ol
+  &:last-child
+    margin-bottom: 0
+
+.text_center
+  text-align: center
+
+.text_right
+  text-align: right
+
+.text_ellipsis
+  display: inline-block
+  overflow: hidden
+  text-overflow: ellipsis
+  white-space: nowrap
+  width: 100%
+
+  &.with_small_icon
+    +calc(width, "100% - #{$icon_size_small} - #{$padding_base_vertical}")
+
+  &.with_base_icon
+    +calc(width, "100% - #{$icon_size_base} - #{$padding_base_vertical}")
+
+.text_hide
+  font-size: 0
+  line-height: $line_height_computed
+  color: transparent
+  text-shadow: none
+  background-color: transparent
+  border: 0
+
+.text_muted
+  color: $grey
+
+.text_small
+  font-size: $font_size_small
+
+.preserve_whitespace
+  white-space: pre
+
+.no_link
+  &, &:link, &:visited, &:hover
+    color: inherit

@@ -1,0 +1,6 @@
+%li.current_node.measures_nav_btn
+  %span.current_node_text.measures_nav_btn= node.title
+  %ul.unstyled
+    = render 'public_charts/measures_nav/child_nodes',
+      node: node,
+      current_node: node

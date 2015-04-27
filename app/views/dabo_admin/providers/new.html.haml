@@ -1,0 +1,38 @@
+.row
+  %h1 New Provider
+  - if @provider.errors.any?
+    #error_explanation
+      %ul
+        - @provider.errors.full_messages.each do |msg|
+          %li
+            = msg
+
+  = form_for [:dabo_admin, @provider] do |f|
+    .field
+      = f.label :name
+      = f.text_field :name, class: 'form_control'
+    .field
+      = f.label :socrata_provider_id, 'Provider ID'
+      = f.number_field :socrata_provider_id, class: 'form_control'
+    .field
+      = f.label :city
+      = f.text_field :city, class: 'form_control'
+    .field
+      = f.label :state
+      = f.text_field :state, class: 'form_control'
+    .field
+      = f.label :zip_code
+      = f.text_field :zip_code, class: 'form_control'
+    .field
+      = f.label :hospital_type
+      = f.text_field :hospital_type, class: 'form_control'
+    .field
+      = f.label :hospital_system_id
+      = f.collection_select(:hospital_system_id, |
+      HospitalSystem.all, |
+      :id, |
+      :name, |
+      include_blank: true)
+    .actions
+      = f.submit
+      = link_to 'Back', dabo_admin_providers_path(@provider)

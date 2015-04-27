@@ -1,0 +1,11 @@
+{
+  "name": "phoenix",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/seanknox/phoenix.git"
+  },
+  "devDependencies": {
+    "jscs": "1.11.3",
+    "jshint": "2.6.3"
+  }
+}

@@ -1,0 +1,10 @@
+#top_nav.is_sticky.border_bottom_grey.vertical_padding_large.clearfix
+  .menu_icon.line_height_buffer_base.hide_on_desktop
+    %span.icon.icon_size_small.icon_list
+      = render 'shared/icon', icon: '#icon_list', klass: 'vertical_align_middle'
+    %span.icon.icon_size_small.icon_arrow_large_left.hidden
+      = render 'shared/icon', icon: '#icon_arrow_large_left', klass: 'vertical_align_middle'
+  .breadcrumbs.line_height_buffer_base.text_ellipsis
+    = yield :breadcrumbs
+  .search.line_height_buffer_base
+    = render partial: 'layouts/search_form'

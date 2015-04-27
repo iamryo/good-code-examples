@@ -1,0 +1,28 @@
+.row
+  %h1 Provider Detail
+
+  - # name, provider id, city and state
+  .table_responsive.top_margin_base
+    %table.table.table_bordered.table_hover
+      %thead
+        %tr
+          %th Name
+          %th Provider Id:
+          %th City
+          %th State
+          %th Hospital System
+      %tr
+        %td=@provider.name
+        %td=@provider.socrata_provider_id
+        %td=@provider.city
+        %td=@provider.state
+        %td=@provider.hospital_system_name
+
+  .bottom_margin_base
+    = link_to 'Delete This Provider', |
+      dabo_admin_provider_path(@provider), |
+      method: :delete, |
+      data: { confirm: 'Are you sure?' }, |
+      class: 'btn_red top_margin_base'
+
+    = link_to 'Back', dabo_admin_providers_path, class: 'vertical_padding_small'

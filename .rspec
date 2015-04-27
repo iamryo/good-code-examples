@@ -1,0 +1,4 @@
+--color
+--order rand
+--profile
+--require spec_helper

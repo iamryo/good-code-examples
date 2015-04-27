@@ -1,0 +1,7 @@
+%li.line_height_base.link.horizontal_padding_small
+  = highlight(node_link(child), term)
+  %ul.measures.unstyled
+    = render partial: 'child',
+      as: :child,
+      collection: child.children,
+      locals: { term: term }

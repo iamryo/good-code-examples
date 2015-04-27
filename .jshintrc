@@ -1,0 +1,32 @@
+// http://jshint.com/docs/options/
+// We want to be as strict as feasible; so don't change this file without
+// team discussion! Thanks.
+// Also don't change it before reading the JSHint documentation
+{
+  // Enforcing
+  "enforceall": true, // start out strict
+  "strict": true, // must have "'use strict';"
+  "es5": false, // fixes a bug in JSHint
+  "es3": false, // fixes a bug related to JSON global. https://github.com/jshint/jshint/issues/2213
+  "nocomma": false, // fixes: https://github.com/jshint/jshint/issues/2044
+
+  //Environment
+  "globals": {
+    "Phoenix": true, // Our JS namespace
+    "Backbone": true, // defined by Backbone.js
+    "Turbolinks": true, // defined by turbolinks.js, part of Rails
+    "_": true, // defined by Underscore.js
+    "getJSONFixture": true, // jasmine-jquery
+    "loadFixture": true, // jasmine-jquery
+    "readFixtures": true, // jasmine-jquery
+    "stubAjaxRequest": true,
+    "stubAjaxRequestWithStatus": true,
+    "stubAjaxRequestNoFixture": true,
+    "searchAutocomplete": true,
+    "withoutMockAjax": true
+
+  },
+  "jasmine": true,
+  "jquery": true, // allow `$` as global variable
+  "browser": true // allow `window`
+}

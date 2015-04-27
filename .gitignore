@@ -1,0 +1,14 @@
+# these should all be checked in to normalise the environment:
+# Gemfile.lock, .ruby-version, .ruby-gemset
+
+log
+
+# RubyMine
+.idea
+
+tmp
+.env
+node_modules
+.sass-cache/
+public/assets
+spec/javascripts/fixtures/

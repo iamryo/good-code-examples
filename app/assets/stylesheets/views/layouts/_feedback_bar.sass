@@ -1,0 +1,20 @@
+.feedback_bar
+  background-color: $grey_darker
+  color: $white
+  position: relative
+
+  +media($mobile)
+    position: fixed
+    bottom: 0
+    margin-top: 0
+
+  a
+    color: $brand_color_primary_light
+
+#body
+  &.public_charts, &.data_categories
+    .feedback_bar
+      @extend .col10
+      +media($tablet_portrait_and_desktop)
+        margin-bottom: ($buffer_base * 1)
+        margin-right: 0

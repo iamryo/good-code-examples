@@ -1,0 +1,220 @@
+%h1#icons.section_title Icons
+%p To use icons, render the shared icon partial and pass in the name of the icon you want to use.
+%p For more information on using SVG icons, please refer to the README for #{link_to('SVêGo', 'https://github.com/dabohealth/svego')}.
+%pre.preserve_whitespace.line_height_base
+  :preserve
+    %span.icon.icon_size_base.block
+      = render 'shared/icon', icon: '#icon_search'
+
+%h2 Icon Sizes
+.row.top_margin_base
+  .col3.border_grey.text_center.inner_padding_small
+    %span.icon.icon_size_xs.block
+      = render 'shared/icon', icon: '#icon_search'
+    %p.text_small .icon_size_xs
+  .col3.border_grey.text_center.inner_padding_small
+    %span.icon.icon_size_small.block
+      = render 'shared/icon', icon: '#icon_search'
+    %p.text_small .icon_size_small
+  .col3.border_grey.text_center.inner_padding_small
+    %span.icon.icon_size_base.block
+      = render 'shared/icon', icon: '#icon_search'
+    %p.text_small .icon_size_base
+  .col3.border_grey.text_center.inner_padding_small
+    %span.icon.icon_size_large.block
+      = render 'shared/icon', icon: '#icon_search'
+    %p.text_small .icon_size_large
+
+%h2 Icon Colors
+%p By default, icons are grey #CCCCCC.
+.row.top_margin_base
+  .col3.border_grey.text_center.inner_padding_small
+    %span.icon.icon_size_base.icon_brand_color_primary.block
+      = render 'shared/icon', icon: '#icon_search'
+    %p.text_small .icon_brand_color_primary
+
+%h2 Toggle Icon
+%p Highlight icon color on hover or when .active is present.
+.row.top_margin_base
+  .col3.border_grey.text_center.inner_padding_small
+    %span.icon.toggle_icon.icon_size_base.block
+      = render 'shared/icon', icon: '#icon_eye'
+    %p.text_small .icon_toggle
+  .col3.border_grey.text_center.inner_padding_small
+    %span.icon.toggle_icon.active.icon_size_base.block
+      = render 'shared/icon', icon: '#icon_eye'
+    %p.text_small .icon_toggle.active
+
+%h2 Icon Names
+.row.top_margin_base
+  .col3.border_grey.text_center.inner_padding_small
+    %span.icon.icon_size_base.block
+      = render 'shared/icon', icon: '#icon_add'
+    %p.text_small #icon_add
+  .col3.border_grey.text_center.inner_padding_small
+    %span.icon.icon_size_base.block
+      = render 'shared/icon', icon: '#icon_arrow_large_down'
+    %p.text_small #icon_arrow_large_down
+  .col3.border_grey.text_center.inner_padding_small
+    %span.icon.icon_size_base.block
+      = render 'shared/icon', icon: '#icon_arrow_large_left'
+    %p.text_small #icon_arrow_large_left
+  .col3.border_grey.text_center.inner_padding_small
+    %span.icon.icon_size_base.block
+      = render 'shared/icon', icon: '#icon_arrow_large_right'
+    %p.text_small #icon_arrow_large_right
+.row.top_margin_base
+  .col3.border_grey.text_center.inner_padding_small
+    %span.icon.icon_size_base.block
+      = render 'shared/icon', icon: '#icon_arrow_large_up'
+    %p.text_small #icon_arrow_large_up
+  .col3.border_grey.text_center.inner_padding_small
+    %span.icon.icon_size_base.block
+      = render 'shared/icon', icon: '#icon_book_text'
+    %p.text_small #icon_book_text
+  .col3.border_grey.text_center.inner_padding_small
+    %span.icon.icon_size_base.block
+      = render 'shared/icon', icon: '#icon_bookmark'
+    %p.text_small #icon_bookmark
+  .col3.border_grey.text_center.inner_padding_small
+    %span.icon.icon_size_base.block
+      = render 'shared/icon', icon: '#icon_calendar'
+    %p.text_small #icon_calendar
+.row.top_margin_base
+  .col3.border_grey.text_center.inner_padding_small
+    %span.icon.icon_size_base.block
+      = render 'shared/icon', icon: '#icon_chart_trend'
+    %p.text_small #icon_chart_trend
+  .col3.border_grey.text_center.inner_padding_small
+    %span.icon.icon_size_base.block
+      = render 'shared/icon', icon: '#icon_checkmark'
+    %p.text_small #icon_checkmark
+  .col3.border_grey.text_center.inner_padding_small
+    %span.icon.icon_size_base.block
+      = render 'shared/icon', icon: '#icon_clock'
+    %p.text_small #icon_clock
+  .col3.border_grey.text_center.inner_padding_small
+    %span.icon.icon_size_base.block
+      = render 'shared/icon', icon: '#icon_close'
+    %p.text_small #icon_close
+.row.top_margin_base
+  .col3.border_grey.text_center.inner_padding_small
+    %span.icon.icon_size_base.block
+      = render 'shared/icon', icon: '#icon_comment'
+    %p.text_small #icon_comment
+  .col3.border_grey.text_center.inner_padding_small
+    %span.icon.icon_size_base.block
+      = render 'shared/icon', icon: '#icon_conversation'
+    %p.text_small #icon_conversation
+  .col3.border_grey.text_center.inner_padding_small
+    %span.icon.icon_size_base.block
+      = render 'shared/icon', icon: '#icon_dabo-d-logo'
+    %p.text_small #icon_dabo-d-logo
+  .col3.border_grey.text_center.inner_padding_small
+    %span.icon.icon_size_base.block
+      = render 'shared/icon', icon: '#icon_dabo-logo'
+    %p.text_small #icon_dabo-logo
+.row.top_margin_base
+  .col3.border_grey.text_center.inner_padding_small
+    %span.icon.icon_size_base.block
+      = render 'shared/icon', icon: '#icon_document_text'
+    %p.text_small #icon_document_text
+  .col3.border_grey.text_center.inner_padding_small
+    %span.icon.icon_size_base.block
+      = render 'shared/icon', icon: '#icon_download'
+    %p.text_small #icon_download
+  .col3.border_grey.text_center.inner_padding_small
+    %span.icon.icon_size_base.block
+      = render 'shared/icon', icon: '#icon_eye'
+    %p.text_small #icon_eye
+  .col3.border_grey.text_center.inner_padding_small
+    %span.icon.icon_size_base.block
+      = render 'shared/icon', icon: '#icon_graph_bar'
+    %p.text_small #icon_graph_bar
+.row.top_margin_base
+  .col3.border_grey.text_center.inner_padding_small
+    %span.icon.icon_size_base.block
+      = render 'shared/icon', icon: '#icon_heart'
+    %p.text_small #icon_heart
+  .col3.border_grey.text_center.inner_padding_small
+    %span.icon.icon_size_base.block
+      = render 'shared/icon', icon: '#icon_lightbulb'
+    %p.text_small #icon_lightbulb
+  .col3.border_grey.text_center.inner_padding_small
+    %span.icon.icon_size_base.block
+      = render 'shared/icon', icon: '#icon_list'
+    %p.text_small #icon_list
+  .col3.border_grey.text_center.inner_padding_small
+    %span.icon.icon_size_base.block
+      = render 'shared/icon', icon: '#icon_lock'
+    %p.text_small #icon_lock
+.row.top_margin_base
+  .col3.border_grey.text_center.inner_padding_small
+    %span.icon.icon_size_base.block
+      = render 'shared/icon', icon: '#icon_mail'
+    %p.text_small #icon_mail
+  .col3.border_grey.text_center.inner_padding_small
+    %span.icon.icon_size_base.block
+      = render 'shared/icon', icon: '#icon_map_pin'
+    %p.text_small #icon_map_pin
+  .col3.border_grey.text_center.inner_padding_small
+    %span.icon.icon_size_base.block
+      = render 'shared/icon', icon: '#icon_news'
+    %p.text_small #icon_news
+  .col3.border_grey.text_center.inner_padding_small
+    %span.icon.icon_size_base.block
+      = render 'shared/icon', icon: '#icon_paperclip'
+    %p.text_small #icon_paperclip
+.row.top_margin_base
+  .col3.border_grey.text_center.inner_padding_small
+    %span.icon.icon_size_base.block
+      = render 'shared/icon', icon: '#icon_phone'
+    %p.text_small #icon_phone
+  .col3.border_grey.text_center.inner_padding_small
+    %span.icon.icon_size_base.block
+      = render 'shared/icon', icon: '#icon_printer'
+    %p.text_small #icon_printer
+  .col3.border_grey.text_center.inner_padding_small
+    %span.icon.icon_size_base.block
+      = render 'shared/icon', icon: '#icon_search'
+    %p.text_small #icon_search
+  .col3.border_grey.text_center.inner_padding_small
+    %span.icon.icon_size_base.block
+      = render 'shared/icon', icon: '#icon_settings'
+    %p.text_small #icon_settings
+.row.top_margin_base
+  .col3.border_grey.text_center.inner_padding_small
+    %span.icon.icon_size_base.block
+      = render 'shared/icon', icon: '#icon_share'
+    %p.text_small #icon_share
+  .col3.border_grey.text_center.inner_padding_small
+    %span.icon.icon_size_base.block
+      = render 'shared/icon', icon: '#icon_star'
+    %p.text_small #icon_star
+  .col3.border_grey.text_center.inner_padding_small
+    %span.icon.icon_size_base.block
+      = render 'shared/icon', icon: '#icon_stopwatch'
+    %p.text_small #icon_stopwatch
+  .col3.border_grey.text_center.inner_padding_small
+    %span.icon.icon_size_base.block
+      = render 'shared/icon', icon: '#icon_subtract'
+    %p.text_small #icon_subtract
+.row.top_margin_base
+  .col3.border_grey.text_center.inner_padding_small
+    %span.icon.icon_size_base.block
+      = render 'shared/icon', icon: '#icon_unlock'
+    %p.text_small #icon_unlock
+  .col3.border_grey.text_center.inner_padding_small
+    %span.icon.icon_size_base.block
+      = render 'shared/icon', icon: '#icon_upload'
+    %p.text_small #icon_upload
+  .col3.border_grey.text_center.inner_padding_small
+    %span.icon.icon_size_base.block
+      = render 'shared/icon', icon: '#icon_user'
+    %p.text_small #icon_user
+  .col3.border_grey.text_center.inner_padding_small
+    %span.icon.icon_size_base.block
+      = render 'shared/icon', icon: '#icon_users'
+    %p.text_small #icon_users
+
+%hr.top_margin_large.bottom_margin_large

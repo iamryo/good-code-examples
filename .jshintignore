@@ -1,0 +1,4 @@
+vendor/bundle
+spec/javascripts/helpers
+public/assets
+node_modules

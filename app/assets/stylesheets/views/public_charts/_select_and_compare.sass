@@ -1,0 +1,58 @@
+=open_button
+  background-color: $white
+  border-bottom: none
+  +calc(height, #{$line_height_buffer_base} + #{$buffer_base})
+
+  .icon_arrow_up
+    display: inline
+
+  .icon_arrow_down
+    display: none
+
+#select_and_compare
+  &.show_provider
+    .dropdown_button.provider,
+    .dropdown_items.provider
+      display: inline-block
+
+    .dropdown_button.provider
+      +open_button
+
+  &.show_compare
+    .dropdown_button.compare,
+    .dropdown_items.compare
+      display: inline-block
+
+    .dropdown_button.compare
+      +open_button
+
+  .dropdown_button
+    cursor: pointer
+    position: relative
+    z-index: 2
+
+    .icon_arrow_up
+      display: none
+
+    +media($mobile)
+      .icon_size_base
+        svg
+          width: $icon_size_xs
+
+  .dropdown_items
+    display: none
+    width: 100%
+    z-index: 1
+    margin-top: rem(-1)
+
+    ul
+      padding: $buffer_base $buffer_xl
+      overflow-y: scroll
+      +calc(max-height, rem(400) - #{$line_height_buffer_base} - #{$buffer_base})
+      +calc(min-height, rem(200) - #{$line_height_buffer_base} - #{$buffer_base})
+
+  .icon_close
+    cursor: pointer
+
+  svg
+    vertical-align: middle

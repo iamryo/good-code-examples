@@ -1,0 +1,32 @@
+.row
+  %h1 User Detail
+
+  .table_responsive.top_margin_base.bottom_margin_base
+    %table.table.table_bordered.table_hover
+      %thead
+        %tr
+          %th Email
+          %th Is Dabo Admin
+          %th
+          %th
+      %tr
+        %td
+          = @user.email
+          - if @user.unconfirmed_email
+            = "(unconfirmed email: #{@user.unconfirmed_email})"
+        %td
+          = @user.is_dabo_admin
+        %td.text_center
+          = link_to 'Edit', |
+            edit_dabo_admin_user_path(@user), |
+            class: 'btn_blue text_small'
+        %td.text_center
+          = link_to 'Destroy', |
+            dabo_admin_user_path(@user), |
+            method: :delete, data: { confirm: 'Are you sure?' }, |
+            class: 'btn_red text_small'
+
+  = render 'unlock_button', user: @user
+
+  .bottom_margin_base
+    = link_to 'Back', dabo_admin_users_path

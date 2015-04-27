@@ -1,0 +1,129 @@
+=vertical_align_div_middle
+  position: absolute
+  top: 50%
+  left: 50%
+  transform: translate(-50%, -50%)
+
+  &
+    position: relative
+
+.top_margin_large
+  margin-top: $buffer_large
+
+.bottom_margin_large
+  margin-bottom: $buffer_large
+
+.left_margin_large
+  margin-left: $buffer_large
+
+.top_margin_base
+  margin-top: $buffer_base
+
+.bottom_margin_base
+  margin-bottom: $buffer_base
+
+.left_margin_base
+  margin-left: $buffer_base
+
+.top_margin_small
+  margin-top: $buffer_small
+
+.bottom_margin_small
+  margin-bottom: $buffer_small
+
+.left_margin_small
+  margin-left: $buffer_small
+
+.no_margin
+  margin: 0
+
+.no_padding
+  padding: 0
+
+.inner_padding_base
+  padding: $buffer_base
+
+.inner_padding_large
+  padding: $buffer_base
+  +media($desktop)
+    padding: $buffer_large
+
+.inner_padding_small
+  padding: $buffer_small
+
+.vertical_padding_base
+  padding-left: $buffer_base
+  padding-right: $buffer_base
+
+.vertical_padding_large
+  padding-left: $buffer_small
+  padding-right: $buffer_small
+  +media($desktop)
+    padding-left: $buffer_large
+    padding-right: $buffer_large
+
+.vertical_padding_xl
+  padding-left: $buffer_xl
+  padding-right: $buffer_xl
+
+.vertical_padding_small
+  padding-left: $buffer_small
+  padding-right: $buffer_small
+
+.horizontal_padding_base
+  padding-top: $buffer_base
+  padding-bottom: $buffer_base
+
+.horizontal_padding_large
+  padding-top: $buffer_base
+  padding-bottom: $buffer_base
+  +media($desktop)
+    padding-top: $buffer_large
+    padding-bottom: $buffer_large
+
+.horizontal_padding_xl
+  padding-top: $buffer_xl
+  padding-bottom: $buffer_xl
+
+.horizontal_padding_small
+  padding-top: $buffer_small
+  padding-bottom: $buffer_small
+
+.bottom_padding_large
+  padding-bottom: $buffer_base
+  +media($desktop)
+    padding-bottom: $buffer_large
+
+.centered
+  margin-left: auto
+  margin-right: auto
+
+.line_height_base
+  line-height: $line_height_base
+
+.line_height_computed
+  line-height: $line_height_computed
+
+.line_height_buffer_xl
+  line-height: $line_height_buffer_xl
+
+.line_height_buffer_base
+  line-height: $line_height_buffer_base
+
+.float_left
+  float: left
+
+.float_right
+  float: right
+
+.vertical_align_middle
+  vertical-align: middle
+
+.hidden
+  display: none
+
+.block
+  display: block
+
+.affix_beneath_top_nav
+  margin-top: rem(-20)

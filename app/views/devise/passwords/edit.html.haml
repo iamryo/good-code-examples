@@ -1,0 +1,14 @@
+.row
+  %h2 Change your password
+  = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f|
+    = devise_error_messages!
+    = f.hidden_field :reset_password_token
+    .field
+      = f.label :password, "New password"
+      .has_icon_inside.clearfix.line_height_buffer_base.toggle_password
+        = f.password_field :password, autofocus: true, autocomplete: 'off', required: true, class: 'form_control float_left'
+        %span.icon.toggle_icon.icon_size_base.form_control_icon.line_height_base
+          = render 'shared/icon', icon:'#icon_eye'
+    .actions
+      = f.submit "Change my password"
+  = render "devise/shared/links"

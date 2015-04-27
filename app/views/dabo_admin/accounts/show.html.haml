@@ -1,0 +1,37 @@
+.row
+  .table_responsive.top_margin_base.bottom_margin_base
+    %table.table.table_bordered.table_hover
+      %thead
+        %tr
+          %th Name
+          %th Type
+          %th Default Provider
+          %th Users
+          %th Authorized Domains
+      %tr
+        %td
+          = @account.virtual_system_name
+        %td
+          = @account.virtual_system_type
+        %td
+          = @account.default_provider_name
+        %td
+          %ul.unstyled
+            - @account.users.each do |user|
+              %li
+                = user.email
+        %td
+          %ul.unstyled
+            - @account.authorized_domains.each do |authorized_domain|
+              %li
+                = authorized_domain.name
+
+
+= link_to 'Edit', edit_dabo_admin_account_path(@account)
+\|
+= link_to 'Delete', dabo_admin_account_path(@account), method: :delete, |
+  data: { confirm: 'Are you sure?' }
+\|
+= link_to 'Back', dabo_admin_accounts_path
+\|
+= link_to 'Manage Authorized Domains', dabo_admin_account_authorized_domains_path(@account)

@@ -1,0 +1,26 @@
+= form_for [:dabo_admin, user] do |f|
+  - if user.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(user.errors.count, "error")} prohibited this user from being saved:"
+      %ul
+        - user.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :email
+    = f.text_field :email, class: 'form_control'
+  - if user.new_record?
+    .field
+      = f.label :password
+      .has_icon_inside.clearfix.line_height_buffer_base.toggle_password
+        = f.password_field :password, autocomplete: 'off', required: true, class: 'form_control float_left'
+        %span.icon.toggle_icon.icon_size_base.form_control_icon.line_height_base
+          = render 'shared/icon', icon:'#icon_eye'
+  .field
+    = f.label :account
+    = f.collection_select :account_id, Account.all, :id, :virtual_system_name
+  .field
+    = f.label :is_dabo_admin
+    = f.check_box :is_dabo_admin
+  .actions
+    = f.submit 'Save'

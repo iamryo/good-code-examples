@@ -1,0 +1,11 @@
+.row
+  %h1 Editing User
+
+  = render 'form', user: @user
+
+  = render 'unlock_button', user: @user
+
+  .bottom_margin_base
+    = link_to 'Show', dabo_admin_user_path(@user)
+    \|
+    = link_to 'Back', dabo_admin_users_path
