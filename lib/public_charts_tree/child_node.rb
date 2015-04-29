@@ -13,7 +13,7 @@ class PublicChartsTree
     end
 
     def breadcrumb
-      [title]
+      [Breadcrumb.new(title, id)]
     end
 
     def id_components
@@ -27,5 +27,9 @@ class PublicChartsTree
     def id
       id_components.join('/')
     end
+
+    private
+
+    Breadcrumb = Struct.new(:title, :id)
   end
 end
