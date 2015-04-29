@@ -47,7 +47,7 @@ PreCommit:
     install_command: 'npm install'
 
   Jscs:
-    enabled: true
+    enabled: false
     description: 'Analyzing with JSCS'
     required_executable: 'jscs'
     install_command: 'npm install'
