@@ -23,5 +23,9 @@ class PublicChartsTree
     def id_component
       title.parameterize
     end
+
+    def id
+      id_components.join('/')
+    end
   end
 end

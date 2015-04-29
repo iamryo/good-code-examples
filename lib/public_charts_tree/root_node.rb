@@ -6,6 +6,10 @@ class PublicChartsTree
         []
       end
 
+      def id
+        ''
+      end
+
       def breadcrumb
         []
       end
