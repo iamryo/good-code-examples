@@ -4,7 +4,7 @@ Improving the Quality of Care, one Metric at a Time.
 
 | Build | Status | Code Quality | Test Coverage |
 | ----- | ------ | ------------ | ---------- |
-| Acceptance | [![Build Status](https://semaphoreci.com/api/v1/projects/e70c0e91-21d3-4ae7-8f5f-78eaae06b150/410878/badge.svg)](https://semaphoreci.com/seanknox/phoenix) | [![Code Climate](https://codeclimate.com/repos/5473af9369568066690132ad/badges/49bcf5b3eb3e945a25f0/gpa.svg)](https://codeclimate.com/repos/5473af9369568066690132ad/feed) | [![Code Climate](https://codeclimate.com/repos/5473af9369568066690132ad/badges/49bcf5b3eb3e945a25f0/gpa.svg)](https://codeclimate.com/repos/5473af9369568066690132ad/feed) |
+| Acceptance | [![Build Status](https://semaphoreci.com/api/v1/projects/e70c0e91-21d3-4ae7-8f5f-78eaae06b150/410878/badge.svg)](https://semaphoreci.com/seanknox/phoenix) | [![Code Climate](https://codeclimate.com/repos/5540591f695680658101733e/badges/2b0e6bbb0ad091b68874/gpa.svg)](https://codeclimate.com/repos/5540591f695680658101733e/feed) | [![Test Coverage](https://codeclimate.com/repos/5540591f695680658101733e/badges/2b0e6bbb0ad091b68874/coverage.svg)](https://codeclimate.com/repos/5540591f695680658101733e/feed) |
 
 ## Setup ##
 
