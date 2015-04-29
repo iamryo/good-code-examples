@@ -56,4 +56,4 @@ Phoenix.Views['layouts/application'] = Backbone.View.extend({
   _innerContentOffcanvas: function() {
     return $('.inner_content_offcanvas');
   }
- });
+});
