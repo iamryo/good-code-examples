@@ -10,7 +10,6 @@ class PublicChartsTree
              :title,
              to: :parent, prefix: true
     delegate :breadcrumb,
-             :build_breadcrumb,
              :id_component,
              :id_components,
              :parent,
