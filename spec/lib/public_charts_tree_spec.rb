@@ -102,11 +102,22 @@ RSpec.describe PublicChartsTree do
     ]
   end
 
-  let(:breadcrumb_titles) do
-    subject.breadcrumbs.map(&:title)
+  let(:expected_breadcrumb_ids) do
+    [
+      subject.parent_id,
+      subject.id,
+    ]
   end
 
   shared_examples 'a child node' do
+    let(:breadcrumb_titles) do
+      subject.breadcrumbs.map(&:title)
+    end
+
+    let(:breadcrumb_ids) do
+      subject.breadcrumbs.map(&:id)
+    end
+
     specify { expect(subject.id).to eq node_id }
 
     it 'returns the children' do
@@ -115,6 +126,7 @@ RSpec.describe PublicChartsTree do
     end
 
     specify { expect(breadcrumb_titles).to eq expected_breadcrumb_titles }
+    specify { expect(breadcrumb_ids).to eq expected_breadcrumb_ids }
     specify { expect(subject.title).to eq expected_title }
     specify { expect(subject.parent_id).to eq expected_parent_id }
     specify { expect(subject.type).to eq expected_type }
@@ -173,6 +185,7 @@ RSpec.describe PublicChartsTree do
     let(:expected_type) { 'measure_source' }
     let(:expected_child_ids) { ['public-data/value-based-purchasing'] }
     let(:expected_breadcrumb_titles) { [subject.title] }
+    let(:expected_breadcrumb_ids) { [subject.id] }
     let(:private_data) { tree.find('private-data') }
     let(:expected_id_component) { 'public-data' }
 
