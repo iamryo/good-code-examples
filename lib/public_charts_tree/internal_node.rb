@@ -10,7 +10,7 @@ class PublicChartsTree
              :title,
              to: :parent, prefix: true
     delegate :breadcrumb,
-             :build_breadcrumb,
+             :id,
              :id_component,
              :id_components,
              :parent,
@@ -21,10 +21,6 @@ class PublicChartsTree
 
     def children
       @children ||= []
-    end
-
-    def id
-      id_components.join('/')
     end
 
     def search(search_term)
