@@ -1,3 +1,5 @@
+$nested_margin: $icon_size_small + $buffer_small + $padding_base_vertical
+
 =sidebar_offcanvas_width($width, $box_shadow)
   .sidebar_offcanvas
     margin-left: -100%
@@ -9,11 +11,28 @@
 .row_offcanvas_left
   position: relative
 
-.sidebar_offcanvas
-  background: lighten($grey_lighter, 0.5%)
-
 #left_nav
   background: $white
+
+#measures_nav_container
+  li
+    margin-left: $nested_margin
+
+.measures_nav_btn
+  position: relative
+
+  a,
+  .current_node
+    display: block
+    @extend .horizontal_padding_small
+
+.sidebar_offcanvas
+  background: lighten($grey_lighter, 0.5%)
+  overflow: scroll
+  +omega
+  +media($desktop)
+    +span-columns(3 of 12, block-collapse)
+    position: fixed
 
 +media($desktop)
   .sidebar_offcanvas_spacer,
@@ -21,13 +40,6 @@
   .sidebar_offcanvas
     height: 100vh
     overflow: scroll
-
-.sidebar_offcanvas
-  overflow: scroll
-  +omega
-  +media($desktop)
-    +span-columns(3 of 12, block-collapse)
-    position: fixed
 
 +media($mobile)
   +sidebar_offcanvas_width(90%, 200)
