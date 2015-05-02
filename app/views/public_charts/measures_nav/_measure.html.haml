@@ -1,16 +1,16 @@
 - if node.parent.parent.type == 'measure_source'
   %li.parent.measures_nav_btn
-    = link_to(node.parent_title, back_button_options(node))
+    = link_to(node.parent_title, back_button_options(node), class: 'block horizontal_padding_small')
     %ul.unstyled
       = render 'public_charts/measures_nav/child_nodes',
         node: node.parent,
         current_node: node
 - else
   %li.grandparent.measures_nav_btn
-    = link_to(node.parent.parent_title, back_button_options(node.parent))
+    = link_to(node.parent.parent_title, back_button_options(node.parent), class: 'block horizontal_padding_small')
     %ul.unstyled
       %li.parent.measures_nav_btn
-        = link_to(node.parent_title, back_button_options(node))
+        = link_to(node.parent_title, back_button_options(node), class: 'block horizontal_padding_small')
         %ul.unstyled
           = render 'public_charts/measures_nav/child_nodes',
             node: node.parent,
