@@ -18,6 +18,8 @@ $nested_margin: $icon_size_small + $buffer_small + $padding_base_vertical
   li
     margin-left: $nested_margin
 
+    li
+      margin-left: $nested_margin - $buffer_small
 
 .sidebar_offcanvas
   background: lighten($grey_lighter, 0.5%)
