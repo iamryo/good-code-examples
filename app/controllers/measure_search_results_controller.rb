@@ -2,7 +2,7 @@
 class MeasureSearchResultsController < ApplicationController
   def index
     ms = PUBLIC_CHARTS_TREE.find_node(
-      'public-data',
+      'payment-programs',
       providers: provider_subset,
     )
     term = params.fetch(:term)

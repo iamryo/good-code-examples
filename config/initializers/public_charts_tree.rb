@@ -1,5 +1,5 @@
 PUBLIC_CHARTS_TREE = PublicChartsTree.new do
-  measure_source 'Public Data' do
+  measure_source 'Payment Programs' do
     metric_module 'Hospital-Acquired Conditions' do
       value Socrata::DimensionSampleManagers::GraphDataPoints::
         ProviderAggregate.new(

@@ -7,7 +7,7 @@ RSpec.describe StatusesController do
     expect(response).to be_success
   end
 
-  it 'renders public data button' do
+  it 'renders payment programs button' do
     expect(response.body).to include 'All is well'
   end
 end
