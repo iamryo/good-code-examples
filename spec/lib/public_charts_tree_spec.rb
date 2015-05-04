@@ -7,7 +7,7 @@ RSpec.describe PublicChartsTree do
   let(:providers) { double('providers relation') }
   let(:tree) do
     described_class.new do
-      measure_source 'Public Data' do
+      measure_source 'Payment Programs' do
         metric_module 'Value Based Purchasing' do
           value VALUE_DIMENSION_SAMPLE_MANAGER
           domain 'Outcome of Care' do
@@ -89,7 +89,7 @@ RSpec.describe PublicChartsTree do
 
     it 'returns the children' do
       expect(subject.children).to eq [
-        find('public-data'),
+        find('payment-programs'),
         find('private-data'),
       ]
     end
@@ -179,45 +179,45 @@ RSpec.describe PublicChartsTree do
   end
 
   context 'at a measure source node' do
-    let(:node_id) { 'public-data' }
-    let(:expected_title) { 'Public Data' }
+    let(:node_id) { 'payment-programs' }
+    let(:expected_title) { 'Payment Programs' }
     let(:expected_parent_id) { '' }
     let(:expected_type) { 'measure_source' }
-    let(:expected_child_ids) { ['public-data/value-based-purchasing'] }
+    let(:expected_child_ids) { ['payment-programs/value-based-purchasing'] }
     let(:expected_breadcrumb_titles) { [subject.title] }
     let(:expected_breadcrumb_ids) { [subject.id] }
     let(:private_data) { tree.find('private-data') }
-    let(:expected_id_component) { 'public-data' }
+    let(:expected_id_component) { 'payment-programs' }
 
     it_behaves_like 'a child node'
   end
 
   context 'at a metric module node' do
-    let(:parent_id) { 'public-data' }
+    let(:parent_id) { 'payment-programs' }
     let(:expected_id_component) { 'value-based-purchasing' }
     let(:node_id) { "#{parent_id}/#{expected_id_component}" }
     let(:expected_title) { 'Value Based Purchasing' }
-    let(:expected_parent_id) { 'public-data' }
+    let(:expected_parent_id) { 'payment-programs' }
     let(:expected_type) { 'metric_module' }
     let(:expected_child_ids) do
       %w[
-        public-data/value-based-purchasing/outcome-of-care
+        payment-programs/value-based-purchasing/outcome-of-care
       ]
     end
 
     it_behaves_like 'a chart node'
 
-    specify { expect(subject.parent_title).to eq 'Public Data' }
+    specify { expect(subject.parent_title).to eq 'Payment Programs' }
   end
 
   context 'at a domain node' do
-    let(:expected_parent_id) { 'public-data/value-based-purchasing' }
+    let(:expected_parent_id) { 'payment-programs/value-based-purchasing' }
     let(:expected_id_component) { 'outcome-of-care' }
     let(:node_id) { "#{expected_parent_id}/#{expected_id_component}" }
     let(:expected_title) { 'Outcome of Care' }
     let(:expected_type) { 'domain' }
     let(:expected_child_ids) do
-      ['public-data/value-based-purchasing/outcome-of-care/mortality']
+      ['payment-programs/value-based-purchasing/outcome-of-care/mortality']
     end
 
     it_behaves_like 'a chart node'
@@ -229,7 +229,7 @@ RSpec.describe PublicChartsTree do
 
   context 'at a category node' do
     let(:expected_parent_id) do
-      'public-data/value-based-purchasing/outcome-of-care'
+      'payment-programs/value-based-purchasing/outcome-of-care'
     end
     let(:expected_id_component) { 'mortality' }
     let(:node_id) { "#{expected_parent_id}/#{expected_id_component}" }
@@ -256,7 +256,7 @@ RSpec.describe PublicChartsTree do
   context 'at a measure node' do
     let(:expected_parent_id) do
       %w[
-        public-data
+        payment-programs
         value-based-purchasing
         outcome-of-care
         mortality
@@ -303,7 +303,7 @@ RSpec.describe PublicChartsTree do
 
   describe 'search' do
     let(:result) { measure_source.search(search_term) }
-    let(:measure_source) { find('public-data') }
+    let(:measure_source) { find('payment-programs') }
 
     def returns_expected_results
       expect(result.to_h).to eq expected_result
@@ -311,14 +311,14 @@ RSpec.describe PublicChartsTree do
 
     context 'within the same metric module' do
       let(:vbp_metric_module_node) do
-        find('public-data/value-based-purchasing')
+        find('payment-programs/value-based-purchasing')
       end
 
       context 'match on metric_module' do
         let(:search_term) { 'VaLuE bAs' }
         let(:expected_result) do
           {
-            title: 'Public Data',
+            title: 'Payment Programs',
             children: [
               {
                 title: 'Value Based Purchasing',
@@ -334,12 +334,12 @@ RSpec.describe PublicChartsTree do
 
       context 'match on domain' do
         let(:outcome_of_care_domain_node) do
-          find('public-data/value-based-purchasing/outcome-of-care')
+          find('payment-programs/value-based-purchasing/outcome-of-care')
         end
         let(:search_term) { 'Outcome' }
         let(:expected_result) do
           {
-            title: 'Public Data',
+            title: 'Payment Programs',
             children: [
               {
                 title: 'Value Based Purchasing',

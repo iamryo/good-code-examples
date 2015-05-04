@@ -18,7 +18,7 @@ RSpec.feature 'Session inactivity' do
 
   feature 'just before session timeout' do
     given(:refresh_delay) { timeout_in - 1.seconds   }
-    let(:expected_next_page_content) { 'Public Data' }
+    let(:expected_next_page_content) { 'Payment Programs' }
 
     scenario 'session is not expired before 15 minutes' do
       expect(current_path).to eq metrics_path

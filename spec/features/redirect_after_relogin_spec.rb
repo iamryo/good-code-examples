@@ -10,7 +10,7 @@ RSpec.feature 'Clicking a link after session expires' do
     end
     visit metrics_path
     log_in_user
-    expect(page).to have_content 'Public Data'
+    expect(page).to have_content 'Payment Programs'
     expect(current_path).to eq metrics_path
   end
 end

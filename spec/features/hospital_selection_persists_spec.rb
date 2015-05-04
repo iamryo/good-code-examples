@@ -10,7 +10,7 @@ RSpec.feature 'User selected hospital' do
     %w[
       /
       metrics
-      public-data
+      payment-programs
       hospital-acquired-conditions
     ].join('/')
   end
@@ -18,7 +18,7 @@ RSpec.feature 'User selected hospital' do
     %w[
       /
       metrics
-      public-data
+      payment-programs
       readmissions-reduction-program
     ].join('/')
   end
