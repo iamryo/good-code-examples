@@ -1,4 +1,5 @@
 require 'roo'
+require 'roo-xls'
 
 module HospitalSystems
   # Read the Excel file with information about systems and hospitals.

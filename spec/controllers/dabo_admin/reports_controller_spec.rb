@@ -25,7 +25,7 @@ RSpec.describe DaboAdmin::ReportsController do
       allow(Reporting::ReportFetcher).to receive(:call).with(
         report_date_string: user_selected_date_string,
         report_class: Reporting::DailyPageViewMetricsReport,
-        ).and_return(report_and_date)
+      ).and_return(report_and_date)
       execute_request
     end
 

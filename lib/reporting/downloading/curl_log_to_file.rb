@@ -8,7 +8,7 @@ module Reporting
                '-o',
                options.fetch(:filepath),
                '-s',
-        )
+              )
       end
     end
   end

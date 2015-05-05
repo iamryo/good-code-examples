@@ -30,6 +30,7 @@ gem 'sdoc', group: :doc
 gem 'responders'
 gem 'thor-rails'
 gem 'roo'
+gem 'roo-xls'
 
 # assets
 gem 'sass-rails'

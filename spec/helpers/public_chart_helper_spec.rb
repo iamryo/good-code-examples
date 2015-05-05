@@ -6,7 +6,7 @@ RSpec.describe PublicChartsHelper do
       instance_double(PublicChartsTree::Node,
                       type: type,
                       parent_id: parent_id,
-      )
+                     )
     end
     let(:parent_id) { 'parent-id' }
 
@@ -45,7 +45,7 @@ RSpec.describe PublicChartsHelper do
       instance_double(PublicChartsTree::Node,
                       id: id,
                       title: title,
-      )
+                     )
     end
     let(:id) { 'public_data/foobar' }
     let(:title) { 'Nice Metric' }

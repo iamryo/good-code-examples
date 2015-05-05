@@ -6,7 +6,7 @@ RSpec.describe S3::GetBuckets do
   let(:s3_instance) do
     instance_double('AWS::S3',
                     buckets: buckets,
-    )
+                   )
   end
   let(:buckets) { instance_double('AWS::S3::BucketCollection') }
 
