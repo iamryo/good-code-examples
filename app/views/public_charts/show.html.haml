@@ -2,6 +2,7 @@
 .measures.affix_beneath_top_nav#node_container
   = render 'public_charts/select_and_compare',
     provider_compare_presenter: @provider_compare_presenter
+  = render 'public_charts/detail_chart_title', node: @node
   = render "public_charts/detail_charts/#{@node.type}",
     node: @node,
     conversation_presenter: @conversation_presenter
