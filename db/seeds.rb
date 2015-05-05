@@ -45,7 +45,7 @@ end
 
 AuthorizedDomain.create!(
     account_id: account.id,
-    name: 'dabohealth.com',
+    name: 'example.com',
 )
 
 User.create!(
@@ -53,15 +53,15 @@ User.create!(
     {
       first_name: 'Admin',
       last_name: 'Thompson',
-      email: 'admin@dabohealth.com',
-      password: 'timeandcolorisblue',
+      email: 'admin@example.com',
+      password: 'calmlionsteadygarden',
       is_dabo_admin: true,
     },
     {
       first_name: 'Plebe',
       last_name: 'Rodriguez',
-      email: 'plebe@dabohealth.com',
-      password: 'timeandcolorisblue',
+      email: 'plebe@example.com',
+      password: 'calmlionsteadygarden',
       is_dabo_admin: false,
     },
   ],
