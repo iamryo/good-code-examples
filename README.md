@@ -38,7 +38,7 @@ Boxen will:
 ### Heroku ###
 Heroku access is needed for loading realistic data from integration, staging, and production environments, as well as deploying to any of these environments.
 
-1. Obtain `eng-service@dabohealth.com` Heroku credentials from Passpack.
+1. Obtain `eng-service@phoenixhealth.com` Heroku credentials from Passpack.
 2. Login from the command line: `heroku login`
 3. Add the Heroku repos: `for x in integration staging production; do git remote add ${x} git@heroku.com:nightingale-${x}.git; done`
 
@@ -91,7 +91,7 @@ Nightingale is deployed to Heroku. CI will automatically deploy passing builds t
 | ---------- | --- | ---- |
 | master     | [nightingale-integration](https://dashboard.heroku.com/apps/nightingale-integration/resources) | [nightingale-integration.herokuapp.com](https://nightingale-integration.herokuapp.com/) |
 | staging    | [nightingale-staging](https://dashboard.heroku.com/apps/nightingale-staging/resources) | [nightingale-staging.herokuapp.com](https://nightingale-staging.herokuapp.com/) |
-| production | [nightingale-production](https://dashboard.heroku.com/apps/nightingale-production/resources) | [nightingale.dabohealth.com](https://nightingale.dabohealth.com/) |
+| production | [nightingale-production](https://dashboard.heroku.com/apps/nightingale-production/resources) | [nightingale.phoenixhealth.com](https://nightingale.phoenixhealth.com/) |
 | feature branches | nightingale-acceptance-[your-pr-id] | e.g [nightingale-acceptance-1234567](https://nightingale-acceptance-1234567.herokuapp.com)
 
 A procedural shell script manages the deploys to Heroku by using Heroku's pipelines to compile a slug once and promote that slug downstream to each successive environment app. The deploy process is outlined in the graphic below.
@@ -164,7 +164,7 @@ To identify and have Rubocop automatically correct violations when possible, run
 
 ## Engineering Workflow Overview ##
 
-Dabo's current engineering workflow has been fully documented and can be found [here](https://docs.google.com/a/dabohealth.com/document/d/1zMa4PofvjA9LJna0EZgz5Ob_vSlc7H0KP0LkRnt1neM/edit).
+Dabo's current engineering workflow has been fully documented and can be found [here](https://docs.google.com/a/phoenixhealth.com/document/d/1zMa4PofvjA9LJna0EZgz5Ob_vSlc7H0KP0LkRnt1neM/edit).
 
 ## Contributing changes ##
 

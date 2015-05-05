@@ -45,7 +45,7 @@ RSpec.describe DaboAdmin::AuthorizedDomainsController  do
   end
 
   describe '#create' do
-    let(:valid_authorized_domain) { { name: 'dabohealth.com' } }
+    let(:valid_authorized_domain) { { name: 'phoenixhealth.com' } }
     let(:invalid_authorized_domain) { { name: 'invalid' } }
     def post_create(authorized_domain)
       post :create, authorized_domain: authorized_domain, account_id: account.id
