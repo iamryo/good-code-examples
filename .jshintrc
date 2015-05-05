@@ -12,7 +12,7 @@
 
   //Environment
   "globals": {
-    "Phoenix": true, // Our JS namespace
+    "Nightingale": true, // Our JS namespace
     "Backbone": true, // defined by Backbone.js
     "Turbolinks": true, // defined by turbolinks.js, part of Rails
     "_": true, // defined by Underscore.js

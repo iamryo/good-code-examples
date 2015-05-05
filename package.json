@@ -1,9 +1,9 @@
 {
-  "name": "phoenix",
+  "name": "nightingale",
   "version": "0.0.1",
   "repository": {
     "type": "git",
-    "url": "git://github.com/seanknox/phoenix.git"
+    "url": "git://github.com/seanknox/nightingale.git"
   },
   "devDependencies": {
     "jscs": "1.13.0",

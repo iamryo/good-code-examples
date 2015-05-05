@@ -7,7 +7,9 @@ describe('ApplicationView', function() {
       'public_charts_controller-get-show-generate-a-' +
       'fixture-with-conversations'
     );
-    new Phoenix.Views['layouts/application']({el: '#body', window: $('#body')});
+    new Nightingale.Views['layouts/application'](
+      {el: '#body', window: $('#body')}
+    );
   });
 
   describe('clicking on the feedback bar close icon', function() {

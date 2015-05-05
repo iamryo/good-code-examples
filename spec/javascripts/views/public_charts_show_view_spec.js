@@ -19,7 +19,7 @@ describe('PublicChartsView', function() {
       'public_charts_controller-get-show-generate-a-' +
       'fixture-with-conversations'
     );
-    new Phoenix.Views['public_charts-show']({el: '#body'});
+    new Nightingale.Views['public_charts-show']({el: '#body'});
 
     searchInput = $('.dropdown_items.provider .search_box input');
     providerDropdown = $('.dropdown_items.provider');

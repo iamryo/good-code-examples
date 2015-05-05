@@ -1,6 +1,6 @@
 'use strict';
 
-Phoenix.Util.logEvent = function(eventName, eventProperties) {
+Nightingale.Util.logEvent = function(eventName, eventProperties) {
   var pixelPath = $('body').data('pixel-path');
   var pixelData = {
     event: eventName,
@@ -21,7 +21,7 @@ Phoenix.Util.logEvent = function(eventName, eventProperties) {
 
 $(document).on('ready page:load', function() {
   var currentUserId = $('body').data('current-user-id');
-  Phoenix.Util.logEvent('Page View', {
+  Nightingale.Util.logEvent('Page View', {
     currentUserId: currentUserId,
     route: document.location.pathname,
     routeParams: document.location.search

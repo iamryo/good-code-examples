@@ -13,4 +13,4 @@
 // for details about supported directives.
 //= require application_core
 Turbolinks.enableTransitionCache();
-$(document).on('ready page:load', Phoenix.initializeViews);
+$(document).on('ready page:load', Nightingale.initializeViews);

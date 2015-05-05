@@ -11,7 +11,9 @@ describe('ApplicationViewStickyElements', function() {
       'public_charts_controller-get-show-generate-a-' +
       'fixture-with-conversations'
     );
-    new Phoenix.Views['layouts/application']({el: '#body', window: $('#body')});
+    new Nightingale.Views['layouts/application'](
+      {el: '#body', window: $('#body')}
+    );
 
     $('#body').css({
       'overflow': 'scroll',

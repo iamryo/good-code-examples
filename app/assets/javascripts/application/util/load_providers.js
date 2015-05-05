@@ -1,6 +1,6 @@
 'use strict';
 
-Phoenix.Util.loadProviders = function() {
+Nightingale.Util.loadProviders = function() {
   return $.ajax({
     url: '/dabo_admin/accounts/new',
     dataType: 'html',

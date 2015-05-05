@@ -1,13 +1,13 @@
 // jshint nonew: false
 'use strict';
 
-Phoenix.Views['sessions-new'] = Backbone.View.extend({
+Nightingale.Views['sessions-new'] = Backbone.View.extend({
   events: {
     'click .cancel_btn': '_clearLoginForm',
   },
 
   initialize: function() {
-    new Phoenix.Views.passwordField({el: '.toggle_password'});
+    new Nightingale.Views.passwordField({el: '.toggle_password'});
   },
 
   _clearLoginForm: function() {

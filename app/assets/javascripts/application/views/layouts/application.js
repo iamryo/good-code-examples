@@ -1,7 +1,7 @@
 // jshint nonew: false
 'use strict';
 
-Phoenix.Views['layouts/application'] = Backbone.View.extend({
+Nightingale.Views['layouts/application'] = Backbone.View.extend({
   events: {
     'click .feedback_bar .icon' : 'dismissFlashMessage',
     'click #top_nav .menu_icon' : '_toggleLeftNav',
@@ -14,7 +14,7 @@ Phoenix.Views['layouts/application'] = Backbone.View.extend({
   },
 
   _initializeMetricsSearch: function() {
-    new Phoenix.Views['layouts/search_form']({
+    new Nightingale.Views['layouts/search_form']({
       applicationView: this,
       el: this.$('#top_nav')
     });

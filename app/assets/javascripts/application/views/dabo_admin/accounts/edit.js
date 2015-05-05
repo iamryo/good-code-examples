@@ -1,9 +1,9 @@
 // jshint devel: true
 'use strict';
 
-Phoenix.Views['accounts-edit'] = Backbone.View.extend({
+Nightingale.Views['accounts-edit'] = Backbone.View.extend({
 
   events: {
-    'change .system_selection': Phoenix.Util.loadProviders
+    'change .system_selection': Nightingale.Util.loadProviders
   }
 });

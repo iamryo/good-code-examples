@@ -11,7 +11,7 @@ function _passwordInputFieldSpecs(targetPasswordField) {
 
   beforeEach(function() {
     passwordField = $(targetPasswordField);
-    view = new Phoenix.Views.passwordField({el: passwordField.parent()});
+    view = new Nightingale.Views.passwordField({el: passwordField.parent()});
     toggleIcon = passwordField.next('.toggle_password .icon');
   });
 

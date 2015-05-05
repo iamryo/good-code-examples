@@ -1,6 +1,6 @@
 'use strict';
 
-Phoenix.Views.passwordField = Backbone.View.extend({
+Nightingale.Views.passwordField = Backbone.View.extend({
   events: {
     'click .icon': '_togglePassword',
     'keyup input': '_toggleIcon',

@@ -15,7 +15,9 @@ describe('ApplicationViewMeasuresSearch', function() {
       'fixture-with-conversations'
     );
     innerContent = $('.inner_content');
-    new Phoenix.Views['layouts/application']({el: '#body', window: $('#body')});
+    new Nightingale.Views['layouts/application'](
+      {el: '#body', window: $('#body')}
+    );
 
     search = $('.search');
   });

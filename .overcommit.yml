@@ -8,7 +8,7 @@ CommitMsg:
   ALL:
     enabled: false
 
-# Custom options for Phoenix repository
+# Custom options for Nightingale repository
 PreCommit:
   # Ignore all Overcommit default options
   ALL:

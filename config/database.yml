@@ -11,12 +11,12 @@ default: &default
 
 development:
   <<: *default
-  database: phoenix_development
+  database: nightingale_development
 
 test:
   <<: *default
-  database: phoenix_test
+  database: nightingale_test
 
 production:
   <<: *default
-  database: phoenix_production
+  database: nightingale_production

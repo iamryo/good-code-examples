@@ -8,5 +8,5 @@
 //= require turbolinks
 //= require underscore
 //= require backbone
-//= require phoenix_core
+//= require nightingale_core
 //= require_tree ./application

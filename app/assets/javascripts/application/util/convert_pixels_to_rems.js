@@ -1,6 +1,6 @@
 'use strict';
 
-Phoenix.Util.convertPixelsToRems = function(pixels) {
+Nightingale.Util.convertPixelsToRems = function(pixels) {
   var computedStyles   = window.getComputedStyle($('html')[0]);
   var computedFontSize = computedStyles.fontSize;
   var baseFontSize     = parseInt(computedFontSize);

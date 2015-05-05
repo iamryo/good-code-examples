@@ -13,7 +13,7 @@ describe('SessionsView', function() {
     var cancelButton;
 
     beforeEach(function() {
-      new Phoenix.Views['sessions-new']({el: '#body'});
+      new Nightingale.Views['sessions-new']({el: '#body'});
 
       loginFields = $('input.form_control');
       cancelButton = $('.cancel_btn');
@@ -36,7 +36,7 @@ describe('SessionsView', function() {
     };
 
     beforeEach(function() {
-      view = new Phoenix.Views.passwordField({el: '.toggle_password'});
+      view = new Nightingale.Views.passwordField({el: '.toggle_password'});
       passwordField = $('#user_password');
       toggleIcon = $('.toggle_password .icon');
     });

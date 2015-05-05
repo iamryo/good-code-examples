@@ -12,7 +12,7 @@ providers = Provider.create!(
       hospital_type: 'Acute Care Hospitals',
       socrata_provider_id: '030103',
       state: 'AZ',
-      city: 'PHOENIX',
+      city: 'Nightingale',
     },
     {
       name: 'MAYO CLINIC',

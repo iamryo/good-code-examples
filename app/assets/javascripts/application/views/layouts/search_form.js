@@ -1,6 +1,6 @@
 'use strict';
 
-Phoenix.Views['layouts/search_form'] = Backbone.View.extend({
+Nightingale.Views['layouts/search_form'] = Backbone.View.extend({
   events: {
     'click .icon_search'           : '_expandSearch',
     'click .icon_close'            : '_toggleCloseIcon',

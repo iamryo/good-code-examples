@@ -46,7 +46,7 @@ RSpec.describe Reporting::Downloading::LatestS3KeyGetter, :vcr do
     stub_const(
       'APP_CONFIG',
       double(
-        aws_bucket_name: 'phoenix-test',
+        aws_bucket_name: 'nightingale-test',
         aws_credentials: {
           access_key_id: '123',
           secret_access_key: 'abc',

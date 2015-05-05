@@ -1,10 +1,10 @@
-# Phoenix #
+# Nightingale #
 
 Improving the Quality of Care, one Metric at a Time.
 
 | Build | Status | Code Quality | Test Coverage |
 | ----- | ------ | ------------ | ---------- |
-| Acceptance | [![Build Status](https://semaphoreci.com/api/v1/projects/814948eb-3014-463d-885b-cda4bc217561/414334/badge.svg)](https://semaphoreci.com/seanknox/phoenix) | [![Code Climate](https://codeclimate.com/repos/5540591f695680658101733e/badges/2b0e6bbb0ad091b68874/gpa.svg)](https://codeclimate.com/repos/5540591f695680658101733e/feed) | [![Test Coverage](https://codeclimate.com/repos/5540591f695680658101733e/badges/2b0e6bbb0ad091b68874/coverage.svg)](https://codeclimate.com/repos/5540591f695680658101733e/feed) |
+| Acceptance | [![Build Status](https://semaphoreci.com/api/v1/projects/814948eb-3014-463d-885b-cda4bc217561/414334/badge.svg)](https://semaphoreci.com/seanknox/nightingale) | [![Code Climate](https://codeclimate.com/repos/5540591f695680658101733e/badges/2b0e6bbb0ad091b68874/gpa.svg)](https://codeclimate.com/repos/5540591f695680658101733e/feed) | [![Test Coverage](https://codeclimate.com/repos/5540591f695680658101733e/badges/2b0e6bbb0ad091b68874/coverage.svg)](https://codeclimate.com/repos/5540591f695680658101733e/feed) |
 
 ## Setup ##
 
@@ -15,9 +15,9 @@ Ruby version is specified in `.ruby-version`. Recent versions of rbenv will dete
 ### Boxen ###
 This project requires Dabo's development provisioning system, Boxen. Go [here](https://github.com/dabohealth/dabo-boxen) to setup Boxen.
 
-After setting up Boxen, you can use boxen to clone and setup the `Phoenix` project automatically in `~/src/phoenix` by running:
+After setting up Boxen, you can use boxen to clone and setup the `Nightingale` project automatically in `~/src/nightingale` by running:
 
-    $ boxen phoenix
+    $ boxen nightingale
 
 Boxen will:
 
@@ -25,7 +25,7 @@ Boxen will:
 * Install project version of Ruby and automatically run `bundle install`
 * Install required npm packages (jshint, jscs) by running `npm install`
 * Prepare development and test databases as well as default config/database.yml
-* Setup nginx/dnsmasq so you can access the development server at `http://phoenix.dev/`
+* Setup nginx/dnsmasq so you can access the development server at `http://nightingale.dev/`
 
 ### Starting the development server ###
 
@@ -33,14 +33,14 @@ Boxen will:
   * To start the web server only: `foreman start web`
   * To start the Sidekiq server only: `foreman start worker`
 
-2. `open http://phoenix.dev/` (or `open http://localhost:3000`)
+2. `open http://nightingale.dev/` (or `open http://localhost:3000`)
 
 ### Heroku ###
 Heroku access is needed for loading realistic data from integration, staging, and production environments, as well as deploying to any of these environments.
 
 1. Obtain `eng-service@dabohealth.com` Heroku credentials from Passpack.
 2. Login from the command line: `heroku login`
-3. Add the Heroku repos: `for x in integration staging production; do git remote add ${x} git@heroku.com:phoenix-${x}.git; done`
+3. Add the Heroku repos: `for x in integration staging production; do git remote add ${x} git@heroku.com:nightingale-${x}.git; done`
 
 ### Binaries and Binstubs ###
 In Rails 4, binaries (`rails`, `rake`, `rspec`) now live in `bin/`. You no longer need to prefix these commands with `bundle exec`. Instead, add `bin` to your `PATH` environment variable:
@@ -50,7 +50,7 @@ In Rails 4, binaries (`rails`, `rake`, `rspec`) now live in `bin/`. You no longe
 
 ## Testing ##
 
-Phoenix uses [RSpec](http://rspec.info/) for ruby tests and [Jasmine](http://jasmine.github.io/) for JavaScript tests.
+Nightingale uses [RSpec](http://rspec.info/) for ruby tests and [Jasmine](http://jasmine.github.io/) for JavaScript tests.
 
 - `rspec` will run all ruby specs.
 - `rake jasmine` will start the Jasmine server. Point your browser to `localhost:8888` to run all javascript specs in the browser. The suite will run every time this page is re-loaded.
@@ -77,7 +77,7 @@ to get it in the generated fixture.
 
 Tests are run on each branch on GitHub via [Semaphore](https://semaphoreapp.com/)
 
-Any branch that passes CI and has an open pull request will have a Heroku instance created modeled after `phoenix-acceptance`, available at `http://phoenix-acceptance-[pr_id].herokuapp.com`
+Any branch that passes CI and has an open pull request will have a Heroku instance created modeled after `nightingale-acceptance`, available at `http://nightingale-acceptance-[pr_id].herokuapp.com`
 
 ### Browser Testing ###
 
@@ -85,26 +85,26 @@ Feature tests are run in Chrome via Selenium. The Semaphore CI platform also run
 
 ## Deploying ##
 
-Phoenix is deployed to Heroku. CI will automatically deploy passing builds to the Heroku apps below:
+Nightingale is deployed to Heroku. CI will automatically deploy passing builds to the Heroku apps below:
 
 | branch     | app | site |
 | ---------- | --- | ---- |
-| master     | [phoenix-integration](https://dashboard.heroku.com/apps/phoenix-integration/resources) | [phoenix-integration.herokuapp.com](https://phoenix-integration.herokuapp.com/) |
-| staging    | [phoenix-staging](https://dashboard.heroku.com/apps/phoenix-staging/resources) | [phoenix-staging.herokuapp.com](https://phoenix-staging.herokuapp.com/) |
-| production | [phoenix-production](https://dashboard.heroku.com/apps/phoenix-production/resources) | [phoenix.dabohealth.com](https://phoenix.dabohealth.com/) |
-| feature branches | phoenix-acceptance-[your-pr-id] | e.g [phoenix-acceptance-1234567](https://phoenix-acceptance-1234567.herokuapp.com)
+| master     | [nightingale-integration](https://dashboard.heroku.com/apps/nightingale-integration/resources) | [nightingale-integration.herokuapp.com](https://nightingale-integration.herokuapp.com/) |
+| staging    | [nightingale-staging](https://dashboard.heroku.com/apps/nightingale-staging/resources) | [nightingale-staging.herokuapp.com](https://nightingale-staging.herokuapp.com/) |
+| production | [nightingale-production](https://dashboard.heroku.com/apps/nightingale-production/resources) | [nightingale.dabohealth.com](https://nightingale.dabohealth.com/) |
+| feature branches | nightingale-acceptance-[your-pr-id] | e.g [nightingale-acceptance-1234567](https://nightingale-acceptance-1234567.herokuapp.com)
 
 A procedural shell script manages the deploys to Heroku by using Heroku's pipelines to compile a slug once and promote that slug downstream to each successive environment app. The deploy process is outlined in the graphic below.
 
 ![deploy process - new page](https://cloud.githubusercontent.com/assets/3607358/5651089/43512dea-9659-11e4-84fd-aa30ef1f58bc.png)
 
-* The CI deploys code to **`phoenix-build-slug`** after code is pushed to Master and all tests pass.
+* The CI deploys code to **`nightingale-build-slug`** after code is pushed to Master and all tests pass.
 
-* **Integration** has all the code that will be included in the next release. It is where code is merged to Master. Continuous Integration tests must pass before deployment. Data is refreshed as needed. During deployment, `integration` will enter maintenance mode, promote `phoenix-build-slug` and run migrations.
+* **Integration** has all the code that will be included in the next release. It is where code is merged to Master. Continuous Integration tests must pass before deployment. Data is refreshed as needed. During deployment, `integration` will enter maintenance mode, promote `nightingale-build-slug` and run migrations.
 
 * **Staging** is used as a production deploy test, or *production practice*. Data is always refreshed before deployment. During deployment, `staging` will enter maintenance mode, copy data from the production database, promote `integration` and run migrations.
 
-* **Production** is the only place where users (Dabo staff or customers) access our systems. This is the only environment in which the deploy process is **started by a human**. The on-call engineer (described below in "[Deployment Schedule](https://github.com/seanknox/phoenix#deployment-schedule)") will manually deploy code to `production` from the CI.
+* **Production** is the only place where users (Dabo staff or customers) access our systems. This is the only environment in which the deploy process is **started by a human**. The on-call engineer (described below in "[Deployment Schedule](https://github.com/seanknox/nightingale#deployment-schedule)") will manually deploy code to `production` from the CI.
 
 Integration and Staging applications use sanitized data from production (real metric samples and other data, but all personal information scrubbed).
 
@@ -117,13 +117,13 @@ Temporary "acceptance" apps are created upon opening a pull request for a featur
 ### Deployment Schedule ###
 Continuous deployment of bug fixes and performance improvements take place Monday–Thursday (never Friday or weekends/holidays). For every production release, an engineer is responsible for deployment and will be on-call until the next release. Additionally, the on-call engineer from the previous deployment will serve as backup on-call.
 
-A [feature flipping gem] (https://github.com/seanknox/phoenix#feature-flipping) manages feature deployment. Features can be enabled at a certain time and for certain clients.
+A [feature flipping gem] (https://github.com/seanknox/nightingale#feature-flipping) manages feature deployment. Features can be enabled at a certain time and for certain clients.
 
 ### Database Backups ###
 
 Heroku provides scheduled database backups. For a list of available backups for that Heroku environment, run:
 
-    heroku pgbackups -a phoenix-[integration|staging|production]
+    heroku pgbackups -a nightingale-[integration|staging|production]
 
 See [https://devcenter.heroku.com/articles/pgbackups](https://devcenter.heroku.com/articles/pgbackups) for details.
 
@@ -140,7 +140,7 @@ Errors are sent to [Airbrake](https://dabo.airbrake.io).
 
 New Relic is included in the project in development and via Heroku environments. To see metrics on recent requests in **development** run:
 
-* `open http://phoenix.dev/newrelic` or (`open http://localhost:3000/newrelic`)
+* `open http://nightingale.dev/newrelic` or (`open http://localhost:3000/newrelic`)
 
 In production, use the Heroku web resource link to browse to the New Relic dashboard for the app.
 

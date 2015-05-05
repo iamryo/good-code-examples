@@ -9,7 +9,7 @@ app/assets/javascripts/application/util/log_event.js
 // `page:load` is after a tubrolink load
 $(document).on('ready page:load', function() {
   var currentUserId = $('body').data('current-user-id');
-  Phoenix.Util.logEvent('Page View', {
+  Nightingale.Util.logEvent('Page View', {
     currentUserId: currentUserId,
     route: document.location.pathname,
     routeParams: document.location.search

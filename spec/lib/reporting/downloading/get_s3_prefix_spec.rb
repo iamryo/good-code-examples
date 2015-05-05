@@ -12,7 +12,7 @@ RSpec.describe Reporting::Downloading::GetS3Prefix, :vcr do
     stub_const(
       'APP_CONFIG',
       double(
-        aws_bucket_name: 'phoenix-environment-name',
+        aws_bucket_name: 'nightingale-environment-name',
         aws_credentials: aws_credentials,
       ),
     )

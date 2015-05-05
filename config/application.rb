@@ -12,7 +12,7 @@ require_relative 'gem_dependencies'
 
 Dotenv.load if defined?(Dotenv)
 
-module Phoenix
+module Nightingale
   # This class is part of standard Rails configuration.
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified
@@ -57,7 +57,7 @@ module Phoenix
     config.force_ssl = true
 
     config.aws_bucket_name = [
-      'phoenix',
+      'nightingale',
       Rails.env,
       ENV.fetch('ACCEPTANCE_APPLICATION_STORY_ID', nil),
     ].compact.join('-')

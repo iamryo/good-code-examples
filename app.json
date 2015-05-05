@@ -1,7 +1,7 @@
 {
-  "name":"Phoenix",
+  "name":"Nightingale",
   "description":"Making quality metrics actionable",
-  "repository":"https://github.com/seanknox/phoenix",
+  "repository":"https://github.com/seanknox/nightingale",
   "scripts":{
     "postdeploy":"bundle exec rake db:reset"
 

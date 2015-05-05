@@ -4,7 +4,7 @@ describe('PristineExampleIndexView', function() {
   var view;
 
   beforeEach(function() {
-    view = new Phoenix.Views['pristine_examples-index']();
+    view = new Nightingale.Views['pristine_examples-index']();
   });
 
   describe('when view is constructing', function() {

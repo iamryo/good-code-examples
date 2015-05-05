@@ -1,7 +1,7 @@
 'use strict';
 
-describe('Phoenix.Util.convertPixelsToRems', function() {
+describe('Nightingale.Util.convertPixelsToRems', function() {
   it('returns correct rem value', function() {
-    expect(Phoenix.Util.convertPixelsToRems(60)).toBe('3.75rem');
+    expect(Nightingale.Util.convertPixelsToRems(60)).toBe('3.75rem');
   });
 });

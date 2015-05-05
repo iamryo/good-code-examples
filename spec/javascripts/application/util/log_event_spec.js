@@ -1,6 +1,6 @@
 'use strict';
 
-describe('Phoenix.Util.logEvent', function() {
+describe('Nightingale.Util.logEvent', function() {
   it('encodes the data correctly', function() {
     var properties = {
       currentUserId: 1,
@@ -12,7 +12,7 @@ describe('Phoenix.Util.logEvent', function() {
       '2%2C%22routeParams%22%3A%22%3Futf8%3D%25E2%259C%2593%26logged_at%3D2' +
       '015-01-20%22%7D%7D';
 
-    var image = Phoenix.Util.logEvent('Page View', properties);
+    var image = Nightingale.Util.logEvent('Page View', properties);
     expect(image.src).toMatch(data);
   });
 });

@@ -1,6 +1,6 @@
 'use strict';
 
-var Phoenix = {
+var Nightingale = {
   Views: {},
   Util: {}
 };

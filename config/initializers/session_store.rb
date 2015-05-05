@@ -2,4 +2,4 @@
 
 Rails.application.config
   .session_store :cookie_store,
-                 key: '_phoenix_session'
+                 key: '_nightingale_session'

@@ -3,11 +3,11 @@
 // jshint nonew: false
 'use strict';
 
-Phoenix.initializeViews = function() {
-  new Phoenix.Views['layouts/application']({el: '#body'});
+Nightingale.initializeViews = function() {
+  new Nightingale.Views['layouts/application']({el: '#body'});
 
   var viewName = $('body').data('viewName');
-  var View = Phoenix.Views[viewName];
+  var View = Nightingale.Views[viewName];
 
   if (View) {
     new View({

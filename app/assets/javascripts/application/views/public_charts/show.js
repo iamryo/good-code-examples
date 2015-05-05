@@ -1,7 +1,7 @@
 // jshint devel: true
 'use strict';
 
-Phoenix.Views['public_charts-show'] = Backbone.View.extend({
+Nightingale.Views['public_charts-show'] = Backbone.View.extend({
   events: {
     'click .dropdown_button.provider': '_toggleDropdownProvider',
     'click .dropdown_button.compare': '_toggleDropdownCompare',

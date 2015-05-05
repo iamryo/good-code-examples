@@ -1,7 +1,7 @@
 // jshint devel: true
 'use strict';
 
-Phoenix.Views['pristine_examples-index'] = Backbone.View.extend({
+Nightingale.Views['pristine_examples-index'] = Backbone.View.extend({
   events: {
     'click #test': 'log'
   },

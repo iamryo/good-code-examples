@@ -3,9 +3,9 @@
 workers Integer(ENV.fetch('WEB_CONCURRENCY', 2))
 
 if ENV.fetch('RACK_ENV', nil) == 'development'
-  # bind to socket for nginx - http://phoenix.dev
+  # bind to socket for nginx - http://nightingale.dev
   if ENV.key?('BOXEN_SOCKET_DIR')
-    bind "unix:#{ENV.fetch('BOXEN_SOCKET_DIR')}/phoenix"
+    bind "unix:#{ENV.fetch('BOXEN_SOCKET_DIR')}/nightingale"
   end
 end
 
