@@ -102,6 +102,8 @@ RSpec.describe PublicChartsTree do
         .exactly(2).times
       expect(mort_30_ami_dsm).to receive(:import)
       expect(mort_30_hf_dsm).to receive(:import)
+      expect(mort_30_ami_mdm).to receive(:import)
+      expect(mort_30_hf_mdm).to receive(:import)
       tree.import_all
     end
   end
