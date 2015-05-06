@@ -9,11 +9,13 @@ RSpec.describe Socrata::DimensionSampleManagers::GraphDataPoints::Measure do
     let(:vcr_directory) do
       'Socrata_DimensionSampleManagers_GraphDataPoints_Measure'
     end
+    let(:data_param) { relevant_providers }
     context 'lower is better' do
       let(:dataset_id) { '7xux-kdpw' }
       let(:options) { { measure_id: :PSI_90_SAFETY } }
       let(:cassette_name) { "#{vcr_directory}/lower_is_better" }
       it_behaves_like 'a dimension sample manager'
+      it_behaves_like 'a DSM with national best performer value'
     end
 
     context 'higher is better' do

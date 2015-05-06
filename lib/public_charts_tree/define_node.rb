@@ -7,12 +7,15 @@ require_relative 'domain'
 require_relative 'category'
 require_relative 'measure'
 require 'socrata/dimension_sample_managers/graph_data_points/measure'
+require 'socrata/dimension_sample_managers/graph_data_points/national_measure'
 
 # .
 class PublicChartsTree
   # A developer-friendly way to build the static chart tree for public data.
   # See implementation config/initializers/public_charts_tree.
   DefineNode = Struct.new(:embedded_node, :node_map, :definition_block) do
+    GRAPH_DATA_POINTS = Socrata::DimensionSampleManagers::GraphDataPoints
+
     def self.call(*args)
       new(*args).call
     end
@@ -32,6 +35,10 @@ class PublicChartsTree
 
     def value(value_dimension_manager)
       embedded_node.value_dimension_manager = value_dimension_manager
+    end
+
+    def line(measure_dimension_manager)
+      embedded_node.measure_dimension_manager = measure_dimension_manager
     end
 
     def measure_source(*args, &definition_block)
@@ -58,8 +65,13 @@ class PublicChartsTree
       measures.each do |measure_id|
         measure = MEASURES.fetch(measure_id)
         measure(measure.fetch(:title)) do
-          value Socrata::DimensionSampleManagers::GraphDataPoints::Measure.new(
+          value GRAPH_DATA_POINTS::Measure.new(
             measure_id: measure_id,
+          )
+          line GRAPH_DATA_POINTS::NationalMeasure.new(
+            measure_id: measure_id,
+            value_column_name: :national_rate,
+            dataset_id: 'seeb-g2s2',
           )
         end
       end

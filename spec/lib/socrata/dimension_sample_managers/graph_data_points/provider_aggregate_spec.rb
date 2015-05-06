@@ -7,17 +7,19 @@ RSpec.describe Socrata::DimensionSampleManagers::GraphDataPoints::
   include_context 'socrata value dimension sample manager'
 
   context 'for provider aggregate dimension samples' do
-    it_behaves_like 'a dimension sample manager' do
-      let(:dataset_id) { 'rrqw-56er' }
-      let(:options) do
-        {
-          dataset_id: dataset_id,
-          value_column_name: value_column_name,
-        }
-      end
-      let(:cassette_name) do
-        'socrata_dimension_sample_managers_graph_data_points_provider_aggregate'
-      end
+    let(:cassette_name) do
+      'socrata_dimension_sample_managers_graph_data_points_provider_aggregate'
     end
+    let(:dataset_id) { 'rrqw-56er' }
+    let(:options) do
+      {
+        dataset_id: dataset_id,
+        value_column_name: value_column_name,
+      }
+    end
+    let(:data_param) { relevant_providers }
+
+    it_behaves_like 'a dimension sample manager'
+    it_behaves_like 'a DSM with national best performer value'
   end
 end

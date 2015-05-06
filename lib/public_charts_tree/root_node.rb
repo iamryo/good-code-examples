@@ -21,6 +21,10 @@ class PublicChartsTree
       def value_dimension_manager
         nil
       end
+
+      def measure_dimension_manager
+        nil
+      end
     end
   end
 end

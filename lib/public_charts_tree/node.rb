@@ -14,6 +14,7 @@ class PublicChartsTree
              :parent_title,
              :type,
              :value_dimension_manager,
+             :measure_dimension_manager,
              :id_component,
              :id_components,
              to: :internal_node
@@ -36,6 +37,7 @@ class PublicChartsTree
       {
         bars: bars(providers),
         title: title,
+        lines: lines,
       }
     end
 
@@ -51,6 +53,17 @@ class PublicChartsTree
       end
     end
 
+    def lines
+      return [] unless measure_dimension_manager.present? # temporary until done
+      measure_dimension_manager.data(measure_id).map do |value|
+        {
+          label: 'National Average',
+          value: value,
+          measure_id: measure_id,
+        }
+      end
+    end
+
     def parent
       Node.new(internal_node.parent, providers: providers)
     end
@@ -58,6 +71,12 @@ class PublicChartsTree
     private :breadcrumb,
             :parent_breadcrumb,
             :value_dimension_manager,
+            :measure_dimension_manager,
             :id_components
+
+    def measure_id
+      return nil unless measure_dimension_manager.present?
+      measure_dimension_manager.measure_id
+    end
   end
 end

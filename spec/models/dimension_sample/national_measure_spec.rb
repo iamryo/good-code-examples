@@ -92,7 +92,7 @@ RSpec.describe DimensionSample::NationalMeasure do
           value: wrong_measure_value,
         )
       end
-      let(:data) { described_class.data(measure_id: relevant_measure_id) }
+      let(:data) { described_class.data(relevant_measure_id) }
 
       it 'gets the data' do
         expect(data).to eq [relevant_measure_value]
@@ -114,8 +114,8 @@ RSpec.describe DimensionSample::NationalMeasure do
         end
       end
 
-      context 'with a different dataset_id' do
-        let(:new_attribute) { { dataset_id: 'blah-blah' } }
+      context 'with a different measure_id' do
+        let(:new_attribute) { { measure_id: 'blah-blah' } }
 
         it 'makes a new record' do
           expect { create_or_update! }.to change(described_class, :count).by(1)

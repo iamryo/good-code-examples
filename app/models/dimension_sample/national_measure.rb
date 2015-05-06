@@ -21,15 +21,14 @@ module DimensionSample
     validates :column_name, presence: true
     validates :value, presence: true
 
-    def self.data(measure_id:)
-      matching_samples = where(measure_id: measure_id).pluck(:value)
+    def self.data(measure_id)
+      where(measure_id: measure_id).pluck(:value)
     end
 
     def self.create_or_update!(attributes)
       find_or_initialize_by(
         attributes.with_indifferent_access.slice(
           :measure_id,
-          :value,
         ),
       ).update_attributes!(attributes)
     end
