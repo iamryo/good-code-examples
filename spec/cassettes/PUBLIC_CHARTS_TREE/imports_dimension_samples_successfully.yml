@@ -59,7 +59,7 @@ http_interactions:
           "score" : "0.65"
         }
          ]
-    http_version:
+    http_version: 
   recorded_at: Tue, 24 Mar 2015 18:24:13 GMT
 - request:
     method: get
@@ -120,7 +120,7 @@ http_interactions:
           "domain_1_score" : "1.0000"
         }
          ]
-    http_version:
+    http_version: 
   recorded_at: Tue, 24 Mar 2015 18:24:13 GMT
 - request:
     method: get
@@ -181,7 +181,7 @@ http_interactions:
           "score" : "0.000"
         }
          ]
-    http_version:
+    http_version: 
   recorded_at: Tue, 24 Mar 2015 18:24:14 GMT
 - request:
     method: get
@@ -242,7 +242,7 @@ http_interactions:
           "score" : "0.285"
         }
          ]
-    http_version:
+    http_version: 
   recorded_at: Tue, 24 Mar 2015 18:24:14 GMT
 - request:
     method: get
@@ -303,7 +303,7 @@ http_interactions:
           "domain_2_score" : "2.0000"
         }
          ]
-    http_version:
+    http_version: 
   recorded_at: Tue, 24 Mar 2015 18:24:15 GMT
 - request:
     method: get
@@ -364,7 +364,7 @@ http_interactions:
           "total_hac_score" : "1.6500"
         }
          ]
-    http_version:
+    http_version: 
   recorded_at: Tue, 24 Mar 2015 18:24:16 GMT
 - request:
     method: get
@@ -425,7 +425,7 @@ http_interactions:
           "score" : "17.1"
         }
          ]
-    http_version:
+    http_version: 
   recorded_at: Tue, 24 Mar 2015 18:24:17 GMT
 - request:
     method: get
@@ -486,7 +486,7 @@ http_interactions:
           "score" : "20.3"
         }
          ]
-    http_version:
+    http_version: 
   recorded_at: Tue, 24 Mar 2015 18:24:17 GMT
 - request:
     method: get
@@ -547,7 +547,7 @@ http_interactions:
           "score" : "17.3"
         }
          ]
-    http_version:
+    http_version: 
   recorded_at: Tue, 24 Mar 2015 18:24:18 GMT
 - request:
     method: get
@@ -608,7 +608,7 @@ http_interactions:
           "score" : "19.6"
         }
          ]
-    http_version:
+    http_version: 
   recorded_at: Tue, 24 Mar 2015 18:24:18 GMT
 - request:
     method: get
@@ -669,7 +669,7 @@ http_interactions:
           "score" : "6.2"
         }
          ]
-    http_version:
+    http_version: 
   recorded_at: Tue, 24 Mar 2015 18:24:18 GMT
 - request:
     method: get
@@ -730,7 +730,7 @@ http_interactions:
           "provider_id" : "010005"
         }
          ]
-    http_version:
+    http_version: 
   recorded_at: Tue, 24 Mar 2015 18:24:19 GMT
 - request:
     method: get
@@ -791,7 +791,7 @@ http_interactions:
           "provider_id" : "010005"
         }
          ]
-    http_version:
+    http_version: 
   recorded_at: Tue, 24 Mar 2015 18:24:19 GMT
 - request:
     method: get
@@ -852,7 +852,7 @@ http_interactions:
           "provider_id" : "010005"
         }
          ]
-    http_version:
+    http_version: 
   recorded_at: Tue, 24 Mar 2015 18:24:20 GMT
 - request:
     method: get
@@ -913,7 +913,7 @@ http_interactions:
           "provider_id" : "010005"
         }
          ]
-    http_version:
+    http_version: 
   recorded_at: Tue, 24 Mar 2015 18:24:21 GMT
 - request:
     method: get
@@ -974,7 +974,7 @@ http_interactions:
           "provider_id" : "010005"
         }
          ]
-    http_version:
+    http_version: 
   recorded_at: Tue, 24 Mar 2015 18:24:21 GMT
 - request:
     method: get
@@ -1035,7 +1035,7 @@ http_interactions:
           "provider_id" : "010005"
         }
          ]
-    http_version:
+    http_version: 
   recorded_at: Tue, 24 Mar 2015 18:24:22 GMT
 - request:
     method: get
@@ -1096,7 +1096,7 @@ http_interactions:
           "provider_id" : "010005"
         }
          ]
-    http_version:
+    http_version: 
   recorded_at: Tue, 24 Mar 2015 18:24:22 GMT
 - request:
     method: get
@@ -1157,7 +1157,7 @@ http_interactions:
           "provider_id" : "010005"
         }
          ]
-    http_version:
+    http_version: 
   recorded_at: Tue, 24 Mar 2015 18:24:24 GMT
 - request:
     method: get
@@ -1218,7 +1218,7 @@ http_interactions:
           "provider_id" : "010005"
         }
          ]
-    http_version:
+    http_version: 
   recorded_at: Tue, 24 Mar 2015 18:24:24 GMT
 - request:
     method: get
@@ -1279,7 +1279,7 @@ http_interactions:
           "provider_id" : "010005"
         }
          ]
-    http_version:
+    http_version: 
   recorded_at: Tue, 24 Mar 2015 18:24:25 GMT
 - request:
     method: get
@@ -1340,6 +1340,2476 @@ http_interactions:
           "provider_id" : "010005"
         }
          ]
-    http_version:
+    http_version: 
   recorded_at: Tue, 24 Mar 2015 18:24:25 GMT
+- request:
+    method: get
+    uri: https://data.medicare.gov/resource/seeb-g2s2.json?$limit=50000&$offset=0&$select=national_rate,measure_id
+    body:
+      encoding: UTF-8
+      string: 'null'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      X-App-Token:
+      - ''
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Wed, 06 May 2015 05:04:14 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Last-Modified:
+      - Wed, 15 Apr 2015 23:54:42 UTC
+      X-Soda2-Warning:
+      - X-SODA2-Fields, X-SODA2-Types, and X-SODA2-Legacy-Types are deprecated
+      X-Soda2-Fields:
+      - '[":updated_at","measure_id",":id",":created_at","national_rate"]'
+      X-Soda2-Types:
+      - '["meta_data","text","meta_data","meta_data","number"]'
+      X-Soda2-Legacy-Types:
+      - 'true'
+      X-Socrata-Region:
+      - production
+      Age:
+      - '2'
+    body:
+      encoding: ASCII-8BIT
+      string: |-
+        [ {
+          "measure_id" : "MORT_30_AMI",
+          "national_rate" : "14.9"
+        }
+        , {
+          "measure_id" : "MORT_30_HF",
+          "national_rate" : "11.9"
+        }
+        , {
+          "measure_id" : "MORT_30_PN",
+          "national_rate" : "11.9"
+        }
+        , {
+          "measure_id" : "READM_30_AMI",
+          "national_rate" : "17.8"
+        }
+        , {
+          "measure_id" : "READM_30_HF",
+          "national_rate" : "22.7"
+        }
+        , {
+          "measure_id" : "READM_30_PN",
+          "national_rate" : "17.3"
+        }
+        , {
+          "measure_id" : "PSI_4_SURG_COMP",
+          "national_rate" : "118.52"
+        }
+        , {
+          "measure_id" : "PSI_6_IAT_PTX",
+          "national_rate" : "0.41"
+        }
+        , {
+          "measure_id" : "PSI_12_POSTOP_PULMEMB_DVT",
+          "national_rate" : "4.67"
+        }
+        , {
+          "measure_id" : "PSI_14_POSTOP_DEHIS",
+          "national_rate" : "1.91"
+        }
+        , {
+          "measure_id" : "PSI_15_ACC_LAC",
+          "national_rate" : "1.96"
+        }
+        , {
+          "measure_id" : "PSI_90_SAFETY",
+          "national_rate" : "0.88"
+        }
+        , {
+          "measure_id" : "COMP_HIP_KNEE",
+          "national_rate" : "3.3"
+        }
+        , {
+          "measure_id" : "READM_30_HIP_KNEE",
+          "national_rate" : "5.2"
+        }
+        , {
+          "measure_id" : "READM_30_HOSP_WIDE",
+          "national_rate" : "15.6"
+        }
+        , {
+          "measure_id" : "READM_30_COPD",
+          "national_rate" : "20.7"
+        }
+        , {
+          "measure_id" : "MORT_30_COPD",
+          "national_rate" : "7.8"
+        }
+        , {
+          "measure_id" : "READM_30_STK",
+          "national_rate" : "13.3"
+        }
+        , {
+          "measure_id" : "MORT_30_STK",
+          "national_rate" : "15.3"
+        }
+         ]
+    http_version: 
+  recorded_at: Wed, 06 May 2015 05:04:14 GMT
+- request:
+    method: get
+    uri: https://data.medicare.gov/resource/seeb-g2s2.json?$limit=50000&$offset=0&$select=national_rate,measure_id
+    body:
+      encoding: UTF-8
+      string: 'null'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      X-App-Token:
+      - ''
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Wed, 06 May 2015 05:04:14 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Last-Modified:
+      - Wed, 15 Apr 2015 23:54:42 UTC
+      X-Soda2-Warning:
+      - X-SODA2-Fields, X-SODA2-Types, and X-SODA2-Legacy-Types are deprecated
+      X-Soda2-Fields:
+      - '[":updated_at","measure_id",":id",":created_at","national_rate"]'
+      X-Soda2-Types:
+      - '["meta_data","text","meta_data","meta_data","number"]'
+      X-Soda2-Legacy-Types:
+      - 'true'
+      X-Socrata-Region:
+      - production
+      Age:
+      - '0'
+    body:
+      encoding: ASCII-8BIT
+      string: |-
+        [ {
+          "measure_id" : "MORT_30_AMI",
+          "national_rate" : "14.9"
+        }
+        , {
+          "measure_id" : "MORT_30_HF",
+          "national_rate" : "11.9"
+        }
+        , {
+          "measure_id" : "MORT_30_PN",
+          "national_rate" : "11.9"
+        }
+        , {
+          "measure_id" : "READM_30_AMI",
+          "national_rate" : "17.8"
+        }
+        , {
+          "measure_id" : "READM_30_HF",
+          "national_rate" : "22.7"
+        }
+        , {
+          "measure_id" : "READM_30_PN",
+          "national_rate" : "17.3"
+        }
+        , {
+          "measure_id" : "PSI_4_SURG_COMP",
+          "national_rate" : "118.52"
+        }
+        , {
+          "measure_id" : "PSI_6_IAT_PTX",
+          "national_rate" : "0.41"
+        }
+        , {
+          "measure_id" : "PSI_12_POSTOP_PULMEMB_DVT",
+          "national_rate" : "4.67"
+        }
+        , {
+          "measure_id" : "PSI_14_POSTOP_DEHIS",
+          "national_rate" : "1.91"
+        }
+        , {
+          "measure_id" : "PSI_15_ACC_LAC",
+          "national_rate" : "1.96"
+        }
+        , {
+          "measure_id" : "PSI_90_SAFETY",
+          "national_rate" : "0.88"
+        }
+        , {
+          "measure_id" : "COMP_HIP_KNEE",
+          "national_rate" : "3.3"
+        }
+        , {
+          "measure_id" : "READM_30_HIP_KNEE",
+          "national_rate" : "5.2"
+        }
+        , {
+          "measure_id" : "READM_30_HOSP_WIDE",
+          "national_rate" : "15.6"
+        }
+        , {
+          "measure_id" : "READM_30_COPD",
+          "national_rate" : "20.7"
+        }
+        , {
+          "measure_id" : "MORT_30_COPD",
+          "national_rate" : "7.8"
+        }
+        , {
+          "measure_id" : "READM_30_STK",
+          "national_rate" : "13.3"
+        }
+        , {
+          "measure_id" : "MORT_30_STK",
+          "national_rate" : "15.3"
+        }
+         ]
+    http_version: 
+  recorded_at: Wed, 06 May 2015 05:04:14 GMT
+- request:
+    method: get
+    uri: https://data.medicare.gov/resource/seeb-g2s2.json?$limit=50000&$offset=0&$select=national_rate,measure_id
+    body:
+      encoding: UTF-8
+      string: 'null'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      X-App-Token:
+      - ''
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Wed, 06 May 2015 05:04:15 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Last-Modified:
+      - Wed, 15 Apr 2015 23:54:42 UTC
+      X-Soda2-Warning:
+      - X-SODA2-Fields, X-SODA2-Types, and X-SODA2-Legacy-Types are deprecated
+      X-Soda2-Fields:
+      - '[":updated_at","measure_id",":id",":created_at","national_rate"]'
+      X-Soda2-Types:
+      - '["meta_data","text","meta_data","meta_data","number"]'
+      X-Soda2-Legacy-Types:
+      - 'true'
+      X-Socrata-Region:
+      - production
+      Age:
+      - '0'
+    body:
+      encoding: ASCII-8BIT
+      string: |-
+        [ {
+          "measure_id" : "MORT_30_AMI",
+          "national_rate" : "14.9"
+        }
+        , {
+          "measure_id" : "MORT_30_HF",
+          "national_rate" : "11.9"
+        }
+        , {
+          "measure_id" : "MORT_30_PN",
+          "national_rate" : "11.9"
+        }
+        , {
+          "measure_id" : "READM_30_AMI",
+          "national_rate" : "17.8"
+        }
+        , {
+          "measure_id" : "READM_30_HF",
+          "national_rate" : "22.7"
+        }
+        , {
+          "measure_id" : "READM_30_PN",
+          "national_rate" : "17.3"
+        }
+        , {
+          "measure_id" : "PSI_4_SURG_COMP",
+          "national_rate" : "118.52"
+        }
+        , {
+          "measure_id" : "PSI_6_IAT_PTX",
+          "national_rate" : "0.41"
+        }
+        , {
+          "measure_id" : "PSI_12_POSTOP_PULMEMB_DVT",
+          "national_rate" : "4.67"
+        }
+        , {
+          "measure_id" : "PSI_14_POSTOP_DEHIS",
+          "national_rate" : "1.91"
+        }
+        , {
+          "measure_id" : "PSI_15_ACC_LAC",
+          "national_rate" : "1.96"
+        }
+        , {
+          "measure_id" : "PSI_90_SAFETY",
+          "national_rate" : "0.88"
+        }
+        , {
+          "measure_id" : "COMP_HIP_KNEE",
+          "national_rate" : "3.3"
+        }
+        , {
+          "measure_id" : "READM_30_HIP_KNEE",
+          "national_rate" : "5.2"
+        }
+        , {
+          "measure_id" : "READM_30_HOSP_WIDE",
+          "national_rate" : "15.6"
+        }
+        , {
+          "measure_id" : "READM_30_COPD",
+          "national_rate" : "20.7"
+        }
+        , {
+          "measure_id" : "MORT_30_COPD",
+          "national_rate" : "7.8"
+        }
+        , {
+          "measure_id" : "READM_30_STK",
+          "national_rate" : "13.3"
+        }
+        , {
+          "measure_id" : "MORT_30_STK",
+          "national_rate" : "15.3"
+        }
+         ]
+    http_version: 
+  recorded_at: Wed, 06 May 2015 05:04:15 GMT
+- request:
+    method: get
+    uri: https://data.medicare.gov/resource/seeb-g2s2.json?$limit=50000&$offset=0&$select=national_rate,measure_id
+    body:
+      encoding: UTF-8
+      string: 'null'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      X-App-Token:
+      - ''
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Wed, 06 May 2015 05:04:15 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Last-Modified:
+      - Wed, 15 Apr 2015 23:54:42 UTC
+      X-Soda2-Warning:
+      - X-SODA2-Fields, X-SODA2-Types, and X-SODA2-Legacy-Types are deprecated
+      X-Soda2-Fields:
+      - '[":updated_at","measure_id",":id",":created_at","national_rate"]'
+      X-Soda2-Types:
+      - '["meta_data","text","meta_data","meta_data","number"]'
+      X-Soda2-Legacy-Types:
+      - 'true'
+      X-Socrata-Region:
+      - production
+      Age:
+      - '0'
+    body:
+      encoding: ASCII-8BIT
+      string: |-
+        [ {
+          "measure_id" : "MORT_30_AMI",
+          "national_rate" : "14.9"
+        }
+        , {
+          "measure_id" : "MORT_30_HF",
+          "national_rate" : "11.9"
+        }
+        , {
+          "measure_id" : "MORT_30_PN",
+          "national_rate" : "11.9"
+        }
+        , {
+          "measure_id" : "READM_30_AMI",
+          "national_rate" : "17.8"
+        }
+        , {
+          "measure_id" : "READM_30_HF",
+          "national_rate" : "22.7"
+        }
+        , {
+          "measure_id" : "READM_30_PN",
+          "national_rate" : "17.3"
+        }
+        , {
+          "measure_id" : "PSI_4_SURG_COMP",
+          "national_rate" : "118.52"
+        }
+        , {
+          "measure_id" : "PSI_6_IAT_PTX",
+          "national_rate" : "0.41"
+        }
+        , {
+          "measure_id" : "PSI_12_POSTOP_PULMEMB_DVT",
+          "national_rate" : "4.67"
+        }
+        , {
+          "measure_id" : "PSI_14_POSTOP_DEHIS",
+          "national_rate" : "1.91"
+        }
+        , {
+          "measure_id" : "PSI_15_ACC_LAC",
+          "national_rate" : "1.96"
+        }
+        , {
+          "measure_id" : "PSI_90_SAFETY",
+          "national_rate" : "0.88"
+        }
+        , {
+          "measure_id" : "COMP_HIP_KNEE",
+          "national_rate" : "3.3"
+        }
+        , {
+          "measure_id" : "READM_30_HIP_KNEE",
+          "national_rate" : "5.2"
+        }
+        , {
+          "measure_id" : "READM_30_HOSP_WIDE",
+          "national_rate" : "15.6"
+        }
+        , {
+          "measure_id" : "READM_30_COPD",
+          "national_rate" : "20.7"
+        }
+        , {
+          "measure_id" : "MORT_30_COPD",
+          "national_rate" : "7.8"
+        }
+        , {
+          "measure_id" : "READM_30_STK",
+          "national_rate" : "13.3"
+        }
+        , {
+          "measure_id" : "MORT_30_STK",
+          "national_rate" : "15.3"
+        }
+         ]
+    http_version: 
+  recorded_at: Wed, 06 May 2015 05:04:16 GMT
+- request:
+    method: get
+    uri: https://data.medicare.gov/resource/seeb-g2s2.json?$limit=50000&$offset=0&$select=national_rate,measure_id
+    body:
+      encoding: UTF-8
+      string: 'null'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      X-App-Token:
+      - ''
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Wed, 06 May 2015 05:04:16 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Last-Modified:
+      - Wed, 15 Apr 2015 23:54:42 UTC
+      X-Soda2-Warning:
+      - X-SODA2-Fields, X-SODA2-Types, and X-SODA2-Legacy-Types are deprecated
+      X-Soda2-Fields:
+      - '[":updated_at","measure_id",":id",":created_at","national_rate"]'
+      X-Soda2-Types:
+      - '["meta_data","text","meta_data","meta_data","number"]'
+      X-Soda2-Legacy-Types:
+      - 'true'
+      X-Socrata-Region:
+      - production
+      Age:
+      - '0'
+    body:
+      encoding: ASCII-8BIT
+      string: |-
+        [ {
+          "measure_id" : "MORT_30_AMI",
+          "national_rate" : "14.9"
+        }
+        , {
+          "measure_id" : "MORT_30_HF",
+          "national_rate" : "11.9"
+        }
+        , {
+          "measure_id" : "MORT_30_PN",
+          "national_rate" : "11.9"
+        }
+        , {
+          "measure_id" : "READM_30_AMI",
+          "national_rate" : "17.8"
+        }
+        , {
+          "measure_id" : "READM_30_HF",
+          "national_rate" : "22.7"
+        }
+        , {
+          "measure_id" : "READM_30_PN",
+          "national_rate" : "17.3"
+        }
+        , {
+          "measure_id" : "PSI_4_SURG_COMP",
+          "national_rate" : "118.52"
+        }
+        , {
+          "measure_id" : "PSI_6_IAT_PTX",
+          "national_rate" : "0.41"
+        }
+        , {
+          "measure_id" : "PSI_12_POSTOP_PULMEMB_DVT",
+          "national_rate" : "4.67"
+        }
+        , {
+          "measure_id" : "PSI_14_POSTOP_DEHIS",
+          "national_rate" : "1.91"
+        }
+        , {
+          "measure_id" : "PSI_15_ACC_LAC",
+          "national_rate" : "1.96"
+        }
+        , {
+          "measure_id" : "PSI_90_SAFETY",
+          "national_rate" : "0.88"
+        }
+        , {
+          "measure_id" : "COMP_HIP_KNEE",
+          "national_rate" : "3.3"
+        }
+        , {
+          "measure_id" : "READM_30_HIP_KNEE",
+          "national_rate" : "5.2"
+        }
+        , {
+          "measure_id" : "READM_30_HOSP_WIDE",
+          "national_rate" : "15.6"
+        }
+        , {
+          "measure_id" : "READM_30_COPD",
+          "national_rate" : "20.7"
+        }
+        , {
+          "measure_id" : "MORT_30_COPD",
+          "national_rate" : "7.8"
+        }
+        , {
+          "measure_id" : "READM_30_STK",
+          "national_rate" : "13.3"
+        }
+        , {
+          "measure_id" : "MORT_30_STK",
+          "national_rate" : "15.3"
+        }
+         ]
+    http_version: 
+  recorded_at: Wed, 06 May 2015 05:04:16 GMT
+- request:
+    method: get
+    uri: https://data.medicare.gov/resource/seeb-g2s2.json?$limit=50000&$offset=0&$select=national_rate,measure_id
+    body:
+      encoding: UTF-8
+      string: 'null'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      X-App-Token:
+      - ''
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Wed, 06 May 2015 05:04:17 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Last-Modified:
+      - Wed, 15 Apr 2015 23:54:42 UTC
+      X-Soda2-Warning:
+      - X-SODA2-Fields, X-SODA2-Types, and X-SODA2-Legacy-Types are deprecated
+      X-Soda2-Fields:
+      - '[":updated_at","measure_id",":id",":created_at","national_rate"]'
+      X-Soda2-Types:
+      - '["meta_data","text","meta_data","meta_data","number"]'
+      X-Soda2-Legacy-Types:
+      - 'true'
+      X-Socrata-Region:
+      - production
+      Age:
+      - '2'
+    body:
+      encoding: ASCII-8BIT
+      string: |-
+        [ {
+          "measure_id" : "MORT_30_AMI",
+          "national_rate" : "14.9"
+        }
+        , {
+          "measure_id" : "MORT_30_HF",
+          "national_rate" : "11.9"
+        }
+        , {
+          "measure_id" : "MORT_30_PN",
+          "national_rate" : "11.9"
+        }
+        , {
+          "measure_id" : "READM_30_AMI",
+          "national_rate" : "17.8"
+        }
+        , {
+          "measure_id" : "READM_30_HF",
+          "national_rate" : "22.7"
+        }
+        , {
+          "measure_id" : "READM_30_PN",
+          "national_rate" : "17.3"
+        }
+        , {
+          "measure_id" : "PSI_4_SURG_COMP",
+          "national_rate" : "118.52"
+        }
+        , {
+          "measure_id" : "PSI_6_IAT_PTX",
+          "national_rate" : "0.41"
+        }
+        , {
+          "measure_id" : "PSI_12_POSTOP_PULMEMB_DVT",
+          "national_rate" : "4.67"
+        }
+        , {
+          "measure_id" : "PSI_14_POSTOP_DEHIS",
+          "national_rate" : "1.91"
+        }
+        , {
+          "measure_id" : "PSI_15_ACC_LAC",
+          "national_rate" : "1.96"
+        }
+        , {
+          "measure_id" : "PSI_90_SAFETY",
+          "national_rate" : "0.88"
+        }
+        , {
+          "measure_id" : "COMP_HIP_KNEE",
+          "national_rate" : "3.3"
+        }
+        , {
+          "measure_id" : "READM_30_HIP_KNEE",
+          "national_rate" : "5.2"
+        }
+        , {
+          "measure_id" : "READM_30_HOSP_WIDE",
+          "national_rate" : "15.6"
+        }
+        , {
+          "measure_id" : "READM_30_COPD",
+          "national_rate" : "20.7"
+        }
+        , {
+          "measure_id" : "MORT_30_COPD",
+          "national_rate" : "7.8"
+        }
+        , {
+          "measure_id" : "READM_30_STK",
+          "national_rate" : "13.3"
+        }
+        , {
+          "measure_id" : "MORT_30_STK",
+          "national_rate" : "15.3"
+        }
+         ]
+    http_version: 
+  recorded_at: Wed, 06 May 2015 05:04:17 GMT
+- request:
+    method: get
+    uri: https://data.medicare.gov/resource/seeb-g2s2.json?$limit=50000&$offset=0&$select=national_rate,measure_id
+    body:
+      encoding: UTF-8
+      string: 'null'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      X-App-Token:
+      - ''
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Wed, 06 May 2015 05:04:18 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Last-Modified:
+      - Wed, 15 Apr 2015 23:54:42 UTC
+      X-Soda2-Warning:
+      - X-SODA2-Fields, X-SODA2-Types, and X-SODA2-Legacy-Types are deprecated
+      X-Soda2-Fields:
+      - '[":updated_at","measure_id",":id",":created_at","national_rate"]'
+      X-Soda2-Types:
+      - '["meta_data","text","meta_data","meta_data","number"]'
+      X-Soda2-Legacy-Types:
+      - 'true'
+      X-Socrata-Region:
+      - production
+      Age:
+      - '0'
+    body:
+      encoding: ASCII-8BIT
+      string: |-
+        [ {
+          "measure_id" : "MORT_30_AMI",
+          "national_rate" : "14.9"
+        }
+        , {
+          "measure_id" : "MORT_30_HF",
+          "national_rate" : "11.9"
+        }
+        , {
+          "measure_id" : "MORT_30_PN",
+          "national_rate" : "11.9"
+        }
+        , {
+          "measure_id" : "READM_30_AMI",
+          "national_rate" : "17.8"
+        }
+        , {
+          "measure_id" : "READM_30_HF",
+          "national_rate" : "22.7"
+        }
+        , {
+          "measure_id" : "READM_30_PN",
+          "national_rate" : "17.3"
+        }
+        , {
+          "measure_id" : "PSI_4_SURG_COMP",
+          "national_rate" : "118.52"
+        }
+        , {
+          "measure_id" : "PSI_6_IAT_PTX",
+          "national_rate" : "0.41"
+        }
+        , {
+          "measure_id" : "PSI_12_POSTOP_PULMEMB_DVT",
+          "national_rate" : "4.67"
+        }
+        , {
+          "measure_id" : "PSI_14_POSTOP_DEHIS",
+          "national_rate" : "1.91"
+        }
+        , {
+          "measure_id" : "PSI_15_ACC_LAC",
+          "national_rate" : "1.96"
+        }
+        , {
+          "measure_id" : "PSI_90_SAFETY",
+          "national_rate" : "0.88"
+        }
+        , {
+          "measure_id" : "COMP_HIP_KNEE",
+          "national_rate" : "3.3"
+        }
+        , {
+          "measure_id" : "READM_30_HIP_KNEE",
+          "national_rate" : "5.2"
+        }
+        , {
+          "measure_id" : "READM_30_HOSP_WIDE",
+          "national_rate" : "15.6"
+        }
+        , {
+          "measure_id" : "READM_30_COPD",
+          "national_rate" : "20.7"
+        }
+        , {
+          "measure_id" : "MORT_30_COPD",
+          "national_rate" : "7.8"
+        }
+        , {
+          "measure_id" : "READM_30_STK",
+          "national_rate" : "13.3"
+        }
+        , {
+          "measure_id" : "MORT_30_STK",
+          "national_rate" : "15.3"
+        }
+         ]
+    http_version: 
+  recorded_at: Wed, 06 May 2015 05:04:18 GMT
+- request:
+    method: get
+    uri: https://data.medicare.gov/resource/seeb-g2s2.json?$limit=50000&$offset=0&$select=national_rate,measure_id
+    body:
+      encoding: UTF-8
+      string: 'null'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      X-App-Token:
+      - ''
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Wed, 06 May 2015 05:04:18 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Last-Modified:
+      - Wed, 15 Apr 2015 23:54:42 UTC
+      X-Soda2-Warning:
+      - X-SODA2-Fields, X-SODA2-Types, and X-SODA2-Legacy-Types are deprecated
+      X-Soda2-Fields:
+      - '[":updated_at","measure_id",":id",":created_at","national_rate"]'
+      X-Soda2-Types:
+      - '["meta_data","text","meta_data","meta_data","number"]'
+      X-Soda2-Legacy-Types:
+      - 'true'
+      X-Socrata-Region:
+      - production
+      Age:
+      - '0'
+    body:
+      encoding: ASCII-8BIT
+      string: |-
+        [ {
+          "measure_id" : "MORT_30_AMI",
+          "national_rate" : "14.9"
+        }
+        , {
+          "measure_id" : "MORT_30_HF",
+          "national_rate" : "11.9"
+        }
+        , {
+          "measure_id" : "MORT_30_PN",
+          "national_rate" : "11.9"
+        }
+        , {
+          "measure_id" : "READM_30_AMI",
+          "national_rate" : "17.8"
+        }
+        , {
+          "measure_id" : "READM_30_HF",
+          "national_rate" : "22.7"
+        }
+        , {
+          "measure_id" : "READM_30_PN",
+          "national_rate" : "17.3"
+        }
+        , {
+          "measure_id" : "PSI_4_SURG_COMP",
+          "national_rate" : "118.52"
+        }
+        , {
+          "measure_id" : "PSI_6_IAT_PTX",
+          "national_rate" : "0.41"
+        }
+        , {
+          "measure_id" : "PSI_12_POSTOP_PULMEMB_DVT",
+          "national_rate" : "4.67"
+        }
+        , {
+          "measure_id" : "PSI_14_POSTOP_DEHIS",
+          "national_rate" : "1.91"
+        }
+        , {
+          "measure_id" : "PSI_15_ACC_LAC",
+          "national_rate" : "1.96"
+        }
+        , {
+          "measure_id" : "PSI_90_SAFETY",
+          "national_rate" : "0.88"
+        }
+        , {
+          "measure_id" : "COMP_HIP_KNEE",
+          "national_rate" : "3.3"
+        }
+        , {
+          "measure_id" : "READM_30_HIP_KNEE",
+          "national_rate" : "5.2"
+        }
+        , {
+          "measure_id" : "READM_30_HOSP_WIDE",
+          "national_rate" : "15.6"
+        }
+        , {
+          "measure_id" : "READM_30_COPD",
+          "national_rate" : "20.7"
+        }
+        , {
+          "measure_id" : "MORT_30_COPD",
+          "national_rate" : "7.8"
+        }
+        , {
+          "measure_id" : "READM_30_STK",
+          "national_rate" : "13.3"
+        }
+        , {
+          "measure_id" : "MORT_30_STK",
+          "national_rate" : "15.3"
+        }
+         ]
+    http_version: 
+  recorded_at: Wed, 06 May 2015 05:04:19 GMT
+- request:
+    method: get
+    uri: https://data.medicare.gov/resource/seeb-g2s2.json?$limit=50000&$offset=0&$select=national_rate,measure_id
+    body:
+      encoding: UTF-8
+      string: 'null'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      X-App-Token:
+      - ''
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Wed, 06 May 2015 05:04:19 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Last-Modified:
+      - Wed, 15 Apr 2015 23:54:42 UTC
+      X-Soda2-Warning:
+      - X-SODA2-Fields, X-SODA2-Types, and X-SODA2-Legacy-Types are deprecated
+      X-Soda2-Fields:
+      - '[":updated_at","measure_id",":id",":created_at","national_rate"]'
+      X-Soda2-Types:
+      - '["meta_data","text","meta_data","meta_data","number"]'
+      X-Soda2-Legacy-Types:
+      - 'true'
+      X-Socrata-Region:
+      - production
+      Age:
+      - '0'
+    body:
+      encoding: ASCII-8BIT
+      string: |-
+        [ {
+          "measure_id" : "MORT_30_AMI",
+          "national_rate" : "14.9"
+        }
+        , {
+          "measure_id" : "MORT_30_HF",
+          "national_rate" : "11.9"
+        }
+        , {
+          "measure_id" : "MORT_30_PN",
+          "national_rate" : "11.9"
+        }
+        , {
+          "measure_id" : "READM_30_AMI",
+          "national_rate" : "17.8"
+        }
+        , {
+          "measure_id" : "READM_30_HF",
+          "national_rate" : "22.7"
+        }
+        , {
+          "measure_id" : "READM_30_PN",
+          "national_rate" : "17.3"
+        }
+        , {
+          "measure_id" : "PSI_4_SURG_COMP",
+          "national_rate" : "118.52"
+        }
+        , {
+          "measure_id" : "PSI_6_IAT_PTX",
+          "national_rate" : "0.41"
+        }
+        , {
+          "measure_id" : "PSI_12_POSTOP_PULMEMB_DVT",
+          "national_rate" : "4.67"
+        }
+        , {
+          "measure_id" : "PSI_14_POSTOP_DEHIS",
+          "national_rate" : "1.91"
+        }
+        , {
+          "measure_id" : "PSI_15_ACC_LAC",
+          "national_rate" : "1.96"
+        }
+        , {
+          "measure_id" : "PSI_90_SAFETY",
+          "national_rate" : "0.88"
+        }
+        , {
+          "measure_id" : "COMP_HIP_KNEE",
+          "national_rate" : "3.3"
+        }
+        , {
+          "measure_id" : "READM_30_HIP_KNEE",
+          "national_rate" : "5.2"
+        }
+        , {
+          "measure_id" : "READM_30_HOSP_WIDE",
+          "national_rate" : "15.6"
+        }
+        , {
+          "measure_id" : "READM_30_COPD",
+          "national_rate" : "20.7"
+        }
+        , {
+          "measure_id" : "MORT_30_COPD",
+          "national_rate" : "7.8"
+        }
+        , {
+          "measure_id" : "READM_30_STK",
+          "national_rate" : "13.3"
+        }
+        , {
+          "measure_id" : "MORT_30_STK",
+          "national_rate" : "15.3"
+        }
+         ]
+    http_version: 
+  recorded_at: Wed, 06 May 2015 05:04:19 GMT
+- request:
+    method: get
+    uri: https://data.medicare.gov/resource/seeb-g2s2.json?$limit=50000&$offset=0&$select=national_rate,measure_id
+    body:
+      encoding: UTF-8
+      string: 'null'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      X-App-Token:
+      - ''
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Wed, 06 May 2015 05:04:20 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Last-Modified:
+      - Wed, 15 Apr 2015 23:54:42 UTC
+      X-Soda2-Warning:
+      - X-SODA2-Fields, X-SODA2-Types, and X-SODA2-Legacy-Types are deprecated
+      X-Soda2-Fields:
+      - '[":updated_at","measure_id",":id",":created_at","national_rate"]'
+      X-Soda2-Types:
+      - '["meta_data","text","meta_data","meta_data","number"]'
+      X-Soda2-Legacy-Types:
+      - 'true'
+      X-Socrata-Region:
+      - production
+      Age:
+      - '0'
+    body:
+      encoding: ASCII-8BIT
+      string: |-
+        [ {
+          "measure_id" : "MORT_30_AMI",
+          "national_rate" : "14.9"
+        }
+        , {
+          "measure_id" : "MORT_30_HF",
+          "national_rate" : "11.9"
+        }
+        , {
+          "measure_id" : "MORT_30_PN",
+          "national_rate" : "11.9"
+        }
+        , {
+          "measure_id" : "READM_30_AMI",
+          "national_rate" : "17.8"
+        }
+        , {
+          "measure_id" : "READM_30_HF",
+          "national_rate" : "22.7"
+        }
+        , {
+          "measure_id" : "READM_30_PN",
+          "national_rate" : "17.3"
+        }
+        , {
+          "measure_id" : "PSI_4_SURG_COMP",
+          "national_rate" : "118.52"
+        }
+        , {
+          "measure_id" : "PSI_6_IAT_PTX",
+          "national_rate" : "0.41"
+        }
+        , {
+          "measure_id" : "PSI_12_POSTOP_PULMEMB_DVT",
+          "national_rate" : "4.67"
+        }
+        , {
+          "measure_id" : "PSI_14_POSTOP_DEHIS",
+          "national_rate" : "1.91"
+        }
+        , {
+          "measure_id" : "PSI_15_ACC_LAC",
+          "national_rate" : "1.96"
+        }
+        , {
+          "measure_id" : "PSI_90_SAFETY",
+          "national_rate" : "0.88"
+        }
+        , {
+          "measure_id" : "COMP_HIP_KNEE",
+          "national_rate" : "3.3"
+        }
+        , {
+          "measure_id" : "READM_30_HIP_KNEE",
+          "national_rate" : "5.2"
+        }
+        , {
+          "measure_id" : "READM_30_HOSP_WIDE",
+          "national_rate" : "15.6"
+        }
+        , {
+          "measure_id" : "READM_30_COPD",
+          "national_rate" : "20.7"
+        }
+        , {
+          "measure_id" : "MORT_30_COPD",
+          "national_rate" : "7.8"
+        }
+        , {
+          "measure_id" : "READM_30_STK",
+          "national_rate" : "13.3"
+        }
+        , {
+          "measure_id" : "MORT_30_STK",
+          "national_rate" : "15.3"
+        }
+         ]
+    http_version: 
+  recorded_at: Wed, 06 May 2015 05:04:20 GMT
+- request:
+    method: get
+    uri: https://data.medicare.gov/resource/seeb-g2s2.json?$limit=50000&$offset=0&$select=national_rate,measure_id
+    body:
+      encoding: UTF-8
+      string: 'null'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      X-App-Token:
+      - ''
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Wed, 06 May 2015 05:04:21 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Last-Modified:
+      - Wed, 15 Apr 2015 23:54:42 UTC
+      X-Soda2-Warning:
+      - X-SODA2-Fields, X-SODA2-Types, and X-SODA2-Legacy-Types are deprecated
+      X-Soda2-Fields:
+      - '[":updated_at","measure_id",":id",":created_at","national_rate"]'
+      X-Soda2-Types:
+      - '["meta_data","text","meta_data","meta_data","number"]'
+      X-Soda2-Legacy-Types:
+      - 'true'
+      X-Socrata-Region:
+      - production
+      Age:
+      - '2'
+    body:
+      encoding: ASCII-8BIT
+      string: |-
+        [ {
+          "measure_id" : "MORT_30_AMI",
+          "national_rate" : "14.9"
+        }
+        , {
+          "measure_id" : "MORT_30_HF",
+          "national_rate" : "11.9"
+        }
+        , {
+          "measure_id" : "MORT_30_PN",
+          "national_rate" : "11.9"
+        }
+        , {
+          "measure_id" : "READM_30_AMI",
+          "national_rate" : "17.8"
+        }
+        , {
+          "measure_id" : "READM_30_HF",
+          "national_rate" : "22.7"
+        }
+        , {
+          "measure_id" : "READM_30_PN",
+          "national_rate" : "17.3"
+        }
+        , {
+          "measure_id" : "PSI_4_SURG_COMP",
+          "national_rate" : "118.52"
+        }
+        , {
+          "measure_id" : "PSI_6_IAT_PTX",
+          "national_rate" : "0.41"
+        }
+        , {
+          "measure_id" : "PSI_12_POSTOP_PULMEMB_DVT",
+          "national_rate" : "4.67"
+        }
+        , {
+          "measure_id" : "PSI_14_POSTOP_DEHIS",
+          "national_rate" : "1.91"
+        }
+        , {
+          "measure_id" : "PSI_15_ACC_LAC",
+          "national_rate" : "1.96"
+        }
+        , {
+          "measure_id" : "PSI_90_SAFETY",
+          "national_rate" : "0.88"
+        }
+        , {
+          "measure_id" : "COMP_HIP_KNEE",
+          "national_rate" : "3.3"
+        }
+        , {
+          "measure_id" : "READM_30_HIP_KNEE",
+          "national_rate" : "5.2"
+        }
+        , {
+          "measure_id" : "READM_30_HOSP_WIDE",
+          "national_rate" : "15.6"
+        }
+        , {
+          "measure_id" : "READM_30_COPD",
+          "national_rate" : "20.7"
+        }
+        , {
+          "measure_id" : "MORT_30_COPD",
+          "national_rate" : "7.8"
+        }
+        , {
+          "measure_id" : "READM_30_STK",
+          "national_rate" : "13.3"
+        }
+        , {
+          "measure_id" : "MORT_30_STK",
+          "national_rate" : "15.3"
+        }
+         ]
+    http_version: 
+  recorded_at: Wed, 06 May 2015 05:04:21 GMT
+- request:
+    method: get
+    uri: https://data.medicare.gov/resource/seeb-g2s2.json?$limit=50000&$offset=0&$select=national_rate,measure_id
+    body:
+      encoding: UTF-8
+      string: 'null'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      X-App-Token:
+      - ''
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Wed, 06 May 2015 05:04:21 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Last-Modified:
+      - Wed, 15 Apr 2015 23:54:42 UTC
+      X-Soda2-Warning:
+      - X-SODA2-Fields, X-SODA2-Types, and X-SODA2-Legacy-Types are deprecated
+      X-Soda2-Fields:
+      - '[":updated_at","measure_id",":id",":created_at","national_rate"]'
+      X-Soda2-Types:
+      - '["meta_data","text","meta_data","meta_data","number"]'
+      X-Soda2-Legacy-Types:
+      - 'true'
+      X-Socrata-Region:
+      - production
+      Age:
+      - '0'
+    body:
+      encoding: ASCII-8BIT
+      string: |-
+        [ {
+          "measure_id" : "MORT_30_AMI",
+          "national_rate" : "14.9"
+        }
+        , {
+          "measure_id" : "MORT_30_HF",
+          "national_rate" : "11.9"
+        }
+        , {
+          "measure_id" : "MORT_30_PN",
+          "national_rate" : "11.9"
+        }
+        , {
+          "measure_id" : "READM_30_AMI",
+          "national_rate" : "17.8"
+        }
+        , {
+          "measure_id" : "READM_30_HF",
+          "national_rate" : "22.7"
+        }
+        , {
+          "measure_id" : "READM_30_PN",
+          "national_rate" : "17.3"
+        }
+        , {
+          "measure_id" : "PSI_4_SURG_COMP",
+          "national_rate" : "118.52"
+        }
+        , {
+          "measure_id" : "PSI_6_IAT_PTX",
+          "national_rate" : "0.41"
+        }
+        , {
+          "measure_id" : "PSI_12_POSTOP_PULMEMB_DVT",
+          "national_rate" : "4.67"
+        }
+        , {
+          "measure_id" : "PSI_14_POSTOP_DEHIS",
+          "national_rate" : "1.91"
+        }
+        , {
+          "measure_id" : "PSI_15_ACC_LAC",
+          "national_rate" : "1.96"
+        }
+        , {
+          "measure_id" : "PSI_90_SAFETY",
+          "national_rate" : "0.88"
+        }
+        , {
+          "measure_id" : "COMP_HIP_KNEE",
+          "national_rate" : "3.3"
+        }
+        , {
+          "measure_id" : "READM_30_HIP_KNEE",
+          "national_rate" : "5.2"
+        }
+        , {
+          "measure_id" : "READM_30_HOSP_WIDE",
+          "national_rate" : "15.6"
+        }
+        , {
+          "measure_id" : "READM_30_COPD",
+          "national_rate" : "20.7"
+        }
+        , {
+          "measure_id" : "MORT_30_COPD",
+          "national_rate" : "7.8"
+        }
+        , {
+          "measure_id" : "READM_30_STK",
+          "national_rate" : "13.3"
+        }
+        , {
+          "measure_id" : "MORT_30_STK",
+          "national_rate" : "15.3"
+        }
+         ]
+    http_version: 
+  recorded_at: Wed, 06 May 2015 05:04:21 GMT
+- request:
+    method: get
+    uri: https://data.medicare.gov/resource/seeb-g2s2.json?$limit=50000&$offset=0&$select=national_rate,measure_id
+    body:
+      encoding: UTF-8
+      string: 'null'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      X-App-Token:
+      - ''
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Wed, 06 May 2015 05:04:22 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Last-Modified:
+      - Wed, 15 Apr 2015 23:54:42 UTC
+      X-Soda2-Warning:
+      - X-SODA2-Fields, X-SODA2-Types, and X-SODA2-Legacy-Types are deprecated
+      X-Soda2-Fields:
+      - '[":updated_at","measure_id",":id",":created_at","national_rate"]'
+      X-Soda2-Types:
+      - '["meta_data","text","meta_data","meta_data","number"]'
+      X-Soda2-Legacy-Types:
+      - 'true'
+      X-Socrata-Region:
+      - production
+      Age:
+      - '0'
+    body:
+      encoding: ASCII-8BIT
+      string: |-
+        [ {
+          "measure_id" : "MORT_30_AMI",
+          "national_rate" : "14.9"
+        }
+        , {
+          "measure_id" : "MORT_30_HF",
+          "national_rate" : "11.9"
+        }
+        , {
+          "measure_id" : "MORT_30_PN",
+          "national_rate" : "11.9"
+        }
+        , {
+          "measure_id" : "READM_30_AMI",
+          "national_rate" : "17.8"
+        }
+        , {
+          "measure_id" : "READM_30_HF",
+          "national_rate" : "22.7"
+        }
+        , {
+          "measure_id" : "READM_30_PN",
+          "national_rate" : "17.3"
+        }
+        , {
+          "measure_id" : "PSI_4_SURG_COMP",
+          "national_rate" : "118.52"
+        }
+        , {
+          "measure_id" : "PSI_6_IAT_PTX",
+          "national_rate" : "0.41"
+        }
+        , {
+          "measure_id" : "PSI_12_POSTOP_PULMEMB_DVT",
+          "national_rate" : "4.67"
+        }
+        , {
+          "measure_id" : "PSI_14_POSTOP_DEHIS",
+          "national_rate" : "1.91"
+        }
+        , {
+          "measure_id" : "PSI_15_ACC_LAC",
+          "national_rate" : "1.96"
+        }
+        , {
+          "measure_id" : "PSI_90_SAFETY",
+          "national_rate" : "0.88"
+        }
+        , {
+          "measure_id" : "COMP_HIP_KNEE",
+          "national_rate" : "3.3"
+        }
+        , {
+          "measure_id" : "READM_30_HIP_KNEE",
+          "national_rate" : "5.2"
+        }
+        , {
+          "measure_id" : "READM_30_HOSP_WIDE",
+          "national_rate" : "15.6"
+        }
+        , {
+          "measure_id" : "READM_30_COPD",
+          "national_rate" : "20.7"
+        }
+        , {
+          "measure_id" : "MORT_30_COPD",
+          "national_rate" : "7.8"
+        }
+        , {
+          "measure_id" : "READM_30_STK",
+          "national_rate" : "13.3"
+        }
+        , {
+          "measure_id" : "MORT_30_STK",
+          "national_rate" : "15.3"
+        }
+         ]
+    http_version: 
+  recorded_at: Wed, 06 May 2015 05:04:22 GMT
+- request:
+    method: get
+    uri: https://data.medicare.gov/resource/seeb-g2s2.json?$limit=50000&$offset=0&$select=national_rate,measure_id
+    body:
+      encoding: UTF-8
+      string: 'null'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      X-App-Token:
+      - ''
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Wed, 06 May 2015 05:04:22 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Last-Modified:
+      - Wed, 15 Apr 2015 23:54:42 UTC
+      X-Soda2-Warning:
+      - X-SODA2-Fields, X-SODA2-Types, and X-SODA2-Legacy-Types are deprecated
+      X-Soda2-Fields:
+      - '[":updated_at","measure_id",":id",":created_at","national_rate"]'
+      X-Soda2-Types:
+      - '["meta_data","text","meta_data","meta_data","number"]'
+      X-Soda2-Legacy-Types:
+      - 'true'
+      X-Socrata-Region:
+      - production
+      Age:
+      - '0'
+    body:
+      encoding: ASCII-8BIT
+      string: |-
+        [ {
+          "measure_id" : "MORT_30_AMI",
+          "national_rate" : "14.9"
+        }
+        , {
+          "measure_id" : "MORT_30_HF",
+          "national_rate" : "11.9"
+        }
+        , {
+          "measure_id" : "MORT_30_PN",
+          "national_rate" : "11.9"
+        }
+        , {
+          "measure_id" : "READM_30_AMI",
+          "national_rate" : "17.8"
+        }
+        , {
+          "measure_id" : "READM_30_HF",
+          "national_rate" : "22.7"
+        }
+        , {
+          "measure_id" : "READM_30_PN",
+          "national_rate" : "17.3"
+        }
+        , {
+          "measure_id" : "PSI_4_SURG_COMP",
+          "national_rate" : "118.52"
+        }
+        , {
+          "measure_id" : "PSI_6_IAT_PTX",
+          "national_rate" : "0.41"
+        }
+        , {
+          "measure_id" : "PSI_12_POSTOP_PULMEMB_DVT",
+          "national_rate" : "4.67"
+        }
+        , {
+          "measure_id" : "PSI_14_POSTOP_DEHIS",
+          "national_rate" : "1.91"
+        }
+        , {
+          "measure_id" : "PSI_15_ACC_LAC",
+          "national_rate" : "1.96"
+        }
+        , {
+          "measure_id" : "PSI_90_SAFETY",
+          "national_rate" : "0.88"
+        }
+        , {
+          "measure_id" : "COMP_HIP_KNEE",
+          "national_rate" : "3.3"
+        }
+        , {
+          "measure_id" : "READM_30_HIP_KNEE",
+          "national_rate" : "5.2"
+        }
+        , {
+          "measure_id" : "READM_30_HOSP_WIDE",
+          "national_rate" : "15.6"
+        }
+        , {
+          "measure_id" : "READM_30_COPD",
+          "national_rate" : "20.7"
+        }
+        , {
+          "measure_id" : "MORT_30_COPD",
+          "national_rate" : "7.8"
+        }
+        , {
+          "measure_id" : "READM_30_STK",
+          "national_rate" : "13.3"
+        }
+        , {
+          "measure_id" : "MORT_30_STK",
+          "national_rate" : "15.3"
+        }
+         ]
+    http_version: 
+  recorded_at: Wed, 06 May 2015 05:04:22 GMT
+- request:
+    method: get
+    uri: https://data.medicare.gov/resource/seeb-g2s2.json?$limit=50000&$offset=0&$select=national_rate,measure_id
+    body:
+      encoding: UTF-8
+      string: 'null'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      X-App-Token:
+      - ''
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Wed, 06 May 2015 05:04:23 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Last-Modified:
+      - Wed, 15 Apr 2015 23:54:42 UTC
+      X-Soda2-Warning:
+      - X-SODA2-Fields, X-SODA2-Types, and X-SODA2-Legacy-Types are deprecated
+      X-Soda2-Fields:
+      - '[":updated_at","measure_id",":id",":created_at","national_rate"]'
+      X-Soda2-Types:
+      - '["meta_data","text","meta_data","meta_data","number"]'
+      X-Soda2-Legacy-Types:
+      - 'true'
+      X-Socrata-Region:
+      - production
+      Age:
+      - '0'
+    body:
+      encoding: ASCII-8BIT
+      string: |-
+        [ {
+          "measure_id" : "MORT_30_AMI",
+          "national_rate" : "14.9"
+        }
+        , {
+          "measure_id" : "MORT_30_HF",
+          "national_rate" : "11.9"
+        }
+        , {
+          "measure_id" : "MORT_30_PN",
+          "national_rate" : "11.9"
+        }
+        , {
+          "measure_id" : "READM_30_AMI",
+          "national_rate" : "17.8"
+        }
+        , {
+          "measure_id" : "READM_30_HF",
+          "national_rate" : "22.7"
+        }
+        , {
+          "measure_id" : "READM_30_PN",
+          "national_rate" : "17.3"
+        }
+        , {
+          "measure_id" : "PSI_4_SURG_COMP",
+          "national_rate" : "118.52"
+        }
+        , {
+          "measure_id" : "PSI_6_IAT_PTX",
+          "national_rate" : "0.41"
+        }
+        , {
+          "measure_id" : "PSI_12_POSTOP_PULMEMB_DVT",
+          "national_rate" : "4.67"
+        }
+        , {
+          "measure_id" : "PSI_14_POSTOP_DEHIS",
+          "national_rate" : "1.91"
+        }
+        , {
+          "measure_id" : "PSI_15_ACC_LAC",
+          "national_rate" : "1.96"
+        }
+        , {
+          "measure_id" : "PSI_90_SAFETY",
+          "national_rate" : "0.88"
+        }
+        , {
+          "measure_id" : "COMP_HIP_KNEE",
+          "national_rate" : "3.3"
+        }
+        , {
+          "measure_id" : "READM_30_HIP_KNEE",
+          "national_rate" : "5.2"
+        }
+        , {
+          "measure_id" : "READM_30_HOSP_WIDE",
+          "national_rate" : "15.6"
+        }
+        , {
+          "measure_id" : "READM_30_COPD",
+          "national_rate" : "20.7"
+        }
+        , {
+          "measure_id" : "MORT_30_COPD",
+          "national_rate" : "7.8"
+        }
+        , {
+          "measure_id" : "READM_30_STK",
+          "national_rate" : "13.3"
+        }
+        , {
+          "measure_id" : "MORT_30_STK",
+          "national_rate" : "15.3"
+        }
+         ]
+    http_version: 
+  recorded_at: Wed, 06 May 2015 05:04:23 GMT
+- request:
+    method: get
+    uri: https://data.medicare.gov/resource/seeb-g2s2.json?$limit=50000&$offset=0&$select=national_rate,measure_id
+    body:
+      encoding: UTF-8
+      string: 'null'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      X-App-Token:
+      - ''
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Wed, 06 May 2015 05:04:24 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Last-Modified:
+      - Wed, 15 Apr 2015 23:54:42 UTC
+      X-Soda2-Warning:
+      - X-SODA2-Fields, X-SODA2-Types, and X-SODA2-Legacy-Types are deprecated
+      X-Soda2-Fields:
+      - '[":updated_at","measure_id",":id",":created_at","national_rate"]'
+      X-Soda2-Types:
+      - '["meta_data","text","meta_data","meta_data","number"]'
+      X-Soda2-Legacy-Types:
+      - 'true'
+      X-Socrata-Region:
+      - production
+      Age:
+      - '0'
+    body:
+      encoding: ASCII-8BIT
+      string: |-
+        [ {
+          "measure_id" : "MORT_30_AMI",
+          "national_rate" : "14.9"
+        }
+        , {
+          "measure_id" : "MORT_30_HF",
+          "national_rate" : "11.9"
+        }
+        , {
+          "measure_id" : "MORT_30_PN",
+          "national_rate" : "11.9"
+        }
+        , {
+          "measure_id" : "READM_30_AMI",
+          "national_rate" : "17.8"
+        }
+        , {
+          "measure_id" : "READM_30_HF",
+          "national_rate" : "22.7"
+        }
+        , {
+          "measure_id" : "READM_30_PN",
+          "national_rate" : "17.3"
+        }
+        , {
+          "measure_id" : "PSI_4_SURG_COMP",
+          "national_rate" : "118.52"
+        }
+        , {
+          "measure_id" : "PSI_6_IAT_PTX",
+          "national_rate" : "0.41"
+        }
+        , {
+          "measure_id" : "PSI_12_POSTOP_PULMEMB_DVT",
+          "national_rate" : "4.67"
+        }
+        , {
+          "measure_id" : "PSI_14_POSTOP_DEHIS",
+          "national_rate" : "1.91"
+        }
+        , {
+          "measure_id" : "PSI_15_ACC_LAC",
+          "national_rate" : "1.96"
+        }
+        , {
+          "measure_id" : "PSI_90_SAFETY",
+          "national_rate" : "0.88"
+        }
+        , {
+          "measure_id" : "COMP_HIP_KNEE",
+          "national_rate" : "3.3"
+        }
+        , {
+          "measure_id" : "READM_30_HIP_KNEE",
+          "national_rate" : "5.2"
+        }
+        , {
+          "measure_id" : "READM_30_HOSP_WIDE",
+          "national_rate" : "15.6"
+        }
+        , {
+          "measure_id" : "READM_30_COPD",
+          "national_rate" : "20.7"
+        }
+        , {
+          "measure_id" : "MORT_30_COPD",
+          "national_rate" : "7.8"
+        }
+        , {
+          "measure_id" : "READM_30_STK",
+          "national_rate" : "13.3"
+        }
+        , {
+          "measure_id" : "MORT_30_STK",
+          "national_rate" : "15.3"
+        }
+         ]
+    http_version: 
+  recorded_at: Wed, 06 May 2015 05:04:24 GMT
+- request:
+    method: get
+    uri: https://data.medicare.gov/resource/seeb-g2s2.json?$limit=50000&$offset=0&$select=national_rate,measure_id
+    body:
+      encoding: UTF-8
+      string: 'null'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      X-App-Token:
+      - ''
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Wed, 06 May 2015 05:04:26 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Last-Modified:
+      - Wed, 15 Apr 2015 23:54:42 UTC
+      X-Soda2-Warning:
+      - X-SODA2-Fields, X-SODA2-Types, and X-SODA2-Legacy-Types are deprecated
+      X-Soda2-Fields:
+      - '[":updated_at","measure_id",":id",":created_at","national_rate"]'
+      X-Soda2-Types:
+      - '["meta_data","text","meta_data","meta_data","number"]'
+      X-Soda2-Legacy-Types:
+      - 'true'
+      X-Socrata-Region:
+      - production
+      Age:
+      - '0'
+    body:
+      encoding: ASCII-8BIT
+      string: |-
+        [ {
+          "measure_id" : "MORT_30_AMI",
+          "national_rate" : "14.9"
+        }
+        , {
+          "measure_id" : "MORT_30_HF",
+          "national_rate" : "11.9"
+        }
+        , {
+          "measure_id" : "MORT_30_PN",
+          "national_rate" : "11.9"
+        }
+        , {
+          "measure_id" : "READM_30_AMI",
+          "national_rate" : "17.8"
+        }
+        , {
+          "measure_id" : "READM_30_HF",
+          "national_rate" : "22.7"
+        }
+        , {
+          "measure_id" : "READM_30_PN",
+          "national_rate" : "17.3"
+        }
+        , {
+          "measure_id" : "PSI_4_SURG_COMP",
+          "national_rate" : "118.52"
+        }
+        , {
+          "measure_id" : "PSI_6_IAT_PTX",
+          "national_rate" : "0.41"
+        }
+        , {
+          "measure_id" : "PSI_12_POSTOP_PULMEMB_DVT",
+          "national_rate" : "4.67"
+        }
+        , {
+          "measure_id" : "PSI_14_POSTOP_DEHIS",
+          "national_rate" : "1.91"
+        }
+        , {
+          "measure_id" : "PSI_15_ACC_LAC",
+          "national_rate" : "1.96"
+        }
+        , {
+          "measure_id" : "PSI_90_SAFETY",
+          "national_rate" : "0.88"
+        }
+        , {
+          "measure_id" : "COMP_HIP_KNEE",
+          "national_rate" : "3.3"
+        }
+        , {
+          "measure_id" : "READM_30_HIP_KNEE",
+          "national_rate" : "5.2"
+        }
+        , {
+          "measure_id" : "READM_30_HOSP_WIDE",
+          "national_rate" : "15.6"
+        }
+        , {
+          "measure_id" : "READM_30_COPD",
+          "national_rate" : "20.7"
+        }
+        , {
+          "measure_id" : "MORT_30_COPD",
+          "national_rate" : "7.8"
+        }
+        , {
+          "measure_id" : "READM_30_STK",
+          "national_rate" : "13.3"
+        }
+        , {
+          "measure_id" : "MORT_30_STK",
+          "national_rate" : "15.3"
+        }
+         ]
+    http_version: 
+  recorded_at: Wed, 06 May 2015 05:04:26 GMT
+- request:
+    method: get
+    uri: https://data.medicare.gov/resource/seeb-g2s2.json?$limit=50000&$offset=0&$select=national_rate,measure_id
+    body:
+      encoding: UTF-8
+      string: 'null'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      X-App-Token:
+      - ''
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Wed, 06 May 2015 05:04:26 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Last-Modified:
+      - Wed, 15 Apr 2015 23:54:42 UTC
+      X-Soda2-Warning:
+      - X-SODA2-Fields, X-SODA2-Types, and X-SODA2-Legacy-Types are deprecated
+      X-Soda2-Fields:
+      - '[":updated_at","measure_id",":id",":created_at","national_rate"]'
+      X-Soda2-Types:
+      - '["meta_data","text","meta_data","meta_data","number"]'
+      X-Soda2-Legacy-Types:
+      - 'true'
+      X-Socrata-Region:
+      - production
+      Age:
+      - '0'
+    body:
+      encoding: ASCII-8BIT
+      string: |-
+        [ {
+          "measure_id" : "MORT_30_AMI",
+          "national_rate" : "14.9"
+        }
+        , {
+          "measure_id" : "MORT_30_HF",
+          "national_rate" : "11.9"
+        }
+        , {
+          "measure_id" : "MORT_30_PN",
+          "national_rate" : "11.9"
+        }
+        , {
+          "measure_id" : "READM_30_AMI",
+          "national_rate" : "17.8"
+        }
+        , {
+          "measure_id" : "READM_30_HF",
+          "national_rate" : "22.7"
+        }
+        , {
+          "measure_id" : "READM_30_PN",
+          "national_rate" : "17.3"
+        }
+        , {
+          "measure_id" : "PSI_4_SURG_COMP",
+          "national_rate" : "118.52"
+        }
+        , {
+          "measure_id" : "PSI_6_IAT_PTX",
+          "national_rate" : "0.41"
+        }
+        , {
+          "measure_id" : "PSI_12_POSTOP_PULMEMB_DVT",
+          "national_rate" : "4.67"
+        }
+        , {
+          "measure_id" : "PSI_14_POSTOP_DEHIS",
+          "national_rate" : "1.91"
+        }
+        , {
+          "measure_id" : "PSI_15_ACC_LAC",
+          "national_rate" : "1.96"
+        }
+        , {
+          "measure_id" : "PSI_90_SAFETY",
+          "national_rate" : "0.88"
+        }
+        , {
+          "measure_id" : "COMP_HIP_KNEE",
+          "national_rate" : "3.3"
+        }
+        , {
+          "measure_id" : "READM_30_HIP_KNEE",
+          "national_rate" : "5.2"
+        }
+        , {
+          "measure_id" : "READM_30_HOSP_WIDE",
+          "national_rate" : "15.6"
+        }
+        , {
+          "measure_id" : "READM_30_COPD",
+          "national_rate" : "20.7"
+        }
+        , {
+          "measure_id" : "MORT_30_COPD",
+          "national_rate" : "7.8"
+        }
+        , {
+          "measure_id" : "READM_30_STK",
+          "national_rate" : "13.3"
+        }
+        , {
+          "measure_id" : "MORT_30_STK",
+          "national_rate" : "15.3"
+        }
+         ]
+    http_version: 
+  recorded_at: Wed, 06 May 2015 05:04:26 GMT
+- request:
+    method: get
+    uri: https://data.medicare.gov/resource/seeb-g2s2.json?$limit=50000&$offset=0&$select=national_rate,measure_id
+    body:
+      encoding: UTF-8
+      string: 'null'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      X-App-Token:
+      - ''
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Wed, 06 May 2015 05:04:27 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Last-Modified:
+      - Wed, 15 Apr 2015 23:54:42 UTC
+      X-Soda2-Warning:
+      - X-SODA2-Fields, X-SODA2-Types, and X-SODA2-Legacy-Types are deprecated
+      X-Soda2-Fields:
+      - '[":updated_at","measure_id",":id",":created_at","national_rate"]'
+      X-Soda2-Types:
+      - '["meta_data","text","meta_data","meta_data","number"]'
+      X-Soda2-Legacy-Types:
+      - 'true'
+      X-Socrata-Region:
+      - production
+      Age:
+      - '0'
+    body:
+      encoding: ASCII-8BIT
+      string: |-
+        [ {
+          "measure_id" : "MORT_30_AMI",
+          "national_rate" : "14.9"
+        }
+        , {
+          "measure_id" : "MORT_30_HF",
+          "national_rate" : "11.9"
+        }
+        , {
+          "measure_id" : "MORT_30_PN",
+          "national_rate" : "11.9"
+        }
+        , {
+          "measure_id" : "READM_30_AMI",
+          "national_rate" : "17.8"
+        }
+        , {
+          "measure_id" : "READM_30_HF",
+          "national_rate" : "22.7"
+        }
+        , {
+          "measure_id" : "READM_30_PN",
+          "national_rate" : "17.3"
+        }
+        , {
+          "measure_id" : "PSI_4_SURG_COMP",
+          "national_rate" : "118.52"
+        }
+        , {
+          "measure_id" : "PSI_6_IAT_PTX",
+          "national_rate" : "0.41"
+        }
+        , {
+          "measure_id" : "PSI_12_POSTOP_PULMEMB_DVT",
+          "national_rate" : "4.67"
+        }
+        , {
+          "measure_id" : "PSI_14_POSTOP_DEHIS",
+          "national_rate" : "1.91"
+        }
+        , {
+          "measure_id" : "PSI_15_ACC_LAC",
+          "national_rate" : "1.96"
+        }
+        , {
+          "measure_id" : "PSI_90_SAFETY",
+          "national_rate" : "0.88"
+        }
+        , {
+          "measure_id" : "COMP_HIP_KNEE",
+          "national_rate" : "3.3"
+        }
+        , {
+          "measure_id" : "READM_30_HIP_KNEE",
+          "national_rate" : "5.2"
+        }
+        , {
+          "measure_id" : "READM_30_HOSP_WIDE",
+          "national_rate" : "15.6"
+        }
+        , {
+          "measure_id" : "READM_30_COPD",
+          "national_rate" : "20.7"
+        }
+        , {
+          "measure_id" : "MORT_30_COPD",
+          "national_rate" : "7.8"
+        }
+        , {
+          "measure_id" : "READM_30_STK",
+          "national_rate" : "13.3"
+        }
+        , {
+          "measure_id" : "MORT_30_STK",
+          "national_rate" : "15.3"
+        }
+         ]
+    http_version: 
+  recorded_at: Wed, 06 May 2015 05:04:27 GMT
 recorded_with: VCR 2.9.3
