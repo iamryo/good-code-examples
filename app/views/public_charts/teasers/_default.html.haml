@@ -5,4 +5,5 @@
     %h4.no_margin= node_link(node)
     .top_margin_small
       = render "public_charts/teaser_charts/#{node.type}", node: node
-  = link_to('View Measure', node.id, class: 'teaser_chart_link block border_top_grey inner_padding_base text_center')
+  = node_link(node,
+    class_name: 'teaser_chart_link block border_top_grey inner_padding_base text_center')

@@ -19,13 +19,16 @@ module PublicChartsHelper
     url_options
   end
 
-  def node_link(node)
+  def node_link(node, options = {})
     link_to(
       node.title,
-      controller: :public_charts,
-      action: :show,
-      id: node.id,
-      only_path: true,
+      {
+        controller: :public_charts,
+        action: :show,
+        id: node.id,
+        only_path: true,
+      },
+      class: options.fetch(:class_name, nil)
     )
   end
 end
