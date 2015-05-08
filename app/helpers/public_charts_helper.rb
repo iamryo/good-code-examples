@@ -28,7 +28,7 @@ module PublicChartsHelper
         id: node.id,
         only_path: true,
       },
-      class: options.fetch(:class_name, nil)
+      class: options.fetch(:class_name, nil),
     )
   end
 end
