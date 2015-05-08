@@ -25,6 +25,11 @@ PUBLIC_CHARTS_TREE = PublicChartsTree.new do
       end
     end
     metric_module 'Readmissions Reduction Program' do
+      value CsvImporter::DimensionSampleManagers::GraphDataPoints::
+      ProviderAggregate.new(
+        value_column_name: 'corrected_fy_2015_readmissions_adjustment_factor',
+        dataset_id: 'fy_2015_readmissions_adjustment_factor',
+      )
       measures :READM_30_AMI,
                :READM_30_HF,
                :READM_30_PN,
