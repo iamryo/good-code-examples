@@ -3,9 +3,10 @@
   "version": "0.0.1",
   "repository": {
     "type": "git",
-    "url": "git://github.com/seanknox/nightingale.git"
+    "url": "git://github.com/phoenixhealth/nightingale.git"
   },
   "devDependencies": {
+    "grunt-svgstore": "^0.5.0",
     "jscs": "1.13.0",
     "jshint": "2.7.0"
   }
