@@ -5,7 +5,8 @@
   = render 'public_charts/detail_chart_title', node: @node
   = render 'public_charts/selected_provider_details',
     node: @node,
-    provider_compare_presenter: @provider_compare_presenter
+    provider_compare_presenter: @provider_compare_presenter,
+    selected_provider_presenter: @selected_provider_presenter
   = render "public_charts/detail_charts/#{@node.type}",
     node: @node,
     conversation_presenter: @conversation_presenter

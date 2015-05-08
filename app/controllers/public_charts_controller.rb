@@ -6,15 +6,15 @@ class PublicChartsController < ApplicationController
     persist_selected_provider
     persist_selected_context
 
-    @node = PUBLIC_CHARTS_TREE.find_node(
-      params.fetch(:id),
-      providers: providers_relation,
-    )
+    @node = find_node(providers: providers_relation)
 
     @provider_compare_presenter = Providers::ProviderComparePresenter.new(
-      current_user.selected_provider,
+      selected_provider,
       current_user.selected_context,
     )
+
+    @selected_provider_presenter = selected_provider_presenter
+
     @custom_feedback_bar = true
 
     @conversation_presenter = Conversations::ConversationPresenter.new(
@@ -26,7 +26,7 @@ class PublicChartsController < ApplicationController
   private
 
   def providers_relation
-    current_user.selected_provider
+    selected_provider
       .providers_relation(current_user.selected_context).limit(10)
   end
 
@@ -44,5 +44,25 @@ class PublicChartsController < ApplicationController
       :selected_context,
       params.fetch(:context),
     )
+  end
+
+  def selected_provider
+    current_user.selected_provider
+  end
+
+  def find_node(providers:)
+    PUBLIC_CHARTS_TREE.find_node(
+      params.fetch(:id),
+      providers: providers,
+    )
+  end
+
+  def selected_provider_presenter
+    Providers::SelectedProviderPresenter.new(
+      selected_provider,
+      find_node(providers: Provider.where(
+        socrata_provider_id: [selected_provider].map(&:socrata_provider_id),
+      ),
+    ))
   end
 end
