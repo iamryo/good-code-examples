@@ -1,3 +1,15 @@
+GIT
+  remote: https://github.com/heroku/rack-timeout
+  revision: ba3249b673522384b8da870e57e3acedc0f55a30
+  specs:
+    rack-timeout (0.2.4)
+
+GIT
+  remote: https://github.com/rack/rack
+  revision: e364ecbcca9c5b32204bb1361cbcadfa715dd2f5
+  specs:
+    rack (1.6.0)
+
 GEM
   remote: https://rubygems.org/
   remote: https://b8ab84f5:2186dcf8@gems.contribsys.com/
@@ -209,12 +221,10 @@ GEM
     public_suffix (1.5.1)
     puma (2.11.2)
       rack (>= 1.1, < 2.0)
-    rack (1.6.0)
     rack-protection (1.5.3)
       rack
     rack-test (0.6.3)
       rack (>= 1.0)
-    rack-timeout (0.2.4)
     rails (4.2.1)
       actionmailer (= 4.2.1)
       actionpack (= 4.2.1)
@@ -422,7 +432,8 @@ DEPENDENCIES
   pry-rails
   public_suffix
   puma
-  rack-timeout
+  rack!
+  rack-timeout!
   rails
   rails-perftest
   rails-settings-cached
