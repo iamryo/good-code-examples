@@ -81,7 +81,7 @@ class PublicChartsTree
 
     def default_lines
       {
-        label: 'Readmission Payment Reduction',
+        label: 'Target',
         value: '1.0',
       }
     end
