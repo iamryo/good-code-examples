@@ -50,6 +50,12 @@ RSpec.describe PublicChartsTree do
       bars: [],
     }
   end
+  let(:default_lines) do
+    {
+      label: 'Readmission Payment Reduction',
+      value: '1.0',
+    }
+  end
   let(:mort_30_ami_dsm) do
     instance_double(Socrata::DimensionSampleManagers::GraphDataPoints::Measure)
   end
@@ -238,7 +244,7 @@ RSpec.describe PublicChartsTree do
         payment-programs/value-based-purchasing/outcome-of-care
       ]
     end
-    let(:expected_line_data) { [] }
+    let(:expected_line_data) { [default_lines] }
 
     it_behaves_like 'a chart node'
 
@@ -254,7 +260,7 @@ RSpec.describe PublicChartsTree do
     let(:expected_child_ids) do
       ['payment-programs/value-based-purchasing/outcome-of-care/mortality']
     end
-    let(:expected_line_data) { [] }
+    let(:expected_line_data) { [default_lines] }
 
     it_behaves_like 'a chart node'
 
@@ -308,6 +314,7 @@ RSpec.describe PublicChartsTree do
           value: '11.9',
           measure_id: 'MORT_30_AMI',
         },
+        default_lines,
       ]
     end
 

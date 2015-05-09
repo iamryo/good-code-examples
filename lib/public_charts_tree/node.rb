@@ -37,7 +37,7 @@ class PublicChartsTree
       {
         bars: bars(providers),
         title: title,
-        lines: lines,
+        lines: lines.push(default_lines),
       }
     end
 
@@ -54,7 +54,7 @@ class PublicChartsTree
     end
 
     def lines
-      return [] unless measure_dimension_manager.present? # temporary until done
+      return [] unless measure_dimension_manager.present?
       measure_dimension_manager.data(measure_id).map do |value|
         {
           label: 'National Average',
@@ -77,6 +77,13 @@ class PublicChartsTree
     def measure_id
       return nil unless measure_dimension_manager.present?
       measure_dimension_manager.measure_id
+    end
+
+    def default_lines
+      {
+        label: 'Readmission Payment Reduction',
+        value: '1.0',
+      }
     end
   end
 end
