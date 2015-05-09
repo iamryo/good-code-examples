@@ -4,6 +4,6 @@ RSpec.describe MeasureSearchResultsController do
   login_user
 
   save_fixture do
-    get :index, term: 'patient'
+    get :index, term: 'readmission'
   end
 end

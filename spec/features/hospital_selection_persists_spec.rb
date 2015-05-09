@@ -11,7 +11,7 @@ RSpec.feature 'User selected hospital' do
       /
       metrics
       payment-programs
-      hospital-acquired-conditions
+      readmissions-reduction-program
     ].join('/')
   end
   let(:new_url) do

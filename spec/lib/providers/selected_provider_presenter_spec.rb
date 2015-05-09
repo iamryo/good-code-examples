@@ -10,7 +10,7 @@ RSpec.describe Providers::SelectedProviderPresenter do
   let(:public_charts_tree) do
     PublicChartsTree.new do
       measure_source 'Payment Programs' do
-        metric_module 'Hospital-Acquired Conditions' do
+        metric_module 'Readmissions Reduction Program' do
           value VALUE_DIMENSION_SAMPLE_MANAGER
         end
       end
@@ -23,7 +23,7 @@ RSpec.describe Providers::SelectedProviderPresenter do
     )
   end
   let(:node_id) do
-    'payment-programs/hospital-acquired-conditions'
+    'payment-programs/readmissions-reduction-program'
   end
   let(:value_dimension_sample_manager) do
     instance_double(Socrata::DimensionSampleManagers::GraphDataPoints::
