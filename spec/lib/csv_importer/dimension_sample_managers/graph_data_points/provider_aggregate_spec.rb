@@ -20,14 +20,14 @@ RSpec.describe CsvImporter::DimensionSampleManagers::GraphDataPoints::
     end
     let(:provider_ids) do
       %w[
-        10001
-        10005
+        010001
+        010005
       ]
     end
     let(:expected_data) do
       [
-        ['0.9968', 'Hospital10001'],
-        ['0.9929', 'Hospital10005'],
+        ['0.9968', 'Hospital010001'],
+        ['0.9929', 'Hospital010005'],
       ]
     end
     let(:data_param) { relevant_providers }
