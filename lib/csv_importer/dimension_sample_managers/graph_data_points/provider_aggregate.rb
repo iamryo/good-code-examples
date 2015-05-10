@@ -30,7 +30,7 @@ module CsvImporter
 
         def import
           Socrata::DimensionSampleImporter.call(
-            dimension_samples: dimension_samples,
+            dimension_samples: sanitized_dimension_samples,
             model_attributes: model_attributes,
             model_class: MODEL_CLASS,
             rename_hash: {},
@@ -39,6 +39,12 @@ module CsvImporter
         end
 
         private
+
+        def sanitized_dimension_samples
+          dimension_samples.select do |dimension_sample|
+            dimension_sample.fetch(value_column_name).present?
+          end
+        end
 
         def model_attributes
           base_options.merge(

@@ -8,10 +8,7 @@ RSpec.describe CsvImporter::DimensionSampleManagers::GraphDataPoints::
   include_context 'socrata value dimension sample manager'
 
   context 'for provider aggregate dimension samples' do
-    let(:cassette_name) do
-      'csv_importer_dimension_sample_managers_graph_data_points_' \
-      'provider_aggregate'
-    end
+    let(:cassette_name) { '' } # temporary until Socrata/CSV separated
     let(:options) do
       {
         dataset_id: dataset_id,
@@ -22,6 +19,7 @@ RSpec.describe CsvImporter::DimensionSampleManagers::GraphDataPoints::
       %w[
         010001
         010005
+        010019
       ]
     end
     let(:expected_data) do
