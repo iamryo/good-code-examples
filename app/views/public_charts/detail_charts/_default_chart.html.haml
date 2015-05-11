@@ -1,3 +1,10 @@
 .detail_chart.border_grey.inner_padding_base.top_margin_base
-.chart_json.border_grey.inner_padding_base.top_margin_base
-  %pre= JSON.pretty_generate(node.data)
+  .chart_container
+    %svg.chart{id: "#{node.title.parameterize}"}
+
+    :javascript
+      $(function() {
+        var data = #{node.data.to_json}
+        var node_id = "##{node.title.parameterize}"
+        drawChart(data, node_id);
+      });

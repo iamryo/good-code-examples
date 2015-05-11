@@ -1,2 +1,9 @@
-.chart
-  %pre= JSON.pretty_generate(node.data)
+.chart_container
+  %svg.chart{id: "#{node.title.parameterize}"}
+
+  :javascript
+    $(function() {
+      var data = #{node.data.to_json}
+      var node_id = "##{node.title.parameterize}"
+      drawChart(data, node_id);
+    });
