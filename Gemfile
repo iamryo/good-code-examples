@@ -42,6 +42,7 @@ gem 'uglifier' # Use Uglifier as compressor for JavaScript assets
 gem 'jquery-rails'
 gem 'turbolinks'
 gem 'backbone-rails'
+gem 'd3_rails'
 
 group :development do
   gem 'rubocop'

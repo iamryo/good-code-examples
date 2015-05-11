@@ -17,6 +17,7 @@ require 'bourbon'
 require 'neat'
 require 'backbone-rails'
 require 'jquery-ui-rails'
+require 'd3_rails'
 
 # Dependencies for Puma
 require 'rack-timeout' unless Rails.env.test?

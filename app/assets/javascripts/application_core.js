@@ -9,4 +9,5 @@
 //= require underscore
 //= require backbone
 //= require nightingale_core
+//= require d3
 //= require_tree ./application
