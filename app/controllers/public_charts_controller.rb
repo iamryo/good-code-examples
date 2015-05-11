@@ -32,7 +32,7 @@ class PublicChartsController < ApplicationController
 
   def providers_relation
     selected_provider
-      .providers_relation(current_user.selected_context).limit(10)
+      .providers_relation(current_user.selected_context).limit(50)
   end
 
   def persist_selected_provider

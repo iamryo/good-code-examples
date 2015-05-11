@@ -35,7 +35,7 @@ class PublicChartsTree
 
     def data
       {
-        bars: bars(providers),
+        bars: bars(providers).sort_by { |h| h.fetch(:value) },
         title: title,
         lines: lines.push(default_lines),
       }

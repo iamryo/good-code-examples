@@ -5,5 +5,5 @@
     $(function() {
       var data = #{node.data.to_json}
       var node_id = "##{node.title.parameterize}"
-      drawChart(data, node_id);
+      drawChart(data, node_id, false);
     });
