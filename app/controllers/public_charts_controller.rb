@@ -21,6 +21,11 @@ class PublicChartsController < ApplicationController
       current_user,
       @node.id_component,
     )
+
+    respond_to do |format|
+      format.html
+      format.json { render json: @node.data }
+    end
   end
 
   private
