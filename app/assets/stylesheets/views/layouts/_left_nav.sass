@@ -11,9 +11,6 @@ $nested_margin: $icon_size_small + $buffer_small + $padding_base_vertical
 .row_offcanvas_left
   position: relative
 
-#left_nav
-  background: $white
-
 #measures_nav_container
   li
     margin-left: $nested_margin
@@ -22,7 +19,13 @@ $nested_margin: $icon_size_small + $buffer_small + $padding_base_vertical
       margin-left: $nested_margin - $buffer_small
 
 .sidebar_offcanvas
-  background: lighten($grey_lighter, 0.5%)
+  .current_node
+    color: $white
+  color: $grey
+  a
+    text-decoration: none
+    color: darken($grey, 3%)
+  background: $grey_dark
   overflow: scroll
   +omega
   +media($desktop)

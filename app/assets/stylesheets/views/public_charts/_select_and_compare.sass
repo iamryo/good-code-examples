@@ -10,10 +10,12 @@
     display: none
 
 #select_and_compare
+  @extend .vertical_padding_large
   &.show_provider
     .dropdown_button.provider,
     .dropdown_items.provider
       display: inline-block
+      background: $white
 
     .dropdown_button.provider
       +open_button
