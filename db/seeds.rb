@@ -44,22 +44,22 @@ account = Account.create!(
 end
 
 AuthorizedDomain.create!(
-    account_id: account.id,
-    name: 'example.com',
+  account_id: account.id,
+  name: 'example.com',
 )
 
 User.create!(
   [
     {
-      first_name: 'Admin',
-      last_name: 'Thompson',
+      first_name: 'Florence',
+      last_name: 'Nightingale',
       email: 'admin@example.com',
       password: 'calmlionsteadygarden',
       is_dabo_admin: true,
     },
     {
       first_name: 'Plebe',
-      last_name: 'Rodriguez',
+      last_name: 'Johnson',
       email: 'plebe@example.com',
       password: 'calmlionsteadygarden',
       is_dabo_admin: false,
