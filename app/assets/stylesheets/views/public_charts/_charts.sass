@@ -1,15 +1,43 @@
 .chart_container
   overflow: scroll
 
-.chart
-  display: block
-  margin: 0 auto
+.detail_chart
+  .chart
+    display: block
+    margin: 0 auto
 
+    text
+      text-anchor: left
+
+.measure_teaser
+  background: $grey_dark
+
+  a
+    color: $white
+
+  .chart
+    overflow: visible
+    margin-top: $buffer_base
+
+    line
+      &.target,
+      &.national-average
+        stroke: $white
+
+    text
+      text-anchor: right
+      fill: $white
+
+.chart
   rect
     fill: $grey
 
     &.selected
-      fill: $chart_red
+      &.target_not_met
+        fill: $chart_red
+
+      &.target_met
+        fill: $chart_blue
 
   line
     stroke-width: 1px
@@ -20,6 +48,3 @@
     &.national-average
       stroke: #272728
       stroke-dasharray: 3, 3
-
-
-

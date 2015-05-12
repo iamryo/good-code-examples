@@ -21,7 +21,7 @@ module PublicChartsHelper
 
   def node_link(node, options = {})
     link_to(
-      node.title,
+      options.fetch(:text_link, nil) || node.title,
       {
         controller: :public_charts,
         action: :show,

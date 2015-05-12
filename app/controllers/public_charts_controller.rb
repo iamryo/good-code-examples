@@ -8,6 +8,8 @@ class PublicChartsController < ApplicationController
 
     @node = find_node(providers: providers_relation)
 
+    @teaser_node = find_node(providers: selected_provider_relation)
+
     @provider_compare_presenter = Providers::ProviderComparePresenter.new(
       selected_provider,
       current_user.selected_context,
@@ -33,6 +35,12 @@ class PublicChartsController < ApplicationController
   def providers_relation
     selected_provider
       .providers_relation(current_user.selected_context).limit(50)
+  end
+
+  def selected_provider_relation
+    Provider.where(
+      socrata_provider_id: [selected_provider].map(&:socrata_provider_id),
+    )
   end
 
   def persist_selected_provider
@@ -65,9 +73,7 @@ class PublicChartsController < ApplicationController
   def selected_provider_presenter
     Providers::SelectedProviderPresenter.new(
       selected_provider,
-      find_node(providers: Provider.where(
-        socrata_provider_id: [selected_provider].map(&:socrata_provider_id),
-      ),
-    ))
+      find_node(providers: selected_provider_relation),
+    )
   end
 end

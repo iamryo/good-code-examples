@@ -3,18 +3,23 @@
 var drawChart = function(data, nodeId, isDetailChart) {
   var scaleMin;
   var height;
-  var width = $(nodeId).parent().width();
+  var width;
+  var padding;
+  var parentElement = $(nodeId).parent()
+  var parentWidth = parentElement.width();
   var dataset = data.bars;
   var lineData = data.lines;
-  var chartWidth = $(nodeId).parent().width();
-  var padding = 15;
 
   if (isDetailChart) {
     height = 300;
+    width = parentWidth;
     scaleMin = d3.min(dataset, function(d) { return d.value - 0.01; });
+    padding = 15;
   } else {
-    height = 200;
+    height = 100;
+    width = parentWidth / 6
     scaleMin = 0;
+    padding = 15;
   }
 
   var yScale = d3.scale.linear()
@@ -27,7 +32,7 @@ var drawChart = function(data, nodeId, isDetailChart) {
 
   var chart = d3.select(nodeId)
     .attr('width', function(d) {
-      return chartWidth;
+      return width;
     })
     .attr('height', height);
 
@@ -42,19 +47,45 @@ var drawChart = function(data, nodeId, isDetailChart) {
     .attr('width', xScale.rangeBand())
     .attr('class', function(d) {
       var selectedProviderName = $('.provider_name').text().trim();
+      var className = 'target_not_met';
+
+      for (var i = 0; i < lineData.length; i++) {
+        if (lineData[i].label === 'Target') {
+          if (d.value >= lineData[i].value) {
+            className = 'target_met';
+          }
+        }
+      }
+
+      parentElement.parent().addClass(className)
+
       if (d.tooltip.providerName === selectedProviderName) {
-        return 'selected';
+        return className + ' selected';
       }
     });
 
   for (var i = 0; i < lineData.length; i++) {
+    var textPosition;
+    var lineEndPosition;
+    var lineStartPosition;
+    var textXPosition;
     var className = lineData[i].label.toLowerCase().split(' ').join('-');
+
+    if (isDetailChart) {
+      lineStartPosition = 0;
+      lineEndPosition = 20;
+      textXPosition = 30;
+    } else {
+      lineStartPosition = -10;
+      lineEndPosition = width + 10;
+      textXPosition = width + 20;
+    }
 
     var lineLeft = chart.append('line')
       .data([lineData[i]])
-      .attr('x1', 0)
+      .attr('x1', lineStartPosition)
       .attr('y1', function(d) { return height - yScale(d.value); })
-      .attr('x2', 20)
+      .attr('x2', lineEndPosition)
       .attr('y2', function(d) { return height - yScale(d.value); })
       .attr('class', function(d) {
         return className;
@@ -65,8 +96,7 @@ var drawChart = function(data, nodeId, isDetailChart) {
       .text(function(d) {
         return d.label + ': ' + d.value;
       })
-      .attr('text-anchor', 'left')
-      .attr('x', 30)
+      .attr('x', textXPosition)
       .attr('y', function(d) {
         return height - yScale(d.value) + 4;
       })
@@ -74,16 +104,18 @@ var drawChart = function(data, nodeId, isDetailChart) {
         return className;
       });
 
-    var textWidth = $('text.' + className).width();
+    if (isDetailChart) {
+      var textWidth = $('text.' + className).width();
 
-    var lineRight = chart.append('line')
-      .data([lineData[i]])
-      .attr('x1', textWidth + 40)
-      .attr('y1', function(d) { return height - yScale(d.value); })
-      .attr('x2', chartWidth)
-      .attr('y2', function(d) { return height - yScale(d.value); })
-      .attr('class', function(d) {
-        return className;
-      });
+      var lineRight = chart.append('line')
+        .data([lineData[i]])
+        .attr('x1', textWidth + 40)
+        .attr('y1', function(d) { return height - yScale(d.value); })
+        .attr('x2', width)
+        .attr('y2', function(d) { return height - yScale(d.value); })
+        .attr('class', function(d) {
+          return className;
+        });
+    }
   }
 };

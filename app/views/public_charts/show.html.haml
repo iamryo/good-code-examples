@@ -13,7 +13,7 @@
   = render "public_charts/detail_charts/#{@node.type}",
     node: @node,
     conversation_presenter: @conversation_presenter
-  = render 'public_charts/children', node: @node
+  = render 'public_charts/children', node: @teaser_node
 
 = content_for :breadcrumbs do
   = render partial: 'public_charts/breadcrumbs/breadcrumb',

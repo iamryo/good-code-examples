@@ -1,5 +1,8 @@
 .chart_container
-  %svg.chart{id: "#{node.title.parameterize}"}
+  .col6-xs.provider_data.text_center
+    = node.data.fetch(:bars, nil).first.try(:fetch, :value)
+  .col6-xs
+    %svg.chart{id: "#{node.title.parameterize}"}
 
   :javascript
     $(function() {
