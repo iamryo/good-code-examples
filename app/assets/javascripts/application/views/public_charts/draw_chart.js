@@ -39,7 +39,13 @@ var drawChart = function(data, nodeId, isDetailChart) {
 
   var xPosition = function(i) {
     if (isDetailChart) {
-      return (maxBarWidth + 3) * i;
+      var chartMidpoint = width / 2;
+      var datasetMidpoint = dataset.length / 2;
+      var maxBarWidthAndPadding = maxBarWidth + 3;
+      var positionWithIndex = maxBarWidthAndPadding * i;
+      var firstBarPosition = datasetMidpoint * maxBarWidthAndPadding;
+
+      return (chartMidpoint - (firstBarPosition - positionWithIndex));
     }
 
     return xScale(i);
