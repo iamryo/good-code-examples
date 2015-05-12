@@ -6,15 +6,15 @@ require_relative 'metric_module'
 require_relative 'domain'
 require_relative 'category'
 require_relative 'measure'
-require 'socrata/dimension_sample_managers/graph_data_points/measure'
-require 'socrata/dimension_sample_managers/graph_data_points/national_measure'
+require 'dimension_sample_managers/socrata/graph_data_points/measure'
+require 'dimension_sample_managers/socrata/graph_data_points/national_measure'
 
 # .
 class PublicChartsTree
   # A developer-friendly way to build the static chart tree for public data.
   # See implementation config/initializers/public_charts_tree.
   DefineNode = Struct.new(:embedded_node, :node_map, :definition_block) do
-    GRAPH_DATA_POINTS = Socrata::DimensionSampleManagers::GraphDataPoints
+    GRAPH_DATA_POINTS = DimensionSampleManagers::Socrata::GraphDataPoints
 
     def self.call(*args)
       new(*args).call

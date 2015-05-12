@@ -1,6 +1,6 @@
 require './app/models/provider'
 
-RSpec.shared_context 'socrata value dimension sample manager' do
+RSpec.shared_context 'dimension sample manager' do
   subject { described_class.new(options) }
 
   let(:relevant_providers) { Provider.where(socrata_provider_id: provider_ids) }

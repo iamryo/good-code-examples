@@ -1,10 +1,10 @@
 require 'active_record_no_rails_helper'
-require 'socrata/dimension_sample_managers/graph_data_points/provider_aggregate'
-require 'support/shared_contexts/socrata_value_dimension_sample_manager'
+require 'support/shared_contexts/dimension_sample_manager'
+require 'dimension_sample_managers/socrata/graph_data_points/provider_aggregate'
 
-RSpec.describe Socrata::DimensionSampleManagers::GraphDataPoints::
+RSpec.describe DimensionSampleManagers::Socrata::GraphDataPoints::
                ProviderAggregate do
-  include_context 'socrata value dimension sample manager'
+  include_context 'dimension sample manager'
 
   context 'for provider aggregate dimension samples' do
     let(:cassette_name) do

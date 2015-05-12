@@ -1,9 +1,9 @@
 require './app/models/dimension_sample/measure'
-require_relative '../../dimension_sample_importer'
-require_relative '../../simple_soda_client_base'
+require './lib/socrata/dimension_sample_importer'
+require './lib/socrata/simple_soda_client_base'
 
-module Socrata
-  module DimensionSampleManagers
+module DimensionSampleManagers
+  module Socrata
     module GraphDataPoints
       # Satisfies the GraphDataPoint DimensionSampleManager interface to
       # retrieve and refresh data.
@@ -85,7 +85,7 @@ module Socrata
         end
 
         def import
-          DimensionSampleImporter.call(
+          ::Socrata::DimensionSampleImporter.call(
             dimension_samples: dimension_samples,
             model_attributes: base_options,
             model_class: MODEL_CLASS,
@@ -116,7 +116,7 @@ module Socrata
         end
 
         def dimension_samples
-          SimpleSodaClientBase.call(
+          ::Socrata::SimpleSodaClientBase.call(
             dataset_id: dataset_id,
             required_columns: required_columns,
             extra_query_options: {

@@ -1,7 +1,7 @@
 require 'csv'
 
-module CsvImporter
-  module DimensionSampleManagers
+module DimensionSampleManagers
+  module Csv
     # Creates an array of hashes from the CSV file data source
     class DataImporter
       def self.call(file_path:, dimension_samples:)

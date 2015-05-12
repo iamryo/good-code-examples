@@ -1,9 +1,9 @@
 require 'active_record_no_rails_helper'
-require 'support/shared_contexts/socrata_value_dimension_sample_manager'
-require 'socrata/dimension_sample_managers/graph_data_points/measure'
+require 'support/shared_contexts/dimension_sample_manager'
+require 'dimension_sample_managers/socrata/graph_data_points/measure'
 
-RSpec.describe Socrata::DimensionSampleManagers::GraphDataPoints::Measure do
-  include_context 'socrata value dimension sample manager'
+RSpec.describe DimensionSampleManagers::Socrata::GraphDataPoints::Measure do
+  include_context 'dimension sample manager'
 
   context 'for measure dimension samples' do
     let(:vcr_directory) do

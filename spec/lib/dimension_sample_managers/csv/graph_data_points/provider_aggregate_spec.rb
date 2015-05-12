@@ -1,11 +1,11 @@
 require 'active_record_no_rails_helper'
-require 'csv_importer/dimension_sample_managers/graph_data_points/' \
+require 'dimension_sample_managers/csv/graph_data_points/' \
         'provider_aggregate'
-require 'support/shared_contexts/socrata_value_dimension_sample_manager'
+require 'support/shared_contexts/dimension_sample_manager'
 
-RSpec.describe CsvImporter::DimensionSampleManagers::GraphDataPoints::
+RSpec.describe DimensionSampleManagers::Csv::GraphDataPoints::
                ProviderAggregate do
-  include_context 'socrata value dimension sample manager'
+  include_context 'dimension sample manager'
 
   context 'for provider aggregate dimension samples' do
     let(:cassette_name) { '' } # temporary until Socrata/CSV separated

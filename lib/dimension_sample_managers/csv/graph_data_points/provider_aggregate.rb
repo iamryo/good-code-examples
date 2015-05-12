@@ -2,8 +2,8 @@ require './app/models/dimension_sample/provider_aggregate'
 require './lib/socrata/dimension_sample_importer'
 require_relative '../data_importer'
 
-module CsvImporter
-  module DimensionSampleManagers
+module DimensionSampleManagers
+  module Csv
     module GraphDataPoints
       # Satisfies the DimensionSampleManager interface to retrieve and refresh
       # data from a CSV file
@@ -29,7 +29,7 @@ module CsvImporter
         end
 
         def import
-          Socrata::DimensionSampleImporter.call(
+          ::Socrata::DimensionSampleImporter.call(
             dimension_samples: sanitized_dimension_samples,
             model_attributes: model_attributes,
             model_class: MODEL_CLASS,

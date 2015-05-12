@@ -1,5 +1,5 @@
 require 'public_charts_tree'
-require 'socrata/dimension_sample_managers/graph_data_points/provider_aggregate'
+require 'dimension_sample_managers/socrata/graph_data_points/provider_aggregate'
 
 RSpec.describe PublicChartsTree do
   subject { find(node_id) }
@@ -24,7 +24,7 @@ RSpec.describe PublicChartsTree do
     end
   end
   let(:value_dimension_sample_manager) do
-    instance_double(Socrata::DimensionSampleManagers::GraphDataPoints::
+    instance_double(DimensionSampleManagers::Socrata::GraphDataPoints::
       ProviderAggregate)
   end
   let(:measures) do
@@ -57,19 +57,19 @@ RSpec.describe PublicChartsTree do
     }
   end
   let(:mort_30_ami_dsm) do
-    instance_double(Socrata::DimensionSampleManagers::GraphDataPoints::Measure)
+    instance_double(DimensionSampleManagers::Socrata::GraphDataPoints::Measure)
   end
   let(:mort_30_hf_dsm) do
-    instance_double(Socrata::DimensionSampleManagers::GraphDataPoints::Measure)
+    instance_double(DimensionSampleManagers::Socrata::GraphDataPoints::Measure)
   end
   let(:mort_30_ami_mdm) do
     instance_double(
-      Socrata::DimensionSampleManagers::GraphDataPoints::NationalMeasure,
+      DimensionSampleManagers::Socrata::GraphDataPoints::NationalMeasure,
     )
   end
   let(:mort_30_hf_mdm) do
     instance_double(
-      Socrata::DimensionSampleManagers::GraphDataPoints::NationalMeasure,
+      DimensionSampleManagers::Socrata::GraphDataPoints::NationalMeasure,
     )
   end
 
@@ -80,19 +80,19 @@ RSpec.describe PublicChartsTree do
   before do
     stub_const('MEASURES', measures)
     stub_const('VALUE_DIMENSION_SAMPLE_MANAGER', value_dimension_sample_manager)
-    allow(Socrata::DimensionSampleManagers::GraphDataPoints::Measure)
+    allow(DimensionSampleManagers::Socrata::GraphDataPoints::Measure)
       .to receive(:new).with(measure_id: :MORT_30_AMI)
       .and_return(mort_30_ami_dsm)
-    allow(Socrata::DimensionSampleManagers::GraphDataPoints::Measure)
+    allow(DimensionSampleManagers::Socrata::GraphDataPoints::Measure)
       .to receive(:new).with(measure_id: :MORT_30_HF)
       .and_return(mort_30_hf_dsm)
-    allow(Socrata::DimensionSampleManagers::GraphDataPoints::NationalMeasure)
+    allow(DimensionSampleManagers::Socrata::GraphDataPoints::NationalMeasure)
       .to receive(:new).with(
         measure_id: :MORT_30_AMI,
         value_column_name: :national_rate,
         dataset_id: 'seeb-g2s2',
       ).and_return(mort_30_ami_mdm)
-    allow(Socrata::DimensionSampleManagers::GraphDataPoints::NationalMeasure)
+    allow(DimensionSampleManagers::Socrata::GraphDataPoints::NationalMeasure)
       .to receive(:new).with(
         measure_id: :MORT_30_HF,
         value_column_name: :national_rate,
