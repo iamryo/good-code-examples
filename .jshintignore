@@ -3,3 +3,4 @@ spec/javascripts/helpers
 public/assets
 node_modules
 Gruntfile.js
+app/assets/javascripts/application/views/public_charts/draw_chart.js
