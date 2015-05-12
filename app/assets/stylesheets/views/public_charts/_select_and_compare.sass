@@ -10,6 +10,8 @@
     display: none
 
 #select_and_compare
+  background: $grey_light
+
   &.show_provider
     .dropdown_button.provider,
     .dropdown_items.provider
@@ -23,11 +25,13 @@
     .dropdown_button.compare,
     .dropdown_items.compare
       display: inline-block
+      background: $white
 
     .dropdown_button.compare
       +open_button
 
   .dropdown_button
+    background: $white
     cursor: pointer
     position: relative
     z-index: 2

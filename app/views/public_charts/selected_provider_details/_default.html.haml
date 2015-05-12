@@ -1,13 +1,13 @@
-.row.horizontal_padding_base
-  .col5
-    %p.label.no_margin.text_quiet Selected Hospital
-    %h2.text_ellipsis.no_margin.selected_provider_name= provider_compare_presenter.provider_name
-  .col2
-    %p.label.no_margin.text_quiet Adjustment Factor
+.row.horizontal_padding_base.two_column
+  .col5.col6-xs.bottom_margin_base
+    %p.label.no_margin.text_muted Selected Hospital
+    %h2.no_margin.selected_provider_name= provider_compare_presenter.provider_name
+  .col2.col6-xs.two_column.bottom_margin_base
+    %p.label.no_margin.text_muted Adjustment Factor
     %h2.text_ellipsis.no_margin= selected_provider_presenter.value
-  .col2
-    %p.label.no_margin.text_quiet CMS Rank
+  .col2.col6-xs.bottom_margin_base
+    %p.label.no_margin.text_muted CMS Rank
     %h2.text_ellipsis.no_margin 13/355
-  .col3
-    %p.label.no_margin.text_quiet Projected FY2015 Impact
+  .col3.col6-xs.bottom_margin_base
+    %p.label.no_margin.text_muted Projected FY2015 Impact
     %h2.text_ellipsis.no_margin $352,390

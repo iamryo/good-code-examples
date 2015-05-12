@@ -1,6 +1,6 @@
-#select_and_compare.row.top_margin_base.two_column.clearfix
+#select_and_compare.row.two_column.clearfix.horizontal_padding_large
   .two_column
-    .dropdown_button.provider.vertical_padding_base.col6-xs.border_grey
+    .dropdown_button.provider.vertical_padding_base.col6-xs
       %span.text_ellipsis.with_base_icon.line_height_buffer_base.provider_name
         = provider_compare_presenter.provider_name
       %span.icon.icon_size_base.float_right.icon_brand_color_primary.line_height_buffer_base
@@ -10,7 +10,7 @@
         = render 'shared/icon',
           icon: '#icon_arrow_large_up',
           klass: 'vertical_align_middle icon_arrow_up'
-    .dropdown_button.compare.vertical_padding_base.col6-xs.border_grey
+    .dropdown_button.compare.vertical_padding_base.col6-xs
       %span.text_ellipsis.with_base_icon.line_height_buffer_base.compare_name
         = provider_compare_presenter.context_name
       %span.icon.icon_size_base.float_right.icon_brand_color_primary.line_height_buffer_base
@@ -20,7 +20,7 @@
         = render 'shared/icon',
           icon: '#icon_arrow_large_up',
           klass: 'vertical_align_middle icon_arrow_up'
-  .dropdown_items.provider.border_grey
+  .dropdown_items.provider
     .search_box.vertical_padding_base.line_height_buffer_base.border_bottom_grey
       %form#provider_search_form{data: {url: provider_search_results_path}}
         .has_two_icons
@@ -34,7 +34,7 @@
               icon: '#icon_close',
               klass: 'vertical_align_middle'
     %ul.unstyled
-  .dropdown_items.compare.border_grey
+  .dropdown_items.compare
     %h4.no_margin.vertical_padding_xl.border_bottom_grey.line_height_buffer_xl.inner_padding_base Compare to
     %ul.unstyled
       = render 'compare', provider_compare_presenter: provider_compare_presenter
