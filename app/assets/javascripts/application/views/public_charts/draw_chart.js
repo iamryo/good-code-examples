@@ -48,14 +48,16 @@ var drawChart = function(data, nodeId, isDetailChart) {
     });
 
   for (var i = 0; i < lineData.length; i++) {
-    var line = chart.append('line')
+    var className = lineData[i].label.toLowerCase().split(' ').join('-');
+
+    var lineLeft = chart.append('line')
       .data([lineData[i]])
       .attr('x1', 0)
       .attr('y1', function(d) { return height - yScale(d.value); })
-      .attr('x2', chartWidth)
+      .attr('x2', 20)
       .attr('y2', function(d) { return height - yScale(d.value); })
       .attr('class', function(d) {
-        return d.label.toLowerCase().split(' ').join('-');
+        return className;
       });
 
     var text = chart.append('text')
@@ -64,9 +66,24 @@ var drawChart = function(data, nodeId, isDetailChart) {
         return d.label + ': ' + d.value;
       })
       .attr('text-anchor', 'left')
-      .attr('x', 0)
+      .attr('x', 30)
       .attr('y', function(d) {
         return height - yScale(d.value) + 4;
+      })
+      .attr('class', function(d) {
+        return className;
+      });
+
+    var textWidth = $('text.' + className).width();
+
+    var lineRight = chart.append('line')
+      .data([lineData[i]])
+      .attr('x1', textWidth + 40)
+      .attr('y1', function(d) { return height - yScale(d.value); })
+      .attr('x2', chartWidth)
+      .attr('y2', function(d) { return height - yScale(d.value); })
+      .attr('class', function(d) {
+        return className;
       });
   }
 };
