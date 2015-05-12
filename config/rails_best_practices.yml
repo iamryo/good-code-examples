@@ -32,6 +32,7 @@ RemoveUnusedMethodsInControllersCheck:
   except_methods: [
     'ApplicationController#render',
     'ApplicationController#after_sign_out_path_for',
+    'ApplicationController#after_sign_in_path_for',
     '*#=$',
     '*#model_params',
     'RegistrationsController#after_update_path_for',
