@@ -13,6 +13,10 @@ RSpec.feature 'Lock account' do
     "#{user.email}"
   end
 
+  let(:after_sign_in_path) do
+    '/metrics/payment-programs/readmissions-reduction-program'
+  end
+
   def log_in_with_wrong_password
     visit new_user_session_path
     fill_in 'Hospital Email', with: user.email
@@ -55,7 +59,7 @@ RSpec.feature 'Lock account' do
       log_out
 
       log_in(user)
-      expect(current_path).to eq root_path
+      expect(current_path).to eq after_sign_in_path
     end
   end
 end

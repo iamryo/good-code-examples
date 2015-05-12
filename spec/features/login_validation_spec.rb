@@ -17,6 +17,10 @@ RSpec.feature 'Login validation' do
     'Please make sure you are using a hospital email.'
   end
 
+  let(:after_sign_in_path) do
+    '/metrics/payment-programs/readmissions-reduction-program'
+  end
+
   let(:email_field) { '.email_field' }
   let(:password_field) { '.password_field' }
 
@@ -70,7 +74,7 @@ RSpec.feature 'Login validation' do
       log_out
 
       log_in(user)
-      expect(current_path).to eq root_path
+      expect(current_path).to eq after_sign_in_path
     end
   end
 end

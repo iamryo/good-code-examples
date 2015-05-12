@@ -69,12 +69,16 @@ RSpec.describe Users::SessionsController do
         }
       end
 
+      let(:after_sign_in_path) do
+        '/metrics/payment-programs/readmissions-reduction-program'
+      end
+
       before do
         post :create, user: params
       end
 
       it 'logs the user in' do
-        expect(response).to redirect_to(root_path)
+        expect(response).to redirect_to(after_sign_in_path)
       end
     end
 
