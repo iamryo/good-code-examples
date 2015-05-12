@@ -92,6 +92,11 @@
 .bottom_padding_base
   padding-bottom: $buffer_base
 
+.top_padding_large
+  padding-top: $buffer_base
+  +media($tablet_portrait_and_desktop)
+    padding-top: $buffer_large
+
 .centered
   margin-left: auto
   margin-right: auto
@@ -132,4 +137,4 @@
 .affix_to_bottom
   position: absolute
   bottom: 0
-  // martin-bottom: rem(-20)
+  width: 100%

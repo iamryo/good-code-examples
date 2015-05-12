@@ -8,6 +8,9 @@
     - if Rails.application.config.turbolinks_debugging_enabled
       = javascript_include_tag 'turbolinks_debugging'
     = csrf_meta_tags
+    %script{:src => "//use.typekit.net/dzr4jov.js"}
+    :javascript
+      try{Typekit.load();}catch(e){}
   %body#body{ class: [controller_name, controller_action_name], |
          data: { |
            view_name: controller_action_name, |

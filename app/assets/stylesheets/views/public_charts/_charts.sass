@@ -1,5 +1,5 @@
 .chart_container
-  overflow: scroll
+  overflow-y: visible
 
 .detail_chart
   .chart
@@ -27,6 +27,7 @@
     text
       text-anchor: right
       fill: $white
+      @extend .text_weight_light
 
 .chart
   rect
@@ -43,8 +44,8 @@
     stroke-width: 1px
 
     &.target
-      stroke: #2C2D30
+      stroke: #333333
 
     &.national-average
-      stroke: #272728
+      stroke: #333333
       stroke-dasharray: 3, 3
