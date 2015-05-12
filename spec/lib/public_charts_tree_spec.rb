@@ -172,16 +172,16 @@ RSpec.describe PublicChartsTree do
       let(:values_and_provider_names) do
         [
           [
+            '9.75',
+            'Hospital 3',
+          ],
+          [
             '17.888',
             'Hospital 1',
           ],
           [
             '13.1250000000',
             'Hospital 2',
-          ],
-          [
-            '9.75',
-            'Hospital 3',
           ],
         ]
       end
@@ -191,7 +191,7 @@ RSpec.describe PublicChartsTree do
             {
               value: value,
               tooltip: {
-                provider_name: provider_name,
+                providerName: provider_name,
               },
             }
           end,

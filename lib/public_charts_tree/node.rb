@@ -35,7 +35,7 @@ class PublicChartsTree
 
     def data
       {
-        bars: bars(providers).sort_by { |h| h.fetch(:value) },
+        bars: bars(providers).sort_by { |h| h.fetch(:value) }.reverse,
         title: title,
         lines: lines.push(default_lines),
       }
@@ -47,7 +47,7 @@ class PublicChartsTree
         {
           value: value,
           tooltip: {
-            provider_name: provider_name,
+            providerName: provider_name,
           },
         }
       end
