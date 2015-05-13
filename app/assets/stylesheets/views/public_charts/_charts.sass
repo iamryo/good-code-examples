@@ -2,17 +2,19 @@
   overflow-y: visible
   position: relative
 
-  & .no_data
-    +centerer
-
   .detail_chart &
     height: rem(300)
+
+    .no_data
+      +centerer
 
   .measure_teaser &
     min-height: rem(100)
 
     .no_data
-      color: $grey
+      color: $chart_red
+      margin-left: -$buffer_base
+      +vertically_center(90%)
 
 .detail_chart
   .chart
