@@ -1,13 +1,5 @@
 $nested_margin: $icon_size_small + $buffer_small + $padding_base_vertical
 
-=sidebar_offcanvas_width($width, $box_shadow)
-  .sidebar_offcanvas
-    margin-left: -100%
-    left: -($width)
-
-    &.left_nav_open
-      width: $width
-
 .row_offcanvas_left
   position: relative
 
@@ -44,10 +36,10 @@ $nested_margin: $icon_size_small + $buffer_small + $padding_base_vertical
     overflow: scroll
 
 +media($mobile)
-  +sidebar_offcanvas_width(90%, 200)
+  +sidebar_offcanvas_width(90%)
 
 +media($tablet_portrait)
-  +sidebar_offcanvas_width(45%, 600)
+  +sidebar_offcanvas_width(45%)
 
 +media($mobile_and_tablet_portrait)
   .sidebar_offcanvas

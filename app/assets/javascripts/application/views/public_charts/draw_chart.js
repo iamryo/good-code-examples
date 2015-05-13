@@ -4,12 +4,15 @@ var drawChart = function(data, nodeId, isDetailChart) {
   var scaleMin;
   var height;
   var width;
-  var parentElement = $(nodeId).parent()
+  var xScaleDomain;
+  var yScaleDomain;
+  var parentElement = $(nodeId).parent();
   var parentWidth = parentElement.width();
   var dataset = data.bars;
   var lineData = data.lines;
   var maxBarWidth = 30;
   var padding = 15;
+  var dataIsAvailable = dataset.length;
 
   if (isDetailChart) {
     height = 300;
@@ -17,16 +20,25 @@ var drawChart = function(data, nodeId, isDetailChart) {
     scaleMin = d3.min(dataset, function(d) { return d.value - 0.01; });
   } else {
     height = 100;
-    width = parentWidth / 6
+    width = parentWidth / 6;
     scaleMin = 0;
   }
 
+  if (dataIsAvailable) {
+    xScaleDomain = d3.range(dataset.length);
+    yScaleDomain = [scaleMin, d3.max(dataset, function(d) { return d.value; })];
+  } else {
+    scaleMin = 0;
+    xScaleDomain = 11; // arbitrary value
+    yScaleDomain = [scaleMin, lineData[0].value];
+  }
+
   var yScale = d3.scale.linear()
-    .domain([scaleMin, d3.max(dataset, function(d) { return d.value; })])
+    .domain(yScaleDomain)
     .range([padding, height - padding]);
 
   var xScale = d3.scale.ordinal()
-    .domain(d3.range(dataset.length))
+    .domain(xScaleDomain)
     .rangeRoundBands([0, width], 0.1);
 
   var barWidth = function() {
@@ -45,11 +57,11 @@ var drawChart = function(data, nodeId, isDetailChart) {
       var positionWithIndex = maxBarWidthAndPadding * i;
       var firstBarPosition = datasetMidpoint * maxBarWidthAndPadding;
 
-      return (chartMidpoint - (firstBarPosition - positionWithIndex));
+      return chartMidpoint - (firstBarPosition - positionWithIndex);
     }
 
     return xScale(i);
-  }
+  };
 
   var chart = d3.select(nodeId)
     .attr('width', width)
@@ -60,8 +72,8 @@ var drawChart = function(data, nodeId, isDetailChart) {
     .enter().append('g');
 
   bar.append('rect')
-    .attr('y', function(d) { return height - yScale(d.value); })
     .attr('x', function(d, i) { return xPosition(i); })
+    .attr('y', function(d) { return height - yScale(d.value); })
     .attr('height', function(d) { return yScale(d.value); })
     .attr('width', barWidth)
     .attr('class', function(d) {
@@ -80,7 +92,7 @@ var drawChart = function(data, nodeId, isDetailChart) {
 
       if (d.tooltip.providerName === selectedProviderName) {
         if (isDetailChart) {
-          $('.adjustment_value').addClass(className);;
+          $('.adjustment_value').addClass(className);
         }
         return className + ' selected';
       }
@@ -109,22 +121,14 @@ var drawChart = function(data, nodeId, isDetailChart) {
       .attr('y1', function(d) { return height - yScale(d.value); })
       .attr('x2', lineEndPosition)
       .attr('y2', function(d) { return height - yScale(d.value); })
-      .attr('class', function(d) {
-        return className;
-      });
+      .attr('class', function(d) { return className; });
 
     var text = chart.append('text')
       .data([lineData[i]])
-      .text(function(d) {
-        return d.label + ': ' + d.value;
-      })
+      .text(function(d) { return d.label + ': ' + d.value; })
       .attr('x', textXPosition)
-      .attr('y', function(d) {
-        return height - yScale(d.value) + 4;
-      })
-      .attr('class', function(d) {
-        return className;
-      });
+      .attr('y', function(d) { return height - yScale(d.value) + 4; })
+      .attr('class', function(d) { return className; });
 
     if (isDetailChart) {
       var textWidth = $('text.' + className).width();
@@ -135,9 +139,24 @@ var drawChart = function(data, nodeId, isDetailChart) {
         .attr('y1', function(d) { return height - yScale(d.value); })
         .attr('x2', width)
         .attr('y2', function(d) { return height - yScale(d.value); })
-        .attr('class', function(d) {
-          return className;
-        });
+        .attr('class', function(d) { return className; });
     }
+  }
+
+  if (!dataIsAvailable) {
+    var targetDiv;
+    var action;
+    var message = '<h4 class="no_data no_margin vertical_padding_small">' +
+                  'Data not available for selected provider</h4>';
+
+    if (isDetailChart) {
+      targetDiv = parentElement;
+      targetDiv.prepend(message);
+    } else {
+      targetDiv = parentElement.siblings('.provider_data');
+      targetDiv.html(message);
+    }
+
+    targetDiv.addClass('tk-freight-sans-pro text_center');
   }
 };
