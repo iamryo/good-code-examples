@@ -32,8 +32,14 @@ $nested_margin: $icon_size_small + $buffer_small + $padding_base_vertical
   .sidebar_offcanvas_spacer,
   .inner_content_offcanvas,
   .sidebar_offcanvas
-    height: 100vh
     overflow: scroll
+
+  .sidebar_offcanvas_spacer,
+  .sidebar_offcanvas
+    height: 100vh
+
+  .inner_content_offcanvas
+    min-height: 100vh
 
 +media($mobile)
   +sidebar_offcanvas_width(90%)
