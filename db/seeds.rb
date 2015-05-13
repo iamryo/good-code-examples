@@ -34,7 +34,7 @@ account = Account.create!(
 
 %w[
   hospital-acquired-conditions
-  readmissions-reduction-program
+  hospital-readmissions-reduction-program
   hospital-consumer-assessment-of-healthcare-providers-and-systems
 ].each do |metric_module_id|
   PurchasedMetricModule.create!(

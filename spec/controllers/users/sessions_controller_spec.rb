@@ -70,7 +70,7 @@ RSpec.describe Users::SessionsController do
       end
 
       let(:after_sign_in_path) do
-        '/metrics/payment-programs/readmissions-reduction-program'
+        '/metrics/payment-programs/hospital-readmissions-reduction-program'
       end
 
       before do

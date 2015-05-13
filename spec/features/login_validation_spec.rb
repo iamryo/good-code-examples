@@ -18,7 +18,7 @@ RSpec.feature 'Login validation' do
   end
 
   let(:after_sign_in_path) do
-    '/metrics/payment-programs/readmissions-reduction-program'
+    '/metrics/payment-programs/hospital-readmissions-reduction-program'
   end
 
   let(:email_field) { '.email_field' }

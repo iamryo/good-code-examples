@@ -2,7 +2,7 @@ require 'feature_spec_helper'
 
 RSpec.feature 'Clicking a link after session expires' do
   let(:after_sign_in_path) do
-    '/metrics/payment-programs/readmissions-reduction-program'
+    '/metrics/payment-programs/hospital-readmissions-reduction-program'
   end
 
   it 'redirects to link target after signing back in' do

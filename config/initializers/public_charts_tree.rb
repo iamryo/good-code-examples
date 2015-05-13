@@ -26,7 +26,7 @@ PUBLIC_CHARTS_TREE = PublicChartsTree.new do
         end
       end
     end
-    metric_module 'Readmissions Reduction Program' do
+    metric_module 'Hospital Readmissions Reduction Program' do
       value DimensionSampleManagers::Csv::GraphDataPoints::
       ProviderAggregate.new(
         value_column_name: 'corrected_fy_2015_readmissions_adjustment_factor',
