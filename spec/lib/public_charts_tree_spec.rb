@@ -1,5 +1,6 @@
 require 'public_charts_tree'
-require 'dimension_sample_managers/socrata/graph_data_points/provider_aggregate'
+require 'dimension_sample_managers/graph_data_points/socrata/provider_aggregate'
+require 'dimension_sample_managers/graph_data_points/national_average'
 
 RSpec.describe PublicChartsTree do
   subject { find(node_id) }
@@ -11,11 +12,12 @@ RSpec.describe PublicChartsTree do
       measure_source 'Payment Programs' do
         metric_module 'Value Based Purchasing' do
           value VALUE_DIMENSION_SAMPLE_MANAGER
+          line LINE_DIMENSION_SAMPLE_MANAGER
           domain 'Outcome of Care' do
             value VALUE_DIMENSION_SAMPLE_MANAGER
+            line LINE_DIMENSION_SAMPLE_MANAGER
             category 'Mortality' do
-              measures :MORT_30_AMI,
-                       :MORT_30_HF
+              measures :MORT_30_AMI
             end
           end
         end
@@ -25,12 +27,16 @@ RSpec.describe PublicChartsTree do
     end
   end
   let(:value_dimension_sample_manager) do
-    instance_double(DimensionSampleManagers::Socrata::GraphDataPoints::
+    instance_double(DimensionSampleManagers::GraphDataPoints::Socrata::
       ProviderAggregate)
+  end
+  let(:line_dimension_sample_manager) do
+    instance_double(
+      DimensionSampleManagers::GraphDataPoints::NationalAverage,
+    )
   end
   let(:measures) do
     {
-      MORT_30_HF: mort_30_hf.to_h,
       MORT_30_AMI: mort_30_ami.to_h,
     }
   end
@@ -40,38 +46,13 @@ RSpec.describe PublicChartsTree do
       value: value_dimension_sample_manager,
     )
   end
-  let(:mort_30_hf) do
-    OpenStruct.new(
-      title: 'Heart Failure Mortality',
-      value: value_dimension_sample_manager,
-    )
-  end
   let(:expected_data) do
     {
       bars: [],
     }
   end
-  let(:default_lines) do
-    {
-      label: 'Target',
-      value: '1.0',
-    }
-  end
   let(:mort_30_ami_dsm) do
-    instance_double(DimensionSampleManagers::Socrata::GraphDataPoints::Measure)
-  end
-  let(:mort_30_hf_dsm) do
-    instance_double(DimensionSampleManagers::Socrata::GraphDataPoints::Measure)
-  end
-  let(:mort_30_ami_mdm) do
-    instance_double(
-      DimensionSampleManagers::Socrata::GraphDataPoints::NationalMeasure,
-    )
-  end
-  let(:mort_30_hf_mdm) do
-    instance_double(
-      DimensionSampleManagers::Socrata::GraphDataPoints::NationalMeasure,
-    )
+    instance_double(DimensionSampleManagers::GraphDataPoints::Socrata::Measure)
   end
 
   def find(node_id)
@@ -85,26 +66,10 @@ RSpec.describe PublicChartsTree do
   before do
     stub_const('MEASURES', measures)
     stub_const('VALUE_DIMENSION_SAMPLE_MANAGER', value_dimension_sample_manager)
-    allow(DimensionSampleManagers::Socrata::GraphDataPoints::Measure)
+    stub_const('LINE_DIMENSION_SAMPLE_MANAGER', line_dimension_sample_manager)
+    allow(DimensionSampleManagers::GraphDataPoints::Socrata::Measure)
       .to receive(:new).with(measure_id: :MORT_30_AMI)
       .and_return(mort_30_ami_dsm)
-    allow(DimensionSampleManagers::Socrata::GraphDataPoints::Measure)
-      .to receive(:new).with(measure_id: :MORT_30_HF)
-      .and_return(mort_30_hf_dsm)
-    allow(DimensionSampleManagers::Socrata::GraphDataPoints::NationalMeasure)
-      .to receive(:new).with(
-        measure_id: :MORT_30_AMI,
-        value_column_name: :national_rate,
-        dataset_id: 'seeb-g2s2',
-      ).and_return(mort_30_ami_mdm)
-    allow(DimensionSampleManagers::Socrata::GraphDataPoints::NationalMeasure)
-      .to receive(:new).with(
-        measure_id: :MORT_30_HF,
-        value_column_name: :national_rate,
-        dataset_id: 'seeb-g2s2',
-      ).and_return(mort_30_hf_mdm)
-    allow(mort_30_ami_mdm).to receive(:measure_id).and_return('MORT_30_AMI')
-    allow(mort_30_hf_mdm).to receive(:measure_id).and_return('MORT_30_HF')
   end
 
   describe '#import' do
@@ -112,9 +77,6 @@ RSpec.describe PublicChartsTree do
       expect(value_dimension_sample_manager).to receive(:import)
         .exactly(2).times
       expect(mort_30_ami_dsm).to receive(:import)
-      expect(mort_30_hf_dsm).to receive(:import)
-      expect(mort_30_ami_mdm).to receive(:import)
-      expect(mort_30_hf_mdm).to receive(:import)
       tree.import_all
     end
   end
@@ -190,6 +152,20 @@ RSpec.describe PublicChartsTree do
           ],
         ]
       end
+      let(:national_average_value) { '11.9' }
+      let(:id_to_avg) do
+        {
+          mort_30_ami_national_average: national_average_value,
+        }
+      end
+      let(:line_data) do
+        [
+          {
+            label: 'Foo',
+            value: '99.9',
+          },
+        ]
+      end
       let(:expected_data) do
         {
           bars: values_and_provider_names.map do |value, provider_name|
@@ -201,21 +177,22 @@ RSpec.describe PublicChartsTree do
             }
           end,
           title: subject.title,
-          lines: expected_line_data,
+          lines: line_data,
         }
       end
-      let(:national_average_value) { ['11.9'] }
 
       before do
-        allow(value_dimension_sample_manager).to receive(:data)
-          .with(providers, selected_provider)
+        stub_const(
+          "#{line_dimension_sample_manager.class}::ID_TO_AVG",
+          id_to_avg,
+        )
+        allow(DimensionSampleManagers::GraphDataPoints::NationalAverage)
+          .to receive(:new).with(:MORT_30_AMI)
+          .and_return(line_dimension_sample_manager)
+        allow(value_dimension_sample_manager).to receive(:data).with(providers)
           .and_return(values_and_provider_names)
-        allow(mort_30_ami_mdm).to receive(:data)
-          .with('MORT_30_AMI')
-          .and_return(national_average_value)
-        allow(mort_30_hf_mdm).to receive(:data)
-          .with('MORT_30_HF')
-          .and_return(national_average_value)
+        allow(line_dimension_sample_manager).to receive(:data)
+          .and_return(line_data)
       end
 
       it 'returns data for the specified providers' do
@@ -250,11 +227,16 @@ RSpec.describe PublicChartsTree do
         payment-programs/value-based-purchasing/outcome-of-care
       ]
     end
-    let(:expected_line_data) { [default_lines] }
 
     it_behaves_like 'a chart node'
 
-    specify { expect(subject.parent_title).to eq 'Payment Programs' }
+    specify do
+      expect(subject.parent_title).to eq 'Payment Programs'
+      # expect(mort_30_ami_national_average).to receive(:value)
+      #   .and_return(national_average_value)
+      # expect(mort_30_ami_national_average).to receive(:label)
+      #   .and_return('National Average')
+    end
   end
 
   context 'at a domain node' do
@@ -266,7 +248,6 @@ RSpec.describe PublicChartsTree do
     let(:expected_child_ids) do
       ['payment-programs/value-based-purchasing/outcome-of-care/mortality']
     end
-    let(:expected_line_data) { [default_lines] }
 
     it_behaves_like 'a chart node'
 
@@ -286,13 +267,9 @@ RSpec.describe PublicChartsTree do
     let(:mort_30_ami_id) do
       "#{expected_parent_id}/mortality/acute-myocardial-infarction-mortality"
     end
-    let(:mort_30_hf_id) do
-      "#{expected_parent_id}/mortality/heart-failure-mortality"
-    end
     let(:expected_child_ids) do
       [
         mort_30_ami_id,
-        mort_30_hf_id,
       ]
     end
 
@@ -313,16 +290,6 @@ RSpec.describe PublicChartsTree do
     let(:expected_title) { measure.title }
     let(:expected_type) { 'measure' }
     let(:expected_child_ids) { [] }
-    let(:expected_line_data) do
-      [
-        {
-          label: 'National Average',
-          value: '11.9',
-          measure_id: 'MORT_30_AMI',
-        },
-        default_lines,
-      ]
-    end
 
     shared_examples 'a mortality measure node' do
       specify { expect(subject.parent_title).to eq 'Mortality' }
@@ -338,15 +305,6 @@ RSpec.describe PublicChartsTree do
 
       it_behaves_like 'a mortality measure node'
       it_behaves_like 'a chart node'
-    end
-
-    describe 'MORT_30_HF' do
-      let(:value_dimension_sample_manager) { mort_30_hf_dsm }
-      let(:measure) { mort_30_hf }
-      let(:expected_id_component) { 'heart-failure-mortality' }
-      let(:node_id) { "#{expected_parent_id}/#{expected_id_component}" }
-      it_behaves_like 'a mortality measure node'
-      it_behaves_like 'a child node'
     end
   end
 

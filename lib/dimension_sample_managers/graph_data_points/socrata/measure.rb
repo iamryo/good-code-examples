@@ -3,8 +3,8 @@ require './lib/socrata/dimension_sample_importer'
 require './lib/socrata/simple_soda_client_base'
 
 module DimensionSampleManagers
-  module Socrata
-    module GraphDataPoints
+  module GraphDataPoints
+    module Socrata
       # Satisfies the GraphDataPoint DimensionSampleManager interface to
       # retrieve and refresh data.
       class Measure

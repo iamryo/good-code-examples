@@ -1,8 +1,8 @@
 require 'active_record_no_rails_helper'
 require 'support/shared_contexts/dimension_sample_manager'
-require 'dimension_sample_managers/socrata/graph_data_points/provider_aggregate'
+require 'dimension_sample_managers/graph_data_points/socrata/provider_aggregate'
 
-RSpec.describe DimensionSampleManagers::Socrata::GraphDataPoints::
+RSpec.describe DimensionSampleManagers::GraphDataPoints::Socrata::
                ProviderAggregate do
   include_context 'dimension sample manager'
 

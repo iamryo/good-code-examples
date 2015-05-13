@@ -1,9 +1,9 @@
 require 'active_record_no_rails_helper'
-require 'dimension_sample_managers/csv/graph_data_points/' \
+require 'dimension_sample_managers/graph_data_points/csv/' \
         'provider_aggregate'
 require 'support/shared_contexts/dimension_sample_manager'
 
-RSpec.describe DimensionSampleManagers::Csv::GraphDataPoints::
+RSpec.describe DimensionSampleManagers::GraphDataPoints::Csv::
                ProviderAggregate do
   include_context 'dimension sample manager'
 

@@ -19,11 +19,9 @@ class PublicChartsTree
       end
 
       def value_dimension_manager
-        nil
       end
 
-      def measure_dimension_manager
-        nil
+      def line_dimension_manager
       end
     end
   end

@@ -24,7 +24,7 @@ class PublicChartsTree
   end
 
   def import_all
-    dimension_sample_managers.each(&:import)
+    value_dimension_managers.each(&:import)
   end
 
   private
@@ -33,16 +33,8 @@ class PublicChartsTree
     @internal_node_map.fetch(node_id)
   end
 
-  def dimension_sample_managers
-    value_dimension_manager + measure_dimension_manager
-  end
-
-  def value_dimension_manager
+  def value_dimension_managers
     all_nodes.map(&:value_dimension_manager).compact
-  end
-
-  def measure_dimension_manager
-    all_nodes.map(&:measure_dimension_manager).compact
   end
 
   def all_nodes

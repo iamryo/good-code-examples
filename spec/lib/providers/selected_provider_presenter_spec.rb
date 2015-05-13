@@ -2,7 +2,7 @@ require 'spec_helper'
 require 'active_record_no_rails_helper'
 require 'public_charts_tree'
 require 'providers/selected_provider_presenter'
-require 'dimension_sample_managers/socrata/graph_data_points/provider_aggregate'
+require 'dimension_sample_managers/graph_data_points/socrata/provider_aggregate'
 
 RSpec.describe Providers::SelectedProviderPresenter do
   subject { described_class.new(provider, node) }
@@ -27,7 +27,7 @@ RSpec.describe Providers::SelectedProviderPresenter do
     'payment-programs/hospital-readmissions-reduction-program'
   end
   let(:value_dimension_sample_manager) do
-    instance_double(DimensionSampleManagers::Socrata::GraphDataPoints::
+    instance_double(DimensionSampleManagers::GraphDataPoints::Socrata::
       ProviderAggregate)
   end
   let(:value) { '.9832' }

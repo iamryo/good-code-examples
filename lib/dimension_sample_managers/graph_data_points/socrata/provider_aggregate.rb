@@ -1,25 +1,30 @@
-require './app/models/dimension_sample/national_measure'
+require './app/models/dimension_sample/provider_aggregate'
 require './lib/socrata/dimension_sample_importer'
 require './lib/socrata/simple_soda_client'
 
 # .
 module DimensionSampleManagers
-  module Socrata
-    module GraphDataPoints
+  module GraphDataPoints
+    module Socrata
       # Satisfies the DimensionSampleManager interface to retrieve and refresh
       # data.
-      class NationalMeasure
-        MODEL_CLASS = DimensionSample::NationalMeasure
-        attr_reader :value_column_name, :dataset_id, :measure_id
+      class ProviderAggregate
+        MODEL_CLASS = DimensionSample::ProviderAggregate
+        attr_reader :value_column_name, :dataset_id
 
-        def initialize(value_column_name:, dataset_id:, measure_id:)
+        def initialize(value_column_name:, dataset_id:)
           @value_column_name = value_column_name
           @dataset_id = dataset_id
-          @measure_id = measure_id
         end
 
-        def data(measure_id)
-          DimensionSample::NationalMeasure.data(measure_id)
+        def data(providers, selected_provider)
+          DimensionSample::ProviderAggregate.data(
+            base_options.merge(
+              column_name: value_column_name,
+              providers: providers,
+              selected_provider: selected_provider,
+            ),
+          )
         end
 
         def import
@@ -30,6 +35,13 @@ module DimensionSampleManagers
             rename_hash: {},
             value_column_name: value_column_name,
           )
+        end
+
+        def subtitle
+        end
+
+        def national_best_performer_value
+          MODEL_CLASS.where(model_attributes).minimum(:value)
         end
 
         private
@@ -49,8 +61,8 @@ module DimensionSampleManagers
 
         def required_columns
           [
+            :provider_id,
             value_column_name,
-            :measure_id,
           ]
         end
 
