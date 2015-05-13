@@ -15,9 +15,9 @@ RSpec.describe PublicChartsController do
         measure_source 'Socrata' do
           metric_module 'Value Based Purchasing' do
             domain 'Outcome of Care' do
-              measure 'Uno'
-              measure 'Dos'
-              measure 'Tres'
+              measure 'Heart Failure Readmission'
+              measure 'Pnuemonia Readmission'
+              measure 'Acute Myocardial Infarction Readmission'
             end
             domain 'Efficiency of Care'
           end
@@ -44,7 +44,7 @@ RSpec.describe PublicChartsController do
     end
 
     describe 'generate a fixture with conversations' do
-      let(:measure_id) { 'uno' }
+      let(:measure_id) { 'heart-failure-readmission' }
       let(:node_id) do
         "socrata/value-based-purchasing/outcome-of-care/#{measure_id}"
       end
@@ -85,26 +85,32 @@ RSpec.describe PublicChartsController do
             socrata
             value-based-purchasing
             outcome-of-care
-            dos
+            pnuemonia-readmission
           ].join('/')
         end
 
         it 'shows grandparent' do
           is_expected.to have_css(
             measures_nav_container,
-            text: 'Dos',
+            text: 'Pnuemonia Readmission',
           )
         end
 
         it 'shows sibling measures' do
-          is_expected.to have_css(measures_nav_container, text: 'Uno')
-          is_expected.to have_css(measures_nav_container, text: 'Tres')
+          is_expected.to have_css(
+            measures_nav_container,
+            text: 'Heart Failure Readmission',
+          )
+          is_expected.to have_css(
+            measures_nav_container,
+            text: 'Acute Myocardial Infarction Readmission',
+          )
         end
 
         it 'does not show right arrow or link for current node' do
           is_expected.to have_css(
             '.current_node',
-            text: 'Dos',
+            text: 'Pnuemonia Readmission',
           )
           is_expected.not_to have_css '.current_node a'
           is_expected.not_to have_css '.current_node svg'
@@ -135,9 +141,17 @@ RSpec.describe PublicChartsController do
         end
 
         it 'shows child nodes' do
-          is_expected.to have_css(measures_nav_container, text: 'Uno')
-          is_expected.to have_css(measures_nav_container, text: 'Dos')
-          is_expected.to have_css(measures_nav_container, text: 'Tres')
+          is_expected.to have_css(
+            measures_nav_container,
+            text: 'Heart Failure Readmission')
+          is_expected.to have_css(
+            measures_nav_container,
+            text: 'Pnuemonia Readmission',
+          )
+          is_expected.to have_css(
+            measures_nav_container,
+            text: 'Acute Myocardial Infarction Readmission',
+          )
         end
 
         it 'does not show grandparent' do

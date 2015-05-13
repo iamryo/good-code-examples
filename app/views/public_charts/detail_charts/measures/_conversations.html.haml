@@ -1,0 +1,4 @@
+#conversations
+  .card_container.row.top_margin_large
+    = render 'conversations/form', conversation_presenter: conversation_presenter, conversation: conversation_presenter.new_conversation
+  = render partial: 'conversations/conversation_for_index', locals: { conversation_presenter: conversation_presenter }, collection: conversation_presenter.chart_conversations
