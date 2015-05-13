@@ -1,25 +1,7 @@
 = render 'public_charts/detail_charts/default_chart', node: node
-.measure_detail
-  .actions_container.border_bottom_grey
-    .actions.horizontal_padding_small.clearfix
-      .action.col3-xs.text_center
-        %span.icon.icon_size_base.icon_left.vertical_align_middle
-          = render 'shared/icon', icon: '#icon_conversation'
-        %span.text.hide_on_mobile.vertical_align_middle Discuss
-      .action.col3-xs.text_center
-        %span.icon.icon_size_base.icon_left.vertical_align_middle
-          = render 'shared/icon', icon: '#icon_share'
-        %span.text.hide_on_mobile.vertical_align_middle Share
-      .action.col3-xs.text_center
-        %span.icon.icon_size_base.icon_left.vertical_align_middle
-          = render 'shared/icon', icon: '#icon_book_text'
-        %span.text.hide_on_mobile.vertical_align_middle Learn
-      .action.col3-xs.text_center
-        %span.icon.icon_size_base.icon_left.vertical_align_middle
-          = render 'shared/icon', icon: '#icon_chart_trend'
-        %span.text.hide_on_mobile.vertical_align_middle Improve
 
-  #conversations
-    .card_container.row.top_margin_large
-      = render 'conversations/form', conversation_presenter: conversation_presenter, conversation: conversation_presenter.new_conversation
-    = render partial: 'conversations/conversation_for_index', locals: { conversation_presenter: conversation_presenter }, collection: conversation_presenter.chart_conversations
+%div
+  %h2.tk-freight-sans-pro.text_weight_light Information
+  .row
+    = render "public_charts/detail_charts/measures/learn/#{node.title.parameterize.underscore}",
+      node_title: node.title

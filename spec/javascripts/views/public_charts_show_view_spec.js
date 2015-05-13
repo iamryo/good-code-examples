@@ -123,188 +123,188 @@ describe('PublicChartsView', function() {
     itBehavesLikeDropdownButton();
   });
 
-  describe('submitting a new conversation', function() {
-    function submitForm() {
-      submitButton.click();
-    }
+  // describe('submitting a new conversation', function() {
+  //   function submitForm() {
+  //     submitButton.click();
+  //   }
 
-    var conversationsContainer;
-    var newConversation;
-    var conversationTitle;
-    var conversationDescription;
-    var submitButton;
+  //   var conversationsContainer;
+  //   var newConversation;
+  //   var conversationTitle;
+  //   var conversationDescription;
+  //   var submitButton;
 
-    beforeEach(function() {
-      conversationsContainer = $('#conversations');
-      newConversation = $('form#new_conversation');
-      conversationTitle = $('#conversation_title');
-      conversationDescription = $('#conversation_description');
-      submitButton = newConversation.find('input:submit');
-    });
+  //   beforeEach(function() {
+  //     conversationsContainer = $('#conversations');
+  //     newConversation = $('form#new_conversation');
+  //     conversationTitle = $('#conversation_title');
+  //     conversationDescription = $('#conversation_description');
+  //     submitButton = newConversation.find('input:submit');
+  //   });
 
-    it('begins in a default state', function() {
-      expect(conversationTitle).toHaveValue('');
-      expect(conversationDescription).toBeHidden();
-    });
+  //   it('begins in a default state', function() {
+  //     expect(conversationTitle).toHaveValue('');
+  //     expect(conversationDescription).toBeHidden();
+  //   });
 
-    describe('cancelling a new conversation', function() {
-      it('returns a new conversation form', function() {
-        conversationTitle.click();
-        expect(conversationDescription).toBeVisible();
+  //   describe('cancelling a new conversation', function() {
+  //     it('returns a new conversation form', function() {
+  //       conversationTitle.click();
+  //       expect(conversationDescription).toBeVisible();
 
-        conversationTitle.val('A new conversation');
-        stubAjaxRequest(
-          '/conversations?measure_id=uno',
-          'conversations_controller-get-index.html'
-        );
+  //       conversationTitle.val('A new conversation');
+  //       stubAjaxRequest(
+  //         '/conversations?measure_id=uno',
+  //         'conversations_controller-get-index.html'
+  //       );
 
-        $('.cancel_btn').click();
+  //       $('.cancel_btn').click();
 
-        expect($('#conversation_title')).toHaveValue('');
-        expect($('#conversation_description')).toBeHidden();
-      });
-    });
+  //       expect($('#conversation_title')).toHaveValue('');
+  //       expect($('#conversation_description')).toBeHidden();
+  //     });
+  //   });
 
-    describe('with invalid inputs', function() {
-      it('displays an error', function() {
-        var fixtureForInvalidCreateResponse =
-          'conversations_controller-post-create-generates' +
-          '-a-fixture-with-invalid-params.html';
+  //   describe('with invalid inputs', function() {
+  //     it('displays an error', function() {
+  //       var fixtureForInvalidCreateResponse =
+  //         'conversations_controller-post-create-generates' +
+  //         '-a-fixture-with-invalid-params.html';
 
-        stubAjaxRequestWithStatus(
-          '/conversations',
-          fixtureForInvalidCreateResponse,
-          422
-        );
+  //       stubAjaxRequestWithStatus(
+  //         '/conversations',
+  //         fixtureForInvalidCreateResponse,
+  //         422
+  //       );
 
-        submitForm();
-        expect($('.error_explanation_no_border')).toExist();
-      });
-    });
+  //       submitForm();
+  //       expect($('.error_explanation_no_border')).toExist();
+  //     });
+  //   });
 
-    describe('with valid inputs', function() {
-      beforeEach(function() {
-        var fixtureForvalidCreateResponse =
-          'conversations_controller-get-index.html';
+  //   describe('with valid inputs', function() {
+  //     beforeEach(function() {
+  //       var fixtureForvalidCreateResponse =
+  //         'conversations_controller-get-index.html';
 
-        stubAjaxRequest(
-          '/conversations',
-          fixtureForvalidCreateResponse
-        );
-      });
+  //       stubAjaxRequest(
+  //         '/conversations',
+  //         fixtureForvalidCreateResponse
+  //       );
+  //     });
 
-      it('renders the list of conversations', function() {
-        var conversation = conversationsContainer.find('.conversation');
-        submitForm();
+  //     it('renders the list of conversations', function() {
+  //       var conversation = conversationsContainer.find('.conversation');
+  //       submitForm();
 
-        expect(conversation.length).toEqual(1);
-        expect(conversation).toContainText('Conversation Title 1');
-        expect(conversation).toContainText('My Description');
-      });
+  //       expect(conversation.length).toEqual(1);
+  //       expect(conversation).toContainText('Conversation Title 1');
+  //       expect(conversation).toContainText('My Description');
+  //     });
 
-      it('prevents double submit while waiting for ajax response ' +
-        'to complete', function() {
-        var formDisabled;
-        var formHidden;
+  //     it('prevents double submit while waiting for ajax response ' +
+  //       'to complete', function() {
+  //       var formDisabled;
+  //       var formHidden;
 
-        submitForm();
+  //       submitForm();
 
-        formDisabled = submitButton.prop('disabled');
-        formHidden = newConversation.is(':hidden');
+  //       formDisabled = submitButton.prop('disabled');
+  //       formHidden = newConversation.is(':hidden');
 
-        expect(formDisabled).toBe(true);
-        expect(formHidden).toBe(true);
-      });
-    });
-  });
+  //       expect(formDisabled).toBe(true);
+  //       expect(formHidden).toBe(true);
+  //     });
+  //   });
+  // });
 
-  describe('submitting a new comment', function() {
-    var fixtureForConversationShow;
-    var newComment;
-    var submitButton;
+  // describe('submitting a new comment', function() {
+  //   var fixtureForConversationShow;
+  //   var newComment;
+  //   var submitButton;
 
-    beforeEach(function() {
-      fixtureForConversationShow =
-        'conversations_controller-get-show-generate-a-fixture.html';
+  //   beforeEach(function() {
+  //     fixtureForConversationShow =
+  //       'conversations_controller-get-show-generate-a-fixture.html';
 
-      stubAjaxRequest(
-        '/conversations/99',
-        fixtureForConversationShow
-      );
+  //     stubAjaxRequest(
+  //       '/conversations/99',
+  //       fixtureForConversationShow
+  //     );
 
-      $('.new_comment_link').first().click();
-      expect($('#new_comment')).toBeVisible();
-      newComment = $('#new_comment');
-      submitButton = newComment.find('input:submit');
-    });
+  //     $('.new_comment_link').first().click();
+  //     expect($('#new_comment')).toBeVisible();
+  //     newComment = $('#new_comment');
+  //     submitButton = newComment.find('input:submit');
+  //   });
 
-    describe('with invalid inputs', function() {
-      it('displays the errors on the form', function() {
-        var fixtureForInvalidCommentResponse =
-          'comments_controller-post-create-with-invalid-params-' +
-          'generates-a-fixture-with-invalid-params.html';
+  //   describe('with invalid inputs', function() {
+  //     it('displays the errors on the form', function() {
+  //       var fixtureForInvalidCommentResponse =
+  //         'comments_controller-post-create-with-invalid-params-' +
+  //         'generates-a-fixture-with-invalid-params.html';
 
-        stubAjaxRequestWithStatus(
-          '/comments',
-          fixtureForInvalidCommentResponse,
-          422
-        );
+  //       stubAjaxRequestWithStatus(
+  //         '/comments',
+  //         fixtureForInvalidCommentResponse,
+  //         422
+  //       );
 
-        submitButton.click();
-        expect($('.error_explanation_no_border')).toExist();
-      });
-    });
+  //       submitButton.click();
+  //       expect($('.error_explanation_no_border')).toExist();
+  //     });
+  //   });
 
-    describe('with valid inputs', function() {
-      it('displays list of conversations with the new comment', function() {
-        var fixtureForvalidCreateResponse =
-          'conversations_controller-get-index.html';
+  //   describe('with valid inputs', function() {
+  //     it('displays list of conversations with the new comment', function() {
+  //       var fixtureForvalidCreateResponse =
+  //         'conversations_controller-get-index.html';
 
-        $('#comment_content').val('Comment 1');
+  //       $('#comment_content').val('Comment 1');
 
-        stubAjaxRequest(
-          '/comments',
-          fixtureForvalidCreateResponse
-        );
+  //       stubAjaxRequest(
+  //         '/comments',
+  //         fixtureForvalidCreateResponse
+  //       );
 
-        submitButton.click();
-        expect($('.conversation')).toBeInDOM();
-        expect($('.conversation')).toContainText('Comment 1');
-      });
+  //       submitButton.click();
+  //       expect($('.conversation')).toBeInDOM();
+  //       expect($('.conversation')).toContainText('Comment 1');
+  //     });
 
-      it('prevents double submit while waiting for ajax response ' +
-        'to complete', function() {
-        var formDisabled;
-        var formHidden;
+  //     it('prevents double submit while waiting for ajax response ' +
+  //       'to complete', function() {
+  //       var formDisabled;
+  //       var formHidden;
 
-        stubAjaxRequestNoFixture('/comments');
+  //       stubAjaxRequestNoFixture('/comments');
 
-        submitButton.click();
+  //       submitButton.click();
 
-        formDisabled = submitButton.prop('disabled');
-        formHidden = newComment.is(':hidden');
+  //       formDisabled = submitButton.prop('disabled');
+  //       formHidden = newComment.is(':hidden');
 
-        expect(formDisabled).toBe(true);
-        expect(formHidden).toBe(true);
-      });
-    });
+  //       expect(formDisabled).toBe(true);
+  //       expect(formHidden).toBe(true);
+  //     });
+  //   });
 
-    describe('cancelling a new conversation', function() {
-      it('displays the list of conversations', function() {
-        var newCommentCancelButton = $('#new_comment .cancel_btn');
-        var fixtureForvalidCreateResponse =
-          'conversations_controller-get-index.html';
+  //   describe('cancelling a new conversation', function() {
+  //     it('displays the list of conversations', function() {
+  //       var newCommentCancelButton = $('#new_comment .cancel_btn');
+  //       var fixtureForvalidCreateResponse =
+  //         'conversations_controller-get-index.html';
 
-        stubAjaxRequest(
-          '/conversations?node_id_component=patient-safety-composite',
-          fixtureForvalidCreateResponse
-        );
+  //       stubAjaxRequest(
+  //         '/conversations?node_id_component=patient-safety-composite',
+  //         fixtureForvalidCreateResponse
+  //       );
 
-        newCommentCancelButton.click();
-        expect($('.conversation')).toBeInDOM();
-      });
-    });
-  });
+  //       newCommentCancelButton.click();
+  //       expect($('.conversation')).toBeInDOM();
+  //     });
+  //   });
+  // });
 
   function itBehavesLikeDropdownButton() {
     beforeEach(function() {
