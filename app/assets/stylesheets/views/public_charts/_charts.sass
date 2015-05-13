@@ -1,11 +1,21 @@
 .chart_container
   overflow-y: visible
+  position: relative
+
+  & .no_data
+    +centerer
+
+  .detail_chart &
+    height: rem(300)
+
+  .measure_teaser &
+    min-height: rem(100)
+
+    .no_data
+      color: $grey
 
 .detail_chart
   .chart
-    display: block
-    margin: 0 auto
-
     text
       text-anchor: left
 
