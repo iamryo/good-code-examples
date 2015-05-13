@@ -34,6 +34,7 @@ module DimensionSample
       SQL
         .merge(matching_samples)
         .pluck(:value, :name)
+        .sort_by { |item| item.first }.reverse
     end
 
     def self.create_or_update!(attributes)
