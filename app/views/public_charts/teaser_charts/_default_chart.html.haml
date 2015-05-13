@@ -1,8 +1,9 @@
-.chart_container.clearfix
-  .col6-xs.provider_data.text_center.tk-freight-sans-pro
-    = "#{node.data.fetch(:bars, nil).first.try(:fetch, :value)} %"
-  .col6-xs
-    %svg.chart{id: "#{node.title.parameterize}"}
+.chart_container.clearfix.two_column
+  .two_column
+    .col6-xs.provider_data.text_center.tk-freight-sans-pro
+      = "#{node.data.fetch(:bars, nil).first.try(:fetch, :value)} %"
+    .col6-xs
+      %svg.chart{id: "#{node.title.parameterize}"}
 
   :javascript
     $(function() {
