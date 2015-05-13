@@ -11,7 +11,7 @@ RSpec.feature 'User selected hospital' do
       /
       metrics
       payment-programs
-      readmissions-reduction-program
+      hospital-readmissions-reduction-program
     ].join('/')
   end
   let(:new_url) do
@@ -19,7 +19,7 @@ RSpec.feature 'User selected hospital' do
       /
       metrics
       payment-programs
-      readmissions-reduction-program
+      hospital-readmissions-reduction-program
     ].join('/')
   end
   let(:selector) { '.dropdown_items.provider li a' }
