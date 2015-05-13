@@ -79,6 +79,9 @@ var drawChart = function(data, nodeId, isDetailChart) {
       parentElement.parent().addClass(className);
 
       if (d.tooltip.providerName === selectedProviderName) {
+        if (isDetailChart) {
+          $('.adjustment_value').addClass(className);;
+        }
         return className + ' selected';
       }
     });
