@@ -17,6 +17,12 @@
       +vertically_center(90%)
 
 .detail_chart
+  background: $grey_light
+  margin: $buffer_base (-$buffer_small) $buffer_large
+  overflow: hidden
+  +media($tablet_portrait_and_desktop)
+    margin: $buffer_base (-$buffer_large) $buffer_large
+
   .chart
     text
       text-anchor: left
