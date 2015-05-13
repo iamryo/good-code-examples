@@ -4,22 +4,21 @@ var drawChart = function(data, nodeId, isDetailChart) {
   var scaleMin;
   var height;
   var width;
-  var padding;
   var parentElement = $(nodeId).parent()
   var parentWidth = parentElement.width();
   var dataset = data.bars;
   var lineData = data.lines;
+  var maxBarWidth = 30;
+  var padding = 15;
 
   if (isDetailChart) {
     height = 300;
     width = parentWidth;
     scaleMin = d3.min(dataset, function(d) { return d.value - 0.01; });
-    padding = 15;
   } else {
     height = 100;
     width = parentWidth / 6
     scaleMin = 0;
-    padding = 15;
   }
 
   var yScale = d3.scale.linear()
@@ -30,10 +29,30 @@ var drawChart = function(data, nodeId, isDetailChart) {
     .domain(d3.range(dataset.length))
     .rangeRoundBands([0, width], 0.1);
 
+  var barWidth = function() {
+    if (isDetailChart || xScale.rangeBand() > maxBarWidth) {
+      return maxBarWidth;
+    }
+
+    return xScale.rangeBand();
+  };
+
+  var xPosition = function(i) {
+    if (isDetailChart) {
+      var chartMidpoint = width / 2;
+      var datasetMidpoint = dataset.length / 2;
+      var maxBarWidthAndPadding = maxBarWidth + 3;
+      var positionWithIndex = maxBarWidthAndPadding * i;
+      var firstBarPosition = datasetMidpoint * maxBarWidthAndPadding;
+
+      return (chartMidpoint - (firstBarPosition - positionWithIndex));
+    }
+
+    return xScale(i);
+  }
+
   var chart = d3.select(nodeId)
-    .attr('width', function(d) {
-      return width;
-    })
+    .attr('width', width)
     .attr('height', height);
 
   var bar = chart.selectAll('g')
@@ -42,9 +61,9 @@ var drawChart = function(data, nodeId, isDetailChart) {
 
   bar.append('rect')
     .attr('y', function(d) { return height - yScale(d.value); })
-    .attr('x', function(d, i) { return xScale(i); })
+    .attr('x', function(d, i) { return xPosition(i); })
     .attr('height', function(d) { return yScale(d.value); })
-    .attr('width', xScale.rangeBand())
+    .attr('width', barWidth)
     .attr('class', function(d) {
       var selectedProviderName = $('.provider_name').text().trim();
       var className = 'target_not_met';
@@ -57,9 +76,12 @@ var drawChart = function(data, nodeId, isDetailChart) {
         }
       }
 
-      parentElement.parent().addClass(className)
+      parentElement.parent().addClass(className);
 
       if (d.tooltip.providerName === selectedProviderName) {
+        if (isDetailChart) {
+          $('.adjustment_value').addClass(className);;
+        }
         return className + ' selected';
       }
     });
