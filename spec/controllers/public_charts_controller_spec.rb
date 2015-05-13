@@ -97,8 +97,14 @@ RSpec.describe PublicChartsController do
         end
 
         it 'shows sibling measures' do
-          is_expected.to have_css(measures_nav_container, text: 'Heart Failure Readmission')
-          is_expected.to have_css(measures_nav_container, text: 'Acute Myocardial Infarction Readmission')
+          is_expected.to have_css(
+            measures_nav_container,
+            text: 'Heart Failure Readmission',
+          )
+          is_expected.to have_css(
+            measures_nav_container,
+            text: 'Acute Myocardial Infarction Readmission',
+          )
         end
 
         it 'does not show right arrow or link for current node' do
@@ -135,9 +141,17 @@ RSpec.describe PublicChartsController do
         end
 
         it 'shows child nodes' do
-          is_expected.to have_css(measures_nav_container, text: 'Heart Failure Readmission')
-          is_expected.to have_css(measures_nav_container, text: 'Pnuemonia Readmission')
-          is_expected.to have_css(measures_nav_container, text: 'Acute Myocardial Infarction Readmission')
+          is_expected.to have_css(
+            measures_nav_container,
+            text: 'Heart Failure Readmission')
+          is_expected.to have_css(
+            measures_nav_container,
+            text: 'Pnuemonia Readmission',
+          )
+          is_expected.to have_css(
+            measures_nav_container,
+            text: 'Acute Myocardial Infarction Readmission',
+          )
         end
 
         it 'does not show grandparent' do
