@@ -173,6 +173,7 @@ RSpec.describe PublicChartsTree do
               {
                 value: value,
                 uri: "?provider_id=#{provider_id}",
+                cms_rank: nil,
                 tooltip: {
                   providerName: provider_name,
                 },

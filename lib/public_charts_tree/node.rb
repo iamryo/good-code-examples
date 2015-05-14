@@ -48,10 +48,11 @@ class PublicChartsTree
     def bars(providers, selected_provider)
       return [] unless value_dimension_manager.present? # temporary until done
       value_dimension_manager.data(providers, selected_provider)
-      .map do |value, provider_name, provider_id|
+      .map do |value, provider_name, provider_id, cms_rank|
         {
           value: value,
           uri: "?provider_id=#{provider_id}",
+          cms_rank: cms_rank,
           tooltip: {
             providerName: provider_name,
           },

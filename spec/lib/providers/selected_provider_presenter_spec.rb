@@ -5,7 +5,7 @@ require 'providers/selected_provider_presenter'
 require 'dimension_sample_managers/graph_data_points/socrata/provider_aggregate'
 
 RSpec.describe Providers::SelectedProviderPresenter do
-  subject { described_class.new(provider, node) }
+  subject { described_class.new(provider, node, teaser_node) }
   let(:provider) { create :provider }
   let(:public_charts_tree) do
     PublicChartsTree.new do
@@ -17,6 +17,13 @@ RSpec.describe Providers::SelectedProviderPresenter do
     end
   end
   let(:node) do
+    public_charts_tree.find_node(
+      node_id,
+      providers: selected_provider,
+      selected_provider: selected_provider,
+    )
+  end
+  let(:teaser_node) do
     public_charts_tree.find_node(
       node_id,
       providers: selected_provider,

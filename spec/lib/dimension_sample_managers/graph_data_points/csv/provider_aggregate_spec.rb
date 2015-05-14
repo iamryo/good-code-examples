@@ -26,8 +26,8 @@ RSpec.describe DimensionSampleManagers::GraphDataPoints::Csv::
     let(:provider_2_id) { Provider.find_by_socrata_provider_id('010005').id }
     let(:expected_data) do
       [
-        ['0.9968', 'Hospital010001', provider_1_id, '010001'],
-        ['0.9929', 'Hospital010005', provider_2_id, '010005'],
+        ['0.9968', 'Hospital010001', provider_1_id, '1/2', '010001'],
+        ['0.9929', 'Hospital010005', provider_2_id, '1/2', '010005'],
       ]
     end
     let(:selected_provider_relation) do

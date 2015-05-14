@@ -9,7 +9,15 @@ RSpec.describe DimensionSampleManagers::GraphDataPoints::Socrata::Measure do
     let(:vcr_directory) do
       'Socrata_DimensionSampleManagers_GraphDataPoints_Measure'
     end
+    let(:expected_data) do
+      [
+        ['0.98', 'Hospital010087', provider_2_id, cms_rank, '010087'],
+        ['1.06', 'Hospital010103', provider_1_id, cms_rank, '010103'],
+      ]
+    end
     let(:data_param) { [relevant_providers, selected_provider] }
+    let(:cms_rank) { '1/2' }
+
     context 'lower is better' do
       let(:dataset_id) { '7xux-kdpw' }
       let(:options) { { measure_id: :PSI_90_SAFETY } }

@@ -5,16 +5,16 @@ module Providers
     include ActionView::Helpers::NumberHelper
     attr_accessor :provider, :node
 
-    delegate :data, to: :node
     delegate :socrata_provider_id, to: :provider
 
-    def initialize(provider, node)
+    def initialize(provider, node, teaser_node)
       @provider = provider
       @node = node
+      @teaser_node = teaser_node
     end
 
     def value
-      data.fetch(:bars, nil).first.try(:fetch, :value) || 'n/a'
+      bars(teaser_node_data).try(:fetch, :value) || 'n/a'
     end
 
     def adjustment_factor
@@ -38,6 +38,24 @@ module Providers
       else
         'No data available'
       end
+    end
+
+    def cms_rank
+      bars(node_data).try(:fetch, :cms_rank) || 'n/a'
+    end
+
+    private
+
+    def bars(data)
+      data.fetch(:bars, nil).first
+    end
+
+    def node_data
+      @node.data
+    end
+
+    def teaser_node_data
+      @teaser_node.data
     end
   end
 end
