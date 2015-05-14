@@ -10,7 +10,8 @@
 
   :javascript
     $(function() {
-      var data = #{node.data.to_json}
-      var node_id = "##{node.title.parameterize}"
-      drawChart(data, node_id, false);
+      var data = #{node.data.to_json};
+      var node_id = "##{node.title.parameterize}";
+      var node_type = "#{node.type}";
+      drawChart(data, node_id, false, node_type);
     });
