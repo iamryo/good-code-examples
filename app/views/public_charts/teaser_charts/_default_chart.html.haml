@@ -1,7 +1,10 @@
 .chart_container.clearfix.two_column
   .two_column
-    .col6-xs.provider_data.text_center.tk-freight-sans-pro
+    .col6-xs.provider_data.tk-freight-sans-pro
       = "#{node.data.fetch(:bars, nil).first.try(:fetch, :value)} %"
+      %h5.tk-freight-sans-pro.text_weight_light
+        of patients
+        %br were readmitted
     .col6-xs
       %svg.chart{id: "#{node.title.parameterize}"}
 
