@@ -8,6 +8,7 @@ var drawChart = function(data, nodeId, isDetailChart, nodeType) {
   var yScaleDomain;
   var targetLineLabel;
   var targetValue;
+  var showPercent;
   var parentElement = $(nodeId).parent();
   var parentWidth = parentElement.width();
   var dataset = data.bars;
@@ -20,6 +21,11 @@ var drawChart = function(data, nodeId, isDetailChart, nodeType) {
   if (isDetailChart) {
     height = 300 ;
     width = parentWidth;
+    if (nodeIsMetricModule) {
+
+    } else {
+
+    }
   } else {
     height = 100;
     width = parentWidth / 6;
@@ -29,10 +35,12 @@ var drawChart = function(data, nodeId, isDetailChart, nodeType) {
     targetLineLabel = 'Target';
     targetValue = 1;
     scaleMin = 0.97; // minimum adjustment factor
+    showPercent = '';
   } else {
-    targetLineLabel = 'National Average';
+    targetLineLabel = 'National Avg';
     targetValue = 50;
     scaleMin = 0;
+    showPercent = '%';
   }
 
   if (dataIsAvailable) {
@@ -143,7 +151,7 @@ var drawChart = function(data, nodeId, isDetailChart, nodeType) {
 
     var text = chart.append('text')
       .data([lineData[i]])
-      .text(function(d) { return d.label + ': ' + d.value + '%'; })
+      .text(function(d) { return d.label + ': ' + d.value + showPercent; })
       .attr('x', textXPosition)
       .attr('y', function(d) { return height - yScale(d.value) + 4; })
       .attr('class', function(d) { return className; });
