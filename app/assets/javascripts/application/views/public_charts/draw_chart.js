@@ -92,7 +92,10 @@ var drawChart = function(data, nodeId, isDetailChart, nodeType) {
     .data(dataset)
     .enter().append('g');
 
-  bar.append('rect')
+  var link = bar.append('svg:a')
+    .attr('xlink:href', function(d) { return d.uri; });
+
+  link.append('rect')
     .attr('x', function(d, i) { return xPosition(i); })
     .attr('y', function(d) { return height - yScale(d.value); })
     .attr('height', function(d) { return yScale(d.value); })

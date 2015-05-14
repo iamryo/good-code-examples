@@ -112,11 +112,13 @@ RSpec.describe DimensionSample::Measure do
           [
             relevant_dimension_sample_1_value,
             relevant_provider_1.name,
+            relevant_provider_1.id,
             relevant_provider_1.socrata_provider_id,
           ],
           [
             relevant_dimension_sample_2_value,
             relevant_provider_2.name,
+            relevant_provider_2.id,
             relevant_provider_2.socrata_provider_id,
           ],
         ]
