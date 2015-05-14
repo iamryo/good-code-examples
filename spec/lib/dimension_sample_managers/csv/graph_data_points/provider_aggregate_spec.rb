@@ -24,11 +24,14 @@ RSpec.describe DimensionSampleManagers::Csv::GraphDataPoints::
     end
     let(:expected_data) do
       [
-        ['0.9968', 'Hospital010001'],
-        ['0.9929', 'Hospital010005'],
+        ['0.9968', 'Hospital010001', '010001'],
+        ['0.9929', 'Hospital010005', '010005'],
       ]
     end
-    let(:data_param) { relevant_providers }
+    let(:selected_provider_relation) do
+      Provider.where(socrata_provider_id: provider_ids.first)
+    end
+    let(:data_param) { [relevant_providers, selected_provider_relation] }
     let(:dataset_id) { 'fy_2015_readmissions_adjustment_factor' }
     let(:value_column_name) do
       'corrected_fy_2015_readmissions_adjustment_factor'

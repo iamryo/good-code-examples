@@ -3,7 +3,7 @@ class PublicChartsTree
   # Delegates methods to a PublicChartsTree InternalNode, for use outside of
   # PublicChartsTree. Prevents us from unnecessarily exposing InternalNode
   # methods outside of PublicChartsTree.
-  Node = Struct.new(:internal_node, :providers) do
+  Node = Struct.new(:internal_node, :providers, :selected_provider) do
     delegate :id,
              :search,
              :parent_is_root?,
@@ -19,8 +19,8 @@ class PublicChartsTree
              :id_components,
              to: :internal_node
 
-    def initialize(internal_node, providers:)
-      super(internal_node, providers)
+    def initialize(internal_node, providers:, selected_provider:)
+      super(internal_node, providers, selected_provider)
     end
 
     def breadcrumbs
@@ -29,21 +29,26 @@ class PublicChartsTree
 
     def children
       internal_node.children.map do |child_internal_node|
-        Node.new(child_internal_node, providers: providers)
+        Node.new(
+          child_internal_node,
+          providers: providers,
+          selected_provider: selected_provider,
+        )
       end
     end
 
     def data
       {
-        bars: bars(providers).sort_by { |h| h.fetch(:value) }.reverse,
+        bars: bars(providers, selected_provider),
         title: title,
         lines: lines.push(default_lines),
       }
     end
 
-    def bars(providers)
+    def bars(providers, selected_provider)
       return [] unless value_dimension_manager.present? # temporary until done
-      value_dimension_manager.data(providers).map do |value, provider_name|
+      value_dimension_manager.data(providers, selected_provider)
+      .map do |value, provider_name, _socrata_provider_id|
         {
           value: value,
           tooltip: {
@@ -65,7 +70,11 @@ class PublicChartsTree
     end
 
     def parent
-      Node.new(internal_node.parent, providers: providers)
+      Node.new(
+        internal_node.parent,
+        providers: providers,
+        selected_provider: selected_provider,
+      )
     end
 
     private :breadcrumb,

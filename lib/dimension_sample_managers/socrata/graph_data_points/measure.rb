@@ -77,10 +77,11 @@ module DimensionSampleManagers
           @measure_id = measure_id
         end
 
-        def data(providers)
+        def data(providers, selected_provider)
           DimensionSample::Measure.data(
             measure_id: @measure_id,
             providers: providers,
+            selected_provider: selected_provider,
           )
         end
 

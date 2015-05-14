@@ -11,6 +11,7 @@
 #
 
 require './app/models/provider'
+require './lib/providers/relevant_providers'
 require_relative '../dimension_sample'
 
 module DimensionSample
@@ -21,15 +22,21 @@ module DimensionSample
     validates :measure_id, presence: true
     validates :value, presence: true
 
-    def self.data(measure_id:, providers:)
+    def self.data(measure_id:, providers:, selected_provider:)
       matching_samples = where(measure_id: measure_id)
-      providers.joins(<<-SQL)
+      relevant_providers = providers.joins(<<-SQL)
         LEFT OUTER JOIN dimension_sample_measures
         ON dimension_sample_measures.socrata_provider_id =
         providers.socrata_provider_id
       SQL
-        .merge(matching_samples)
-        .pluck(:value, :name)
+                           .merge(matching_samples)
+                           .pluck(:value, :name, :socrata_provider_id)
+                           .sort_by(&:first).reverse
+
+      RelevantProviders.call(
+        relevant_providers,
+        selected_provider.pluck(:socrata_provider_id).first,
+      )
     end
 
     def self.create_or_update!(attributes)

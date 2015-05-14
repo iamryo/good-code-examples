@@ -104,6 +104,10 @@ RSpec.describe DimensionSample::ProviderAggregate do
 
       let(:providers) { Provider.all }
 
+      let(:selected_provider) do
+        Provider.where(socrata_provider_id: relevant_provider_id_1)
+      end
+
       def create_dimension_sample(**custom_attributes)
         create(
           :dimension_sample_provider_aggregate,
@@ -116,6 +120,7 @@ RSpec.describe DimensionSample::ProviderAggregate do
           column_name: :weighted_outcome_domain_score,
           dataset_id: 'ypbt-wvdk',
           providers: providers,
+          selected_provider: selected_provider,
         )
       end
 
@@ -124,10 +129,12 @@ RSpec.describe DimensionSample::ProviderAggregate do
           [
             relevant_dimension_sample_1_value,
             relevant_provider_1.name,
+            relevant_provider_1.socrata_provider_id,
           ],
           [
             relevant_dimension_sample_2_value,
             relevant_provider_2.name,
+            relevant_provider_2.socrata_provider_id,
           ],
         ]
       end

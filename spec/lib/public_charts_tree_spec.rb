@@ -5,6 +5,7 @@ RSpec.describe PublicChartsTree do
   subject { find(node_id) }
 
   let(:providers) { double('providers relation') }
+  let(:selected_provider) { double('providers relation') }
   let(:tree) do
     described_class.new do
       measure_source 'Payment Programs' do
@@ -74,7 +75,11 @@ RSpec.describe PublicChartsTree do
   end
 
   def find(node_id)
-    tree.find_node(node_id, providers: providers)
+    tree.find_node(
+      node_id,
+      providers: providers,
+      selected_provider: selected_provider,
+    )
   end
 
   before do
@@ -202,7 +207,8 @@ RSpec.describe PublicChartsTree do
       let(:national_average_value) { ['11.9'] }
 
       before do
-        allow(value_dimension_sample_manager).to receive(:data).with(providers)
+        allow(value_dimension_sample_manager).to receive(:data)
+          .with(providers, selected_provider)
           .and_return(values_and_provider_names)
         allow(mort_30_ami_mdm).to receive(:data)
           .with('MORT_30_AMI')

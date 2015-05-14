@@ -13,10 +13,11 @@ class PublicChartsTree
     DefineNode.call(RootNode, @internal_node_map, definition)
   end
 
-  def find_node(node_id, providers:)
+  def find_node(node_id, providers:, selected_provider:)
     Node.new(
       find_internal_node(node_id),
       providers: providers,
+      selected_provider: selected_provider,
     )
   rescue KeyError
     raise PublicChartNotFoundError

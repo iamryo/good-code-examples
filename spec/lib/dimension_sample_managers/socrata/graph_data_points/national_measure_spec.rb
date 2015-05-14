@@ -23,6 +23,10 @@ RSpec.describe DimensionSampleManagers::Socrata::GraphDataPoints::
       end
       let(:data_param) { measure_id }
       let(:expected_data) { ['17.8'] }
+
+      def data
+        subject.data(data_param)
+      end
     end
   end
 end
