@@ -7,9 +7,9 @@ module DimensionSampleManagers
     module Csv
       # Satisfies the DimensionSampleManager interface to retrieve and refresh
       # data from a CSV file
-      class ProviderAggregate
+      class ProviderAggregateReadjustment
         MODEL_CLASS = DimensionSample::ProviderAggregate
-        FILE_PATH = './lib/assets/files/fy_2015_adjustment_factor.csv'
+        FILE_PATH = './lib/assets/files/fy_2013_total_reimbursement_amount.csv'
         attr_reader :value_column_name, :dataset_id
 
         def initialize(value_column_name:, dataset_id:)
