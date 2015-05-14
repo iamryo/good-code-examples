@@ -21,11 +21,6 @@ var drawChart = function(data, nodeId, isDetailChart, nodeType) {
   if (isDetailChart) {
     height = 300 ;
     width = parentWidth;
-    if (nodeIsMetricModule) {
-
-    } else {
-
-    }
   } else {
     height = 100;
     width = parentWidth / 6;
