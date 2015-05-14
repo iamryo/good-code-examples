@@ -9,7 +9,7 @@ en:
     failure:
       already_authenticated: "You are already signed in."
       inactive: "Your account is not activated yet."
-      invalid: "Invalid %{authentication_keys} or password. You have one more try before we reset your login."
+      # invalid: "Invalid %{authentication_keys} or password. You have one more try before we reset your login."
       locked: "Your account is locked."
       last_attempt: "Invalid %{authentication_keys} or password."
       not_found_in_database: "Invalid %{authentication_keys} or password. Please make sure you are using a hospital email."
