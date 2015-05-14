@@ -7,10 +7,12 @@ RSpec.shared_context 'dimension sample manager' do
   let(:selected_provider) do
     Provider.where(socrata_provider_id: provider_ids.first)
   end
+  let(:provider_1_id) { Provider.find_by_socrata_provider_id('010103').id }
+  let(:provider_2_id) { Provider.find_by_socrata_provider_id('010087').id }
   let(:expected_data) do
     [
-      ['1.06', 'Hospital010103', '010103'],
-      ['0.98', 'Hospital010087', '010087'],
+      ['1.06', 'Hospital010103', provider_1_id, '010103'],
+      ['0.98', 'Hospital010087', provider_2_id, '010087'],
     ]
   end
   let(:provider_ids) do

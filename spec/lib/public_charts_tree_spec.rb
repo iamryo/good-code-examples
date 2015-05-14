@@ -168,14 +168,16 @@ RSpec.describe PublicChartsTree do
       end
       let(:expected_data) do
         {
-          bars: values_and_provider_names.map do |value, provider_name|
-            {
-              value: value,
-              tooltip: {
-                providerName: provider_name,
-              },
-            }
-          end,
+          bars: values_and_provider_names
+            .map do |value, provider_name, provider_id|
+              {
+                value: value,
+                uri: "?provider_id=#{provider_id}",
+                tooltip: {
+                  providerName: provider_name,
+                },
+              }
+            end,
           title: subject.title,
           lines: line_data,
         }

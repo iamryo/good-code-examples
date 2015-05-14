@@ -34,7 +34,7 @@ module DimensionSample
         providers.socrata_provider_id
       SQL
                            .merge(matching_samples)
-                           .pluck(:value, :name, :socrata_provider_id)
+                           .pluck(:value, :name, :id, :socrata_provider_id)
                            .sort_by(&:first).reverse
 
       RelevantProviders.call(
