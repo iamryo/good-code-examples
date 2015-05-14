@@ -4,10 +4,13 @@ RSpec.shared_context 'dimension sample manager' do
   subject { described_class.new(options) }
 
   let(:relevant_providers) { Provider.where(socrata_provider_id: provider_ids) }
+  let(:selected_provider) do
+    Provider.where(socrata_provider_id: provider_ids.first)
+  end
   let(:expected_data) do
     [
-      ['0.98', 'Hospital010087'],
-      ['1.06', 'Hospital010103'],
+      ['1.06', 'Hospital010103', '010103'],
+      ['0.98', 'Hospital010087', '010087'],
     ]
   end
   let(:provider_ids) do
@@ -32,7 +35,7 @@ RSpec.shared_context 'dimension sample manager' do
   end
 
   def data
-    subject.data(data_param)
+    subject.data(data_param.first, data_param.last)
   end
 
   def import

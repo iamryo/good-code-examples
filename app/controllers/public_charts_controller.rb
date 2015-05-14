@@ -6,9 +6,15 @@ class PublicChartsController < ApplicationController
     persist_selected_provider
     persist_selected_context
 
-    @node = find_node(providers: providers_relation)
+    @node = find_node(
+      providers: providers_relation,
+      selected_provider: selected_provider_relation,
+    )
 
-    @teaser_node = find_node(providers: selected_provider_relation)
+    @teaser_node = find_node(
+      providers: selected_provider_relation,
+      selected_provider: selected_provider_relation,
+    )
 
     @provider_compare_presenter = Providers::ProviderComparePresenter.new(
       selected_provider,
@@ -33,8 +39,7 @@ class PublicChartsController < ApplicationController
   private
 
   def providers_relation
-    selected_provider
-      .providers_relation(current_user.selected_context).limit(50)
+    selected_provider.providers_relation(current_user.selected_context)
   end
 
   def selected_provider_relation
@@ -63,17 +68,20 @@ class PublicChartsController < ApplicationController
     current_user.selected_provider
   end
 
-  def find_node(providers:)
+  def find_node(providers:, selected_provider:)
     PUBLIC_CHARTS_TREE.find_node(
       params.fetch(:id),
       providers: providers,
+      selected_provider: selected_provider,
     )
   end
 
   def selected_provider_presenter
     Providers::SelectedProviderPresenter.new(
       selected_provider,
-      find_node(providers: selected_provider_relation),
+      find_node(
+        providers: selected_provider_relation,
+        selected_provider: selected_provider_relation),
     )
   end
 end

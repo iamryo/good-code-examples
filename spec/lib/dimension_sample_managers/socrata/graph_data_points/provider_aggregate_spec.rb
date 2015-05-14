@@ -17,7 +17,7 @@ RSpec.describe DimensionSampleManagers::Socrata::GraphDataPoints::
         value_column_name: value_column_name,
       }
     end
-    let(:data_param) { relevant_providers }
+    let(:data_param) { [relevant_providers, selected_provider] }
 
     it_behaves_like 'a dimension sample manager'
     it_behaves_like 'a DSM with national best performer value'

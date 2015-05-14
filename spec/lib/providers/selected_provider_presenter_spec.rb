@@ -20,6 +20,7 @@ RSpec.describe Providers::SelectedProviderPresenter do
     public_charts_tree.find_node(
       node_id,
       providers: selected_provider,
+      selected_provider: selected_provider,
     )
   end
   let(:node_id) do
@@ -38,6 +39,14 @@ RSpec.describe Providers::SelectedProviderPresenter do
       ],
     ]
   end
+  let(:bars) do
+    {
+      value: value,
+      tooltip: {
+        providerName: provider.name,
+      },
+    }
+  end
 
   def selected_provider
     Provider.where(
@@ -49,7 +58,7 @@ RSpec.describe Providers::SelectedProviderPresenter do
     stub_const('VALUE_DIMENSION_SAMPLE_MANAGER', value_dimension_sample_manager)
     stub_const('PUBLIC_CHARTS_TREE', public_charts_tree)
     allow(value_dimension_sample_manager).to receive(:data)
-      .with(selected_provider).and_return(dspa_data)
+      .with(selected_provider, selected_provider).and_return(dspa_data)
   end
 
   describe '#value' do

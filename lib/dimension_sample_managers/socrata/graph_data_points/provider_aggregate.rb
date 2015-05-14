@@ -17,11 +17,12 @@ module DimensionSampleManagers
           @dataset_id = dataset_id
         end
 
-        def data(providers)
+        def data(providers, selected_provider)
           DimensionSample::ProviderAggregate.data(
             base_options.merge(
               column_name: value_column_name,
               providers: providers,
+              selected_provider: selected_provider,
             ),
           )
         end
