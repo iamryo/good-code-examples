@@ -9,12 +9,10 @@ RSpec.describe DimensionSampleManagers::GraphDataPoints::NationalAverage do
     }
   end
   let(:expected_data) do
-    [
-      {
-        value: '14.9',
-        label: 'National Average',
-      },
-    ]
+    {
+      value: '14.9',
+      label: 'Average',
+    }
   end
   subject { described_class.new(id) }
   before do

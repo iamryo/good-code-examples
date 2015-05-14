@@ -32,7 +32,7 @@ RSpec.describe PublicChartsTree do
   end
   let(:line_dimension_sample_manager) do
     instance_double(
-      DimensionSampleManagers::GraphDataPoints::NationalAverage,
+      DimensionSampleManagers::GraphDataPoints::Lines,
     )
   end
   let(:measures) do
@@ -186,10 +186,11 @@ RSpec.describe PublicChartsTree do
           "#{line_dimension_sample_manager.class}::ID_TO_AVG",
           id_to_avg,
         )
-        allow(DimensionSampleManagers::GraphDataPoints::NationalAverage)
-          .to receive(:new).with(:MORT_30_AMI)
+        allow(DimensionSampleManagers::GraphDataPoints::Lines)
+          .to receive(:new).with(id: :MORT_30_AMI, type: :measure)
           .and_return(line_dimension_sample_manager)
-        allow(value_dimension_sample_manager).to receive(:data).with(providers)
+        allow(value_dimension_sample_manager).to receive(:data)
+          .with(providers, selected_provider)
           .and_return(values_and_provider_names)
         allow(line_dimension_sample_manager).to receive(:data)
           .and_return(line_data)

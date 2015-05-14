@@ -12,7 +12,27 @@ var drawChart = function(data, nodeId, isDetailChart) {
   var lineData = data.lines;
   var maxBarWidth = 30;
   var padding = 15;
-  var dataIsAvailable = dataset.length;
+
+  var isDataAvailable = function() {
+    return dataset.length > 0 && lineData.length > 0;
+  };
+
+  var doNotDisplayChart = function() {
+    var targetDiv;
+    var action;
+    var message = '<h4 class="no_data no_margin vertical_padding_small">' +
+                  'Data not available for selected provider</h4>';
+
+    if (isDetailChart) {
+      targetDiv = parentElement;
+      targetDiv.prepend(message);
+    } else {
+      targetDiv = parentElement.siblings('.provider_data');
+      targetDiv.html(message);
+    }
+
+    targetDiv.addClass('tk-freight-sans-pro text_center');
+  };
 
   if (isDetailChart) {
     height = 300;
@@ -24,13 +44,11 @@ var drawChart = function(data, nodeId, isDetailChart) {
     scaleMin = 0;
   }
 
-  if (dataIsAvailable) {
+  if (!isDataAvailable) {
+    return doNotDisplayChart();
+  } else {
     xScaleDomain = d3.range(dataset.length);
     yScaleDomain = [scaleMin, d3.max(dataset, function(d) { return d.value; })];
-  } else {
-    scaleMin = 0;
-    xScaleDomain = 11; // arbitrary value
-    yScaleDomain = [scaleMin, lineData[0].value];
   }
 
   var yScale = d3.scale.linear()
@@ -125,7 +143,7 @@ var drawChart = function(data, nodeId, isDetailChart) {
 
     var text = chart.append('text')
       .data([lineData[i]])
-      .text(function(d) { return d.label + ': ' + d.value; })
+      .text(function(d) { return d.label + ': ' + d.value + '%'; })
       .attr('x', textXPosition)
       .attr('y', function(d) { return height - yScale(d.value) + 4; })
       .attr('class', function(d) { return className; });
@@ -143,7 +161,7 @@ var drawChart = function(data, nodeId, isDetailChart) {
     }
   }
 
-  if (!dataIsAvailable) {
+  if (!isDataAvailable) {
     var targetDiv;
     var action;
     var message = '<h4 class="no_data no_margin vertical_padding_small">' +

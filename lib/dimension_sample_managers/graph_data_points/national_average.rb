@@ -33,12 +33,10 @@ module DimensionSampleManagers
       end
 
       def data
-        [
-          {
-            value: value,
-            label: label,
-          },
-        ]
+        {
+          value: value,
+          label: label,
+        }
       end
 
       private
@@ -48,7 +46,7 @@ module DimensionSampleManagers
       end
 
       def label
-        'National Average'
+        'Average'
       end
     end
   end

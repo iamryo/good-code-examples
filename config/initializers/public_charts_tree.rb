@@ -32,8 +32,9 @@ PUBLIC_CHARTS_TREE = PublicChartsTree.new do
         value_column_name: 'corrected_fy_2015_readmissions_adjustment_factor',
         dataset_id: 'fy_2015_readmissions_adjustment_factor',
       )
-      line DimensionSampleManagers::GraphDataPoints::NationalAverage.new(
-        :READMISSIONS_REDUCTION_PROGRAM,
+      line DimensionSampleManagers::GraphDataPoints::Lines.new(
+        id: :READMISSIONS_REDUCTION_PROGRAM,
+        type: :metric_module,
       )
       measures :READM_30_AMI,
                :READM_30_HF,

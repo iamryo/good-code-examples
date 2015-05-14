@@ -47,6 +47,13 @@ module DimensionSampleManagers
           '7xux-kdpw' => :minimum,
           '77hc-ibv8' => :minimum,
         }
+
+        DATASET_TO_GRAPH_LINES = {
+          '7xux-kdpw' => [
+            :national_best_performer_value,
+            :national_average,
+          ],
+        }
         MODEL_CLASS = DimensionSample::Measure
 
         # .
@@ -100,6 +107,10 @@ module DimensionSampleManagers
 
         def national_best_performer_value
           MODEL_CLASS.where(base_options).public_send(best_value_method, :value)
+        end
+
+        def graph_line_values
+          DATASET_TO_GRAPH_LINES.fetch(dataset_id)
         end
 
         private

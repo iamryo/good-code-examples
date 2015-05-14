@@ -7,8 +7,7 @@ require_relative 'domain'
 require_relative 'category'
 require_relative 'measure'
 require 'dimension_sample_managers/graph_data_points/socrata/measure'
-require 'dimension_sample_managers/graph_data_points/national_average'
-
+require 'dimension_sample_managers/graph_data_points/lines'
 # .
 class PublicChartsTree
   # A developer-friendly way to build the static chart tree for public data.
@@ -68,7 +67,7 @@ class PublicChartsTree
           value GRAPH_DATA_POINTS::Socrata::Measure.new(
             measure_id: measure_id,
           )
-          line GRAPH_DATA_POINTS::NationalAverage.new(measure_id)
+          line GRAPH_DATA_POINTS::Lines.new(id: measure_id, type: :measure)
         end
       end
     end
