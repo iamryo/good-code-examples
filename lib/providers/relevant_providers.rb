@@ -10,7 +10,7 @@ RelevantProviders = Struct.new(:providers, :selected_provider_socrata_id) do
   private
 
   def slice_providers
-    providers.slice(starting_index, 30)
+    providers.slice(starting_index, 70)
   end
 
   def selected_provider_index
@@ -20,7 +20,7 @@ RelevantProviders = Struct.new(:providers, :selected_provider_socrata_id) do
   end
 
   def starting_index
-    return 0 if !selected_provider_index || selected_provider_index - 15 < 0
-    selected_provider_index - 15
+    return 0 if !selected_provider_index || selected_provider_index - 35 < 0
+    selected_provider_index - 35
   end
 end
