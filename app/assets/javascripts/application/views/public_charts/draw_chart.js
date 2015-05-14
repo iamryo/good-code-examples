@@ -1,55 +1,63 @@
 'use strict';
 
-var drawChart = function(data, nodeId, isDetailChart) {
+var drawChart = function(data, nodeId, isDetailChart, nodeType) {
   var scaleMin;
   var height;
   var width;
   var xScaleDomain;
   var yScaleDomain;
+  var targetLineLabel;
+  var targetValue;
+  var showPercent;
   var parentElement = $(nodeId).parent();
   var parentWidth = parentElement.width();
   var dataset = data.bars;
   var lineData = data.lines;
   var maxBarWidth = 30;
   var padding = 15;
-
-  var isDataAvailable = function() {
-    return dataset.length > 0 && lineData.length > 0;
-  };
-
-  var doNotDisplayChart = function() {
-    var targetDiv;
-    var action;
-    var message = '<h4 class="no_data no_margin vertical_padding_small">' +
-                  'Data not available for selected provider</h4>';
-
-    if (isDetailChart) {
-      targetDiv = parentElement;
-      targetDiv.prepend(message);
-    } else {
-      targetDiv = parentElement.siblings('.provider_data');
-      targetDiv.html(message);
-    }
-
-    targetDiv.addClass('tk-freight-sans-pro text_center');
-  };
+  var dataIsAvailable = dataset.length;
+  var nodeIsMetricModule = nodeType === 'metric_module';
 
   if (isDetailChart) {
-    height = 300;
+    height = 300 ;
     width = parentWidth;
-    scaleMin = d3.min(dataset, function(d) { return d.value - 0.01; });
+    if (nodeIsMetricModule) {
+
+    } else {
+
+    }
   } else {
     height = 100;
     width = parentWidth / 6;
-    scaleMin = 0;
   }
 
-  if (!isDataAvailable) {
-    return doNotDisplayChart();
+  if (nodeIsMetricModule) {
+    targetLineLabel = 'Target';
+    targetValue = 1;
+    scaleMin = 0.97; // minimum adjustment factor
+    showPercent = '';
   } else {
-    xScaleDomain = d3.range(dataset.length);
-    yScaleDomain = [scaleMin, d3.max(dataset, function(d) { return d.value; })];
+    targetLineLabel = 'National Avg';
+    targetValue = 50;
+    scaleMin = 0;
+    showPercent = '%';
   }
+
+  if (dataIsAvailable) {
+    xScaleDomain = d3.range(dataset.length);
+    yScaleDomain = [scaleMin, targetValue];
+  } else {
+    scaleMin = 0;
+    xScaleDomain = 11; // arbitrary value
+    yScaleDomain = [scaleMin, targetValue];
+  }
+
+  var targetMet = function(dataValue, targetValue) {
+    if (nodeIsMetricModule) {
+      return dataValue > targetValue;
+    }
+    return dataValue < targetValue;
+  };
 
   var yScale = d3.scale.linear()
     .domain(yScaleDomain)
@@ -60,7 +68,7 @@ var drawChart = function(data, nodeId, isDetailChart) {
     .rangeRoundBands([0, width], 0.1);
 
   var barWidth = function() {
-    if (isDetailChart || xScale.rangeBand() > maxBarWidth) {
+    if (isDetailChart && xScale.rangeBand() > maxBarWidth) {
       return maxBarWidth;
     }
 
@@ -71,7 +79,7 @@ var drawChart = function(data, nodeId, isDetailChart) {
     if (isDetailChart) {
       var chartMidpoint = width / 2;
       var datasetMidpoint = dataset.length / 2;
-      var maxBarWidthAndPadding = maxBarWidth + 3;
+      var maxBarWidthAndPadding = barWidth() + 3;
       var positionWithIndex = maxBarWidthAndPadding * i;
       var firstBarPosition = datasetMidpoint * maxBarWidthAndPadding;
 
@@ -99,8 +107,8 @@ var drawChart = function(data, nodeId, isDetailChart) {
       var className = 'target_not_met';
 
       for (var i = 0; i < lineData.length; i++) {
-        if (lineData[i].label === 'Target') {
-          if (d.value >= lineData[i].value) {
+        if (lineData[i].label === targetLineLabel) {
+          if (targetMet(d.value, lineData[i].value)) {
             className = 'target_met';
           }
         }
@@ -143,7 +151,7 @@ var drawChart = function(data, nodeId, isDetailChart) {
 
     var text = chart.append('text')
       .data([lineData[i]])
-      .text(function(d) { return d.label + ': ' + d.value + '%'; })
+      .text(function(d) { return d.label + ': ' + d.value + showPercent; })
       .attr('x', textXPosition)
       .attr('y', function(d) { return height - yScale(d.value) + 4; })
       .attr('class', function(d) { return className; });
@@ -161,7 +169,7 @@ var drawChart = function(data, nodeId, isDetailChart) {
     }
   }
 
-  if (!isDataAvailable) {
+  if (!dataIsAvailable) {
     var targetDiv;
     var action;
     var message = '<h4 class="no_data no_margin vertical_padding_small">' +

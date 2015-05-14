@@ -9,7 +9,6 @@
       +centerer
 
   .measure_teaser &
-    min-height: rem(100)
 
     .no_data
       color: $chart_red
@@ -42,17 +41,19 @@
 
   .chart
     overflow: visible
-    margin-top: $buffer_base
 
     line
-      &.target,
-      &.national-average
+      &.best,
+      &.national-avg
         stroke: $white
 
     text
-      text-anchor: right
       fill: $white
+      text-anchor: right
       @extend .text_weight_light
+
+      &.best
+        +transform(translateY(rem(12)))
 
 .chart
   rect
@@ -68,9 +69,10 @@
   line
     stroke-width: 1px
 
-    &.target
+    &.target,
+    &.best
       stroke: #333333
 
-    &.national-average
+    &.national-avg
       stroke: #333333
       stroke-dasharray: 3, 3

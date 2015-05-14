@@ -46,7 +46,7 @@ module DimensionSampleManagers
       end
 
       def label
-        'Average'
+        'National Avg'
       end
     end
   end
