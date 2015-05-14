@@ -10,6 +10,7 @@ RSpec.describe DimensionSampleManagers::GraphDataPoints::Socrata::
     let(:cassette_name) do
       'socrata_dimension_sample_managers_graph_data_points_provider_aggregate'
     end
+    let(:cms_rank) { '2/2' }
     let(:dataset_id) { 'rrqw-56er' }
     let(:options) do
       {

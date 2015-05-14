@@ -79,9 +79,8 @@ class PublicChartsController < ApplicationController
   def selected_provider_presenter
     Providers::SelectedProviderPresenter.new(
       selected_provider,
-      find_node(
-        providers: selected_provider_relation,
-        selected_provider: selected_provider_relation),
+      @node,
+      @teaser_node,
     )
   end
 end
