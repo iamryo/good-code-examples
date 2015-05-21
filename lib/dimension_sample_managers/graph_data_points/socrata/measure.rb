@@ -53,6 +53,9 @@ module DimensionSampleManagers
             :national_best_performer_value,
             :national_average,
           ],
+          '99ue-w85f' => [
+            :national_average,
+          ],
         }
         MODEL_CLASS = DimensionSample::Measure
 
