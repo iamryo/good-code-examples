@@ -45,33 +45,17 @@ PUBLIC_CHARTS_TREE = PublicChartsTree.new do
     if Flip.on? :hcahps
       metric_module 'Hospital Consumer Assessment of Healthcare Providers ' \
         'and Systems' do
-        category 'Communication' do
-          measures :H_COMP_1_A_P,
-                   :H_COMP_2_A_P,
-                   :H_COMP_3_A_P
-        end
-        category 'Pain Management' do
-          measures :H_COMP_4_A_P
-        end
-        category 'Medications' do
-          measures :H_COMP_5_A_P
-        end
-        category 'Discharge Information' do
-          measures :H_COMP_6_Y_P
-        end
-        category 'Care Transition' do
-          measures :H_COMP_7_SA
-        end
-        category 'Environment' do
-          measures :H_CLEAN_HSP_A_P,
-                   :H_QUIET_HSP_A_P
-        end
-        category 'Overall Rating' do
-          measures :H_HSP_RATING_9_10
-        end
-        category 'Recommendation' do
-          measures :H_RECMND_DY
-        end
+        measures :H_COMP_1_A_P,
+                 :H_COMP_2_A_P,
+                 :H_COMP_3_A_P,
+                 :H_COMP_4_A_P,
+                 :H_COMP_5_A_P,
+                 :H_COMP_6_Y_P,
+                 :H_COMP_7_SA,
+                 :H_CLEAN_HSP_A_P,
+                 :H_QUIET_HSP_A_P,
+                 :H_HSP_RATING_9_10,
+                 :H_RECMND_DY
       end
     end
   end
