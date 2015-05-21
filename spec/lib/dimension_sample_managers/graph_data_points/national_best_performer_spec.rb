@@ -7,7 +7,7 @@ NationalBestPerformer do
   let(:expected_data) do
     {
       value: '10.9',
-      label: 'National Best Performer',
+      label: 'Best',
     }
   end
   let(:best_performer_manager) do

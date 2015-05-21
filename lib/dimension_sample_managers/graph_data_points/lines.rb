@@ -34,7 +34,7 @@ module DimensionSampleManagers
 
       def measure_data
         DimensionSampleManagers::GraphDataPoints::NationalBestPerformer
-          .new(id).data
+          .new(measure_id: id).data
       end
     end
   end

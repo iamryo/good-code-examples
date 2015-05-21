@@ -25,7 +25,7 @@ RSpec.describe DimensionSampleManagers::GraphDataPoints::Lines do
     allow(GRAPH_DATA_POINTS::NationalAverage)
       .to receive(:new).with(id).and_return(national_average_dsm)
     allow(GRAPH_DATA_POINTS::NationalBestPerformer)
-      .to receive(:new).with(id).and_return(national_best_performer)
+      .to receive(:new).with(measure_id: id).and_return(national_best_performer)
   end
 
   subject { described_class.new(id: id, type: type) }
