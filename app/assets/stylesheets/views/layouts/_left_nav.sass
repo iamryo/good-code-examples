@@ -13,7 +13,6 @@ $nested_margin: $icon_size_small + $buffer_small + $padding_base_vertical
 .sidebar_offcanvas
   color: $grey
   background: $grey_dark
-  overflow: scroll
   position: relative
 
   .current_node
@@ -27,15 +26,10 @@ $nested_margin: $icon_size_small + $buffer_small + $padding_base_vertical
   +media($desktop)
     +span-columns(3 of 12, block-collapse)
     position: fixed
+    height: 100%
 
 +media($desktop)
-  .sidebar_offcanvas_spacer,
-  .inner_content_offcanvas,
-  .sidebar_offcanvas
-    overflow: scroll
-
-  .sidebar_offcanvas_spacer,
-  .sidebar_offcanvas
+  .sidebar_offcanvas_spacer
     height: 100vh
 
   .inner_content_offcanvas

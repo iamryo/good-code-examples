@@ -1,4 +1,6 @@
 require 'action_view/helpers/number_helper'
+require './app/models/dimension_sample/provider_aggregate'
+
 module Providers
   # Encapsulates the information needed to show data for the selected provider
   class SelectedProviderPresenter
