@@ -27,6 +27,15 @@ var drawChart = function(data, nodeId, isDetailChart, nodeType) {
     return defaultValue;
   };
 
+  var getBestValueMethod = function() {
+    var defaultValue = 'maximum';
+
+    if (dataIsAvailable) {
+      return lineData[1].bestValueMethod || defaultValue;
+    }
+    return defaultValue;
+  };
+
   if (isDetailChart) {
     height = parentHeight - padding;
     width = parentWidth;
@@ -65,7 +74,7 @@ var drawChart = function(data, nodeId, isDetailChart, nodeType) {
   }
 
   var targetMet = function(dataValue, targetValue) {
-    if (nodeIsMetricModule) {
+    if (getBestValueMethod() === 'maximum') {
       return dataValue > targetValue;
     }
     return dataValue < targetValue;

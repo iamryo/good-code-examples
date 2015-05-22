@@ -1,5 +1,6 @@
 require './lib/datasets'
 require './app/models/dimension_sample/measure'
+require './lib/dimension_sample_managers/graph_data_points/best_value'
 
 module DimensionSampleManagers
   # .
@@ -10,6 +11,7 @@ module DimensionSampleManagers
         {
           value: value,
           label: label,
+          bestValueMethod: best_value_method,
         }
       end
 
@@ -27,12 +29,8 @@ module DimensionSampleManagers
         'Best'
       end
 
-      def dataset_id
-        Datasets.measure_id_to_dataset(measure_id)
-      end
-
       def best_value_method
-        Datasets.dataset_to_best_value_method(dataset_id)
+        DimensionSampleManagers::GraphDataPoints::BestValue.call(measure_id)
       end
     end
   end

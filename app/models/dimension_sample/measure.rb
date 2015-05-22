@@ -12,6 +12,8 @@
 
 require './app/models/provider'
 require './lib/providers/relevant_providers'
+require './lib/dimension_sample_managers/graph_data_points/best_value'
+
 require_relative '../dimension_sample'
 
 module DimensionSample
@@ -34,7 +36,7 @@ module DimensionSample
                            .sort_by(&:first)
 
       RelevantProviders.call(
-        relevant_providers,
+        relevant_providers_sorted(relevant_providers, measure_id),
         selected_provider.pluck(:socrata_provider_id).first,
       )
     end
@@ -46,6 +48,18 @@ module DimensionSample
           :measure_id,
         ),
       ).update_attributes!(attributes)
+    end
+
+    def self.relevant_providers_sorted(relevant_providers, measure_id)
+      if best_value_method(measure_id) == :maximum
+        relevant_providers.reverse
+      else
+        relevant_providers
+      end
+    end
+
+    def self.best_value_method(measure_id)
+      DimensionSampleManagers::GraphDataPoints::BestValue.call(measure_id)
     end
   end
 end
