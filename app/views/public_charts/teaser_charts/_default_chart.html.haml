@@ -1,17 +1,16 @@
-.chart_container.clearfix.two_column
-  .two_column
-    .col6-xs.provider_data.tk-freight-sans-pro
-      = "#{node.data.fetch(:bars, nil).first.try(:fetch, :value)} %"
-      %h5.tk-freight-sans-pro.text_weight_light
-        of patients
-        %br were readmitted
-    .col6-xs
-      %svg.chart{id: "#{node.title.parameterize}"}
+.chart_container.two_column.clearfix
+  .col6-xs.provider_data.tk-freight-sans-pro
+    = "#{node.data.fetch(:bars, nil).first.try(:fetch, :value)} %"
+    %h5.tk-freight-sans-pro.text_weight_light
+      of patients
+      %br were readmitted
+  .col6-xs
+    %svg.chart{id: "#{node.title.parameterize}"}
 
-  :javascript
-    $(function() {
-      var data = #{node.data.to_json};
-      var node_id = "##{node.title.parameterize}";
-      var node_type = "#{node.type}";
-      drawChart(data, node_id, false, node_type);
-    });
+:javascript
+  $(function() {
+    var data = #{node.data.to_json};
+    var node_id = "##{node.title.parameterize}";
+    var node_type = "#{node.type}";
+    drawChart(data, node_id, false, node_type);
+  });

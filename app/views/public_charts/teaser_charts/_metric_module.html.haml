@@ -1,1 +1,6 @@
-= render 'public_charts/teaser_charts/default_chart', node: node
+- if node.title == 'Hospital Consumer Assessment of Healthcare Providers and Systems'
+  %h4.text_center.no_data.tk-freight-sans-pro.horizontal_padding_base.text_muted
+    Overall data is not available for HCHAPS
+- else
+  = render 'public_charts/teaser_charts/default_chart', node: node
+

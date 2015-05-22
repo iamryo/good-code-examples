@@ -1,18 +1,23 @@
 = render 'layouts/feedback_bar'
+
 .measures#node_container
   = render 'public_charts/select_and_compare',
     provider_compare_presenter: @provider_compare_presenter
+
   #detail_chart_header
     %span.icon.icon_size_base.icon_bookmark.float_right.vertical_align_middle
       = render 'shared/icon', icon: '#icon_bookmark'
+
     = render 'public_charts/detail_chart_title', node: @node
     = render 'public_charts/selected_provider_details',
       node: @node,
       provider_compare_presenter: @provider_compare_presenter,
       selected_provider_presenter: @selected_provider_presenter
+
   = render "public_charts/detail_charts/#{@node.type}",
     node: @node,
     conversation_presenter: @conversation_presenter
+
   = render 'public_charts/children', node: @teaser_node
 
 = content_for :breadcrumbs do

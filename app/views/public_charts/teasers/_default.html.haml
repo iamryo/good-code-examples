@@ -5,5 +5,5 @@
     %h4.teaser_chart_title.no_margin= node_link(node, class_name: 'text_weight_light')
     = render "public_charts/teaser_charts/#{node.type}", node: node
   = node_link(node,
-    text_link: 'View Measure',
+    text_link: "View #{node.type.titleize}",
     class_name: 'teaser_chart_link block border_top_dark_grey inner_padding_base text_center text_weight_light')
