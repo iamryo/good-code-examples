@@ -9,8 +9,10 @@ var drawChart = function(data, nodeId, isDetailChart, nodeType) {
   var targetLineLabel;
   var targetValue;
   var showPercent;
+  var link;
   var parentElement = $(nodeId).parent();
   var parentWidth = parentElement.width();
+  var parentHeight = parentElement.height();
   var dataset = data.bars;
   var lineData = data.lines;
   var maxBarWidth = 30;
@@ -18,29 +20,44 @@ var drawChart = function(data, nodeId, isDetailChart, nodeType) {
   var dataIsAvailable = dataset.length;
   var nodeIsMetricModule = nodeType === 'metric_module';
 
+  var getTargetValue = function(defaultValue) {
+    if (dataIsAvailable) {
+      return lineData[1].value;
+    }
+    return defaultValue;
+  };
+
   if (isDetailChart) {
-    height = 300 ;
+    height = parentHeight - padding;
     width = parentWidth;
   } else {
-    height = 100;
+    height = parentHeight - padding;
     width = parentWidth / 6;
   }
 
   if (nodeIsMetricModule) {
     targetLineLabel = 'Target';
-    targetValue = 1;
+    targetValue = getTargetValue(1);
     scaleMin = 0.97; // minimum adjustment factor
     showPercent = '';
   } else {
     targetLineLabel = 'National Avg';
-    targetValue = 50;
+    targetValue = getTargetValue(50);
     scaleMin = 0;
     showPercent = '%';
   }
 
+  var yScaleDomainMax = function() {
+    return Math.max(
+      targetValue,
+      d3.max(dataset, function(d) { return d.value; })
+    );
+  };
+
   if (dataIsAvailable) {
     xScaleDomain = d3.range(dataset.length);
-    yScaleDomain = [scaleMin, targetValue];
+    yScaleDomain = [scaleMin, yScaleDomainMax()];
+    targetValue = lineData[1].value;
   } else {
     scaleMin = 0;
     xScaleDomain = 11; // arbitrary value
@@ -56,7 +73,7 @@ var drawChart = function(data, nodeId, isDetailChart, nodeType) {
 
   var yScale = d3.scale.linear()
     .domain(yScaleDomain)
-    .range([padding, height - padding]);
+    .rangeRound([padding, height - padding]);
 
   var xScale = d3.scale.ordinal()
     .domain(xScaleDomain)
@@ -92,8 +109,12 @@ var drawChart = function(data, nodeId, isDetailChart, nodeType) {
     .data(dataset)
     .enter().append('g');
 
-  var link = bar.append('svg:a')
-    .attr('xlink:href', function(d) { return d.uri; });
+  if (isDetailChart) {
+    link = bar.append('svg:a')
+      .attr('xlink:href', function(d) { return d.uri; });
+  } else {
+    link = bar.append('g');
+  }
 
   link.append('rect')
     .attr('x', function(d, i) { return xPosition(i); })

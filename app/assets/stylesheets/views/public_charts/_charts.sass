@@ -9,6 +9,8 @@
       +centerer
 
   .measure_teaser &
+    div
+      height: rem(120)
 
     .no_data
       color: $chart_red
@@ -44,6 +46,7 @@
 
     line
       &.best,
+      &.target,
       &.national-avg
         stroke: $white
 
@@ -52,10 +55,9 @@
       text-anchor: right
       @extend .text_weight_light
 
-      &.best
-        +transform(translateY(rem(12)))
-
 .chart
+  +transform(translateY(rem(15)))
+
   rect
     fill: $grey
 
