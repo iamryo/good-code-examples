@@ -61,7 +61,7 @@ class ApplicationController < ActionController::Base
   private
 
   def after_sign_in_path_for(_user)
-    '/metrics/payment-programs/hospital-readmissions-reduction-program'
+    '/metrics/payment-programs'
   end
 
   def after_sign_out_path_for(_user)

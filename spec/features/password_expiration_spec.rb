@@ -7,7 +7,7 @@ RSpec.feature 'Password expires' do
   end
   let(:new_password) { 'flameindeedhighwaypiece' }
   let(:after_sign_in_path) do
-    '/metrics/payment-programs/hospital-readmissions-reduction-program'
+    '/metrics/payment-programs'
   end
 
   def renew_password

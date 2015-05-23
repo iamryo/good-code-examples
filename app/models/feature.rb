@@ -27,7 +27,4 @@ class Feature < ActiveRecord::Base
   feature :hac,
           default: false,
           description: 'Hospital-Acquired Conditions module'
-  feature :hcahps,
-          default: false,
-          description: 'HCAHPS module'
 end

@@ -42,21 +42,19 @@ PUBLIC_CHARTS_TREE = PublicChartsTree.new do
                :READM_30_COPD,
                :READM_30_HIP_KNEE
     end
-    if Flip.on? :hcahps
-      metric_module 'Hospital Consumer Assessment of Healthcare Providers ' \
-        'and Systems' do
-        measures :H_COMP_1_A_P,
-                 :H_COMP_2_A_P,
-                 :H_COMP_3_A_P,
-                 :H_COMP_4_A_P,
-                 :H_COMP_5_A_P,
-                 :H_COMP_6_Y_P,
-                 :H_COMP_7_SA,
-                 :H_CLEAN_HSP_A_P,
-                 :H_QUIET_HSP_A_P,
-                 :H_HSP_RATING_9_10,
-                 :H_RECMND_DY
-      end
+    metric_module 'Hospital Consumer Assessment of Healthcare Providers ' \
+      'and Systems' do
+      measures :H_COMP_1_A_P,
+               :H_COMP_2_A_P,
+               :H_COMP_3_A_P,
+               :H_COMP_4_A_P,
+               :H_COMP_5_A_P,
+               :H_COMP_6_Y_P,
+               :H_COMP_7_SA,
+               :H_CLEAN_HSP_A_P,
+               :H_QUIET_HSP_A_P,
+               :H_HSP_RATING_9_10,
+               :H_RECMND_DY
     end
   end
 end
