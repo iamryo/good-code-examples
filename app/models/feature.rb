@@ -27,4 +27,7 @@ class Feature < ActiveRecord::Base
   feature :hac,
           default: false,
           description: 'Hospital-Acquired Conditions module'
+  feature :bookmarks,
+          default: false,
+          description: 'Bookmarks'
 end

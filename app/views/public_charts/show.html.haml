@@ -5,8 +5,9 @@
     provider_compare_presenter: @provider_compare_presenter
 
   #detail_chart_header
-    %span.icon.icon_size_base.icon_bookmark.float_right.vertical_align_middle
-      = render 'shared/icon', icon: '#icon_bookmark'
+    - if Flip.on? :bookmarks
+      %span.icon.icon_size_base.icon_bookmark.float_right.vertical_align_middle
+        = render 'shared/icon', icon: '#icon_bookmark'
 
     = render 'public_charts/detail_chart_title', node: @node
     = render 'public_charts/selected_provider_details',
