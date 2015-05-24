@@ -67,7 +67,7 @@ class PublicChartsTree
           value GRAPH_DATA_POINTS::Socrata::Measure.new(
             measure_id: measure_id,
           )
-          line GRAPH_DATA_POINTS::Lines.new(id: measure_id, type: :measure)
+          line GRAPH_DATA_POINTS::Lines.new(id: measure_id, node_type: :measure)
         end
       end
     end
