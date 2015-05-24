@@ -1,6 +1,6 @@
 'use strict';
 
-var drawChart = function(data, nodeId, isDetailChart, nodeType) {
+Nightingale.drawChart = function(data, nodeId, isDetailChart, nodeType) {
   var scaleMin;
   var height;
   var width;
