@@ -3,22 +3,22 @@ PUBLIC_CHARTS_TREE = PublicChartsTree.new do
     if Flip.on? :hac
       metric_module 'Hospital-Acquired Conditions' do
         value DimensionSampleManagers::GraphDataPoints::Socrata::
-          ProviderAggregate.new(
-            value_column_name: :total_hac_score,
+          Measure.new(
+            measure_id: :total_hac_score,
             dataset_id: 'yq43-i98g',
           )
         domain 'Patient Safety Indicator' do
           value DimensionSampleManagers::GraphDataPoints::Socrata::
-          ProviderAggregate.new(
-            value_column_name: :domain_1_score,
+          Measure.new(
+            measure_id: :domain_1_score,
             dataset_id: 'yq43-i98g',
           )
           measures :PSI_90_SAFETY
         end
         domain 'Hospital Acquired Infection' do
           value DimensionSampleManagers::GraphDataPoints::Socrata::
-          ProviderAggregate.new(
-            value_column_name: :domain_2_score,
+          Measure.new(
+            measure_id: :domain_2_score,
             dataset_id: 'yq43-i98g',
           )
           measures :HAI_1_SIR,
@@ -27,14 +27,12 @@ PUBLIC_CHARTS_TREE = PublicChartsTree.new do
       end
     end
     metric_module 'Hospital Readmissions Reduction Program' do
-      value DimensionSampleManagers::GraphDataPoints::Csv::
-      ProviderAggregate.new(
-        value_column_name: 'corrected_fy_2015_readmissions_adjustment_factor',
-        dataset_id: 'fy_2015_readmissions_adjustment_factor',
+      value DimensionSampleManagers::GraphDataPoints::Socrata::
+      Measure.new(
+        measure_id: :corrected_fy_2015_readmissions_adjustment_factor,
       )
-      line DimensionSampleManagers::GraphDataPoints::Lines.new(
-        id: :READMISSIONS_REDUCTION_PROGRAM,
-        node_type: :metric_module,
+      line DimensionSampleManagers::GraphDataPoints::LineData.call(
+        :READMISSIONS_REDUCTION_PROGRAM,
       )
       measures :READM_30_AMI,
                :READM_30_HF,

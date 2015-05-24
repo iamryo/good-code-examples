@@ -69,38 +69,3 @@ User.create!(
   user.account = account
   user.skip_confirmation!
 end
-
-DimensionSample::ProviderAggregate.create!(
-  [
-    {
-      dataset_id: 'ypbt-wvdk',
-      column_name: 'weighted_outcome_domain_score',
-      value: '17.127',
-      socrata_provider_id: providers.fetch(0).socrata_provider_id,
-    },
-    {
-      dataset_id: 'ypbt-wvdk',
-      column_name: 'weighted_outcome_domain_score',
-      value: '27.128',
-      socrata_provider_id: providers.fetch(1).socrata_provider_id,
-    },
-    {
-      dataset_id: 'ypbt-wvdk',
-      column_name: 'weighted_clinical_process_of_care_domain_score',
-      value: '15.133',
-      socrata_provider_id: providers.fetch(0).socrata_provider_id,
-    },
-    {
-      dataset_id: 'ypbt-wvdk',
-      column_name: 'weighted_efficency_domain_score',
-      value: '9.031',
-      socrata_provider_id: providers.fetch(0).socrata_provider_id,
-    },
-    {
-      dataset_id: 'ypbt-wvdk',
-      column_name: 'weighted_patient_experience_of_care_score',
-      value: '8.462',
-      socrata_provider_id: providers.fetch(1).socrata_provider_id,
-    },
-  ],
-)

@@ -1,5 +1,4 @@
 require 'action_view/helpers/number_helper'
-require './app/models/dimension_sample/provider_aggregate'
 
 module Providers
   # Encapsulates the information needed to show data for the selected provider
@@ -24,9 +23,9 @@ module Providers
     end
 
     def total_reimbursement_amount
-      DSPA.where(
+      DSM.where(
         socrata_provider_id: socrata_provider_id,
-        column_name: 'total_reimbursement_amount',
+        measure_id: 'total_reimbursement_amount',
       ).first.try(:value)
     end
 

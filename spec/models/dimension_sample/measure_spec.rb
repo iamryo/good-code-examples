@@ -53,6 +53,15 @@ RSpec.describe DimensionSample::Measure do
     let(:socrata_provider_id) { '010001' }
     let(:value) { '42.42424242' }
     let(:measure_id) { 'PSI_90_SAFETY' }
+    let(:best_value_method) { :minimum }
+    let(:dataset) { double('Dataset') }
+
+    before do
+      allow(Dataset).to receive(:new).with(measure_id: measure_id)
+        .and_return(dataset)
+      allow(dataset).to receive(:dataset_best_value_method)
+        .and_return(best_value_method)
+    end
 
     describe '.data' do
       let!(:relevant_provider_1) do
@@ -174,5 +183,68 @@ RSpec.describe DimensionSample::Measure do
         end
       end
     end
+    describe '.sort_providers' do
+      let(:provider_with_lower_value) do
+        [
+          '12.0000000000',
+          'My Provider 2',
+          2,
+          '010005',
+        ]
+      end
+      let(:provider_with_higher_value) do
+        [
+          '42.42424242',
+          'My Provider 1',
+          1,
+          '010001',
+        ]
+      end
+      let(:provider_data_array) do
+        [
+          provider_with_lower_value,
+          provider_with_higher_value,
+        ]
+      end
+
+      let(:sort_providers) do
+        described_class.sort_providers(provider_data_array, measure_id)
+      end
+
+      context 'measures where higher values are better' do
+        let(:measure_id) { 'HAI_1_SIR' }
+        let(:best_value_method) { :maximum }
+        let(:expected_data) do
+          [
+            provider_with_higher_value,
+            provider_with_lower_value,
+          ]
+        end
+        it 'sorts the data by descending measure values' do
+          expect(sort_providers).to eq(expected_data)
+        end
+      end
+
+      context 'measure where lower values better' do
+        let(:measure_id) { 'PSI_90_SAFETY' }
+        let(:best_value_method) { :minimum }
+        let(:expected_data) do
+          [
+            provider_with_lower_value,
+            provider_with_higher_value,
+          ]
+        end
+        it 'sorts the data by descending measure values' do
+          expect(sort_providers).to eq(expected_data)
+        end
+      end
+    end
   end
+  # describe '.best_value_method' do
+  #   before do
+  #     allow(Dataset).to receive(:new).with(measure_id: measure_id)
+  #       .and_return(dataset)
+  #   end
+  #   expect(dataset).to receive(:dataset_best_value_method).
+  # end
 end

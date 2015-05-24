@@ -17,10 +17,28 @@ RSpec.describe DimensionSampleManagers::GraphDataPoints::Socrata::Measure do
     end
     let(:data_param) { [relevant_providers, selected_provider] }
     let(:cms_rank) { '1/2' }
+    let(:dataset_best_value_methods) do
+      {
+        '7xux-kdpw' => :minimum,
+        'dgck-syfz' => :maximum,
+      }
+    end
+    let(:dataset_value_columns) do
+      {
+        '7xux-kdpw' => :score,
+        'dgck-syfz' => :hcahps_answer_percent,
+      }
+    end
+
+    let(:options) do
+      {
+        measure_id: measure_id,
+      }
+    end
 
     context 'lower is better' do
       let(:dataset_id) { '7xux-kdpw' }
-      let(:options) { { measure_id: :PSI_90_SAFETY } }
+      let(:measure_id) { :PSI_90_SAFETY }
       let(:cassette_name) { "#{vcr_directory}/lower_is_better" }
       it_behaves_like 'a dimension sample manager'
       it_behaves_like 'a DSM with national best performer value'
@@ -28,7 +46,7 @@ RSpec.describe DimensionSampleManagers::GraphDataPoints::Socrata::Measure do
 
     context 'higher is better' do
       let(:dataset_id) { 'dgck-syfz' }
-      let(:options) { { measure_id: :H_COMP_1_A_P } }
+      let(:measure_id) { :H_COMP_1_A_P }
       let(:cassette_name) { "#{vcr_directory}/higher_is_better" }
       it_behaves_like 'a DSM with national best performer value' do
         let(:national_best_performer_value) { '83' }

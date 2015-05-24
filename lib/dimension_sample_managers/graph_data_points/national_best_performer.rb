@@ -1,36 +1,39 @@
-require './lib/datasets'
-require './app/models/dimension_sample/measure'
-require './lib/dimension_sample_managers/graph_data_points/best_value'
+require './lib/dimension_sample_managers/graph_data_points/socrata/measure'
 
 module DimensionSampleManagers
   # .
   module GraphDataPoints
-    # Lookup table for DSM National Best performers
-    NationalBestPerformer = Struct.new(:options) do
-      def data
+    # Returns the 'best' measure value according its dataset.
+    NationalBestPerformer = Struct.new(:id) do
+      delegate :dataset_best_value_method, to: :dataset
+
+      def self.call(*args)
+        new(*args).call
+      end
+
+      def call
+        return unless value.present?
         {
           value: value,
           label: label,
-          bestValueMethod: best_value_method,
+          bestValueMethod: dataset_best_value_method,
         }
       end
 
       private
 
-      def measure_id
-        options.fetch(:measure_id)
+      def value
+        DimensionSampleManagers::GraphDataPoints::Socrata::Measure
+        .new(measure_id: id)
+        .national_best_performer_value
       end
 
-      def value
-        DSM.where(measure_id: measure_id).send(best_value_method, :value)
+      def dataset
+        Dataset.new(measure_id: id)
       end
 
       def label
         'Best'
-      end
-
-      def best_value_method
-        DimensionSampleManagers::GraphDataPoints::BestValue.call(measure_id)
       end
     end
   end

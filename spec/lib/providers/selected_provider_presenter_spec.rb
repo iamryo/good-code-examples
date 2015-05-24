@@ -2,7 +2,6 @@ require 'spec_helper'
 require 'active_record_no_rails_helper'
 require 'public_charts_tree'
 require 'providers/selected_provider_presenter'
-require 'dimension_sample_managers/graph_data_points/socrata/provider_aggregate'
 
 RSpec.describe Providers::SelectedProviderPresenter do
   subject { described_class.new(provider, node, teaser_node) }
@@ -35,10 +34,10 @@ RSpec.describe Providers::SelectedProviderPresenter do
   end
   let(:value_dimension_sample_manager) do
     instance_double(DimensionSampleManagers::GraphDataPoints::Socrata::
-      ProviderAggregate)
+      Measure)
   end
   let(:value) { '.9832' }
-  let(:dspa_data) do
+  let(:dsm_data) do
     [
       [
         value,
@@ -65,7 +64,7 @@ RSpec.describe Providers::SelectedProviderPresenter do
     stub_const('VALUE_DIMENSION_SAMPLE_MANAGER', value_dimension_sample_manager)
     stub_const('PUBLIC_CHARTS_TREE', public_charts_tree)
     allow(value_dimension_sample_manager).to receive(:data)
-      .with(selected_provider, selected_provider).and_return(dspa_data)
+      .with(selected_provider, selected_provider).and_return(dsm_data)
   end
 
   describe '#value' do

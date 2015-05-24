@@ -17,7 +17,7 @@ class PublicChartsTree
              :title,
              :parent_breadcrumb,
              :value_dimension_manager,
-             :line_dimension_manager,
+             :line_data,
              to: :embedded_node
 
     def children

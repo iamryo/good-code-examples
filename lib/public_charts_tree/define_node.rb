@@ -7,7 +7,7 @@ require_relative 'domain'
 require_relative 'category'
 require_relative 'measure'
 require 'dimension_sample_managers/graph_data_points/socrata/measure'
-require 'dimension_sample_managers/graph_data_points/lines'
+require 'dimension_sample_managers/graph_data_points/line_data'
 # .
 class PublicChartsTree
   # A developer-friendly way to build the static chart tree for public data.
@@ -36,8 +36,8 @@ class PublicChartsTree
       embedded_node.value_dimension_manager = value_dimension_manager
     end
 
-    def line(line_dimension_manager)
-      embedded_node.line_dimension_manager = line_dimension_manager
+    def line(line_data)
+      embedded_node.line_data = line_data
     end
 
     def measure_source(*args, &definition_block)
@@ -64,10 +64,8 @@ class PublicChartsTree
       measures.each do |measure_id|
         measure = MEASURES.fetch(measure_id)
         measure(measure.fetch(:title)) do
-          value GRAPH_DATA_POINTS::Socrata::Measure.new(
-            measure_id: measure_id,
-          )
-          line GRAPH_DATA_POINTS::Lines.new(id: measure_id, node_type: :measure)
+          value GRAPH_DATA_POINTS::Socrata::Measure.new(measure_id: measure_id)
+          line GRAPH_DATA_POINTS::LineData.call(measure_id)
         end
       end
     end

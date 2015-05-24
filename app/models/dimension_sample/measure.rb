@@ -12,7 +12,7 @@
 
 require './app/models/provider'
 require './lib/providers/relevant_providers'
-require './lib/dimension_sample_managers/graph_data_points/best_value'
+require './lib/dataset'
 
 require_relative '../dimension_sample'
 
@@ -26,19 +26,23 @@ module DimensionSample
 
     def self.data(measure_id:, providers:, selected_provider:)
       matching_samples = where(measure_id: measure_id)
-      relevant_providers = providers.joins(<<-SQL)
+      relevant_providers = relevant_providers(matching_samples, providers)
+
+      RelevantProviders.call(
+        sort_providers(relevant_providers, measure_id),
+        selected_provider.pluck(:socrata_provider_id).first,
+      )
+    end
+
+    def self.relevant_providers(matching_samples, providers)
+      providers.joins(<<-SQL)
         LEFT OUTER JOIN dimension_sample_measures
         ON dimension_sample_measures.socrata_provider_id =
         providers.socrata_provider_id
       SQL
-                           .merge(matching_samples)
-                           .pluck(:value, :name, :id, :socrata_provider_id)
-                           .sort_by(&:first)
-
-      RelevantProviders.call(
-        relevant_providers_sorted(relevant_providers, measure_id),
-        selected_provider.pluck(:socrata_provider_id).first,
-      )
+        .merge(matching_samples)
+        .pluck(:value, :name, :id, :socrata_provider_id)
+        .sort_by(&:first)
     end
 
     def self.create_or_update!(attributes)
@@ -50,16 +54,16 @@ module DimensionSample
       ).update_attributes!(attributes)
     end
 
-    def self.relevant_providers_sorted(relevant_providers, measure_id)
+    def self.sort_providers(provider_data_array, measure_id)
       if best_value_method(measure_id) == :maximum
-        relevant_providers.reverse
+        provider_data_array.reverse
       else
-        relevant_providers
+        provider_data_array
       end
     end
 
     def self.best_value_method(measure_id)
-      DimensionSampleManagers::GraphDataPoints::BestValue.call(measure_id)
+      Dataset.new(measure_id: measure_id).dataset_best_value_method
     end
   end
 end

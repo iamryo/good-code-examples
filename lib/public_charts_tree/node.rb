@@ -14,7 +14,7 @@ class PublicChartsTree
              :parent_title,
              :type,
              :value_dimension_manager,
-             :line_dimension_manager,
+             :line_data,
              :id_component,
              :id_components,
              to: :internal_node
@@ -61,8 +61,8 @@ class PublicChartsTree
     end
 
     def lines
-      return [] unless line_dimension_manager.present? # temporary until done
-      line_dimension_manager.data
+      return [] unless line_data.present? # temporary until done
+      line_data
     end
 
     def parent

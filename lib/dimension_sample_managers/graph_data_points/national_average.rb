@@ -60,11 +60,16 @@ module DimensionSampleManagers
 
       attr_reader :id
 
+      def self.call(*args)
+        new(*args).call
+      end
+
       def initialize(id)
         @id = id
       end
 
-      def data
+      def call
+        return unless value.present?
         {
           value: value,
           label: label,
@@ -74,7 +79,7 @@ module DimensionSampleManagers
       private
 
       def value
-        ID_TO_AVG.fetch(id, nil)
+        ID_TO_AVG.fetch(id)
       end
 
       def label

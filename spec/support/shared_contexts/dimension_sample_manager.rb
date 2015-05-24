@@ -24,7 +24,13 @@ RSpec.shared_context 'dimension sample manager' do
       010418
     ]
   end
-  let(:value_column_name) { :score }
+  let(:dataset_value_column_name) do
+    dataset_value_columns.fetch(dataset_id)
+  end
+  let(:dataset_best_value_method) do
+    dataset_best_value_methods.fetch(dataset_id)
+  end
+  let(:dataset) { double('Dataset') }
 
   def create_relevant_providers
     provider_ids.each do |socrata_provider_id|
@@ -44,15 +50,24 @@ RSpec.shared_context 'dimension sample manager' do
     VCR.use_cassette(cassette_name) { subject.import }
   end
 
-  before { create_relevant_providers }
+  before do
+    create_relevant_providers
+    allow(Dataset).to receive(:new).with(measure_id: measure_id)
+      .and_return(dataset)
+    allow(dataset).to receive(:dataset_id).and_return(dataset_id)
+    allow(dataset).to receive(:dataset_value_column_name)
+      .and_return(dataset_value_column_name)
+    allow(dataset).to receive(:dataset_best_value_method)
+      .and_return(dataset_best_value_method)
+  end
 
   shared_examples 'a DSM with national best performer value' do
     let(:national_best_performer_value) { '0.72' }
 
-    it 'returns the lowest value' do
+    it 'returns the best value' do
       import
       expect(subject.national_best_performer_value)
-        .to eq national_best_performer_value
+        .to eq(national_best_performer_value)
     end
   end
 

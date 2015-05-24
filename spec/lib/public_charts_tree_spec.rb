@@ -1,6 +1,4 @@
 require 'public_charts_tree'
-require 'dimension_sample_managers/graph_data_points/socrata/provider_aggregate'
-require 'dimension_sample_managers/graph_data_points/national_average'
 
 RSpec.describe PublicChartsTree do
   subject { find(node_id) }
@@ -12,10 +10,10 @@ RSpec.describe PublicChartsTree do
       measure_source 'Payment Programs' do
         metric_module 'Value Based Purchasing' do
           value VALUE_DIMENSION_SAMPLE_MANAGER
-          line LINE_DIMENSION_SAMPLE_MANAGER
+          line LINE_DATA
           domain 'Outcome of Care' do
             value VALUE_DIMENSION_SAMPLE_MANAGER
-            line LINE_DIMENSION_SAMPLE_MANAGER
+            line LINE_DATA
             category 'Mortality' do
               measures :MORT_30_AMI
             end
@@ -28,12 +26,10 @@ RSpec.describe PublicChartsTree do
   end
   let(:value_dimension_sample_manager) do
     instance_double(DimensionSampleManagers::GraphDataPoints::Socrata::
-      ProviderAggregate)
+      Measure)
   end
-  let(:line_dimension_sample_manager) do
-    instance_double(
-      DimensionSampleManagers::GraphDataPoints::Lines,
-    )
+  let(:line_data) do
+    instance_double(DimensionSampleManagers::GraphDataPoints::LineData)
   end
   let(:measures) do
     {
@@ -54,6 +50,8 @@ RSpec.describe PublicChartsTree do
   let(:mort_30_ami_dsm) do
     instance_double(DimensionSampleManagers::GraphDataPoints::Socrata::Measure)
   end
+  let(:dataset) { double('Dataset') }
+  let(:dataset_best_value_method) { :minimum }
 
   def find(node_id)
     tree.find_node(
@@ -66,17 +64,25 @@ RSpec.describe PublicChartsTree do
   before do
     stub_const('MEASURES', measures)
     stub_const('VALUE_DIMENSION_SAMPLE_MANAGER', value_dimension_sample_manager)
-    stub_const('LINE_DIMENSION_SAMPLE_MANAGER', line_dimension_sample_manager)
+    stub_const('LINE_DATA', line_data)
+    allow(Dataset).to receive(:new).and_return(dataset)
+    allow(dataset).to receive(:dataset_best_value_method)
+      .and_return(dataset_best_value_method)
     allow(DimensionSampleManagers::GraphDataPoints::Socrata::Measure)
       .to receive(:new).with(measure_id: :MORT_30_AMI)
-      .and_return(mort_30_ami_dsm)
+      .and_return(value_dimension_sample_manager)
+    allow(value_dimension_sample_manager).to receive(
+      :national_best_performer_value,
+    ).and_return('1.0')
+    allow(DimensionSampleManagers::GraphDataPoints::LineData)
+      .to receive(:call).with(:MORT_30_AMI)
+      .and_return(line_data)
   end
 
   describe '#import' do
     it 'imports all dimension sample managers' do
       expect(value_dimension_sample_manager).to receive(:import)
-        .exactly(2).times
-      expect(mort_30_ami_dsm).to receive(:import)
+        .exactly(3).times
       tree.import_all
     end
   end
@@ -185,18 +191,9 @@ RSpec.describe PublicChartsTree do
       end
 
       before do
-        stub_const(
-          "#{line_dimension_sample_manager.class}::ID_TO_AVG",
-          id_to_avg,
-        )
-        allow(DimensionSampleManagers::GraphDataPoints::Lines)
-          .to receive(:new).with(id: :MORT_30_AMI, node_type: :measure)
-          .and_return(line_dimension_sample_manager)
         allow(value_dimension_sample_manager).to receive(:data)
           .with(providers, selected_provider)
           .and_return(values_and_provider_names)
-        allow(line_dimension_sample_manager).to receive(:data)
-          .and_return(line_data)
       end
 
       it 'returns data for the specified providers' do
@@ -236,10 +233,6 @@ RSpec.describe PublicChartsTree do
 
     specify do
       expect(subject.parent_title).to eq 'Payment Programs'
-      # expect(mort_30_ami_national_average).to receive(:value)
-      #   .and_return(national_average_value)
-      # expect(mort_30_ami_national_average).to receive(:label)
-      #   .and_return('National Average')
     end
   end
 

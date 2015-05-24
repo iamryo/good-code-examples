@@ -21,7 +21,7 @@ class PublicChartsTree
       def value_dimension_manager
       end
 
-      def line_dimension_manager
+      def line_data
       end
     end
   end
