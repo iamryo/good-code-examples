@@ -34,7 +34,7 @@ PUBLIC_CHARTS_TREE = PublicChartsTree.new do
       )
       line DimensionSampleManagers::GraphDataPoints::Lines.new(
         id: :READMISSIONS_REDUCTION_PROGRAM,
-        node_type: :metric_module,
+        type: :metric_module,
       )
       measures :READM_30_AMI,
                :READM_30_HF,

@@ -5,17 +5,17 @@ module DimensionSampleManagers
   module GraphDataPoints
     # Lookup table for Lines, regardless of chart/node type.
     class Lines
-      attr_reader :id, :node_type
+      attr_reader :id, :type
 
-      def initialize(id:, node_type:)
+      def initialize(id:, type:)
         @id = id
-        @node_type = node_type
+        @type = type
       end
 
       def data
         [
           national_average_data,
-          send("#{node_type}_data".to_sym),
+          send("#{type}_data".to_sym),
         ]
       end
 
