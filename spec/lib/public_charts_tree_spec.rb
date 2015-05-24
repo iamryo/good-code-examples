@@ -190,7 +190,7 @@ RSpec.describe PublicChartsTree do
           id_to_avg,
         )
         allow(DimensionSampleManagers::GraphDataPoints::Lines)
-          .to receive(:new).with(id: :MORT_30_AMI, type: :measure)
+          .to receive(:new).with(id: :MORT_30_AMI, node_type: :measure)
           .and_return(line_dimension_sample_manager)
         allow(value_dimension_sample_manager).to receive(:data)
           .with(providers, selected_provider)

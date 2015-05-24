@@ -28,10 +28,10 @@ RSpec.describe DimensionSampleManagers::GraphDataPoints::Lines do
       .to receive(:new).with(measure_id: id).and_return(national_best_performer)
   end
 
-  subject { described_class.new(id: id, type: type) }
+  subject { described_class.new(id: id, node_type: node_type) }
 
   context 'for a measure' do
-    let(:type) { :measure }
+    let(:node_type) { :measure }
     it 'returns national average and best performer' do
       expect(national_average_dsm).to receive(:data)
       expect(national_best_performer).to receive(:data)
@@ -40,7 +40,7 @@ RSpec.describe DimensionSampleManagers::GraphDataPoints::Lines do
   end
 
   context 'for a metric module' do
-    let(:type) { :metric_module }
+    let(:node_type) { :metric_module }
     it 'returns national average and target for a metric module' do
       expect(national_average_dsm).to receive(:data)
       subject.data
