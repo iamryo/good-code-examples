@@ -1,4 +1,5 @@
 require './app/models/dimension_sample/provider_aggregate'
+require './lib/datasets'
 require './lib/socrata/dimension_sample_importer'
 require './lib/socrata/simple_soda_client'
 
@@ -37,14 +38,16 @@ module DimensionSampleManagers
           )
         end
 
-        def subtitle
-        end
-
         def national_best_performer_value
-          MODEL_CLASS.where(model_attributes).minimum(:value)
+          MODEL_CLASS.where(model_attributes)
+            .public_send(best_value_method, :value)
         end
 
         private
+
+        def best_value_method
+          Datasets.dataset_to_best_value_method(dataset_id)
+        end
 
         def model_attributes
           base_options.merge(

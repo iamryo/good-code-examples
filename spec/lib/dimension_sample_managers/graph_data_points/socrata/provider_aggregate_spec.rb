@@ -12,6 +12,11 @@ RSpec.describe DimensionSampleManagers::GraphDataPoints::Socrata::
     end
     let(:cms_rank) { '2/2' }
     let(:dataset_id) { 'rrqw-56er' }
+    let(:datasets_to_best_value_method) do
+      {
+        'rrqw-56er' => :minimum,
+      }
+    end
     let(:options) do
       {
         dataset_id: dataset_id,
@@ -19,6 +24,13 @@ RSpec.describe DimensionSampleManagers::GraphDataPoints::Socrata::
       }
     end
     let(:data_param) { [relevant_providers, selected_provider] }
+
+    before do
+      stub_const(
+        'Datasets::DATASET_TO_BEST_VALUE_METHOD',
+        datasets_to_best_value_method,
+      )
+    end
 
     it_behaves_like 'a dimension sample manager'
     it_behaves_like 'a DSM with national best performer value'

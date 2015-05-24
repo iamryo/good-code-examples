@@ -41,17 +41,6 @@ class Datasets
     '99ue-w85f' => :maximum,
   }
 
-  DATASET_TO_GRAPH_LINES = {
-    '7xux-kdpw' => [
-      :national_best_performer_value,
-      :national_average,
-    ],
-    '99ue-w85f' => [
-      :national_best_performer_value,
-      :national_average,
-    ],
-  }
-
   def self.measure_id_to_dataset(measure_id)
     MEASURE_ID_TO_DATASET.keys.find do |key|
       MEASURE_ID_TO_DATASET.fetch(key).include?(measure_id)

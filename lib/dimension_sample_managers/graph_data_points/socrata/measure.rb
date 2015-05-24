@@ -57,15 +57,8 @@ module DimensionSampleManagers
           )
         end
 
-        def subtitle
-        end
-
         def national_best_performer_value
           MODEL_CLASS.where(base_options).public_send(best_value_method, :value)
-        end
-
-        def graph_line_values
-          Datasets.dataset_to_graph_lines(dataset_id)
         end
 
         private
