@@ -1,6 +1,6 @@
-require 'socrata/rename_attributes'
+require 'rename_attributes'
 
-RSpec.describe Socrata::RenameAttributes do
+RSpec.describe RenameAttributes do
   let(:original_attributes) do
     {
       provider_id: '100010',

@@ -33,7 +33,7 @@ RSpec.describe Providers::SelectedProviderPresenter do
     'payment-programs/hospital-readmissions-reduction-program'
   end
   let(:value_dimension_sample_manager) do
-    instance_double(DimensionSampleManagers::GraphDataPoints::Socrata::
+    instance_double(DimensionSampleManagers::GraphDataPoints::
       Measure)
   end
   let(:value) { '.9832' }

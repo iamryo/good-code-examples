@@ -13,7 +13,7 @@ NationalBestPerformer do
   end
   let(:dsm) do
     instance_double(
-      'DimensionSampleManagers::GraphDataPoints::Socrata::Measure',
+      'DimensionSampleManagers::GraphDataPoints::Measure',
     )
   end
   let(:dataset) { double('Dataset') }
@@ -21,7 +21,7 @@ NationalBestPerformer do
   subject { described_class.call(measure_id) }
 
   before do
-    allow(DimensionSampleManagers::GraphDataPoints::Socrata::Measure)
+    allow(DimensionSampleManagers::GraphDataPoints::Measure)
       .to receive(:new).and_return(dsm)
     allow(dsm).to receive(:national_best_performer_value).and_return('10.9')
     allow(Dataset).to receive(:new).and_return(dataset)

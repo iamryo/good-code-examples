@@ -6,7 +6,7 @@ require_relative 'metric_module'
 require_relative 'domain'
 require_relative 'category'
 require_relative 'measure'
-require 'dimension_sample_managers/graph_data_points/socrata/measure'
+require 'dimension_sample_managers/graph_data_points/measure'
 require 'dimension_sample_managers/graph_data_points/line_data'
 # .
 class PublicChartsTree
@@ -64,7 +64,7 @@ class PublicChartsTree
       measures.each do |measure_id|
         measure = MEASURES.fetch(measure_id)
         measure(measure.fetch(:title)) do
-          value GRAPH_DATA_POINTS::Socrata::Measure.new(measure_id: measure_id)
+          value GRAPH_DATA_POINTS::Measure.new(measure_id: measure_id)
           line GRAPH_DATA_POINTS::LineData.call(measure_id)
         end
       end

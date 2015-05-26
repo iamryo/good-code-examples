@@ -2,13 +2,13 @@ PUBLIC_CHARTS_TREE = PublicChartsTree.new do
   measure_source 'Payment Programs' do
     if Flip.on? :hac
       metric_module 'Hospital-Acquired Conditions' do
-        value DimensionSampleManagers::GraphDataPoints::Socrata::
+        value DimensionSampleManagers::GraphDataPoints::
           Measure.new(
             measure_id: :total_hac_score,
             dataset_id: 'yq43-i98g',
           )
         domain 'Patient Safety Indicator' do
-          value DimensionSampleManagers::GraphDataPoints::Socrata::
+          value DimensionSampleManagers::GraphDataPoints::
           Measure.new(
             measure_id: :domain_1_score,
             dataset_id: 'yq43-i98g',
@@ -16,7 +16,7 @@ PUBLIC_CHARTS_TREE = PublicChartsTree.new do
           measures :PSI_90_SAFETY
         end
         domain 'Hospital Acquired Infection' do
-          value DimensionSampleManagers::GraphDataPoints::Socrata::
+          value DimensionSampleManagers::GraphDataPoints::
           Measure.new(
             measure_id: :domain_2_score,
             dataset_id: 'yq43-i98g',
@@ -27,7 +27,7 @@ PUBLIC_CHARTS_TREE = PublicChartsTree.new do
       end
     end
     metric_module 'Hospital Readmissions Reduction Program' do
-      value DimensionSampleManagers::GraphDataPoints::Socrata::
+      value DimensionSampleManagers::GraphDataPoints::
       Measure.new(
         measure_id: :corrected_fy_2015_readmissions_adjustment_factor,
       )

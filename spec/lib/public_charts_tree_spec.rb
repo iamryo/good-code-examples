@@ -25,7 +25,7 @@ RSpec.describe PublicChartsTree do
     end
   end
   let(:value_dimension_sample_manager) do
-    instance_double(DimensionSampleManagers::GraphDataPoints::Socrata::
+    instance_double(DimensionSampleManagers::GraphDataPoints::
       Measure)
   end
   let(:line_data) do
@@ -48,7 +48,7 @@ RSpec.describe PublicChartsTree do
     }
   end
   let(:mort_30_ami_dsm) do
-    instance_double(DimensionSampleManagers::GraphDataPoints::Socrata::Measure)
+    instance_double(DimensionSampleManagers::GraphDataPoints::Measure)
   end
   let(:dataset) { double('Dataset') }
   let(:dataset_best_value_method) { :minimum }
@@ -68,7 +68,7 @@ RSpec.describe PublicChartsTree do
     allow(Dataset).to receive(:new).and_return(dataset)
     allow(dataset).to receive(:dataset_best_value_method)
       .and_return(dataset_best_value_method)
-    allow(DimensionSampleManagers::GraphDataPoints::Socrata::Measure)
+    allow(DimensionSampleManagers::GraphDataPoints::Measure)
       .to receive(:new).with(measure_id: :MORT_30_AMI)
       .and_return(value_dimension_sample_manager)
     allow(value_dimension_sample_manager).to receive(

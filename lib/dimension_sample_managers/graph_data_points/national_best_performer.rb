@@ -1,4 +1,4 @@
-require './lib/dimension_sample_managers/graph_data_points/socrata/measure'
+require './lib/dimension_sample_managers/graph_data_points/measure'
 
 module DimensionSampleManagers
   # .
@@ -23,7 +23,7 @@ module DimensionSampleManagers
       private
 
       def value
-        DimensionSampleManagers::GraphDataPoints::Socrata::Measure
+        DimensionSampleManagers::GraphDataPoints::Measure
         .new(measure_id: id)
         .national_best_performer_value
       end

@@ -25,7 +25,7 @@ module Providers
     def total_reimbursement_amount
       DSM.where(
         socrata_provider_id: socrata_provider_id,
-        measure_id: 'total_reimbursement_amount',
+        measure_id: 'fy_2013_total_reimbursement_amount',
       ).first.try(:value)
     end
 

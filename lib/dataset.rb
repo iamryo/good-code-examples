@@ -34,21 +34,26 @@ class Dataset
       :H_RECMND_DY,
     ],
 
-    'fy_2015_readmissions_adjustment_factor' => [
+    'hrrp_fy_2015_readmissions_adjustment_factor' => [
       :corrected_fy_2015_readmissions_adjustment_factor,
+    ],
+
+    'hrrp_fy_2013_total_reimbursement_amount' => [
+      :fy_2013_total_reimbursement_amount,
     ],
   }
   DATASET_VALUE_COLUMN_NAME = {
     '7xux-kdpw' => :score,
     '77hc-ibv8' => :score,
     'dgck-syfz' => :hcahps_answer_percent,
-    'fy_2015_readmissions_adjustment_factor' =>
+    'hrrp_fy_2015_readmissions_adjustment_factor' =>
       'corrected_fy_2015_readmissions_adjustment_factor',
+    'hrrp_fy_2013_total_reimbursement_amount' => 'total_reimbursement_amount',
   }
   DATASET_BEST_VALUE_METHOD = {
     'dgck-syfz' => :maximum,
     '99ue-w85f' => :maximum,
-    'fy_2015_readmissions_adjustment_factor' => :maximum,
+    'hrrp_fy_2015_readmissions_adjustment_factor' => :maximum,
     '7xux-kdpw' => :minimum,
     '77hc-ibv8' => :minimum,
   }
