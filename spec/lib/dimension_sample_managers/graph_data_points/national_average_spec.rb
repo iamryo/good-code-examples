@@ -3,11 +3,7 @@ require 'dimension_sample_managers/graph_data_points/national_average'
 
 RSpec.describe DimensionSampleManagers::GraphDataPoints::NationalAverage do
   let(:measure_id) { 'mort_30_ami' }
-  let(:measure_id_to_avg) do
-    {
-      "#{measure_id}" => '14.9',
-    }
-  end
+  let(:measure_id_to_avg) { { "#{measure_id}" => '14.9' } }
   let(:expected_data) do
     {
       value: '14.9',

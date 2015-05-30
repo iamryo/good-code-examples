@@ -25,8 +25,7 @@ RSpec.describe PublicChartsTree do
     end
   end
   let(:value_dimension_sample_manager) do
-    instance_double(DimensionSampleManagers::GraphDataPoints::
-      Measure)
+    instance_double(DimensionSampleManagers::GraphDataPoints::Measure)
   end
   let(:line_data) do
     instance_double(DimensionSampleManagers::GraphDataPoints::LineData)

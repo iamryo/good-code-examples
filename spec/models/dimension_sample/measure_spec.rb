@@ -137,9 +137,7 @@ RSpec.describe DimensionSample::Measure do
     end
 
     describe '.create_or_update!' do
-      let(:new_attributes) do
-        dimension_sample_attributes.merge(new_attribute)
-      end
+      let(:new_attributes) { dimension_sample_attributes.merge(new_attribute) }
 
       let!(:existing_dimension_sample) do
         create(
@@ -183,6 +181,7 @@ RSpec.describe DimensionSample::Measure do
         end
       end
     end
+
     describe '.sort_providers' do
       let(:provider_with_lower_value) do
         [
@@ -239,12 +238,13 @@ RSpec.describe DimensionSample::Measure do
         end
       end
     end
+
+    describe '.best_value_method' do
+      let(:best_value) { described_class.best_value_method(measure_id) }
+
+      it 'returns the best value method' do
+        expect(best_value).to eq :minimum
+      end
+    end
   end
-  # describe '.best_value_method' do
-  #   before do
-  #     allow(Dataset).to receive(:new).with(measure_id: measure_id)
-  #       .and_return(dataset)
-  #   end
-  #   expect(dataset).to receive(:dataset_best_value_method).
-  # end
 end
