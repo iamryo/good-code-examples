@@ -3,6 +3,7 @@
 # dynamic data, e.g. in the database.
 class PublicChartsController < ApplicationController
   def show
+    @custom_feedback_bar = true
     persist_selected_provider
     persist_selected_context
 
@@ -21,9 +22,11 @@ class PublicChartsController < ApplicationController
       current_user.selected_context,
     )
 
-    @selected_provider_presenter = selected_provider_presenter
-
-    @custom_feedback_bar = true
+    @selected_provider_presenter = Providers::SelectedProviderPresenter.new(
+      selected_provider,
+      @node,
+      @teaser_node,
+    )
 
     @conversation_presenter = Conversations::ConversationPresenter.new(
       current_user,
@@ -73,14 +76,6 @@ class PublicChartsController < ApplicationController
       params.fetch(:id),
       providers: providers,
       selected_provider: selected_provider,
-    )
-  end
-
-  def selected_provider_presenter
-    Providers::SelectedProviderPresenter.new(
-      selected_provider,
-      @node,
-      @teaser_node,
     )
   end
 end
