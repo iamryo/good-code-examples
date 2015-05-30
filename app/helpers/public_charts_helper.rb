@@ -31,4 +31,8 @@ module PublicChartsHelper
       class: options.fetch(:class_name, nil),
     )
   end
+
+  def value_description_text(node, description_type)
+    node.value_description.fetch(description_type, nil)
+  end
 end

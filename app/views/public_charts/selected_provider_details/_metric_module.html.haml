@@ -1,4 +1,5 @@
-= render "public_charts/selected_provider_details/metric_modules/#{node.title.parameterize.underscore}",
-  node: node,
-  provider_compare_presenter: provider_compare_presenter,
-  selected_provider_presenter: selected_provider_presenter
+= render 'public_charts/selected_provider_details/metric_modules/' + |
+         "#{node.title.parameterize.underscore}",                    |
+  node: node,                                                        |
+  provider_compare_presenter: provider_compare_presenter,            |
+  selected_provider_presenter: selected_provider_presenter           |
