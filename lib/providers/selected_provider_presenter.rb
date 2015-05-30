@@ -15,7 +15,7 @@ module Providers
     end
 
     def value
-      bars(teaser_node_data).try(:fetch, :value) || 'n/a'
+      send("#{@teaser_node.type}_value")
     end
 
     def adjustment_factor
@@ -57,6 +57,14 @@ module Providers
 
     def teaser_node_data
       @teaser_node.data
+    end
+
+    def measure_value
+      "#{bars(teaser_node_data).fetch(:value, 'n/a')} %"
+    end
+
+    def metric_module_value
+      bars(teaser_node_data).try(:fetch, :value) || 'n/a'
     end
   end
 end

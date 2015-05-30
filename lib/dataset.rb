@@ -7,6 +7,7 @@ class Dataset
 
   MEASURE_ID_TO_DATASET = {
     '7xux-kdpw' => [
+      :READMISSIONS_REDUCTION_PROGRAM,
       :PSI_90_SAFETY,
       :READM_30_AMI,
       :READM_30_HF,
@@ -57,10 +58,15 @@ class Dataset
     '7xux-kdpw' => :minimum,
     '77hc-ibv8' => :minimum,
   }
-
   DATASET_VALUE_DESCRIPTION = {
-    'dgck-syfz' => 'Positive Experience',
-    '7xux-kdpw' => 'of patients were readmitted',
+    'dgck-syfz' => {
+      short_description: 'Positive Experience',
+      long_description: 'of patients had a positive experience',
+    },
+    '7xux-kdpw' => {
+      short_description: 'Readmission Rate',
+      long_description: 'of patients were readmitted',
+    },
   }
 
   def initialize(measure_id:)

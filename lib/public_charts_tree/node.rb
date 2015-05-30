@@ -15,6 +15,7 @@ class PublicChartsTree
              :type,
              :value_dimension_manager,
              :line_data,
+             :value_description,
              :id_component,
              :id_components,
              to: :internal_node
@@ -41,12 +42,11 @@ class PublicChartsTree
       {
         bars: bars(providers, selected_provider),
         title: title,
-        lines: lines,
+        lines: line_data,
       }
     end
 
     def bars(providers, selected_provider)
-      return [] unless value_dimension_manager.present? # temporary until done
       value_dimension_manager.data(providers, selected_provider)
       .map do |value, provider_name, provider_id, cms_rank|
         {
@@ -58,11 +58,6 @@ class PublicChartsTree
           },
         }
       end
-    end
-
-    def lines
-      return [] unless line_data.present? # temporary until done
-      line_data
     end
 
     def parent

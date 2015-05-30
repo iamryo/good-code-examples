@@ -39,8 +39,7 @@ module DimensionSampleManagers
       end
 
       def national_average_data
-        DimensionSampleManagers::GraphDataPoints::NationalAverage
-        .call(id)
+        DimensionSampleManagers::GraphDataPoints::NationalAverage.call(id)
       end
 
       def readmissions_target_data
@@ -50,8 +49,7 @@ module DimensionSampleManagers
       end
 
       def national_best_performer_data
-        DimensionSampleManagers::GraphDataPoints::NationalBestPerformer
-        .call(id)
+        DimensionSampleManagers::GraphDataPoints::NationalBestPerformer.call(id)
       end
     end
   end

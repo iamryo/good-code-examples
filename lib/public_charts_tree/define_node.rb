@@ -8,6 +8,7 @@ require_relative 'category'
 require_relative 'measure'
 require 'dimension_sample_managers/graph_data_points/measure'
 require 'dimension_sample_managers/graph_data_points/line_data'
+require 'dimension_sample_managers/graph_data_points/value_description'
 # .
 class PublicChartsTree
   # A developer-friendly way to build the static chart tree for public data.
@@ -40,6 +41,10 @@ class PublicChartsTree
       embedded_node.line_data = line_data
     end
 
+    def value_description(value_description_data)
+      embedded_node.value_description = value_description_data
+    end
+
     def measure_source(*args, &definition_block)
       create_child_node(*args, definition_block, MeasureSource)
     end
@@ -66,6 +71,7 @@ class PublicChartsTree
         measure(measure.fetch(:title)) do
           value GRAPH_DATA_POINTS::Measure.new(measure_id: measure_id)
           line GRAPH_DATA_POINTS::LineData.call(measure_id)
+          value_description GRAPH_DATA_POINTS::ValueDescription.call(measure_id)
         end
       end
     end

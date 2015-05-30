@@ -27,13 +27,14 @@ PUBLIC_CHARTS_TREE = PublicChartsTree.new do
       end
     end
     metric_module 'Hospital Readmissions Reduction Program' do
-      value DimensionSampleManagers::GraphDataPoints::
-      Measure.new(
+      value DimensionSampleManagers::GraphDataPoints::Measure.new(
         measure_id: :corrected_fy_2015_readmissions_adjustment_factor,
       )
       line DimensionSampleManagers::GraphDataPoints::LineData.call(
         :READMISSIONS_REDUCTION_PROGRAM,
       )
+      value_description DimensionSampleManagers::GraphDataPoints::
+      ValueDescription.call(:READMISSIONS_REDUCTION_PROGRAM)
       measures :READM_30_AMI,
                :READM_30_HF,
                :READM_30_PN,

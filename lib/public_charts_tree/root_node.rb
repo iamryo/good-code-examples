@@ -23,6 +23,9 @@ class PublicChartsTree
 
       def line_data
       end
+
+      def value_description
+      end
     end
   end
 end

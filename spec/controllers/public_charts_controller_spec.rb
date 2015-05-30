@@ -10,50 +10,23 @@ RSpec.describe PublicChartsController do
   end
 
   describe 'GET show' do
-    let(:public_charts_tree) do
-      PublicChartsTree.new do
-        measure_source 'Socrata' do
-          metric_module 'Value Based Purchasing' do
-            domain 'Outcome of Care' do
-              measure 'Heart Failure Readmission'
-              measure 'Pnuemonia Readmission'
-              measure 'Acute Myocardial Infarction Readmission'
-            end
-            domain 'Efficiency of Care'
-          end
-        end
-      end
+    let(:measure_id) { 'heart-failure-readmission' }
+    let(:node_id) do
+      "payment-programs/hospital-readmissions-reduction-program/#{measure_id}"
     end
-    let(:some_providers) { providers_relation(0) }
-    let!(:node) do
-      public_charts_tree.find_node(
-        node_id,
-        providers: some_providers,
-        selected_provider: selected_provider_relation,
-      )
-    end
-    let(:default_provider) { create(:provider) }
-
-    def providers_relation(count)
-      create_list(Provider, count)
-      Provider.in_same_city(default_provider)
-    end
-
-    def selected_provider_relation
-      Provider.where(socrata_provider_id: default_provider.socrata_provider_id)
+    let(:selected_provider_presenter) do
+      double('Providers::SelectedProviderPresenter')
     end
 
     before do
-      stub_const('PUBLIC_CHARTS_TREE', public_charts_tree)
+      allow(Providers::SelectedProviderPresenter).to receive(:new)
+        .and_return(selected_provider_presenter)
+      allow(selected_provider_presenter).to receive(:value).and_return([])
+      allow(selected_provider_presenter).to receive(:cms_rank).and_return([])
       get :show, id: node_id
     end
 
     describe 'generate a fixture with conversations' do
-      let(:measure_id) { 'heart-failure-readmission' }
-      let(:node_id) do
-        "socrata/value-based-purchasing/outcome-of-care/#{measure_id}"
-      end
-
       let!(:conversation) do
         create(
           Conversation,
@@ -71,99 +44,53 @@ RSpec.describe PublicChartsController do
       end
     end
 
-    # TODO: Fix this spec
-    # describe 'assigned node' do
-    #   let(:node_id) { 'socrata' }
-    #   let(:some_providers) { providers_relation(2) }
-
-    #   it 'it sets the node' do
-    #     expect(assigns(:node)).to eq node
-    #   end
-    # end
-
     describe 'metrics navigation' do
       subject { response.body }
       let(:measures_nav_container) { '#measures_nav_container' }
 
       context 'for measures' do
-        let(:node_id) do
-          %w[
-            socrata
-            value-based-purchasing
-            outcome-of-care
-            pnuemonia-readmission
-          ].join('/')
-        end
-
-        it 'shows grandparent' do
+        it 'shows parent' do
           is_expected.to have_css(
             measures_nav_container,
-            text: 'Pnuemonia Readmission',
+            text: 'Hospital Readmissions Reduction Program',
           )
         end
 
         it 'shows sibling measures' do
           is_expected.to have_css(
             measures_nav_container,
-            text: 'Heart Failure Readmission',
-          )
-          is_expected.to have_css(
-            measures_nav_container,
             text: 'Acute Myocardial Infarction Readmission',
           )
-        end
-
-        it 'does not show right arrow or link for current node' do
-          is_expected.to have_css(
-            '.current_node',
-            text: 'Pnuemonia Readmission',
-          )
-          is_expected.not_to have_css '.current_node a'
-          is_expected.not_to have_css '.current_node svg'
         end
       end
 
       context 'for non-measures' do
         let(:node_id) do
           %w[
-            socrata
-            value-based-purchasing
-            outcome-of-care
+            payment-programs
+            hospital-consumer-assessment-of-healthcare-providers-and-systems
           ].join('/')
         end
 
         it 'shows the current node' do
           is_expected.to have_css(
             measures_nav_container,
-            text: 'Outcome of Care',
+            text: 'Hospital Consumer Assessment of ' \
+                  'Healthcare Providers and Systems',
           )
         end
 
         it 'does not show sibling nodes' do
           is_expected.not_to have_css(
             measures_nav_container,
-            text: 'Efficiency of Care',
+            text: 'Heart Failure Readmission',
           )
         end
 
         it 'shows child nodes' do
           is_expected.to have_css(
             measures_nav_container,
-            text: 'Heart Failure Readmission')
-          is_expected.to have_css(
-            measures_nav_container,
-            text: 'Pnuemonia Readmission',
-          )
-          is_expected.to have_css(
-            measures_nav_container,
-            text: 'Acute Myocardial Infarction Readmission',
-          )
-        end
-
-        it 'does not show grandparent' do
-          is_expected.not_to have_css(
-            measures_nav_container,
-            text: 'Socrata',
+            text: 'Communication with Nurses',
           )
         end
       end
@@ -171,7 +98,7 @@ RSpec.describe PublicChartsController do
 
     context 'with parameters' do
       let(:provider) { create(Provider) }
-      let(:node_id) { 'socrata' }
+      let(:node_id) { 'payment-programs' }
       let(:get_params) { {} }
 
       before do

@@ -2,7 +2,7 @@
 class PublicChartsTree
   # A ChildNode instance represents any node below the root.
   ChildNode = Struct.new(:parent, :title) do
-    attr_accessor :value_dimension_manager, :line_data
+    attr_accessor :value_dimension_manager, :line_data, :value_description
 
     delegate :breadcrumb,
              to: :parent,

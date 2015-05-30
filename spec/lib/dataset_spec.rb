@@ -26,8 +26,8 @@ RSpec.describe Dataset do
   end
   let(:dataset_value_description) do
     {
-      'dgck-syfz' => 'Positive Experience',
-      '7xux-kdpw' => 'of patients were readmitted',
+      short_description: 'Readmission Rate',
+      long_description: 'of patients were readmitted',
     }
   end
   let(:measure_id) { :READM_30_AMI }
@@ -55,6 +55,6 @@ RSpec.describe Dataset do
 
   it 'returns the description for the dataset' do
     expect(subject.dataset_value_description)
-      .to eq('of patients were readmitted')
+      .to eq(dataset_value_description)
   end
 end

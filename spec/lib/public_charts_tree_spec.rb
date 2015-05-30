@@ -14,6 +14,7 @@ RSpec.describe PublicChartsTree do
           domain 'Outcome of Care' do
             value VALUE_DIMENSION_SAMPLE_MANAGER
             line LINE_DATA
+            value_description VALUE_DESCRIPTION
             category 'Mortality' do
               measures :MORT_30_AMI
             end
@@ -29,6 +30,9 @@ RSpec.describe PublicChartsTree do
   end
   let(:line_data) do
     instance_double(DimensionSampleManagers::GraphDataPoints::LineData)
+  end
+  let(:value_description) do
+    instance_double(DimensionSampleManagers::GraphDataPoints::ValueDescription)
   end
   let(:measures) do
     {
@@ -51,6 +55,12 @@ RSpec.describe PublicChartsTree do
   end
   let(:dataset) { double('Dataset') }
   let(:dataset_best_value_method) { :minimum }
+  let(:dataset_value_description) do
+    {
+      short_description: 'Positive Experience',
+      long_description: 'of patients had a positive experience',
+    }
+  end
 
   def find(node_id)
     tree.find_node(
@@ -64,9 +74,12 @@ RSpec.describe PublicChartsTree do
     stub_const('MEASURES', measures)
     stub_const('VALUE_DIMENSION_SAMPLE_MANAGER', value_dimension_sample_manager)
     stub_const('LINE_DATA', line_data)
+    stub_const('VALUE_DESCRIPTION', value_description)
     allow(Dataset).to receive(:new).and_return(dataset)
     allow(dataset).to receive(:dataset_best_value_method)
       .and_return(dataset_best_value_method)
+    allow(dataset).to receive(:dataset_value_description)
+      .and_return(dataset_value_description)
     allow(DimensionSampleManagers::GraphDataPoints::Measure)
       .to receive(:new).with(measure_id: :MORT_30_AMI)
       .and_return(value_dimension_sample_manager)
