@@ -6,7 +6,7 @@
 #  name                :string           not null
 #  zip_code            :string           not null
 #  hospital_type       :string           not null
-#  socrata_provider_id :string           not null
+#  cms_provider_id :string           not null
 #  state               :string           not null
 #  city                :string           not null
 #  hospital_system_id  :integer
@@ -30,7 +30,7 @@ RSpec.describe Provider do
         .with_options(null: false)
     end
     it do
-      is_expected.to have_db_column(:socrata_provider_id).of_type(:string)
+      is_expected.to have_db_column(:cms_provider_id).of_type(:string)
         .with_options(null: false)
     end
     it do
@@ -44,7 +44,7 @@ RSpec.describe Provider do
   end
 
   describe 'indexes' do
-    it { is_expected.to have_db_index(:socrata_provider_id).unique }
+    it { is_expected.to have_db_index(:cms_provider_id).unique }
   end
 
   describe 'associations' do
@@ -58,7 +58,7 @@ RSpec.describe Provider do
 
       it { is_expected.to be_valid }
 
-      it { is_expected.to validate_presence_of(:socrata_provider_id) }
+      it { is_expected.to validate_presence_of(:cms_provider_id) }
       it { is_expected.to validate_presence_of(:name) }
       it { is_expected.to validate_presence_of(:city) }
       it { is_expected.to validate_presence_of(:state) }
@@ -66,7 +66,7 @@ RSpec.describe Provider do
 
     context 'requires a record to be saved' do
       before { create(described_class) }
-      it { is_expected.to validate_uniqueness_of(:socrata_provider_id) }
+      it { is_expected.to validate_uniqueness_of(:cms_provider_id) }
     end
   end
 
@@ -76,18 +76,18 @@ RSpec.describe Provider do
         'name' => 'Provider Name',
         'zip_code' => '36301',
         'hospital_type' => 'A really good one',
-        'socrata_provider_id' => socrata_provider_id,
+        'cms_provider_id' => cms_provider_id,
         'state' => 'AL',
         'city' => 'Dothan',
       }
     end
-    let(:socrata_provider_id) { '123456' }
+    let(:cms_provider_id) { '123456' }
 
     def create_or_update!
       described_class.create_or_update!(new_attributes)
     end
 
-    context 'no provider exists with this socrata_provider_id' do
+    context 'no provider exists with this cms_provider_id' do
       it 'creates the provider' do
         expect { create_or_update! }
           .to change(described_class, :count).by(1)
@@ -96,9 +96,9 @@ RSpec.describe Provider do
       end
     end
 
-    context 'a provider already exists with this socrata_provider_id' do
+    context 'a provider already exists with this cms_provider_id' do
       let!(:existing_provider) do
-        create(:provider, socrata_provider_id: socrata_provider_id)
+        create(:provider, cms_provider_id: cms_provider_id)
       end
 
       it 'updates its attributes' do

@@ -7,7 +7,7 @@ require 'pg_search'
 #  name                :string           not null
 #  zip_code            :string           not null
 #  hospital_type       :string           not null
-#  socrata_provider_id :string           not null
+#  cms_provider_id :string           not null
 #  state               :string           not null
 #  city                :string           not null
 #  hospital_system_id  :integer
@@ -23,7 +23,7 @@ class Provider < ActiveRecord::Base
   belongs_to :hospital_system
   has_many :accounts, as: :virtual_system
 
-  validates :socrata_provider_id, uniqueness: true, presence: true
+  validates :cms_provider_id, uniqueness: true, presence: true
   validates :name, presence: true
   validates :city, presence: true
   validates :state, presence: true
@@ -58,7 +58,7 @@ class Provider < ActiveRecord::Base
 
   def self.create_or_update!(attributes)
     find_or_initialize_by(
-      socrata_provider_id: attributes.fetch('socrata_provider_id'),
+      cms_provider_id: attributes.fetch('cms_provider_id'),
     ).update_attributes!(attributes)
   end
 

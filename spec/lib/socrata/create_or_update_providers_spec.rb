@@ -20,7 +20,7 @@ RSpec.describe Socrata::CreateOrUpdateProviders, :vcr do
     {
       'name' => 'SOUTHEAST ALABAMA MEDICAL CENTER',
       'zip_code' => '36301',
-      'socrata_provider_id' => '010001',
+      'cms_provider_id' => '010001',
       'state' => 'AL',
       'hospital_type' => 'Acute Care Hospitals',
       'city' => 'DOTHAN',
@@ -36,7 +36,7 @@ RSpec.describe Socrata::CreateOrUpdateProviders, :vcr do
   end
 
   describe 'with existing provider(s)' do
-    let!(:existing_provider) { create(Provider, socrata_provider_id: '010001') }
+    let!(:existing_provider) { create(Provider, cms_provider_id: '010001') }
 
     before { call }
 
@@ -53,7 +53,7 @@ RSpec.describe Socrata::CreateOrUpdateProviders, :vcr do
       {
         'name' => 'MARSHALL MEDICAL CENTER SOUTH',
         'zip_code' => '35957',
-        'socrata_provider_id' => '010005',
+        'cms_provider_id' => '010005',
         'state' => 'AL',
         'hospital_type' => 'Acute Care Hospitals',
         'city' => 'BOAZ',
@@ -63,7 +63,7 @@ RSpec.describe Socrata::CreateOrUpdateProviders, :vcr do
       {
         'name' => 'ELIZA COFFEE MEMORIAL HOSPITAL',
         'zip_code' => '35631',
-        'socrata_provider_id' => '010006',
+        'cms_provider_id' => '010006',
         'state' => 'AL',
         'hospital_type' => 'Acute Care Hospitals',
         'city' => 'FLORENCE',

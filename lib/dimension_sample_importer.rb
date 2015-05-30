@@ -50,7 +50,7 @@ DimensionSampleImporter = Struct.new(:dimension_samples, :model_attributes,
   def extended_rename_hash
     rename_hash.merge(
       value_column_name => 'value',
-      'provider_id' => 'socrata_provider_id',
+      'provider_id' => 'cms_provider_id',
     )
   end
 end

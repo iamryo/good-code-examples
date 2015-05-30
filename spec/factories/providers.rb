@@ -6,7 +6,7 @@
 #  name                :string           not null
 #  zip_code            :string           not null
 #  hospital_type       :string           not null
-#  socrata_provider_id :string           not null
+#  cms_provider_id :string           not null
 #  state               :string           not null
 #  city                :string           not null
 #  hospital_system_id  :integer
@@ -14,7 +14,7 @@
 
 FactoryGirl.define do
   factory :provider do
-    sequence(:socrata_provider_id) { |n| n.to_s.rjust(6, '0') }
+    sequence(:cms_provider_id) { |n| n.to_s.rjust(6, '0') }
     sequence(:name) { |n| "My Provider #{n}" }
     city 'SAN FRANCISCO'
     state 'CA'

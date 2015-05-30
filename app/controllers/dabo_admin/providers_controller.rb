@@ -10,7 +10,7 @@ module DaboAdmin
           :hospital_system_id,
           :hospital_type,
           :name,
-          :socrata_provider_id,
+          :cms_provider_id,
           :state,
           :zip_code,
         )

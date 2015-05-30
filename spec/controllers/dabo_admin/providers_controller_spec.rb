@@ -6,7 +6,7 @@ RSpec.describe DaboAdmin::ProvidersController do
   let(:invalid_attributes) do
     attributes_for(
       Provider,
-      socrata_provider_id: '',
+      cms_provider_id: '',
       name: '',
       city: '',
       state: '',

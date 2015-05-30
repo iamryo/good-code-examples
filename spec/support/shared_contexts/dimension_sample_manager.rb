@@ -3,12 +3,12 @@ require './app/models/provider'
 RSpec.shared_context 'dimension sample manager' do
   subject { described_class.new(options) }
 
-  let(:relevant_providers) { Provider.where(socrata_provider_id: provider_ids) }
+  let(:relevant_providers) { Provider.where(cms_provider_id: provider_ids) }
   let(:selected_provider) do
-    Provider.where(socrata_provider_id: provider_ids.first)
+    Provider.where(cms_provider_id: provider_ids.first)
   end
-  let(:provider_1_id) { Provider.find_by_socrata_provider_id('010103').id }
-  let(:provider_2_id) { Provider.find_by_socrata_provider_id('010087').id }
+  let(:provider_1_id) { Provider.find_by_cms_provider_id('010103').id }
+  let(:provider_2_id) { Provider.find_by_cms_provider_id('010087').id }
   let(:expected_data) do
     [
       ['1.06', 'Hospital010103', provider_1_id, cms_rank, '010103'],
@@ -33,11 +33,11 @@ RSpec.shared_context 'dimension sample manager' do
   let(:dataset) { double('Dataset') }
 
   def create_relevant_providers
-    provider_ids.each do |socrata_provider_id|
+    provider_ids.each do |cms_provider_id|
       create(
         Provider,
-        name: "Hospital#{socrata_provider_id}",
-        socrata_provider_id: socrata_provider_id,
+        name: "Hospital#{cms_provider_id}",
+        cms_provider_id: cms_provider_id,
       )
     end
   end

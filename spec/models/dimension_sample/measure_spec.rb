@@ -3,7 +3,7 @@
 # Table name: dimension_sample_measures
 #
 #  id                  :integer          not null, primary key
-#  socrata_provider_id :string           not null
+#  cms_provider_id :string           not null
 #  measure_id          :string           not null
 #  value               :string           not null
 #  created_at          :datetime         not null
@@ -16,7 +16,7 @@ require './app/models/dimension_sample/measure'
 RSpec.describe DimensionSample::Measure do
   describe 'columns' do
     it do
-      is_expected.to have_db_column(:socrata_provider_id).of_type(:string)
+      is_expected.to have_db_column(:cms_provider_id).of_type(:string)
         .with_options(null: false)
     end
     it do
@@ -31,12 +31,12 @@ RSpec.describe DimensionSample::Measure do
 
   describe 'indexes' do
     it do
-      is_expected.to have_db_index([:socrata_provider_id, :measure_id]).unique
+      is_expected.to have_db_index([:cms_provider_id, :measure_id]).unique
     end
   end
 
   describe 'validations' do
-    it { is_expected.to validate_presence_of(:socrata_provider_id) }
+    it { is_expected.to validate_presence_of(:cms_provider_id) }
     it { is_expected.to validate_presence_of(:measure_id) }
     it { is_expected.to validate_presence_of(:value) }
   end
@@ -45,12 +45,12 @@ RSpec.describe DimensionSample::Measure do
     let(:dimension_sample_attributes) do
       {
         measure_id: measure_id,
-        socrata_provider_id: socrata_provider_id,
+        cms_provider_id: cms_provider_id,
         value: value,
       }
     end
 
-    let(:socrata_provider_id) { '010001' }
+    let(:cms_provider_id) { '010001' }
     let(:value) { '42.42424242' }
     let(:measure_id) { 'PSI_90_SAFETY' }
     let(:best_value_method) { :minimum }
@@ -65,12 +65,12 @@ RSpec.describe DimensionSample::Measure do
 
     describe '.data' do
       let!(:relevant_provider_1) do
-        create(Provider, socrata_provider_id: relevant_provider_id_1)
+        create(Provider, cms_provider_id: relevant_provider_id_1)
       end
-      let(:relevant_provider_id_1) { socrata_provider_id }
+      let(:relevant_provider_id_1) { cms_provider_id }
 
       let!(:relevant_provider_2) do
-        create(Provider, socrata_provider_id: relevant_provider_id_2)
+        create(Provider, cms_provider_id: relevant_provider_id_2)
       end
       let(:relevant_provider_id_2) { '010005' }
 
@@ -83,14 +83,14 @@ RSpec.describe DimensionSample::Measure do
 
       let!(:relevant_dimension_sample_2) do
         create_dimension_sample(
-          socrata_provider_id: relevant_provider_id_2,
+          cms_provider_id: relevant_provider_id_2,
           value: relevant_dimension_sample_2_value,
         )
       end
       let(:relevant_dimension_sample_2_value) { '12.0000000000' }
 
       let!(:dimension_sample_with_wrong_provider_id) do
-        create_dimension_sample(socrata_provider_id: irrelevant_provider_id)
+        create_dimension_sample(cms_provider_id: irrelevant_provider_id)
       end
       let!(:dimension_sample_with_wrong_measure_id) do
         create_dimension_sample(measure_id: 'HAI_1_SIR')
@@ -98,7 +98,7 @@ RSpec.describe DimensionSample::Measure do
 
       let(:providers) { Provider.all }
       let(:selected_provider) do
-        Provider.where(socrata_provider_id: relevant_provider_1)
+        Provider.where(cms_provider_id: relevant_provider_1)
       end
 
       def create_dimension_sample(**custom_attributes)
@@ -123,14 +123,14 @@ RSpec.describe DimensionSample::Measure do
             relevant_provider_2.name,
             relevant_provider_2.id,
             '/2',
-            relevant_provider_2.socrata_provider_id,
+            relevant_provider_2.cms_provider_id,
           ],
           [
             relevant_dimension_sample_1_value,
             relevant_provider_1.name,
             relevant_provider_1.id,
             '/2',
-            relevant_provider_1.socrata_provider_id,
+            relevant_provider_1.cms_provider_id,
           ],
         ]
       end
@@ -172,8 +172,8 @@ RSpec.describe DimensionSample::Measure do
         end
       end
 
-      context 'with a different socrata_provider_id' do
-        let(:new_attribute) { { socrata_provider_id: '0000002' } }
+      context 'with a different cms_provider_id' do
+        let(:new_attribute) { { cms_provider_id: '0000002' } }
 
         it 'makes a new record' do
           expect { create_or_update! }.to change(described_class, :count).by(1)

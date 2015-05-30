@@ -23,8 +23,8 @@ module Socrata
       providers.each_with_index do |provider_attributes, index|
         provider_attributes['name'] = provider_attributes
                                       .delete('hospital_name')
-        provider_attributes['socrata_provider_id'] = provider_attributes
-                                                     .delete('provider_id')
+        provider_attributes['cms_provider_id'] = provider_attributes
+                                                 .delete('provider_id')
         Provider.create_or_update!(provider_attributes)
         yield index
       end

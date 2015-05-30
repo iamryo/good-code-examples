@@ -120,7 +120,7 @@
 <text text-anchor="start" x="278.503" y="-733.3" font-family="Times,serif" font-size="14.00">name :string</text>
 <text text-anchor="start" x="278.503" y="-719.3" font-family="Times,serif" font-size="14.00">zip_code :string</text>
 <text text-anchor="start" x="278.503" y="-705.3" font-family="Times,serif" font-size="14.00">hospital_type :string</text>
-<text text-anchor="start" x="278.503" y="-691.3" font-family="Times,serif" font-size="14.00">socrata_provider_id :string</text>
+<text text-anchor="start" x="278.503" y="-691.3" font-family="Times,serif" font-size="14.00">cms_provider_id :string</text>
 <text text-anchor="start" x="278.503" y="-677.3" font-family="Times,serif" font-size="14.00">state :string</text>
 <text text-anchor="start" x="278.503" y="-663.3" font-family="Times,serif" font-size="14.00">city :string</text>
 <text text-anchor="start" x="278.503" y="-649.3" font-family="Times,serif" font-size="14.00">hospital_system_id :integer</text>

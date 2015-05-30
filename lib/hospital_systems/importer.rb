@@ -14,7 +14,7 @@ module HospitalSystems
         associate_provider_with_system
         nil
       else
-        "Provider not found: ##{data.fetch(:socrata_provider_id)}"
+        "Provider not found: ##{data.fetch(:cms_provider_id)}"
       end
     end
 
@@ -23,7 +23,7 @@ module HospitalSystems
     end
 
     def provider
-      Provider.find_by(socrata_provider_id: data.fetch(:socrata_provider_id))
+      Provider.find_by(cms_provider_id: data.fetch(:cms_provider_id))
     end
 
     def associate_provider_with_system

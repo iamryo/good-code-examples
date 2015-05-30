@@ -47,7 +47,7 @@ class PublicChartsController < ApplicationController
 
   def selected_provider_relation
     Provider.where(
-      socrata_provider_id: [selected_provider].map(&:socrata_provider_id),
+      cms_provider_id: [selected_provider].map(&:cms_provider_id),
     )
   end
 

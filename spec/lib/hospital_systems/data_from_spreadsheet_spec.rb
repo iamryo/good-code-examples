@@ -14,23 +14,23 @@ RSpec.describe HospitalSystems::DataFromSpreadsheet do
     expect(results.to_a).to eq [
       {
         system_name: 'Universal Health Services',
-        socrata_provider_id: '200001',
+        cms_provider_id: '200001',
       },
       {
         system_name: 'Health Resources',
-        socrata_provider_id: '20002F',
+        cms_provider_id: '20002F',
       },
       {
         system_name: nil,
-        socrata_provider_id: '200003',
+        cms_provider_id: '200003',
       },
       {
         system_name: 'Universal Health Services',
-        socrata_provider_id: '200004',
+        cms_provider_id: '200004',
       },
       {
         system_name: 'Department of Veterans Affairs',
-        socrata_provider_id: '019048',
+        cms_provider_id: '019048',
       },
     ]
   end

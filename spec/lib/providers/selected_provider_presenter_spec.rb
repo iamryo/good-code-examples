@@ -56,7 +56,7 @@ RSpec.describe Providers::SelectedProviderPresenter do
 
   def selected_provider
     Provider.where(
-      socrata_provider_id: [provider].map(&:socrata_provider_id),
+      cms_provider_id: [provider].map(&:cms_provider_id),
     )
   end
 

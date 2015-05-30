@@ -3,15 +3,15 @@ require 'hospital_systems/importer'
 
 RSpec.describe HospitalSystems::Importer do
   let!(:provider_in_universal_system) do
-    create(:provider, socrata_provider_id: '200001')
+    create(:provider, cms_provider_id: '200001')
   end
 
   let!(:provider_in_resources_system) do
-    create(:provider, socrata_provider_id: '20002F')
+    create(:provider, cms_provider_id: '20002F')
   end
 
   let!(:provider_without_system) do
-    create(:provider, socrata_provider_id: '200003')
+    create(:provider, cms_provider_id: '200003')
   end
 
   let(:universal_system_name) { 'Universal Health Services' }
