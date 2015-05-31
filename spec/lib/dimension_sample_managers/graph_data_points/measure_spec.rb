@@ -11,8 +11,8 @@ RSpec.describe DimensionSampleManagers::GraphDataPoints::Measure do
     end
     let(:expected_data) do
       [
-        ['0.98', 'Hospital010087', provider_2_id, cms_rank, '010087'],
-        ['1.06', 'Hospital010103', provider_1_id, cms_rank, '010103'],
+        [0.98, 'Hospital010087', provider_2_id, cms_rank, '010087'],
+        [1.06, 'Hospital010103', provider_1_id, cms_rank, '010103'],
       ]
     end
     let(:data_param) { [relevant_providers, selected_provider] }
@@ -49,7 +49,7 @@ RSpec.describe DimensionSampleManagers::GraphDataPoints::Measure do
       let(:measure_id) { :H_COMP_1_A_P }
       let(:cassette_name) { "#{vcr_directory}/higher_is_better" }
       it_behaves_like 'a DSM with national best performer value' do
-        let(:national_best_performer_value) { '83' }
+        let(:national_best_performer_value) { 83 }
       end
     end
   end

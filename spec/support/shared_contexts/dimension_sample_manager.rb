@@ -11,8 +11,8 @@ RSpec.shared_context 'dimension sample manager' do
   let(:provider_2_id) { Provider.find_by_cms_provider_id('010087').id }
   let(:expected_data) do
     [
-      ['1.06', 'Hospital010103', provider_1_id, cms_rank, '010103'],
-      ['0.98', 'Hospital010087', provider_2_id, cms_rank, '010087'],
+      [1.06, 'Hospital010103', provider_1_id, cms_rank, '010103'],
+      [0.98, 'Hospital010087', provider_2_id, cms_rank, '010087'],
     ]
   end
   let(:provider_ids) do
@@ -62,7 +62,7 @@ RSpec.shared_context 'dimension sample manager' do
   end
 
   shared_examples 'a DSM with national best performer value' do
-    let(:national_best_performer_value) { '0.72' }
+    let(:national_best_performer_value) { 0.72 }
 
     it 'returns the best value' do
       import

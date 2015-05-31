@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150530181457) do
+ActiveRecord::Schema.define(version: 20150531003952) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -75,7 +75,7 @@ ActiveRecord::Schema.define(version: 20150530181457) do
   create_table "dimension_sample_measures", force: :cascade do |t|
     t.string   "cms_provider_id", null: false
     t.string   "measure_id",      null: false
-    t.string   "value",           null: false
+    t.float    "value",           null: false
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
   end

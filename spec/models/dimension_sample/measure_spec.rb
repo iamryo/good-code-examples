@@ -24,7 +24,7 @@ RSpec.describe DimensionSample::Measure do
         .with_options(null: false)
     end
     it do
-      is_expected.to have_db_column(:value).of_type(:string)
+      is_expected.to have_db_column(:value).of_type(:float)
         .with_options(null: false)
     end
   end
@@ -51,7 +51,7 @@ RSpec.describe DimensionSample::Measure do
     end
 
     let(:cms_provider_id) { '010001' }
-    let(:value) { '42.42424242' }
+    let(:value) { 42.42424242 }
     let(:measure_id) { 'PSI_90_SAFETY' }
     let(:best_value_method) { :minimum }
     let(:dataset) { double('Dataset') }
@@ -87,7 +87,7 @@ RSpec.describe DimensionSample::Measure do
           value: relevant_dimension_sample_2_value,
         )
       end
-      let(:relevant_dimension_sample_2_value) { '12.0000000000' }
+      let(:relevant_dimension_sample_2_value) { 12.0000000000 }
 
       let!(:dimension_sample_with_wrong_provider_id) do
         create_dimension_sample(cms_provider_id: irrelevant_provider_id)
@@ -154,7 +154,7 @@ RSpec.describe DimensionSample::Measure do
       end
 
       context 'attributes match an existing record' do
-        let(:new_attribute) { { value: '10.8274' } }
+        let(:new_attribute) { { value: 10.8274 } }
 
         it 'updates the existing record' do
           expect { create_or_update! }
@@ -185,7 +185,7 @@ RSpec.describe DimensionSample::Measure do
     describe '.sort_providers' do
       let(:provider_with_lower_value) do
         [
-          '12.0000000000',
+          12.0000000000,
           'My Provider 2',
           2,
           '010005',
@@ -193,7 +193,7 @@ RSpec.describe DimensionSample::Measure do
       end
       let(:provider_with_higher_value) do
         [
-          '42.42424242',
+          42.42424242,
           'My Provider 1',
           1,
           '010001',
