@@ -9,9 +9,6 @@
       +centerer
 
   .measure_teaser &
-    div
-      height: rem(120)
-
     .no_data
       color: $chart_red
       margin-left: -$buffer_base
@@ -34,26 +31,6 @@
   .chart
     text
       text-anchor: left
-
-.measure_teaser
-  background: $grey_dark
-
-  a
-    color: $white
-
-  .chart
-    overflow: visible
-
-    line
-      &.best,
-      &.target,
-      &.national-avg
-        stroke: $white
-
-    text
-      fill: $white
-      text-anchor: right
-      @extend .text_weight_light
 
 .chart
   +transform(translateY(rem(15)))

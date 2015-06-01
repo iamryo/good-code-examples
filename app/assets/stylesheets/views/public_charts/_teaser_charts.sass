@@ -1,6 +1,13 @@
 .measure_teaser
-  position: relative
+  background: $grey_dark
   overflow: hidden
+  position: relative
+
+  h5
+    color: $white
+
+  a
+    color: $white
 
   .teaser_chart_title
     min-height: rem(40)
@@ -18,8 +25,19 @@
     .provider_data
       color: $chart_red
 
-  h5
-    color: $white
-
   .provider_data
     font-size: rem(50)
+
+  .chart
+    overflow: visible
+
+    line
+      &.best,
+      &.target,
+      &.national-avg
+        stroke: $white
+
+    text
+      fill: $white
+      text-anchor: right
+      @extend .text_weight_light
