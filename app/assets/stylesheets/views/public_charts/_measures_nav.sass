@@ -1,0 +1,11 @@
+$nested_margin: $icon_size_small + $buffer_small + $padding_base_vertical
+
+#measures_nav_container
+  li
+    margin-left: $nested_margin
+
+    li
+      margin-left: $nested_margin - $buffer_small
+
+  .current_node
+    color: $white

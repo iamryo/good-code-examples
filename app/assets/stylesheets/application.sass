@@ -25,6 +25,28 @@
 
 .inner_content_offcanvas
   background: $white
+  min-height: 100vh
+  +media($mobile_and_tablet_portrait)
+    &.left_nav_open
+      cursor: pointer
+      overflow: hidden
+      +transition(opacity 0.4s cubic-bezier(0.7,0,0.3,1))
+
+      &::before
+        content: ''
+        height: 100%
+        width: 100%
+        position: absolute
+        top: 0
+        left: 0
+        opacity: 1
+        z-index: 200
+        +transform(translate(0, 0))
+
+    &::before
+      background-color: rgba(0,0,0,0.6)
+      opacity: 0
+      +transform(translate(100%, 0))
 
 .hide_on_mobile
   +media($mobile)
