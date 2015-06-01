@@ -1,20 +1,21 @@
-.user_profile.affix_to_bottom.vertical_padding_base.horizontal_padding_large
-  .row.bottom_margin_base
-    .col10.col9-xs
-      %p.text_weight_light.no_margin
-        #{current_user.first_name} #{current_user.last_name}
-      %p.text_small.no_margin.text_weight_light Role
-      %p.text_small.no_margin.text_weight_light Organization
+.user_profile.vertical_padding_base.top_padding_large
+  .affix_to_bottom
+    .row.bottom_margin_base
+      .col10.col9-xs
+        %p.text_weight_light.no_margin
+          #{current_user.first_name} #{current_user.last_name}
+        %p.text_small.no_margin.text_weight_light Role
+        %p.text_small.no_margin.text_weight_light Organization
 
-    .col2.col3-xs
-      .user_profile_img.text_center
-        = link_to user_profiles_info_path,
-          class: 'icon border_grey icon_size_base inner_padding_small float_right' do
-          = render 'shared/icon', icon: '#icon_user'
+      .col2.col3-xs
+        .user_profile_img.text_center
+          = link_to user_profiles_info_path,
+            class: 'icon border_grey icon_size_base inner_padding_small float_right' do
+            = render 'shared/icon', icon: '#icon_user'
 
-  .left_nav_btn.line_height_buffer_base Settings
-  - if current_user.is_dabo_admin
-    .left_nav_btn.line_height_buffer_base
-      = link_to 'Admin', user_profiles_admin_path
-  .left_nav_btn.line_height_buffer_base
-    = link_to 'Logout', destroy_user_session_path, method: :delete
+    .left_nav_btn.horizontal_padding_small Settings
+    - if current_user.is_dabo_admin
+      .left_nav_btn.horizontal_padding_small
+        = link_to 'Admin', user_profiles_admin_path
+    .left_nav_btn.horizontal_padding_small
+      = link_to 'Logout', destroy_user_session_path, method: :delete

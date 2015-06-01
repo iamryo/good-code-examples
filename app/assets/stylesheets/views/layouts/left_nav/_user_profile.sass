@@ -1,5 +1,9 @@
 .user_profile
-  height: 25%
+  position: relative
+  +media($tablet_portrait_and_desktop)
+    height: $left_nav_user_profile_height_desktop
+  +media($mobile)
+    height: $left_nav_user_profile_height_mobile
 
 .user_profile_img
   a.icon

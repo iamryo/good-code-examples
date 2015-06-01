@@ -26,9 +26,17 @@
 .inner_content_offcanvas
   background: $white
   min-height: 100vh
+
+  +media($mobile)
+    min-height: $mobile_viewport_height
+
+  +media($tablet_portrait)
+    min-height: $tablet_portrait_viewport_height
+
   +media($mobile_and_tablet_portrait)
     &.left_nav_open
       cursor: pointer
+      height: $mobile_viewport_height
       overflow: hidden
       +transition(opacity 0.4s cubic-bezier(0.7,0,0.3,1))
 
