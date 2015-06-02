@@ -8,14 +8,14 @@ module Providers
 
     delegate :cms_provider_id, to: :provider
 
-    def initialize(provider, node, teaser_node)
+    def initialize(provider, node, embedded_node)
       @provider = provider
       @node = node
-      @teaser_node = teaser_node
+      @embedded_node = embedded_node
     end
 
     def value
-      send("#{@teaser_node.type}_value")
+      send("#{@embedded_node.type}_value")
     end
 
     def adjustment_factor
@@ -55,16 +55,16 @@ module Providers
       @node.data
     end
 
-    def teaser_node_data
-      @teaser_node.data
+    def embedded_node_data
+      @embedded_node.data
     end
 
     def measure_value
-      "#{bars(teaser_node_data).fetch(:value, 'n/a')} %"
+      bars(embedded_node_data).try(:fetch, :value) || 'n/a'
     end
 
     def metric_module_value
-      bars(teaser_node_data).try(:fetch, :value) || 'n/a'
+      bars(embedded_node_data).try(:fetch, :value) || 'n/a'
     end
   end
 end

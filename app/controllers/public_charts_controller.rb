@@ -12,7 +12,7 @@ class PublicChartsController < ApplicationController
       selected_provider: selected_provider_relation,
     )
 
-    @teaser_node = find_node(
+    @embedded_node = find_node(
       providers: selected_provider_relation,
       selected_provider: selected_provider_relation,
     )
@@ -25,7 +25,7 @@ class PublicChartsController < ApplicationController
     @selected_provider_presenter = Providers::SelectedProviderPresenter.new(
       selected_provider,
       @node,
-      @teaser_node,
+      @embedded_node,
     )
 
     @conversation_presenter = Conversations::ConversationPresenter.new(

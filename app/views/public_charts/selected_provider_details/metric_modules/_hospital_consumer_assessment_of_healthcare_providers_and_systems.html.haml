@@ -1,3 +1,6 @@
-= render 'public_charts/selected_provider_details/minimal_info',
-  node: node,
-  provider_compare_presenter: provider_compare_presenter
+.row.horizontal_padding_base.two_column
+  .bottom_margin_base
+    %p.label.no_margin.text_muted.text_weight_light
+      Selected Hospital
+    %h2.no_margin.selected_provider_name.tk-freight-sans-pro
+      = provider_compare_presenter.provider_name
