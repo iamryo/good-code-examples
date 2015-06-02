@@ -58,7 +58,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'rspec-core'
   gem 'shoulda-matchers'
-  gem 'factory_girl_rails'
+  gem 'factory_girl_rails', require: false
   gem 'jasmine'
   gem 'jasmine-jquery-rails'
   gem 'dotenv'
