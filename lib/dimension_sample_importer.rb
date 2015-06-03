@@ -5,15 +5,15 @@ require_relative 'rename_attributes'
 # Imports Socrata dimension samples
 DimensionSampleImporter = Struct.new(:dimension_samples, :model_attributes,
                                      :model_class, :rename_hash,
-                                     :value_column_name) do
+                                     :dataset_value_column_name) do
   def self.call(dimension_samples:, model_attributes:, model_class:,
-                rename_hash:, value_column_name:)
+                rename_hash:, dataset_value_column_name:)
     new(
       dimension_samples,
       model_attributes,
       model_class,
       rename_hash,
-      value_column_name.to_s,
+      dataset_value_column_name.to_s,
     ).call
   end
 
@@ -49,7 +49,7 @@ DimensionSampleImporter = Struct.new(:dimension_samples, :model_attributes,
 
   def extended_rename_hash
     rename_hash.merge(
-      value_column_name => 'value',
+      dataset_value_column_name => 'value',
       'provider_id' => 'cms_provider_id',
     )
   end

@@ -9,10 +9,16 @@ module DimensionSampleManagers
     # from the database.
     class Measure
       MODEL_CLASS = DimensionSample::Measure
+      CSV_MEASURES = [
+        :corrected_fy_2015_readmissions_adjustment_factor,
+        :fy_2013_total_reimbursement_amount,
+      ]
 
       attr_reader :measure_id
 
-      delegate :rename_hash, :measure_id_column_name, to: :column_manager
+      delegate :rename_hash,
+               :socrata_measure_id_column_name,
+               to: :column_manager
       delegate :dataset_id,
                :dataset_best_value_method,
                :dataset_value_column_name,
@@ -24,7 +30,7 @@ module DimensionSampleManagers
           {}
         end
 
-        def self.measure_id_column_name
+        def self.socrata_measure_id_column_name
           'measure_id'
         end
       end
@@ -35,7 +41,7 @@ module DimensionSampleManagers
           { 'hcahps_measure_id' => 'measure_id' }
         end
 
-        def self.measure_id_column_name
+        def self.socrata_measure_id_column_name
           'hcahps_measure_id'
         end
       end
@@ -54,11 +60,11 @@ module DimensionSampleManagers
 
       def import
         DimensionSampleImporter.call(
-          dimension_samples: dimension_samples,
+          dimension_samples: dimension_samples_to_import,
           model_attributes: base_options,
           model_class: MODEL_CLASS,
           rename_hash: rename_hash,
-          value_column_name: dataset_value_column_name,
+          dataset_value_column_name: dataset_value_column_name,
         )
       end
 
@@ -81,7 +87,7 @@ module DimensionSampleManagers
         end
       end
 
-      def dimension_samples
+      def dimension_samples_to_import
         if csv_measure?
           DimensionSampleManagers::Csv::DataImporter.call
         else
@@ -89,7 +95,7 @@ module DimensionSampleManagers
             dataset_id: dataset_id,
             required_columns: required_columns,
             extra_query_options: {
-              '$where' => "#{measure_id_column_name} = '#{measure_id}'",
+              '$where' => "#{socrata_measure_id_column_name} = '#{measure_id}'",
             },
           )
         end
@@ -107,14 +113,7 @@ module DimensionSampleManagers
       end
 
       def csv_measure?
-        csv_measures.include?(measure_id)
-      end
-
-      def csv_measures
-        [
-          :corrected_fy_2015_readmissions_adjustment_factor,
-          :fy_2013_total_reimbursement_amount,
-        ]
+        CSV_MEASURES.include?(measure_id)
       end
 
       def base_options
@@ -123,6 +122,3 @@ module DimensionSampleManagers
     end
   end
 end
-
-# Convenient alias for engineers on the command line
-GDP_DSM = DimensionSampleManagers::GraphDataPoints::Measure
