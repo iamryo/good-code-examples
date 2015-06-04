@@ -8,7 +8,7 @@ class PublicChartsController < ApplicationController
     persist_selected_context
 
     @node = find_node(
-      providers: providers_relation,
+      providers: relevant_providers_relation,
       selected_provider: selected_provider_relation,
     )
 
@@ -41,13 +41,17 @@ class PublicChartsController < ApplicationController
 
   private
 
-  def providers_relation
+  def selected_provider
+    current_user.selected_provider
+  end
+
+  def relevant_providers_relation
     selected_provider.providers_relation(current_user.selected_context)
   end
 
   def selected_provider_relation
     Provider.where(
-      cms_provider_id: [selected_provider].map(&:cms_provider_id),
+      cms_provider_id: selected_provider.cms_provider_id,
     )
   end
 
@@ -65,10 +69,6 @@ class PublicChartsController < ApplicationController
       :selected_context,
       params.fetch(:context),
     )
-  end
-
-  def selected_provider
-    current_user.selected_provider
   end
 
   def find_node(providers:, selected_provider:)

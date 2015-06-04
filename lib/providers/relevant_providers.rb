@@ -1,4 +1,4 @@
-RelevantProviders = Struct.new(:providers, :selected_provider_socrata_id) do
+RelevantProviders = Struct.new(:providers, :selected_provider_cms_id) do
   MAX_DISPLAY_COUNT = 70
   MAX_DISPLAY_MID = MAX_DISPLAY_COUNT / 2
   CMS_RANK_INDEX = 3
@@ -38,7 +38,7 @@ RelevantProviders = Struct.new(:providers, :selected_provider_socrata_id) do
 
   def selected_provider_index
     @selected_provider_index ||= providers.find_index do |element|
-      element.last == selected_provider_socrata_id
+      element.last == selected_provider_cms_id
     end
   end
 
