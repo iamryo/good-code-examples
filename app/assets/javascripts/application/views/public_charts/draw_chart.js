@@ -10,6 +10,7 @@ Nightingale.drawChart = function(data, nodeId, isDetailChart, nodeType) {
   var targetValue;
   var showPercent;
   var link;
+  var textYPosition;
   var parentElement = $(nodeId).parent();
   var parentWidth = parentElement.width();
   var parentHeight = parentElement.height();
@@ -110,6 +111,22 @@ Nightingale.drawChart = function(data, nodeId, isDetailChart, nodeType) {
     return xScale(i);
   };
 
+  var getTextYPosition = textYPosition || function(d) {
+    var minDistance = 16;
+    var calcTextYPos = height - yScale(d.value) + 4;
+    var minDistanceMet = Math.abs(calcTextYPos - textYPosition) > minDistance;
+
+    if (minDistanceMet) {
+      return calcTextYPos;
+    } else {
+      if (calcTextYPos < textYPosition) {
+        return textYPosition - minDistance;
+      } else {
+        return textYPosition + minDistance;
+      }
+    }
+  };
+
   var chart = d3.select(nodeId)
     .attr('width', width)
     .attr('height', height);
@@ -153,7 +170,6 @@ Nightingale.drawChart = function(data, nodeId, isDetailChart, nodeType) {
     });
 
   for (var i = 0; i < lineData.length; i++) {
-    var textPosition;
     var lineEndPosition;
     var lineStartPosition;
     var textXPosition;
@@ -181,7 +197,13 @@ Nightingale.drawChart = function(data, nodeId, isDetailChart, nodeType) {
       .data([lineData[i]])
       .text(function(d) { return d.label + ': ' + d.value + showPercent; })
       .attr('x', textXPosition)
-      .attr('y', function(d) { return height - yScale(d.value) + 4; })
+      .attr('y', function(d) {
+        if (textYPosition) {
+          return getTextYPosition(d);
+        }
+        textYPosition = height - yScale(d.value) + 4;
+        return textYPosition;
+      })
       .attr('class', function(d) { return className; });
 
     if (isDetailChart) {
