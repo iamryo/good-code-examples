@@ -11,11 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150531003952) do
+ActiveRecord::Schema.define(version: 20150605052048) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "pg_stat_statements"
+
+  create_table "accountable_care_organizations", force: :cascade do |t|
+    t.string   "name",       null: false
+    t.string   "zip_code",   null: false
+    t.string   "state",      null: false
+    t.string   "city",       null: false
+    t.string   "cms_aco_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "accountable_care_organizations", ["cms_aco_id"], name: "index_accountable_care_organizations_on_cms_aco_id", unique: true, using: :btree
 
   create_table "accounts", force: :cascade do |t|
     t.integer  "default_provider_id"
