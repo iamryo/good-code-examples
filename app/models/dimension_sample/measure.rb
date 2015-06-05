@@ -2,12 +2,12 @@
 #
 # Table name: dimension_sample_measures
 #
-#  id                  :integer          not null, primary key
+#  id              :integer          not null, primary key
 #  cms_provider_id :string           not null
-#  measure_id          :string           not null
-#  value               :string           not null
-#  created_at          :datetime         not null
-#  updated_at          :datetime         not null
+#  measure_id      :string           not null
+#  value           :float            not null
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
 #
 
 require './app/models/provider'

@@ -3,14 +3,14 @@ require 'pg_search'
 #
 # Table name: providers
 #
-#  id                  :integer          not null, primary key
-#  name                :string           not null
-#  zip_code            :string           not null
-#  hospital_type       :string           not null
-#  cms_provider_id :string           not null
-#  state               :string           not null
-#  city                :string           not null
-#  hospital_system_id  :integer
+#  id                 :integer          not null, primary key
+#  name               :string           not null
+#  zip_code           :string           not null
+#  hospital_type      :string           not null
+#  cms_provider_id    :string           not null
+#  state              :string           not null
+#  city               :string           not null
+#  hospital_system_id :integer
 #
 
 require './app/models/hospital_system'
