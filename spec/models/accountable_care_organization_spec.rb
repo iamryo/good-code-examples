@@ -42,4 +42,23 @@ RSpec.describe AccountableCareOrganization do
   describe 'indexes' do
     it { is_expected.to have_db_index(:cms_aco_id).unique }
   end
+
+  describe 'validations' do
+    context 'no need to access the database' do
+      subject { build_stubbed(described_class) }
+
+      it { is_expected.to be_valid }
+
+      it { is_expected.to validate_presence_of(:cms_aco_id) }
+      it { is_expected.to validate_presence_of(:name) }
+      it { is_expected.to validate_presence_of(:city) }
+      it { is_expected.to validate_presence_of(:state) }
+      it { is_expected.to validate_presence_of(:zip_code) }
+    end
+
+    context 'requires a record to be saved' do
+      before { create(described_class) }
+      it { is_expected.to validate_uniqueness_of(:cms_aco_id) }
+    end
+  end
 end

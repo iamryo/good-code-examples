@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150605052048) do
+ActiveRecord::Schema.define(version: 20150605061545) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -162,6 +162,15 @@ ActiveRecord::Schema.define(version: 20150605052048) do
   end
 
   add_index "purchased_metric_modules", ["account_id"], name: "index_purchased_metric_modules_on_account_id", using: :btree
+
+  create_table "service_areas", force: :cascade do |t|
+    t.string   "name",         null: false
+    t.string   "abbreviation", null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "service_areas", ["name", "abbreviation"], name: "index_service_areas_on_name_and_abbreviation", unique: true, using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                                             null: false

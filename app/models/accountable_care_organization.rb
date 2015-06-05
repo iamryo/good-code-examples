@@ -12,11 +12,18 @@
 #  updated_at :datetime         not null
 #
 
+require './app/models/service_area'
+
 # Represents an accountable care organization fetched from Socrata's API.
 class AccountableCareOrganization < ActiveRecord::Base
+  has_many :service_areas
+
   validates :cms_aco_id, uniqueness: true, presence: true
   validates :name, presence: true
   validates :city, presence: true
   validates :state, presence: true
   validates :zip_code, presence: true
 end
+
+# Shortcut for developers
+ACO = AccountableCareOrganization
