@@ -40,13 +40,19 @@ class PublicChartsTree
 
     def data
       {
-        bars: bars(providers, selected_provider),
+        data_available: data_available?,
+        bars: bars,
         title: title,
         lines: line_data,
       }
     end
 
-    def bars(providers, selected_provider)
+    def data_available?
+      return 'data_available' if bars.present?
+      return 'data_unavailable' if bars.empty?
+    end
+
+    def bars
       value_dimension_manager.data(providers, selected_provider)
       .map do |value, provider_name, provider_id, cms_rank|
         {

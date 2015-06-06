@@ -1,8 +1,7 @@
 .chart_container.two_column.clearfix
   .col6-xs.provider_data.tk-freight-sans-pro
-    #{node.data.fetch(:bars, nil).first.try(:fetch, :value)} %
-    %h5.tk-freight-sans-pro.text_weight_light
-      = value_description_text(node, :long_description)
+    = render "public_charts/teaser_charts/#{node.data.fetch(:data_available)}",
+      node: node
   .col6-xs
     %svg.chart{ id: "#{node.title.parameterize}" }
 

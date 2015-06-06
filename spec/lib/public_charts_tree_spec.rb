@@ -186,6 +186,7 @@ RSpec.describe PublicChartsTree do
       end
       let(:expected_data) do
         {
+          data_available: 'data_available',
           bars: values_and_provider_names
             .map do |value, provider_name, provider_id|
               {

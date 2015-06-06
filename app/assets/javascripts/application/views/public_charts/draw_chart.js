@@ -218,21 +218,4 @@ Nightingale.drawChart = function(data, nodeId, isDetailChart, nodeType) {
         .attr('class', function(d) { return className; });
     }
   }
-
-  if (!dataIsAvailable) {
-    var targetDiv;
-    var action;
-    var message = '<h4 class="no_data no_margin vertical_padding_small">' +
-                  'Data not available for selected provider</h4>';
-
-    if (isDetailChart) {
-      targetDiv = parentElement;
-      targetDiv.prepend(message);
-    } else {
-      targetDiv = parentElement.siblings('.provider_data');
-      targetDiv.html(message);
-    }
-
-    targetDiv.addClass('tk-freight-sans-pro text_center');
-  }
 };

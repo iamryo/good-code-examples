@@ -1,5 +1,7 @@
 .detail_chart.top_margin_base
   .chart_container
+    = render "public_charts/detail_charts/#{node.data.fetch(:data_available)}",
+      node: node
     %svg.chart{id: "#{node.title.parameterize}"}
 
     :javascript
