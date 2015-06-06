@@ -54,3 +54,9 @@
 
   .icon_arrow_down
     display: none
+
+=hover_darken_fill($color)
+  fill: $color
+
+  &:hover
+    fill: darken($color, 6)
