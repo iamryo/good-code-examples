@@ -111,7 +111,7 @@ Nightingale.drawChart = function(data, nodeId, isDetailChart, nodeType) {
     return xScale(i);
   };
 
-  var getTextYPosition = textYPosition || function(d) {
+  var getTextYPosition = function(d) {
     var minDistance = 16;
     var calcTextYPos = height - yScale(d.value) + 4;
     var minDistanceMet = Math.abs(calcTextYPos - textYPosition) > minDistance;
