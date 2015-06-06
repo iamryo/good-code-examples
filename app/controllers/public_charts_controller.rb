@@ -2,10 +2,12 @@
 # CMS. They are not customizable for a client, thus they are not backed by
 # dynamic data, e.g. in the database.
 class PublicChartsController < ApplicationController
+  SELECTED_DATA_TYPES = %w[provider_id context]
+
   def show
+    SELECTED_DATA_TYPES.each { |type| persist_selected(type) }
+
     @custom_feedback_bar = true
-    persist_selected_provider
-    persist_selected_context
 
     @node = find_node(
       providers: relevant_providers_relation,
@@ -55,20 +57,20 @@ class PublicChartsController < ApplicationController
     )
   end
 
-  def persist_selected_provider
-    return unless params.fetch(:provider_id, nil)
+  def persist_selected(item)
+    return unless send("#{item}")
     current_user.update_attribute(
-      :selected_provider_id,
-      params.fetch(:provider_id),
+      "selected_#{item}",
+      send("#{item}"),
     )
   end
 
-  def persist_selected_context
-    return unless params.fetch(:context, nil)
-    current_user.update_attribute(
-      :selected_context,
-      params.fetch(:context),
-    )
+  def provider_id
+    params.fetch(:provider_id, nil)
+  end
+
+  def context
+    params.fetch(:context, nil)
   end
 
   def find_node(providers:, selected_provider:)
