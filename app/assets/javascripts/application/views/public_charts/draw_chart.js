@@ -76,9 +76,9 @@ Nightingale.drawChart = function(data, nodeId, isDetailChart, nodeType) {
 
   var targetMet = function(dataValue, targetValue) {
     if (getBestValueMethod() === 'maximum') {
-      return dataValue > targetValue;
+      return dataValue >= targetValue;
     }
-    return dataValue < targetValue;
+    return dataValue <= targetValue;
   };
 
   var yScale = d3.scale.linear()

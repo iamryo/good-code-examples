@@ -35,4 +35,8 @@ module PublicChartsHelper
   def value_description_text(node, description_type)
     node.value_description.fetch(description_type, nil)
   end
+
+  def node_data_value(data)
+    data.fetch(:bars).first.fetch(:value).to_f
+  end
 end

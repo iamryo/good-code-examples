@@ -1,3 +1,3 @@
-#{node.data.fetch(:bars, nil).first.try(:fetch, :value)} %
+#{node_data_value(node.data)} %
 %h5.tk-freight-sans-pro.text_weight_light
   = value_description_text(node, :long_description)
