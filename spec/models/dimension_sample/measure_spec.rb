@@ -97,9 +97,7 @@ RSpec.describe DimensionSample::Measure do
       end
 
       let(:providers) { Provider.all }
-      let(:selected_provider) do
-        Provider.where(cms_provider_id: relevant_provider_1)
-      end
+      let(:selected_provider) { relevant_provider_1 }
 
       def create_dimension_sample(**custom_attributes)
         create(
@@ -122,14 +120,14 @@ RSpec.describe DimensionSample::Measure do
             relevant_dimension_sample_2_value,
             relevant_provider_2.name,
             relevant_provider_2.id,
-            '/2',
+            '2/2',
             relevant_provider_2.cms_provider_id,
           ],
           [
             relevant_dimension_sample_1_value,
             relevant_provider_1.name,
             relevant_provider_1.id,
-            '/2',
+            '2/2',
             relevant_provider_1.cms_provider_id,
           ],
         ]

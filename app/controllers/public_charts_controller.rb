@@ -9,12 +9,12 @@ class PublicChartsController < ApplicationController
 
     @node = find_node(
       providers: relevant_providers_relation,
-      selected_provider: selected_provider_relation,
+      selected_provider: selected_provider,
     )
 
     @embedded_node = find_node(
       providers: selected_provider_relation,
-      selected_provider: selected_provider_relation,
+      selected_provider: selected_provider,
     )
 
     @provider_compare_presenter = Providers::ProviderComparePresenter.new(

@@ -30,7 +30,7 @@ module DimensionSample
 
       RelevantProviders.call(
         sort_providers(relevant_providers, measure_id),
-        selected_provider.pluck(:cms_provider_id).first,
+        selected_provider.cms_provider_id,
       )
     end
 

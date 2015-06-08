@@ -5,7 +5,7 @@ RSpec.shared_context 'dimension sample manager' do
 
   let(:relevant_providers) { Provider.where(cms_provider_id: provider_ids) }
   let(:selected_provider) do
-    Provider.where(cms_provider_id: provider_ids.first)
+    Provider.find_by_cms_provider_id(provider_ids)
   end
   let(:provider_1_id) { Provider.find_by_cms_provider_id('010103').id }
   let(:provider_2_id) { Provider.find_by_cms_provider_id('010087').id }
