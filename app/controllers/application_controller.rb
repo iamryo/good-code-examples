@@ -60,12 +60,8 @@ class ApplicationController < ActionController::Base
 
   private
 
-  def after_sign_in_path_for(_user)
-    '/metrics/payment-programs'
-  end
-
-  def after_sign_out_path_for(_user)
-    new_user_session_path
+  def after_sign_in_path_for(user)
+    stored_location_for(user) || '/metrics/payment-programs'
   end
 
   def model_instance_variable=(model_instance)

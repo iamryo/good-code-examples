@@ -13,5 +13,6 @@ node_modules
 public/assets
 spec/javascripts/fixtures/
 config/database.yml
+vendor/bundle
 # DB backups
 *.dump

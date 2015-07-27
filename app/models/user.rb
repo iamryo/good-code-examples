@@ -52,7 +52,7 @@ class User < ActiveRecord::Base
          :recoverable,
          :registerable,
          :rememberable,
-         # :session_limitable,
+         :session_limitable,
          :timeoutable,
          :trackable
 

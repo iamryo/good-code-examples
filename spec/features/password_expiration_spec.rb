@@ -6,9 +6,7 @@ RSpec.feature 'Password expires' do
     Timecop.travel(now) { create(User, :authenticatable, :with_associations) }
   end
   let(:new_password) { 'flameindeedhighwaypiece' }
-  let(:after_sign_in_path) do
-    '/metrics/payment-programs'
-  end
+  let(:after_sign_in_path) { '/metrics/payment-programs' }
 
   def renew_password
     fill_in 'New password', with: new_password
@@ -32,6 +30,6 @@ RSpec.feature 'Password expires' do
     do_after_expiration { log_in user }
     expect(current_path).to eq user_password_expired_path
     do_after_expiration { renew_password }
-    expect(current_path).to eq after_sign_in_path
+    expect(current_path).to eq root_path
   end
 end

@@ -1,7 +1,7 @@
 require 'feature_spec_helper'
 
 RSpec.feature 'Limiting user to one session' do
-  let(:user) { create :user }
+  let(:user) { create(User, :with_associations) }
   let(:session_one) { create_session }
   let(:session_two) { create_session }
   let(:flash_message) do
@@ -10,10 +10,7 @@ RSpec.feature 'Limiting user to one session' do
       to continue in this browser.
     FLASH_MESSAGE
   end
-
-  let(:after_sign_in_path) do
-    '/metrics/payment-programs/hospital-readmissions-reduction-program'
-  end
+  let(:after_sign_in_path) { '/metrics/payment-programs' }
 
   def create_session
     Capybara::Session.new(Capybara.current_driver, Capybara.app)
@@ -27,12 +24,11 @@ RSpec.feature 'Limiting user to one session' do
     expect(session.current_path).to eq after_sign_in_path
   end
 
-  # BRING THIS BACK AFTER DEMO
-  # it 'displays a flash message and signs out first session' do
-  #   log_in_session session_one
-  #   log_in_session session_two
-  #   session_one.click_link('Payment Programs')
-  #   expect(session_one).to have_content flash_message
-  #   expect(session_one.current_path).to eq '/metrics/payment-programs'
-  # end
+  it 'displays a flash message and signs out first session' do
+    log_in_session session_one
+    log_in_session session_two
+    session_one.first(:link, 'Payment Programs').click
+    expect(session_one).to have_content flash_message
+    expect(session_one.current_path).to eq after_sign_in_path
+  end
 end
