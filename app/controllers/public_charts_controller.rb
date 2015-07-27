@@ -3,37 +3,14 @@
 # dynamic data, e.g. in the database.
 class PublicChartsController < ApplicationController
   SELECTED_DATA_TYPES = %w[provider_id context]
+  before_action :set_persisted_selections,
+                :set_provider_compare_presenter,
+                :set_selected_provider_presenter,
+                :set_conversation_presenter,
+                only: [:show]
 
   def show
-    SELECTED_DATA_TYPES.each { |type| persist_selected(type) }
-
     @custom_feedback_bar = true
-
-    @node = find_node(
-      providers: relevant_providers_relation,
-      selected_provider: selected_provider,
-    )
-
-    @embedded_node = find_node(
-      providers: selected_provider_relation,
-      selected_provider: selected_provider,
-    )
-
-    @provider_compare_presenter = Providers::ProviderComparePresenter.new(
-      selected_provider,
-      current_user.selected_context,
-    )
-
-    @selected_provider_presenter = Providers::SelectedProviderPresenter.new(
-      selected_provider,
-      @node,
-      @embedded_node,
-    )
-
-    @conversation_presenter = Conversations::ConversationPresenter.new(
-      current_user,
-      @node.id_component,
-    )
 
     respond_to do |format|
       format.html
@@ -42,6 +19,48 @@ class PublicChartsController < ApplicationController
   end
 
   private
+
+  def set_persisted_selections
+    SELECTED_DATA_TYPES.each { |type| persist_selected(type) }
+    set_node
+    set_embedded_node
+  end
+
+  def set_node
+    @node = find_node(
+      providers: relevant_providers_relation,
+      selected_provider: selected_provider,
+    )
+  end
+
+  def set_embedded_node
+    @embedded_node = find_node(
+      providers: selected_provider_relation,
+      selected_provider: selected_provider,
+    )
+  end
+
+  def set_provider_compare_presenter
+    @provider_compare_presenter = Providers::ProviderComparePresenter.new(
+      selected_provider,
+      current_user.selected_context,
+    )
+  end
+
+  def set_selected_provider_presenter
+    @selected_provider_presenter = Providers::SelectedProviderPresenter.new(
+      selected_provider,
+      @node,
+      @embedded_node,
+    )
+  end
+
+  def set_conversation_presenter
+    @conversation_presenter = Conversations::ConversationPresenter.new(
+      current_user,
+      @node.id_component,
+    )
+  end
 
   def selected_provider
     current_user.selected_provider
