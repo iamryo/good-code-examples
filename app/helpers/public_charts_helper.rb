@@ -36,6 +36,11 @@ module PublicChartsHelper
     node.value_description.fetch(description_type, nil)
   end
 
+  def value_amount_with_unit(value)
+    return value if value == 'n/a'
+    "#{value}%"
+  end
+
   def node_data_value(data)
     data.fetch(:bars).first.fetch(:value).to_f
   end
