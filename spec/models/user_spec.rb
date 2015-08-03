@@ -48,10 +48,6 @@ RSpec.describe User do
         .with_options(null: false)
     end
     it do
-      is_expected.to have_db_column(:unique_session_id).of_type(:string)
-        .with_options(limit: 20)
-    end
-    it do
       is_expected.to have_db_column(:first_name).of_type(:string)
         .with_options(null: false)
       is_expected.to have_db_column(:last_name).of_type(:string)
