@@ -3,7 +3,7 @@ source 'https://b8ab84f5:2186dcf8@gems.contribsys.com/' do
   gem 'sidekiq-pro'
 end
 
-ruby '2.2.1'
+ruby '2.2.2'
 
 gem 'rails'
 gem 'pg'
