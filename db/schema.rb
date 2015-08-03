@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150605061545) do
+ActiveRecord::Schema.define(version: 20150803055500) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -194,7 +194,6 @@ ActiveRecord::Schema.define(version: 20150605061545) do
     t.string   "unconfirmed_email"
     t.boolean  "is_dabo_admin",                     default: false, null: false
     t.integer  "account_id"
-    t.datetime "password_changed_at"
     t.string   "unique_session_id",      limit: 20
     t.string   "first_name",                                        null: false
     t.string   "last_name",                                         null: false

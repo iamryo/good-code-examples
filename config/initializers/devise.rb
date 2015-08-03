@@ -272,16 +272,16 @@ Devise.setup do |config|
   # Configure security extension for devise
 
   # Should the password expire (e.g 3.months)
-  config.expire_password_after = 90.days
+  # config.expire_password_after = 90.days
 
   # Need 1 char of A-Z, a-z and 0-9
   # config.password_regex = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z])/
 
   # How many passwords to keep in archive
-  config.password_archiving_count = 5
+  # config.password_archiving_count = 5
 
   # Deny old password (true, false, count)
-  config.deny_old_passwords = true
+  # config.deny_old_passwords = true
 
   # enable email validation for :secure_validatable.
   # (true, false, validation_options)

@@ -47,7 +47,7 @@ class User < ActiveRecord::Base
   devise :confirmable,
          :database_authenticatable,
          :password_archivable,
-         :password_expirable,
+         # :password_expirable,
          :recoverable,
          :registerable,
          :rememberable,
