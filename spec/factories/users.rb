@@ -45,6 +45,7 @@ FactoryGirl.define do
 
     trait :dabo_admin do
       is_dabo_admin true
+      sequence(:email) { |n| "admin#{n}@factory.com" }
       authenticatable
     end
 

@@ -4,13 +4,7 @@ RSpec.feature 'Login validation' do
   let!(:user) { create(User, :authenticatable, :with_associations) }
   let!(:admin_user) { create(User, :dabo_admin) }
   let(:first_failed_attempt_message) do
-    'Invalid email or password. ' \
-    'You have one more try before we reset your login.'
-  end
-  let(:second_failed_attempt_message) do
-    'Invalid email or password. ' \
-    'We sent an e-mail with instructions on how to reset your password. ' \
-    "#{user.email}"
+    'Invalid email or password.'
   end
   let(:incorrect_email_password_message) do
     'Invalid email or password. ' \
@@ -47,30 +41,6 @@ RSpec.feature 'Login validation' do
       log_in_with_wrong_credentials
       expect(page).to have_content(first_failed_attempt_message)
       check_input_field_on_error_styling
-    end
-
-    it 'shows second failed attempt message and sends reset password email' do
-      log_in_with_wrong_credentials
-      log_in_with_wrong_credentials
-      expect(page).to have_content(second_failed_attempt_message)
-    end
-
-    it 'locks account after 3 failed attempts, and can be unlocked' do
-      log_in_with_wrong_credentials
-      log_in_with_wrong_credentials
-      log_in_with_wrong_credentials
-      log_in(user)
-      expect(page).to have_content 'Your account is locked.'
-      expect(current_path).to eq new_user_session_path
-
-      log_in(admin_user)
-      visit edit_dabo_admin_user_path(user)
-      click_button 'Unlock'
-      expect(page).not_to have_button 'Unlock'
-      log_out
-
-      log_in(user)
-      expect(current_path).to eq root_path
     end
   end
 end
