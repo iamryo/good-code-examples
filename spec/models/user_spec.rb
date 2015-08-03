@@ -98,22 +98,6 @@ RSpec.describe User do
         it { is_expected.to be_valid }
       end
     end
-
-    describe 'Devise password archivable' do
-      subject { create(described_class, password: first_password) }
-
-      let(:first_password) { 'pushvisitbuilttail' }
-      let(:second_password) { 'shineaccordingtreehit' }
-
-      it 'does not allow an already used password' do
-        expect(subject).to be_valid
-        subject.password = second_password
-        expect(subject).to be_valid
-        expect { subject.update_attributes(password: first_password) }
-          .to change { subject.errors[:password].length }
-          .from(0).to(1)
-      end
-    end
   end
 
   it { is_expected.to belong_to :account }

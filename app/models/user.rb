@@ -46,7 +46,6 @@ class User < ActiveRecord::Base
   # :lockable, and :omniauthable
   devise :confirmable,
          :database_authenticatable,
-         :password_archivable,
          :recoverable,
          :registerable,
          :rememberable,
