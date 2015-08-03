@@ -6,7 +6,6 @@ Rails.application.routes.draw do
   shallow do # we should always use shallow routes, internally at least
     devise_for :users, controllers: {
       registrations: 'users/registrations',
-      sessions: 'users/sessions',
       password_expired: 'users/password_expired',
     }
     namespace :users do

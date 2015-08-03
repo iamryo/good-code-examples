@@ -52,7 +52,6 @@ class User < ActiveRecord::Base
          :registerable,
          :rememberable,
          :session_limitable,
-         :timeoutable,
          :trackable
 
   belongs_to :account
