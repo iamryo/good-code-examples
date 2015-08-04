@@ -11,7 +11,7 @@ Nightingale.Views['pristine_examples-index'] = Backbone.View.extend({
   },
 
   log: function() {
-    console.log('Your click is recieved.');
+    console.log('Your click is received.');
     return false;
   }
 });

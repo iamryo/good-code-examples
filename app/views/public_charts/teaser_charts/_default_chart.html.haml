@@ -5,10 +5,10 @@
   .col6-xs
     %svg.chart{ id: "#{node.title.parameterize}" }
 
-:javascript
-  $(function() {
-    var data = #{node.data.to_json};
-    var node_id = "##{node.title.parameterize}";
-    var node_type = "#{node.type}";
-    Nightingale.drawChart(data, node_id, false, node_type);
-  });
+/ :javascript
+/   $(function() {
+/     var data = #{node.data.to_json};
+/     var node_id = "##{node.title.parameterize}";
+/     var node_type = "#{node.type}";
+/     Nightingale.drawChart(data, node_id, false, node_type);
+/   });
