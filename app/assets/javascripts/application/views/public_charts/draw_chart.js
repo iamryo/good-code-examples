@@ -23,7 +23,7 @@ Nightingale.Views['public_charts-drawChart'] = Backbone.View.extend({
 
   // initialize: function(data, nodeId, isDetailChart, nodeType) {
   initialize: function(options) {
-    this.options = options
+    this.options = options;
     this.parentElement = $(options.nodeId).parent();
     this.parentWidth = this.parentElement.width();
     this.parentHeight = this.parentElement.height();
@@ -38,14 +38,6 @@ Nightingale.Views['public_charts-drawChart'] = Backbone.View.extend({
 
     this._setTargetLines();
     this._setScaleDomains();
-    // this._setScaleRanges();
-
-    this.yScale = d3.scale.linear()
-          .domain(this.yScaleDomain)
-          .rangeRound([this.padding, this.height - this.padding]);
-    this.xScale = d3.scale.ordinal()
-        .domain(this.xScaleDomain)
-        .rangeRoundBands([0, this.width], 0.1);
 
     this.chart = d3.select(options.nodeId)
       .attr('width', this.width)
@@ -53,6 +45,22 @@ Nightingale.Views['public_charts-drawChart'] = Backbone.View.extend({
 
     this._drawBars();
     this._drawLines();
+  },
+
+  _yScale: function() {
+    var yScaleDomain = this.yScaleDomain;
+
+    return d3.scale.linear()
+      .domain(this.yScaleDomain)
+      .rangeRound([this.padding, this.height - this.padding]);
+  },
+
+  _xScale: function() {
+    var xScaleDomain = this.xScaleDomain;
+
+    return d3.scale.ordinal()
+      .domain(this.xScaleDomain)
+      .rangeRoundBands([0, this.width], 0.1);
   },
 
   _setTargetLines: function() {
@@ -72,7 +80,7 @@ Nightingale.Views['public_charts-drawChart'] = Backbone.View.extend({
   _setScaleDomains: function() {
     if (this.dataIsAvailable) {
       this.xScaleDomain = d3.range(this.dataset.length);
-      this.yScaleDomain = [this.scaleMin, this.yScaleDomainMax()];
+      this.yScaleDomain = [this.scaleMin, this._yScaleDomainMax()];
       this.targetValue = this.lineData[1].value;
     } else {
       this.scaleMin = 0;
@@ -81,27 +89,56 @@ Nightingale.Views['public_charts-drawChart'] = Backbone.View.extend({
     }
   },
 
-  _setScaleRanges: function() {
-    // this.yScale = d3.scale.linear()
-    //     .domain(this.yScaleDomain)
-    //     .rangeRound([this.padding, this.height - this.padding]);
-
-    // this.xScale = d3.scale.ordinal()
-    //   .domain(this.xScaleDomain)
-    //   .rangeRoundBands([0, this.width], 0.1);
-  },
-
   _drawBars: function() {
+    var link;
+    var height = this.height;
+    var yScale = this._yScale();
+    var barWidth = this._getBarWidth();
+    var lineData = this.lineData;
+    var targetMet = this._targetMet;
+    var xPosition = this._xPosition;
+    var targetLineLabel = this.targetLineLabel;
+    var parentElement = this.parentElement;
+    var isDetailChart = this.options.isDetailChart;
+    var that = this;
+
     this.bar = this.chart.selectAll('g')
      .data(this.dataset)
      .enter().append('g');
 
     if (this.options.isDetailChart) {
-      this.link = this.bar.append('svg:a')
+      link = this.bar.append('svg:a')
         .attr('xlink:href', function(d) { return d.uri; });
     } else {
-      this.link = this.bar.append('g');
+      link = this.bar.append('g');
     }
+
+    link.append('rect')
+      .attr('x', function(d, i) { return xPosition.call(that, i); })
+      .attr('y', function(d) { return height - yScale(d.value); })
+      .attr('height', function(d) { return yScale(d.value); })
+      .attr('width', barWidth)
+      .attr('class', function(d) {
+        var selectedProviderName = $('.provider_name').text().trim();
+        var className = 'target_not_met';
+
+        for (var i = 0; i < lineData.length; i++) {
+          if (lineData[i].label === targetLineLabel) {
+            if (targetMet.call(that, d.value, lineData[i].value)) {
+              className = 'target_met';
+            }
+          }
+        }
+
+        parentElement.parent().addClass(className);
+
+        if (d.tooltip.providerName === selectedProviderName) {
+          if (isDetailChart) {
+            $('.adjustment_value').addClass(className);
+          }
+          return className + ' selected';
+        }
+      });
   },
 
   _drawLines: function() {
@@ -109,8 +146,10 @@ Nightingale.Views['public_charts-drawChart'] = Backbone.View.extend({
       var lineEndPosition;
       var lineStartPosition;
       var textXPosition;
-      var textYPosition;
       var className = this.lineData[i].label.toLowerCase().split(' ').join('-');
+      var height = this.height;
+      var yScale = this._yScale();
+      var showPercent = this.showPercent;
 
       if (this.options.isDetailChart) {
         lineStartPosition = 0;
@@ -118,17 +157,16 @@ Nightingale.Views['public_charts-drawChart'] = Backbone.View.extend({
         textXPosition = 30;
       } else {
         lineStartPosition = -10;
-        lineEndPosition = width + 10;
-        textXPosition = width + 20;
+        lineEndPosition = this.width + 10;
+        textXPosition = this.width + 20;
       }
 
-        debugger
       var lineLeft = this.chart.append('line')
         .data([this.lineData[i]])
         .attr('x1', lineStartPosition)
-        .attr('y1', function(d) { return this.height - this.yScale(d.value); })
+        .attr('y1', function(d) { return height - yScale(d.value); })
         .attr('x2', lineEndPosition)
-        .attr('y2', function(d) { return this.height - this.yScale(d.value); })
+        .attr('y2', function(d) { return height - yScale(d.value); })
         .attr('class', function(d) { return className; });
 
       var text = this.chart.append('text')
@@ -136,11 +174,11 @@ Nightingale.Views['public_charts-drawChart'] = Backbone.View.extend({
         .text(function(d) { return d.label + ': ' + d.value + showPercent; })
         .attr('x', textXPosition)
         .attr('y', function(d) {
-          if (textYPosition) {
-            return getTextYPosition(d);
+          if (this.textYPosition) {
+            return this._getTextYPosition(d);
           }
-          textYPosition = this.height - this.yScale(d.value) + 4;
-          return textYPosition;
+          this.textYPosition = height - yScale(d.value) + 4;
+          return this.textYPosition;
         })
         .attr('class', function(d) { return className; });
 
@@ -151,11 +189,11 @@ Nightingale.Views['public_charts-drawChart'] = Backbone.View.extend({
           .data([this.lineData[i]])
           .attr('x1', textWidth + 40)
           .attr('y1', function(d) {
-            return this.height - this.yScale(d.value);
+            return height - yScale(d.value);
           })
-          .attr('x2', width)
+          .attr('x2', this.width)
           .attr('y2', function(d) {
-            return this.height - this.yScale(d.value);
+            return height - yScale(d.value);
           })
           .attr('class', function(d) { return className; });
       }
@@ -192,24 +230,24 @@ Nightingale.Views['public_charts-drawChart'] = Backbone.View.extend({
 
   _yScaleDomainMax: function() {
     return Math.max(
-      targetValue,
-      d3.max(dataset, function(d) { return d.value; })
+      this.targetValue,
+      d3.max(this.dataset, function(d) { return d.value; })
     );
   },
 
   _targetMet: function(dataValue) {
     if (this._getBestValueMethod() === 'maximum') {
-      return dataValue >= this.getTargetValue();
+      return dataValue >= this._getTargetValue();
     }
-    return dataValue <= this.getTargetValue();
+    return dataValue <= this._getTargetValue();
   },
 
   _getBarWidth: function() {
-    if (this.options.isDetailChart && xScale.rangeBand() > maxBarWidth) {
-      return maxBarWidth;
+    if (this.options.isDetailChart && this._xScale().rangeBand() > this.maxBarWidth) {
+      return this.maxBarWidth;
     }
 
-    return xScale.rangeBand();
+    return this._xScale().rangeBand();
   },
 
   _xPosition: function(i) {
@@ -223,21 +261,21 @@ Nightingale.Views['public_charts-drawChart'] = Backbone.View.extend({
       return chartMidpoint - (firstBarPosition - positionWithIndex);
     }
 
-    return xScale(i);
+    return this.xScale(i);
   },
 
-  getTextYPosition: function(d) {
+  _getTextYPosition: function(d) {
     var minDistance = 16;
-    var calcTextYPos = height - yScale(d.value) + 4;
-    var minDistanceMet = Math.abs(calcTextYPos - textYPosition) > minDistance;
+    var calcTextYPos = this.height - this._yScale(d.value) + 4;
+    var minDistanceMet = Math.abs(calcTextYPos - this.textYPosition) > minDistance;
 
     if (minDistanceMet) {
       return calcTextYPos;
     } else {
-      if (calcTextYPos < textYPosition) {
-        return textYPosition - minDistance;
+      if (calcTextYPos < this.textYPosition) {
+        return this.textYPosition - minDistance;
       } else {
-        return textYPosition + minDistance;
+        return this.textYPosition + minDistance;
       }
     }
   },
