@@ -5,10 +5,14 @@
   .col6-xs
     %svg.chart{ id: "#{node.title.parameterize}" }
 
-/ :javascript
-/   $(function() {
-/     var data = #{node.data.to_json};
-/     var node_id = "##{node.title.parameterize}";
-/     var node_type = "#{node.type}";
-/     Nightingale.drawChart(data, node_id, false, node_type);
-/   });
+  :javascript
+    var data = #{node.data.to_json};
+    var node_id = "##{node.title.parameterize}";
+    var node_type = "#{node.type}";
+    new Nightingale.Views['public_charts-drawChart']({
+      data: data,
+      nodeId: node_id,
+      isDetailChart: false,
+      nodeType: node_type,
+      el: $('.teaser_charts_container .chart_container svg')
+    });

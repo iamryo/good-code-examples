@@ -4,13 +4,6 @@
       node: node
     %svg.chart{id: "#{node.title.parameterize}"}
 
-      / $(function() {
-      /   var data = #{node.data.to_json};
-      /   var node_id = "##{node.title.parameterize}";
-      /   var node_type = "#{node.type}";
-      /   Nightingale.drawChart(data, node_id, true, node_type);
-      / });
-
     :javascript
       var data = #{node.data.to_json};
       var node_id = "##{node.title.parameterize}";

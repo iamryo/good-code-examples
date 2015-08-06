@@ -214,7 +214,7 @@ Nightingale.Views['public_charts-drawChart'] = Backbone.View.extend({
 
   _getTargetValue: function(defaultValue) {
     if (this.dataIsAvailable) {
-      return this.lineData[1].value;
+      return this.lineData[0].value;
     }
     return defaultValue;
   },
@@ -243,7 +243,8 @@ Nightingale.Views['public_charts-drawChart'] = Backbone.View.extend({
   },
 
   _getBarWidth: function() {
-    if (this.options.isDetailChart && this._xScale().rangeBand() > this.maxBarWidth) {
+    var xLargerThanMaxBarWidth = this._xScale().rangeBand() > this.maxBarWidth;
+    if (this.options.isDetailChart && xLargerThanMaxBarWidth) {
       return this.maxBarWidth;
     }
 
@@ -251,6 +252,8 @@ Nightingale.Views['public_charts-drawChart'] = Backbone.View.extend({
   },
 
   _xPosition: function(i) {
+    var xScale = this._xScale();
+
     if (this.options.isDetailChart) {
       var chartMidpoint = this.width / 2;
       var datasetMidpoint = this.dataset.length / 2;
@@ -261,13 +264,14 @@ Nightingale.Views['public_charts-drawChart'] = Backbone.View.extend({
       return chartMidpoint - (firstBarPosition - positionWithIndex);
     }
 
-    return this.xScale(i);
+    return xScale(i);
   },
 
   _getTextYPosition: function(d) {
     var minDistance = 16;
     var calcTextYPos = this.height - this._yScale(d.value) + 4;
-    var minDistanceMet = Math.abs(calcTextYPos - this.textYPosition) > minDistance;
+    var minDistanceMet =
+      Math.abs(calcTextYPos - this.textYPosition) > minDistance;
 
     if (minDistanceMet) {
       return calcTextYPos;
