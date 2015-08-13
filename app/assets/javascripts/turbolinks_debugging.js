@@ -10,7 +10,3 @@ $(document).on('ready', function() {
 $(document).on('page:load', function() {
   console.log('Turbolinks simulated page load.');
 });
-
-$(document).on('page:before-change', function() {
-  console.log('Turbolinks simulated click.');
-});
