@@ -27,6 +27,9 @@ h5, .h5
 
 p
   margin: 0 0 $line_height_computed / 2
+
+p,
+li
   line-height: $line_height_base
 
 ul,
@@ -77,18 +80,36 @@ a
 .text_muted
   color: darken($grey, 15%)
 
-.text_grey_darkest
+.text_grey_darkest,
+.footnote
   color: $grey_darkest
 
 .text_weight_light
   font-weight: 300
 
-.text_small
+.text_small,
+.footnote
   font-size: $font_size_small
+
+.chart_blue
+  color: $chart_blue
+
+.chart_red
+  color: $chart_red
+
+.italic,
+.footnote
+  font-style: italic
+
+.bold
+  font-weight: bold
 
 .preserve_whitespace
   white-space: pre
 
 .no_link
-  &, &:link, &:visited, &:hover
+  &,
+  &:link,
+  &:visited,
+  &:hover
     color: inherit

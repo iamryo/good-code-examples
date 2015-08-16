@@ -24,6 +24,19 @@
 .bottom_margin_small
   margin-bottom: $buffer_small
 
+// Horizontal Margin
+.horizontal_margin_base
+  margin-top: $buffer_base
+  margin-bottom: $buffer_base
+
+.horizontal_margin_large
+  margin-top: $buffer_large
+  margin-bottom: $buffer_large
+
+.horizontal_margin_small
+  margin-top: $buffer_small
+  margin-bottom: $buffer_small
+
 // Left Margin
 .left_margin_base
   margin-left: $buffer_base
@@ -191,3 +204,6 @@
   position: absolute
   bottom: 0
   width: calc(100% - (#{$buffer_base} * 2))
+
+hr
+  border: rem(1) solid $grey
