@@ -79,7 +79,7 @@ Nightingale.Views['public_charts-drawChart'] = Backbone.View.extend({
     var targetLineLabel = this.targetLineLabel;
     var parentElement = this.parentElement;
     var isDetailChart = this.options.isDetailChart;
-    var that = this;
+    var self = this;
 
     this.bar = this.chart.selectAll('g')
      .data(this.dataset)
@@ -93,7 +93,7 @@ Nightingale.Views['public_charts-drawChart'] = Backbone.View.extend({
     }
 
     link.append('rect')
-      .attr('x', function(d, i) { return xPosition.call(that, i); })
+      .attr('x', function(d, i) { return xPosition.call(self, i); })
       .attr('y', function(d) { return height - yScale(d.value); })
       .attr('height', function(d) { return yScale(d.value); })
       .attr('width', barWidth)
@@ -103,7 +103,7 @@ Nightingale.Views['public_charts-drawChart'] = Backbone.View.extend({
 
         for (var i = 0; i < lineData.length; i++) {
           if (lineData[i].label === targetLineLabel) {
-            if (targetMet.call(that, d.value, lineData[i].value)) {
+            if (targetMet.call(self, d.value, lineData[i].value)) {
               className = 'target_met';
             }
           }
