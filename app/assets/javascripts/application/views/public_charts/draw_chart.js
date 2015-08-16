@@ -99,6 +99,7 @@ Nightingale.Views['public_charts-drawChart'] = Backbone.View.extend({
       .attr('width', barWidth)
       .attr('class', function(d) {
         var selectedProviderName = $('.provider_name').text().trim();
+        var selectedProviderValue = $('.selected_provider_value');
         var className = 'target_not_met';
 
         for (var i = 0; i < lineData.length; i++) {
@@ -110,6 +111,7 @@ Nightingale.Views['public_charts-drawChart'] = Backbone.View.extend({
         }
 
         parentElement.parent().addClass(className);
+        selectedProviderValue.addClass(className);
 
         if (d.tooltip.providerName === selectedProviderName) {
           if (isDetailChart) {
