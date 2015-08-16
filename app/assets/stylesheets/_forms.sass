@@ -35,8 +35,8 @@ form
       box-shadow: none
       padding-left: 0
 
-    &.no_margin
-      @extend .no_margin
+    &.margin_0
+      @extend .margin_0
 
   .disabled
     background: $grey_light
@@ -60,7 +60,7 @@ form
       +calc(width, "100% - (#{$input_height_base} * 1.25)")
 
     .form_control_icon
-      @extend .no_margin
+      @extend .margin_0
 
   .has_two_icons
     .form_control

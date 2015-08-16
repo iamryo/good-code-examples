@@ -3,7 +3,7 @@
     .icon.icon_size_base.icon_bookmark
       = render 'shared/icon', icon: '#icon_bookmark'
   .inner_padding_large
-    %h4.teaser_chart_title.no_margin
+    %h4.teaser_chart_title.margin_0
       = node_link(node, class_name: 'text_weight_light')
     = render "public_charts/teaser_charts/#{node.type}", node: node
   = node_link(node,                                                 |

@@ -25,12 +25,12 @@
   :preserve
     %form{action: '/search', method: 'get'}
       .has_icon.clearfix.line_height_buffer_base
-        %input.form_control.float_left.no_margin#q{name: 'q', type: 'text'}
+        %input.form_control.float_left.margin_0#q{name: 'q', type: 'text'}
         %span.icon.icon_size_small.icon_search.float_right.form_control_icon
           = render 'shared/icon', icon: '#icon_search'
 %form{action: '/search', method: 'get', class: 'top_margin_base'}
   .has_icon.clearfix.line_height_buffer_base
-    %input.form_control.float_left.no_margin#q{name: 'q', type: 'text'}
+    %input.form_control.float_left.margin_0#q{name: 'q', type: 'text'}
     %span.icon.icon_size_small.icon_search.float_right.form_control_icon
       = render 'shared/icon', icon: '#icon_search'
 
