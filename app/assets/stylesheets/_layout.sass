@@ -1,36 +1,40 @@
-.top_margin_large
-  margin-top: $buffer_large
-
-.bottom_margin_large
-  margin-bottom: $buffer_large
-
-.left_margin_large
-  margin-left: $buffer_large
-
-.top_margin_base
-  margin-top: $buffer_base
-
-.bottom_margin_base
-  margin-bottom: $buffer_base
-
-.left_margin_base
-  margin-left: $buffer_base
-
-.top_margin_small
-  margin-top: $buffer_small
-
-.bottom_margin_small
-  margin-bottom: $buffer_small
-
-.left_margin_small
-  margin-left: $buffer_small
-
 .margin_0
   margin: 0
 
 .padding_0
   padding: 0
 
+// Top Margin
+.top_margin_base
+  margin-top: $buffer_base
+
+.top_margin_large
+  margin-top: $buffer_large
+
+.top_margin_small
+  margin-top: $buffer_small
+
+// Bottom Margin
+.bottom_margin_base
+  margin-bottom: $buffer_base
+
+.bottom_margin_large
+  margin-bottom: $buffer_large
+
+.bottom_margin_small
+  margin-bottom: $buffer_small
+
+// Left Margin
+.left_margin_base
+  margin-left: $buffer_base
+
+.left_margin_large
+  margin-left: $buffer_large
+
+.left_margin_small
+  margin-left: $buffer_small
+
+// Inner Padding
 .inner_padding_base
   padding: $buffer_base
 
@@ -42,6 +46,7 @@
 .inner_padding_small
   padding: $buffer_small
 
+// Vertical Padding
 .vertical_padding_base
   padding-left: $buffer_base
   padding-right: $buffer_base
@@ -61,6 +66,7 @@
   padding-left: $buffer_small
   padding-right: $buffer_small
 
+// Horizontal Padding
 .horizontal_padding_base
   padding-top: $buffer_base
   padding-bottom: $buffer_base
@@ -80,18 +86,60 @@
   padding-top: $buffer_small
   padding-bottom: $buffer_small
 
-.bottom_padding_base
-  padding-bottom: $buffer_base
+// Top Padding
+.top_padding_base
+  padding-top: $buffer_base
 
 .top_padding_large
   padding-top: $buffer_base
   +media($tablet_portrait_and_desktop)
     padding-top: $buffer_large
 
+.top_padding_xl
+  padding-top: $buffer_xl
+
+.top_padding_small
+  padding-top: $buffer_small
+
+// Bottom Padding
+.bottom_padding_base
+  padding-bottom: $buffer_base
+
+.bottom_padding_large
+  padding-bottom: $buffer_base
+  +media($tablet_portrait_and_desktop)
+    padding-bottom: $buffer_large
+
+.bottom_padding_xl
+  padding-bottom: $buffer_xl
+
+.bottom_padding_small
+  padding-bottom: $buffer_small
+
+// Left Padding
+.left_padding_base
+  padding-left: $buffer_base
+
+.left_padding_large
+  padding-left: $buffer_base
+  +media($tablet_portrait_and_desktop)
+    padding-left: $buffer_large
+
+.left_padding_xl
+  padding-left: $buffer_xl
+
+.left_padding_small
+  padding-left: $buffer_small
+
+// Positioning
 .centered
   margin-left: auto
   margin-right: auto
 
+.vertical_align_middle
+  vertical-align: middle
+
+// Line Height
 .line_height_base
   line-height: $line_height_base
 
@@ -107,21 +155,21 @@
 .line_height_icon_large
   line-height: $line_height_icon_large
 
+// Float
 .float_left
   float: left
 
 .float_right
   float: right
 
-.vertical_align_middle
-  vertical-align: middle
-
+// Display
 .hidden
   display: none
 
 .block
   display: block
 
+// Misc
 .is_sticky
   background-color: $white
   position: fixed
